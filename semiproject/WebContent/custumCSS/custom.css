@@ -1,0 +1,7 @@
+.payInput input {
+	width: 50px;
+	border: none;
+	text-align: center;
+	color: #111111;
+	font-size: 16px;
+}
