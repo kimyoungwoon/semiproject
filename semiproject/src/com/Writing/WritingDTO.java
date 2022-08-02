@@ -34,11 +34,6 @@ public class WritingDTO {
 		this.id = id;
 	}
 
-	public String getPw() {
-		return pw;
-	}
-	public void setPw(String pw) {
-
 	public String getName() {
 		return name;
 	}

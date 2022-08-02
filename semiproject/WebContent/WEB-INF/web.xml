@@ -9,4 +9,19 @@
     <welcome-file>default.htm</welcome-file>
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
+
+
+
+<!-- Servlet 게시판 -->
+	
+	<servlet>
+		<servlet-name>cartServlet</servlet-name>
+		<servlet-class>com.cart.CartServlet</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>cartServlet</servlet-name>
+		<url-pattern>/ywsemi/*</url-pattern>
+	</servlet-mapping>
+	
 </web-app>
