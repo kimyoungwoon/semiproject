@@ -21,7 +21,6 @@ public class ProductDTO {
 	public void setColor(int color) {
 		this.color = color;
 	}
-	
 	public int getNum() {
 		return num;
 	}
@@ -58,8 +57,6 @@ public class ProductDTO {
 	public void setPro_size(int pro_size) {
 		this.pro_size = pro_size;
 	}
-
-
 	public int getTag() {
 		return tag;
 	}
