@@ -3,19 +3,22 @@ package com.Writing;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
+
 
 
 
 public class WritingDAO {
 	
-	// ÀÇÁ¸¼ºÁÖÀÔ
+	// ì˜ì¡´ì„±ì£¼ì…
 	private Connection conn;
 
 	public WritingDAO(Connection conn) {
 		this.conn = conn;
 	}
 
-	// numÀÇ ÃÖ´ë°ª
+	// numì˜ ìµœëŒ€ê°’
 	public int getMaxNum() {
 
 		int maxNum = 0;
@@ -44,7 +47,7 @@ public class WritingDAO {
 		return maxNum;
 	}
 	
-	// ÀÔ·Â
+	// ì…ë ¥
 
 	public int insertData(WritingDTO dto) {
 
@@ -53,7 +56,6 @@ public class WritingDAO {
 		String sql;
 
 		try {
-
 			sql = "insert into writing (membernum,num,id,pwd,name,email,subject,content,hitCount,created) ";
 			sql += "values (?.?,?,?,?,?,?,?,0,sysdate) ";
 
@@ -62,12 +64,11 @@ public class WritingDAO {
 			pstmt.setInt(1, dto.getMembernum());
 			pstmt.setInt(2, dto.getNum());
 			pstmt.setString(3, dto.getId());
-			pstmt.setInt(4, dto.getPw());
+			pstmt.setString(4, dto.getPw());
 			pstmt.setString(5, dto.getName());
 			pstmt.setString(6, dto.getEmail());
 			pstmt.setString(7, dto.getSubject());
 			pstmt.setString(8, dto.getContent());
-			
 
 			result = pstmt.executeUpdate();
 			pstmt.close();
@@ -77,8 +78,8 @@ public class WritingDAO {
 		}
 		return result;
 
+
 	}	
-	
 	
 	
 	

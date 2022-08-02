@@ -14,6 +14,7 @@ public class WritingDTO {
 	private String created;
 	
 	
+
 	public int getMembernum() {
 		return membernum;
 	}
@@ -32,12 +33,12 @@ public class WritingDTO {
 	public void setId(String id) {
 		this.id = id;
 	}
-	public int getPw() {
+
+	public String getPw() {
 		return pw;
 	}
-	public void setPw(int pw) {
-		this.pw = pw;
-	}
+	public void setPw(String pw) {
+
 	public String getName() {
 		return name;
 	}
@@ -50,12 +51,14 @@ public class WritingDTO {
 	public void setEmail(String email) {
 		this.email = email;
 	}
+
 	public String getHitcount() {
 		return hitcount;
 	}
 	public void setHitcount(String hitcount) {
 		this.hitcount = hitcount;
 	}
+
 	public String getSubject() {
 		return subject;
 	}
@@ -68,6 +71,8 @@ public class WritingDTO {
 	public void setContent(String content) {
 		this.content = content;
 	}
+
+
 	public String getCreated() {
 		return created;
 	}
@@ -75,4 +80,5 @@ public class WritingDTO {
 		this.created = created;
 	}
 	
+
 }
