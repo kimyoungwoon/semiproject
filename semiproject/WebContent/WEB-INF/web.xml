@@ -21,7 +21,7 @@
   
   <servlet>
     <servlet-name>writingServlet</servlet-name>
-    <servlet-class>com.writing.WritingServlet</servlet-class>
+    <servlet-class>com.Writing.WritingServelt</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>writingServlet</servlet-name>
