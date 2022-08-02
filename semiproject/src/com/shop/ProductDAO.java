@@ -19,7 +19,7 @@ public class ProductDAO {
 	
 	
 	
-	//numÀÇ ÃÖ´ë°ª °íÀ¯°ª Á¦Ç°¹øÈ£ ¸¸µé±â
+	//numì˜ ìµœëŒ€ê°’ ê³ ìœ ê°’ ì œí’ˆë²ˆí˜¸ ë§Œë“¤ê¸°
 	public int getMaxNum() {
 		
 		int maxNum = 0;
@@ -31,7 +31,7 @@ public class ProductDAO {
 			pstmt = conn.prepareStatement(sql);
 			rs = pstmt.executeQuery();
 			if(rs.next()) {
-				maxNum = rs.getInt(1);//ÄÃ·³ÀÌ ÇÏ³ª¸¸³ª¿À°í ÆÄ»ıÄÃ·³ÀÌ±â‹š¹®¿¡ ÀÌ¸§À» ¾µ¼ö¾ø´Ù
+				maxNum = rs.getInt(1);//ì»¬ëŸ¼ì´ í•˜ë‚˜ë§Œë‚˜ì˜¤ê³  íŒŒìƒì»¬ëŸ¼ì´ê¸°Â‹Âšë¬¸ì— ì´ë¦„ì„ ì“¸ìˆ˜ì—†ë‹¤
 				
 			}
 			
@@ -43,7 +43,7 @@ public class ProductDAO {
 		return maxNum;
 	}
 		
-	//ÀÔ·Â --Á¦Ç°Ãß°¡
+	//ì…ë ¥ --ì œí’ˆì¶”ê°€
 	
 	public int insertProduct(ProductDTO dto) {
 		
@@ -77,14 +77,14 @@ public class ProductDAO {
 		
 	}
 	
-	//Ãâ·Â
+	//ì¶œë ¥
 	
 	
 	
 	
-	//¼öÁ¤
+	//ìˆ˜ì •
 	
 	
-	//»èÁ¦
+	//ì‚­ì œ
 	
 }

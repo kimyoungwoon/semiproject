@@ -2,6 +2,7 @@ package com.shop;
 
 public class ProductDTO {
 	
+
 	
 	private int num;
 	private String name;
@@ -19,6 +20,7 @@ public class ProductDTO {
 		this.saveFileName = saveFileName;
 	}
 	
+
 	public int getNum() {
 		return num;
 	}
@@ -55,11 +57,26 @@ public class ProductDTO {
 	public void setPro_size(int pro_size) {
 		this.pro_size = pro_size;
 	}
+
+	public int getColor() {
+		return color;
+	}
+	public void setColor(int color) {
+		this.color = color;
+	}
+
 	public int getTag() {
 		return tag;
 	}
 	public void setTag(int tag) {
 		this.tag = tag;
 	}
-	
+
+	public String getSaveFileName() {
+		return saveFileName;
+	}
+	public void setSaveFileName(String saveFileName) {
+		this.saveFileName = saveFileName;
+	}
+
 }
