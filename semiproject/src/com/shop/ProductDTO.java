@@ -4,16 +4,23 @@ public class ProductDTO {
 	
 
 	
+
 	private int num;
 	private String name;
 	private int price;  
 	private int category;
 	private int brand;
 	private int pro_size;
+	private int color;
 	private int tag;
 	private String saveFileName;
 	
-
+	public int getColor() {
+		return color;
+	}
+	public void setColor(int color) {
+		this.color = color;
+	}
 	public int getNum() {
 		return num;
 	}
@@ -50,7 +57,6 @@ public class ProductDTO {
 	public void setPro_size(int pro_size) {
 		this.pro_size = pro_size;
 	}
-
 	public int getTag() {
 		return tag;
 	}
