@@ -11,7 +11,7 @@ public class WritingDTO {
 	private String subject;
 	private String content;
 	private int hitcount;
-	private String created;
+	private String savePath;
 	
 	
 
@@ -65,11 +65,11 @@ public class WritingDTO {
 	public void setContent(String content) {
 		this.content = content;
 	}
-	public String getCreated() {
-		return created;
+	public String getsavePath() {
+		return savePath;
 	}
-	public void setCreated(String created) {
-		this.created = created;
+	public void setsavePath(String savePath) {
+		this.savePath = savePath;
 	}
 	public int getHitcount() {
 		return hitcount;

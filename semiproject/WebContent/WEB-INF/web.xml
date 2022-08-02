@@ -9,4 +9,14 @@
     <welcome-file>default.htm</welcome-file>
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
+  
+  
+  <servlet>
+    <servlet-name>writingServlet</servlet-name>
+    <servlet-class>com.writing.WritingServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>writingServlet</servlet-name>
+    <url-pattern>/bbs/*</url-pattern>
+  </servlet-mapping>
 </web-app>
