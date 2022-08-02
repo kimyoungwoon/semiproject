@@ -56,8 +56,8 @@ public class WritingDAO {
 		String sql;
 
 		try {
-			sql = "insert into writing (membernum,num,id,pwd,name,email,subject,content,hitCount,savePath) ";
-			sql += "values (?.?,?,?,?,?,?,?,0,sysdate) ";
+			sql = "insert into writing (membernum,num,id,pw,name,email,subject,content,hitCount,savePath) ";
+			sql += "values (?,?,?,?,?,?,?,?,0,sysdate) ";
 
 			pstmt = conn.prepareStatement(sql);
 
