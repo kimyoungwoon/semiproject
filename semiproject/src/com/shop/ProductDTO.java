@@ -13,13 +13,6 @@ public class ProductDTO {
 	private int tag;
 	private String saveFileName;
 	
-	public String getSaveFileName() {
-		return saveFileName;
-	}
-	public void setSaveFileName(String saveFileName) {
-		this.saveFileName = saveFileName;
-	}
-	
 
 	public int getNum() {
 		return num;
@@ -56,13 +49,6 @@ public class ProductDTO {
 	}
 	public void setPro_size(int pro_size) {
 		this.pro_size = pro_size;
-	}
-
-	public int getColor() {
-		return color;
-	}
-	public void setColor(int color) {
-		this.color = color;
 	}
 
 	public int getTag() {
