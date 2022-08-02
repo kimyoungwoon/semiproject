@@ -64,7 +64,6 @@ public class WritingDAO {
 			pstmt.setInt(1, dto.getMembernum());
 			pstmt.setInt(2, dto.getNum());
 			pstmt.setString(3, dto.getId());
-			pstmt.setString(4, dto.getPw());
 			pstmt.setString(5, dto.getName());
 			pstmt.setString(6, dto.getEmail());
 			pstmt.setString(7, dto.getSubject());

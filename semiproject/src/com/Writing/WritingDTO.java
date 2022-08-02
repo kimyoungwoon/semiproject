@@ -2,8 +2,6 @@ package com.Writing;
 
 public class WritingDTO {
 	
-	
-	
 	private int membernum;
 	private int num;
 	private String id;
@@ -35,6 +33,7 @@ public class WritingDTO {
 	public void setId(String id) {
 		this.id = id;
 	}
+
 	public String getPw() {
 		return pw;
 	}
