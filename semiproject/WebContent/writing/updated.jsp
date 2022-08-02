@@ -13,7 +13,7 @@
 <link rel="stylesheet" type="text/css" href="<%=cp %>/writing/css/created.css"/>
 
 
-<script type="text/javascript" src="<%=cp%>/boardTest/js/util.js"></script>
+<script type="text/javascript" src="<%=cp%>/writing/js/util.js"></script>
 <script type="text/javascript">
 
 	function sendIt() {
