@@ -2,10 +2,17 @@ package com.Writing;
 
 public class WritingDTO {
 	
+	
+	public String getPw() {
+		return pw;
+	}
+	public void setPw(String pw) {
+		this.pw = pw;
+	}
 	private int membernum;
 	private int num;
 	private String id;
-	private int pw;
+	private String pw;
 	private String name;
 	private String email;
 	private String hitcount;	
@@ -33,11 +40,7 @@ public class WritingDTO {
 	public void setId(String id) {
 		this.id = id;
 	}
-
-	public String getPw() {
-		return pw;
-	}
-	public void setPw(String pw) {
+	
 
 	public String getName() {
 		return name;
