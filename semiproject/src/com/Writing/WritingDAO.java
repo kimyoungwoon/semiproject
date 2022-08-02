@@ -56,18 +56,18 @@ public class WritingDAO {
 		String sql;
 
 		try {
-			sql = "insert into writing (membernum,num,id,pw,name,email,subject,content,hitCount,savePath) ";
-			sql += "values (?,?,?,?,?,?,?,?,0,sysdate) ";
+			sql = "insert into writing (num,id,pw,name,email,subject,content,hitCount,savePath) ";
+			sql += "values (?,?,?,?,?,?,?,0,sysdate) ";
 
 			pstmt = conn.prepareStatement(sql);
 
-			pstmt.setInt(1, dto.getMembernum());
-			pstmt.setInt(2, dto.getNum());
-			pstmt.setString(3, dto.getId());
-			pstmt.setString(5, dto.getName());
-			pstmt.setString(6, dto.getEmail());
-			pstmt.setString(7, dto.getSubject());
-			pstmt.setString(8, dto.getContent());
+			pstmt.setInt(1, dto.getNum());
+			pstmt.setString(2, dto.getId());
+			pstmt.setString(3, dto.getPw());
+			pstmt.setString(4, dto.getName());
+			pstmt.setString(5, dto.getEmail());
+			pstmt.setString(6, dto.getSubject());
+			pstmt.setString(7, dto.getContent());
 
 			result = pstmt.executeUpdate();
 			pstmt.close();

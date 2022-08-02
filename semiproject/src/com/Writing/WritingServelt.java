@@ -62,7 +62,7 @@ public class WritingServelt extends HttpServlet {
 			
 			if(info==null) {
 				
-				url= "/member/login.jsp";
+				url= "/writing/created.jsp";
 				forward(req, resp, url);
 				return;
 				
