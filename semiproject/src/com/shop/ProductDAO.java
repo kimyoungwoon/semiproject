@@ -58,7 +58,7 @@ public class ProductDAO {
 		try {
 			
 			sql = "insert into product (num,name,price,category,brand,pro_size,";
-			sql+= "color,tag,saveFileName) values (?.?.?.?,?,?,?,?,?)";
+			sql+= "color,tag,saveFileName) values(?,?,?,?,?,?,?,?,?)";
 			
 			pstmt = conn.prepareStatement(sql);
 			
@@ -68,8 +68,9 @@ public class ProductDAO {
 			pstmt.setInt(4, dto.getCategory());
 			pstmt.setInt(5, dto.getBrand());
 			pstmt.setInt(6, dto.getPro_size());
-			pstmt.setInt(7, dto.getTag());
-			pstmt.setString(8, dto.getSaveFileName());
+			pstmt.setInt(7, dto.getColor());
+			pstmt.setInt(8, dto.getTag());
+			pstmt.setString(9, dto.getSaveFileName());
 			
 			result = pstmt.executeUpdate();
 			
