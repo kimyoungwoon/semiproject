@@ -96,14 +96,23 @@ public class ProductServlet extends HttpServlet {
 			resp.sendRedirect(url);
 		}else if(uri.indexOf("list.do")!=-1) {//shop 페이지를 보여줍니다
 			
-			String str = null;
-			str = req.getParameter("category");
 			
-			if(str==null) {
-				str = "0";
-			}
 			
-			int category = Integer.parseInt(str);
+			String str1 = req.getParameter("category");
+			String str2 = req.getParameter("brand");
+			String str3 = req.getParameter("priceMin");
+			String str4 = req.getParameter("priceMax");
+			
+			
+			
+			
+			int category = Integer.parseInt(returnNull(str1));
+			int brand = Integer.parseInt(returnNull(str2));
+			int priceMin = Integer.parseInt(returnNull(str3));
+			int priceMax = Integer.parseInt(returnNull(str4));
+			
+			
+			
 			
 			String pageNum = req.getParameter("pageNum");
 			
@@ -132,14 +141,27 @@ public class ProductServlet extends HttpServlet {
 			
 			//System.out.println(category);
 			
-			if(category != 0 ) {
+			String listUrl = null;
+			if(category != -1 ) {
 				
 				lists = listReturn_dao.category_getList(start, end, category);
+				listUrl = cp + "/shopping/list.do?category=" + category;
 				
+				
+			}else if(brand != -1) {
+				lists = listReturn_dao.branding_getList(start, end, brand);
+				listUrl = cp + "/shopping/list.do?brand=" + brand;
+			}else if (priceMin != -1 && priceMax != -1 ) {
+				
+				lists = listReturn_dao.price_getList(start, end, priceMin, priceMax);
+				listUrl = cp + "/shopping/list.do?priceMin=" + priceMin + "&priceMax=" + priceMax;
+			}else if (priceMin != -1 ) {
+				
+				lists = listReturn_dao.priceUp_getList(start, end, priceMin);
+				listUrl = cp + "/shopping/list.do?priceMin=" + priceMin;
 			}
 			
-			
-			String listUrl = cp + "/shopping/list.do";
+				
 			
 			String pageIndexList =
 					myPage.pageIndexList(currentPage, totalPage, listUrl);
@@ -156,7 +178,20 @@ public class ProductServlet extends HttpServlet {
 			
 			url = "/shop.jsp";
 			foward(req, resp, url);
+	
 		}
+	
+	}
+	
+	//파라미터로 오는 분류값이 null이라면 
+	//null을 0으로 바꿔 에러안나게 처리메서드
+	public String returnNull(String str) {
+		
+		if(str==null) {
+			str = "-1";
+		}
+		
+		return str;
 	}
 	
 }
