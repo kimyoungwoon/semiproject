@@ -9,6 +9,27 @@
     <welcome-file>default.htm</welcome-file>
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
+
+<!-- Servlet 게시판 -->
+	<servlet>
+		<servlet-name>cartServlet</servlet-name>
+		<servlet-class>com.cart.CartServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>cartServlet</servlet-name>
+		<url-pattern>/ywsemi/*</url-pattern>
+	</servlet-mapping>
+  
+  <servlet>
+    <servlet-name>writingServlet</servlet-name>
+    <servlet-class>com.Writing.WritingServelt</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>writingServlet</servlet-name>
+    <url-pattern>/bbs/*</url-pattern>
+  </servlet-mapping>
+
+
   
    <servlet>
     <servlet-name>productServlet</servlet-name>
@@ -20,4 +41,5 @@
   </servlet-mapping>
   
   
+
 </web-app>

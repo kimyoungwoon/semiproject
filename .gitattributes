@@ -1,2 +1,4 @@
 # Auto detect text files and perform LF normalization
-* text=auto
+# 이 값이 true 여야 mac과 윈도우에서 \n 개행 처리가 잘 된다.
+# 윈도우는 true로 해두는 게 좋고 맥은 auto가 좋다고 한다.
+* text=true
