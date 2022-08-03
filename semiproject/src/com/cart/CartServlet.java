@@ -10,6 +10,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.semi.CartProductDTO;
 import com.shop.ProductDAO;
@@ -73,12 +74,19 @@ public class CartServlet extends HttpServlet{
 		else if(uri.indexOf("cartDelete.do") != -1){
 			
 			
+//			로그인 구현 후 id를 세션에 담아서 사용.
+//			HttpSession session = request.getSession();
+//			String memberNum = (String)session.getAttribute("id");
+			
+			int memberNum  = 1;
+			int productNum  = Integer.parseInt(request.getParameter("productNum"));
+			
+			dao.cart_ProductDelete(memberNum, productNum);
+			
+			url = cp + "/ywsemi/cartOpen.do";
+			response.sendRedirect(url);
 			
 		}
-		
-		
-		
-		
 		
 	}
 
