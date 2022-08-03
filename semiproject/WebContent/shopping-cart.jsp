@@ -224,7 +224,7 @@
 								<a href="<%=cp%>/shop.jsp">Continue Shopping</a>
 							</div>
 						</div>
-						<!--  <div class="col-lg-6 col-md-6 col-sm-6">
+						<!-- <div class="col-lg-6 col-md-6 col-sm-6">
                             <div class="continue__btn update__btn">
                                 <a href="#"><i class="fa fa-spinner"></i> Update cart</a>
                             </div>
@@ -244,10 +244,11 @@
 						<ul>
 							<fmt:formatNumber value ="${sumTotal }" type = "number" var="comTotal" />
 							<li>Before Discount <span id = "beforeDiscount">${comTotal }원</span></li>
-							<li >Actual Payment <span id = "actualPayment">${comTotal }원</span></li>
+							<li>Actual Payment <span id = "actualPayment">${comTotal }원</span></li>
 						</ul>
-						<a href="<%=cp%>/checkout.jsp" class="primary-btn">Proceed to
-							checkout</a>
+						<%-- <a href="<%=cp%>/checkout.jsp" class="primary-btn">Proceed to
+							checkout</a> --%>
+							<input class="primary-btn" value = "Proceed to checkout" onclick = "alert();" type="button">
 					</div>
 				</div>
 			</div>
