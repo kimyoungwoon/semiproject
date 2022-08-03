@@ -156,12 +156,12 @@
     <!-- Breadcrumb Section End -->
 
     <!-- Shopping Cart Section Begin -->
-    <section class="shopping-cart spad">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-8">
-                    <div class="shopping__cart__table">
-                        <table>
+    <section class="shopping-cart spad" style = "background-color:black;">
+        <div class="container"align = "center" style = "background-color: blue;">
+            <div class="row"  >
+                <div class="col-lg-8" style = "background-color:red; margin: auto;" >
+                    <div class="shopping__cart__table" style = "background-color:#EEEEEE;">
+                        <table  border = "1" >
                             <thead>
                                 <tr>
                                     <th>Product</th>
@@ -171,8 +171,8 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td class="product__cart__item">
+                               <tr style = "height: 10%;background-color: red;">
+                                    <td class="product__cart__item" >
                                         <div class="product__cart__item__pic">
                                             <img src="<%=cp%>/img/shopping-cart/cart-1.jpg" alt="">
                                         </div>
