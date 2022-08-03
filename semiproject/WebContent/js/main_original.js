@@ -195,11 +195,6 @@
                 newVal = 0;
             }
         }
-        var tagNum = $button.parent().find('input').attr('id').slice(-1);
-        var price = $('#p' + tagNum).text().slice(0, -1);
-        var sum = $('#sum' + tagNum);
-        sum.text((Number(newVal) * Number(price)) + "원");
-        
         $button.parent().find('input').val(newVal);
     });
 
