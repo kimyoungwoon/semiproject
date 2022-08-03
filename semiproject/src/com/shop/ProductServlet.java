@@ -40,10 +40,13 @@ public class ProductServlet extends HttpServlet {
 		req.setCharacterEncoding("UTF-8");
 		Connection conn = DBConn.getConnection();
 		ProductDAO dao = new ProductDAO(conn);
+		ListReturnDAO listReturn_dao = new ListReturnDAO(conn);
 		String cp = req.getContextPath();
 		String uri = req.getRequestURI();
 		MyPage myPage = new MyPage();
 		String url = null;
+		List<ProductDTO> lists = null;
+		
 		
 		String root = getServletContext().getRealPath("/");
 		String path = root + "pds" + File.separator + "productFile";
@@ -82,15 +85,25 @@ public class ProductServlet extends HttpServlet {
 				dto.setPro_size(Integer.parseInt(mr.getParameter("pd_sizeNum")));
 				dto.setColor(Integer.parseInt(mr.getParameter("pd_colorNum")));
 				dto.setTag(Integer.parseInt(mr.getParameter("pd_tagNum")));
-				dto.setSaveFileName("upload");
+				dto.setSaveFileName(mr.getFilesystemName("upload"));
+				
 				
 				dao.product_insertData(dto);
 				
 			}
 			
-			url = cp + "/shopping/list.do";
+			url = cp + "/shopping/insert.do";
 			resp.sendRedirect(url);
-		}else if(uri.indexOf("list.do")!=-1) {
+		}else if(uri.indexOf("list.do")!=-1) {//shop 페이지를 보여줍니다
+			
+			String str = null;
+			str = req.getParameter("category");
+			
+			if(str==null) {
+				str = "0";
+			}
+			
+			int category = Integer.parseInt(str);
 			
 			String pageNum = req.getParameter("pageNum");
 			
@@ -113,10 +126,20 @@ public class ProductServlet extends HttpServlet {
 			int start = (currentPage-1)*numPerPage+1;
 			int end = (currentPage*numPerPage);
 			
-			List<ProductDTO> lists =
-					dao.product_getList(start, end);
+			lists = dao.product_getList(start, end);//전체데이터 출력
 			
-			String listUrl = cp + "shopping/list.do";
+			
+			
+			//System.out.println(category);
+			
+			if(category != 0 ) {
+				
+				lists = listReturn_dao.category_getList(start, end, category);
+				
+			}
+			
+			
+			String listUrl = cp + "/shopping/list.do";
 			
 			String pageIndexList =
 					myPage.pageIndexList(currentPage, totalPage, listUrl);
@@ -131,7 +154,7 @@ public class ProductServlet extends HttpServlet {
 			req.setAttribute("totalPage", totalPage);
 			req.setAttribute("imagePath", imagePath);
 			
-			url = "/index.jsp";
+			url = "/shop.jsp";
 			foward(req, resp, url);
 		}
 	}

@@ -20,14 +20,14 @@
         rel="stylesheet">
 
     <!-- Css Styles -->
-    <link rel="<%=cp%>/stylesheet" href="css/bootstrap.min.css" type="text/css">
-    <link rel="<%=cp%>/stylesheet" href="css/font-awesome.min.css" type="text/css">
-    <link rel="<%=cp%>/stylesheet" href="css/elegant-icons.css" type="text/css">
-    <link rel="<%=cp%>/stylesheet" href="css/magnific-popup.css" type="text/css">
-    <link rel="<%=cp%>/stylesheet" href="css/nice-select.css" type="text/css">
-    <link rel="<%=cp%>/stylesheet" href="css/owl.carousel.min.css" type="text/css">
-    <link rel="<%=cp%>/stylesheet" href="css/slicknav.min.css" type="text/css">
-    <link rel="<%=cp%>/stylesheet" href="css/style.css" type="text/css">
+    <link rel="stylesheet" href="<%=cp%>/css/bootstrap.min.css" type="text/css">
+    <link rel="stylesheet" href="<%=cp%>/css/font-awesome.min.css" type="text/css">
+    <link rel="stylesheet" href="<%=cp%>/css/elegant-icons.css" type="text/css">
+    <link rel="stylesheet" href="<%=cp%>/css/magnific-popup.css" type="text/css">
+    <link rel="stylesheet" href="<%=cp%>/css/nice-select.css" type="text/css">
+    <link rel="stylesheet" href="<%=cp%>/css/owl.carousel.min.css" type="text/css">
+    <link rel="stylesheet" href="<%=cp%>/css/slicknav.min.css" type="text/css">
+    <link rel="stylesheet" href="<%=cp%>/css/style.css" type="text/css">
 </head>
 
 <body>
