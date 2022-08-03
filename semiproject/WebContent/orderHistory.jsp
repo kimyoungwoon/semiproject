@@ -171,10 +171,10 @@
                                 </tr>
                             </thead>
                             <tbody>
-                               <tr style = "height: 10%;background-color: red;">
-                                    <td class="product__cart__item" >
+                               <tr style = "height: 100px;background-color: red;">
+                                    <td height = "50px" class="product__cart__item" >
                                         <div class="product__cart__item__pic">
-                                            <img src="<%=cp%>/img/shopping-cart/cart-1.jpg" alt="">
+                                            <img height = "50px" src="<%=cp%>/img/shopping-cart/cart-1.jpg" alt="">
                                         </div>
                                         <div class="product__cart__item__text">
                                             <h6>T-shirt Contrast Pocket</h6>

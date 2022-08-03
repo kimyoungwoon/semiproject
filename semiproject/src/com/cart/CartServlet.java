@@ -3,6 +3,7 @@ package com.cart;
 import java.io.File;
 import java.io.IOException;
 import java.sql.Connection;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -10,6 +11,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.semi.CartProductDTO;
 import com.shop.ProductDAO;
 import com.util.DBConn;
 
@@ -27,7 +29,7 @@ public class CartServlet extends HttpServlet{
 
 		request.setCharacterEncoding("utf-8");
 		Connection conn = DBConn.getConnection();
-		ProductDAO dao = new ProductDAO(conn);
+		CartOpenDAO dao = new CartOpenDAO(conn);
 
 		String cp = request.getContextPath();
 		String uri = request.getRequestURI();
@@ -43,8 +45,17 @@ public class CartServlet extends HttpServlet{
 			f.mkdirs();
 		}
 		
-		if(uri.indexOf("write.do") != -1){
+		if(uri.indexOf("cartOpen.do") != -1){
 			
+			//장바구니에 들어왔을 때 전달받는 회원번호
+			int memberNumber = 1;
+			
+			
+			List<CartProductDTO> lists = dao.getCartList(memberNumber);
+			
+			for (CartProductDTO cartProductDTO : lists) {
+				System.out.println(cartProductDTO.getName());
+			}
 			
 			//아래 setattribute는 일부러 해줌.
 			//write.jsp에서 ${pageNum} 이렇게 쓰기 위해서
@@ -54,9 +65,19 @@ public class CartServlet extends HttpServlet{
 			//일단 param을 사용하기 위해서 주석처리.
 //			request.setAttribute("pageNum", request.getParameter("pageNum"));
 			
-			url = "/imageTest/write.jsp";
+			request.setAttribute("cartList", lists);
+			
+			url = "/shopping-cart.jsp";
 			myForward(request, response, url);
 		}
+		else if(uri.indexOf("cartDelete.do") != -1){
+			
+			
+			
+		}
+		
+		
+		
 		
 		
 	}
