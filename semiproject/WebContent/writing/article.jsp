@@ -108,11 +108,11 @@
                         <ul>
                             <li><a href="./index.jsp">Home</a></li>
                             <li class="active"><a href="./shop.jsp">Shop</a></li>
-                            <li><a href="#">Pages</a>
+                            <li><a href="#">Q&A</a>
                                 <ul class="dropdown">
                                     <li><a href="./about.jsp">About Us</a></li>
                                     <li><a href="./shop-details.jsp">Shop Details</a></li>
-                                    <li><a href="./shopping-cart.jsp">Shopping Cart</a></li>
+                                    <li><a href="<%=cp%>/writing/list.jsp">Writing</a></li>
                                     <li><a href="./checkout.jsp">Check Out</a></li>
                                     <li><a href="./blog-details.jsp">Blog Details</a></li>
                                 </ul>
@@ -139,7 +139,7 @@
     <!-- article Section begin -->
 	<div id="bbs">
 	<div id="bbs_title">
-		게 시 판
+		질 문 게 시 판
 		</div>
 		<div id ="bbsArticle">
 			<div id ="bbsArticle_header">
@@ -190,8 +190,6 @@
     <!-- article Section end -->
          
     <!-- Footer Section Begin -->
-	<br/><br/><br/><br/><br/><br/><br/><br/>
-	<br/><br/><br/><br/><br/><br/><br/><br/>
 	<br/><br/><br/><br/><br/><br/><br/><br/>
 	<br/><br/><br/><br/><br/><br/><br/><br/>
     <footer class="footer">

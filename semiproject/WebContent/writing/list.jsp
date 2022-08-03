@@ -30,6 +30,18 @@
     <link rel="stylesheet" href="<%=cp%>/css/style.css" type="text/css">
     <link rel="stylesheet" type="text/css" href="<%=cp %>/writing/css/style.css"/>
 	<link rel="stylesheet" type="text/css" href="<%=cp %>/writing/css/list.css"/>
+	
+	<script type="text/javascript">
+
+	function sendIt() {
+		
+		var f = document.searchForm;
+		
+		f.action = "<%=cp%>/bbs/list.do";
+		f.submit();
+	}
+
+</script>
 </head>
 
 <body>
@@ -109,11 +121,11 @@
                         <ul>
                             <li><a href="./index.jsp">Home</a></li>
                             <li class="active"><a href="./shop.jsp">Shop</a></li>
-                            <li><a href="#">Pages</a>
+                            <li><a href="#">Q&A</a>
                                 <ul class="dropdown">
                                     <li><a href="./about.jsp">About Us</a></li>
                                     <li><a href="./shop-details.jsp">Shop Details</a></li>
-                                    <li><a href="./shopping-cart.jsp">Shopping Cart</a></li>
+                                    <li><a href="<%=cp%>/bbs/list.do">Writing</a></li>
                                     <li><a href="./checkout.jsp">Check Out</a></li>
                                     <li><a href="./blog-details.jsp">Blog Details</a></li>
                                 </ul>
@@ -138,71 +150,71 @@
     <!-- Header Section End -->
 	
 	<!-- writing Section Begin -->
-	
+	<br/><br/><br/><br/><br/>
 	<div id="bbsList">
 		<div id="bbsList_title">
-		게 시 판	
+		질문 게시글	
 		</div>
-			<div id="bbsList_header">
-				<div id="leftHeader">
-					<form action="" method="post" name="searchForm">
-						<select name="searchKey" class="selectField">
-							<option value="subject">제목</option>
-							<option value="name">작성자</option>
-							<option value="content">내용</option>
-						</select>
-						<input type="text" name="searchValue" class="textField"/>
-						<input type="button" value=" 검 색 " class="btn2" onclick="sendIt();"/>
-					</form>
-				</div>
-				<div id="rightHeader">
-					<input type="button" value=" 글올리기 " class="btn2"
-					onclick="javascript:location.href='<%=cp%>/bbs/created.do';"/>
-				
-				</div>
-				
-				<div id="bbsList_list">
+		
+		<div id="bbsList_header">
+			<div id="leftHeader">
+				<form action="" method="post" name="searchForm">
+					<select name="searchKey" class="selectField">
+						<option value="subject">제목</option>
+						<option value="name">작성자</option>
+						<option value="content">내용</option>
+					</select>
+					<input type="text" name="searchValue" class="textField"/>
+					<input type="button" value=" 검 색 " class="btn2" onclick="sendIt();"/>
+				</form>
+			</div>
+			<div id="rightHeader">
+				<input type="button" value=" 글올리기 " class="btn2"
+				onclick="javascript:location.href='<%=cp%>/bbs/created.do';"/>
+			
+			</div>
+			
+			<div id="bbsList_list">
 				<div id="title">
-					<dl>				
+					<dl>
 						<dt class="num">번호</dt>
 						<dt class="subject">제목</dt>
 						<dt class="name">작성자</dt>
-						<dt class="created">작성일</dt>
-						<dt class="hitCount">조회수</dt>
+						<dt class="savepath">작성일</dt>
+						<dt class="hitcount">조회수</dt>
 					</dl>
-				</div>
-				<div id="lists">
-				<c:forEach var="dto" items="${lists }"><!-- lists에 5개에 데이터가 있어서 하나씩 준다 -->
-					<dl>
-						<dd class="num">${dto.num }</dd>				
-						<dd class="subject">
-						<a href="${articleUrl}&num=${dto.num }">${dto.subject }</a>
-						</dd>				
-						<dd class="name">${dto.name }</dd>				
-						<dd class="savepath">${dto.savePath }</dd>				
-						<dd class="hitcount">${dto.hitcount }</dd>				
-					</dl>	
-				</c:forEach>		
-				</div>
-				<div id="footer">
-					<p>
-						<c:if test="${dataCount!=0 }">
-							${pageIndexList }
-						</c:if>
-						<c:if test="${dataCount==0 }">
-							등록된 게시물이 없습니다.
-						</c:if>
-					</p>
-				</div>
+				</div>	
+			<div id="lists">
+			<c:forEach var="dto" items="${lists }"><!-- lists에 5개에 데이터가 있어서 하나씩 준다 -->
+				<dl>
+					<dd class="num">${dto.num }</dd>				
+					<dd class="subject">
+					<a href="${articleUrl}&num=${dto.num }">${dto.subject }</a>
+					</dd>				
+					<dd class="name">${dto.name }</dd>				
+					<dd class="savepath">${dto.savePath }</dd>				
+					<dd class="hitcount">${dto.hitcount }</dd>				
+				</dl>	
+			</c:forEach>		
+			</div>
+			<div id="footer">
+				<p>
+					<c:if test="${dataCount!=0 }">
+						${pageIndexList }
+					</c:if>
+					<c:if test="${dataCount==0 }">
+						등록된 게시물이 없습니다.
+					</c:if>
+				</p>
+			</div>	
 			</div>
 		</div>
 	</div>
 	
+	
 	<!-- writing Section end -->
 	
 	<!-- Footer Section Begin -->
-	<br/><br/><br/><br/><br/><br/><br/><br/>
-	<br/><br/><br/><br/><br/><br/><br/><br/>
 	<br/><br/><br/><br/><br/><br/><br/><br/>
 	<br/><br/><br/><br/><br/><br/><br/><br/>
     <footer class="footer">
@@ -281,7 +293,7 @@
         </div>
     </div>
     <!-- Search End -->
-<!-- Js Plugins -->
+	<!-- Js Plugins -->
     <script src="<%=cp%>/js/jquery-3.3.1.min.js"></script>
     <script src="<%=cp%>/js/bootstrap.min.js"></script>
     <script src="<%=cp%>/js/jquery.nice-select.min.js"></script>

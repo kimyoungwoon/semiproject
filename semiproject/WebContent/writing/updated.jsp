@@ -173,11 +173,11 @@
                         <ul>
                             <li><a href="./index.jsp">Home</a></li>
                             <li class="active"><a href="./shop.jsp">Shop</a></li>
-                            <li><a href="#">Pages</a>
+                            <li><a href="#">Q&A</a>
                                 <ul class="dropdown">
                                     <li><a href="./about.jsp">About Us</a></li>
                                     <li><a href="./shop-details.jsp">Shop Details</a></li>
-                                    <li><a href="./shopping-cart.jsp">Shopping Cart</a></li>
+                                    <li><a href="<%=cp%>/writing/list.jsp">Writing</a></li>
                                     <li><a href="./checkout.jsp">Check Out</a></li>
                                     <li><a href="./blog-details.jsp">Blog Details</a></li>
                                 </ul>
@@ -205,7 +205,7 @@
     
     <div id="bbs">
 	<div id="bbs_title">
-	게 시 판 수 정	
+	질 문 수 정	
 	</div>
 	
 	<form action="" method="post" name="myForm">
@@ -219,8 +219,8 @@
 					maxlength="100" class="boxTF" value="${dto.subject }" />
 				</dd>	
 			</dl>
-			</div>
 		</div>
+		
 		
 		<div class="bbsCreated_bottomLine">
 			<dl>
@@ -274,13 +274,10 @@
 		</div>	
 		</form>	
 	</div>
-	
     
     <!-- updated Section end -->
     
     	<!-- Footer Section Begin -->
-	<br/><br/><br/><br/><br/><br/><br/><br/>
-	<br/><br/><br/><br/><br/><br/><br/><br/>
 	<br/><br/><br/><br/><br/><br/><br/><br/>
 	<br/><br/><br/><br/><br/><br/><br/><br/>
     <footer class="footer">
