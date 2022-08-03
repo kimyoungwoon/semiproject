@@ -2,9 +2,9 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%
 	request.setCharacterEncoding("UTF-8");
-	String cp= request.getContextPath();
+	String cp = request.getContextPath();
 %>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html lang="zxx">
 
 <head>
@@ -28,8 +28,73 @@
     <link rel="stylesheet" href="<%=cp%>/css/owl.carousel.min.css" type="text/css">
     <link rel="stylesheet" href="<%=cp%>/css/slicknav.min.css" type="text/css">
     <link rel="stylesheet" href="<%=cp%>/css/style.css" type="text/css">
-    <link rel="stylesheet" type="text/css" href="<%=cp %>/writing/css/style.css"/>
-	<link rel="stylesheet" type="text/css" href="<%=cp %>/writing/css/list.css"/>
+    <link rel="stylesheet" type="text/css" href="<%=cp %>writing/css/style.css"/>
+	<link rel="stylesheet" type="text/css" href="<%=cp %>writing/css/created.css"/>
+	
+	<script type="text/javascript" src="<%=cp%>/js/util.js"></script>
+<script type="text/javascript">
+
+
+	function sendIt() {
+		
+		var f= document.myForm;
+		
+		str= f.subject.value;
+		str = str.trim();
+		if(!str) {
+			alert("\n제목을 입력하세요.")
+			f.subject.focus();
+			return;
+		}
+		f.subject.value = str;
+		
+		str= f.name.value;
+		str = str.trim();
+		if(!str) {
+			alert("\이름을 입력하세요.")
+			f.name.focus();
+			return;
+		}
+		
+		/* if(!isValidKorean(str)) {
+			alert("\n이름을 정확히 입력하세요.");
+			f.name.focus();
+			return;
+		} */
+		
+		f.name.value = str;
+		
+		if(f.email.value) {
+			if(!isValidEmail(f.email.value)) {
+				alert("\n정상적인 E-mail을 입력하세요.")
+				f.email.focus();
+				return;
+			}
+		}
+		
+		str= f.content.value;
+		str = str.trim();
+		if(!str) {
+			alert("\n내용을 입력하세요.")
+			f.content.focus();
+			return;
+		}
+		f.content.value = str;
+		
+		str= f.pwd.value;
+		str = str.trim();
+		if(!str) {
+			alert("\n패스워드를 입력하세요.")
+			f.pwd.focus();
+			return;
+		}
+		f.pwd.value = str;
+		
+		f.action = "<%=cp%>/bbs/updated_ok.do";
+		f.submit();		
+		
+	}
+</script>
 </head>
 
 <body>
@@ -136,71 +201,86 @@
         </div>
     </header>
     <!-- Header Section End -->
-	
-	<!-- writing Section Begin -->
-	
-	<div id="bbsList">
-		<div id="bbsList_title">
-		게 시 판	
-		</div>
-			<div id="bbsList_header">
-				<div id="leftHeader">
-					<form action="" method="post" name="searchForm">
-						<select name="searchKey" class="selectField">
-							<option value="subject">제목</option>
-							<option value="name">작성자</option>
-							<option value="content">내용</option>
-						</select>
-						<input type="text" name="searchValue" class="textField"/>
-						<input type="button" value=" 검 색 " class="btn2" onclick="sendIt();"/>
-					</form>
-				</div>
-				<div id="rightHeader">
-					<input type="button" value=" 글올리기 " class="btn2"
-					onclick="javascript:location.href='<%=cp%>/bbs/created.do';"/>
-				
-				</div>
-				
-				<div id="bbsList_list">
-				<div id="title">
-					<dl>				
-						<dt class="num">번호</dt>
-						<dt class="subject">제목</dt>
-						<dt class="name">작성자</dt>
-						<dt class="created">작성일</dt>
-						<dt class="hitCount">조회수</dt>
-					</dl>
-				</div>
-				<div id="lists">
-				<c:forEach var="dto" items="${lists }"><!-- lists에 5개에 데이터가 있어서 하나씩 준다 -->
-					<dl>
-						<dd class="num">${dto.num }</dd>				
-						<dd class="subject">
-						<a href="${articleUrl}&num=${dto.num }">${dto.subject }</a>
-						</dd>				
-						<dd class="name">${dto.name }</dd>				
-						<dd class="savepath">${dto.savePath }</dd>				
-						<dd class="hitcount">${dto.hitcount }</dd>				
-					</dl>	
-				</c:forEach>		
-				</div>
-				<div id="footer">
-					<p>
-						<c:if test="${dataCount!=0 }">
-							${pageIndexList }
-						</c:if>
-						<c:if test="${dataCount==0 }">
-							등록된 게시물이 없습니다.
-						</c:if>
-					</p>
-				</div>
-			</div>
-		</div>
+    
+    <!-- updated Section begin -->
+    
+    <div id="bbs">
+	<div id="bbs_title">
+	게 시 판	
 	</div>
 	
-	<!-- writing Section end -->
+	<form action="" method="post" name="myForm">
 	
-	<!-- Footer Section Begin -->
+	<div id ="bbsCreated">
+	
+		<div class="bbsCreated_bottomLine">
+			<dl>
+				<dt>제&nbsp;&nbsp;&nbsp;&nbsp;목</dt>
+				<dd>
+					<input type="text" name="subject"  size="64"
+					maxlength="100" class="boxTF" value="${dto.subject }" />
+				</dd>	
+			</dl>
+			</div>
+		</div>
+		
+		<div class="bbsCreated_bottomLine">
+			<dl>
+				<dt>작&nbsp;성&nbsp;자</dt>
+				<dd>
+					<input type="text" name="name" size="35"
+					maxlength="20" class="boxTF" value="${dto.name }"/>
+				</dd>	
+			</dl>
+		</div>
+		
+		<div class="bbsCreated_bottomLine">
+			<dl>
+				<dt>E-Mail</dt>
+				<dd>
+					<input type="text" name="email" size="35"
+					maxlength="50" class="boxTF" value="${dto.email }"/>
+				</dd>	
+			</dl>
+		</div>
+		
+		<div id="bbsCreated_content">
+			<dl>
+				<dt>내&nbsp;&nbsp;&nbsp;&nbsp;용</dt>
+				<dd>
+					<textarea rows="12" cols="63" name="content" 
+					class="boxTA" >${dto.content }</textarea>
+				</dd>	
+			</dl>
+		</div>
+		
+		<div class="bbsCreated_noLine">
+			<dl>
+				<dt>패스워드</dt>
+				<dd>
+					<input type="password" name="pwd" size="35" value="${dto.pw }"
+					maxlength="7" class="boxTF"/>&nbsp;(게시물 수정 및 삭제시 필요!!)
+				</dd>	
+			</dl>
+		</div>
+		<div id = "bbsCreated_footer">
+			<input type="hidden" name="num" value="${dto.num }"/>
+			<input type="hidden" name="pageNum" value="${pageNum }"/>
+			<input type="hidden" name="searchKey" value="${searchKey }"/>
+			<input type="hidden" name="searchValue" value="${searchValue }"/>
+			
+			<input type="button" value = "수정하기" class="btn2"
+				onclick="sendIt();"/>			
+			<input type="button" value="수정취소" class="btn2"
+				onclick="javascript:location.href='<%=cp%>/bbs/list.do?${params }';">				
+		</div>
+		
+	</div>
+	
+    
+    <!-- updated Section end -->
+    
+    	<!-- Footer Section Begin -->
 	<br/><br/><br/><br/><br/><br/><br/><br/>
 	<br/><br/><br/><br/><br/><br/><br/><br/>
 	<br/><br/><br/><br/><br/><br/><br/><br/>
@@ -281,7 +361,7 @@
         </div>
     </div>
     <!-- Search End -->
-<!-- Js Plugins -->
+	<!-- Js Plugins -->
     <script src="<%=cp%>/js/jquery-3.3.1.min.js"></script>
     <script src="<%=cp%>/js/bootstrap.min.js"></script>
     <script src="<%=cp%>/js/jquery.nice-select.min.js"></script>
@@ -294,3 +374,4 @@
     <script src="<%=cp%>/js/main.js"></script>
 </body>
 </html>
+

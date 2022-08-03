@@ -2,9 +2,9 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%
 	request.setCharacterEncoding("UTF-8");
-	String cp= request.getContextPath();
+	String cp = request.getContextPath();
 %>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html lang="zxx">
 
 <head>
@@ -28,8 +28,8 @@
     <link rel="stylesheet" href="<%=cp%>/css/owl.carousel.min.css" type="text/css">
     <link rel="stylesheet" href="<%=cp%>/css/slicknav.min.css" type="text/css">
     <link rel="stylesheet" href="<%=cp%>/css/style.css" type="text/css">
-    <link rel="stylesheet" type="text/css" href="<%=cp %>/writing/css/style.css"/>
-	<link rel="stylesheet" type="text/css" href="<%=cp %>/writing/css/list.css"/>
+    <link rel="stylesheet" type="text/css" href="<%=cp %>/css/style1.css"/>
+	<link rel="stylesheet" type="text/css" href="<%=cp %>/css/list.css"/>
 </head>
 
 <body>

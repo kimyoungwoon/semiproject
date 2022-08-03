@@ -2,9 +2,9 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%
 	request.setCharacterEncoding("UTF-8");
-	String cp= request.getContextPath();
+	String cp = request.getContextPath();
 %>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html lang="zxx">
 
 <head>
@@ -28,8 +28,8 @@
     <link rel="stylesheet" href="<%=cp%>/css/owl.carousel.min.css" type="text/css">
     <link rel="stylesheet" href="<%=cp%>/css/slicknav.min.css" type="text/css">
     <link rel="stylesheet" href="<%=cp%>/css/style.css" type="text/css">
-    <link rel="stylesheet" type="text/css" href="<%=cp %>/writing/css/style.css"/>
-	<link rel="stylesheet" type="text/css" href="<%=cp %>/writing/css/list.css"/>
+    <link rel="stylesheet" type="text/css" href="<%=cp %>/css/style1.css"/>
+	<link rel="stylesheet" type="text/css" href="<%=cp %>/css/article.css"/>
 </head>
 
 <body>
@@ -136,71 +136,61 @@
         </div>
     </header>
     <!-- Header Section End -->
-	
-	<!-- writing Section Begin -->
-	
-	<div id="bbsList">
-		<div id="bbsList_title">
-		게 시 판	
+    
+    <!-- article Section begin -->
+	<div id="bbs">
+	<div id="bbs_title">
+		게 시 판
 		</div>
-			<div id="bbsList_header">
-				<div id="leftHeader">
-					<form action="" method="post" name="searchForm">
-						<select name="searchKey" class="selectField">
-							<option value="subject">제목</option>
-							<option value="name">작성자</option>
-							<option value="content">내용</option>
-						</select>
-						<input type="text" name="searchValue" class="textField"/>
-						<input type="button" value=" 검 색 " class="btn2" onclick="sendIt();"/>
-					</form>
-				</div>
-				<div id="rightHeader">
-					<input type="button" value=" 글올리기 " class="btn2"
-					onclick="javascript:location.href='<%=cp%>/bbs/created.do';"/>
-				
-				</div>
-				
-				<div id="bbsList_list">
-				<div id="title">
-					<dl>				
-						<dt class="num">번호</dt>
-						<dt class="subject">제목</dt>
-						<dt class="name">작성자</dt>
-						<dt class="created">작성일</dt>
-						<dt class="hitCount">조회수</dt>
-					</dl>
-				</div>
-				<div id="lists">
-				<c:forEach var="dto" items="${lists }"><!-- lists에 5개에 데이터가 있어서 하나씩 준다 -->
-					<dl>
-						<dd class="num">${dto.num }</dd>				
-						<dd class="subject">
-						<a href="${articleUrl}&num=${dto.num }">${dto.subject }</a>
-						</dd>				
-						<dd class="name">${dto.name }</dd>				
-						<dd class="savepath">${dto.savePath }</dd>				
-						<dd class="hitcount">${dto.hitcount }</dd>				
-					</dl>	
-				</c:forEach>		
-				</div>
-				<div id="footer">
-					<p>
-						<c:if test="${dataCount!=0 }">
-							${pageIndexList }
-						</c:if>
-						<c:if test="${dataCount==0 }">
-							등록된 게시물이 없습니다.
-						</c:if>
-					</p>
-				</div>
+		<div id ="bbsArticle">
+			<div id ="bbsArticle_header">
+				${dto.subject }
+			</div>
+			<div class="bbsArticle_bottomLine">
+				<dl>
+					<dt>작성자</dt>
+					<dd>${dto.name }</dd>
+					<dt>줄수</dt>
+					<dd>${lineSu }</dd>
+				</dl>
+			</div>
+			
+			<div class="bbsArticle_bottomLine">
+				<dl>
+					<dt>등록일</dt>
+					<dd>${dto.savePath }</dd>
+					<dt>조회수</dt>
+					<dd>${dto.hitcount }</dd>
+				</dl>
+			</div>
+			
+			<div id="bbsArticle_content">
+				<table width="600" border="0">
+				<tr>
+					<td style="padding: 20px 80px 20px 62px;" valign="top" height="200">
+					${dto.content }
+					</td>
+				</tr>	
+				</table>	
+			</div>
+		
+		<div id="bbsArticle_footer">
+			<div id="leftFooter">
+				<input type="button" value="수정" class="btn2" 
+				onclick="javascript:location.href='<%=cp %>/bbs/updated.do?num=${dto.num }&${params }';"/> 
+				<input type="button" value="삭제" class="btn2" 
+				onclick="javascript:location.href='<%=cp %>/bbs/deleted_ok.do?num=${dto.num }&${params }';"/> 
+			</div>
+			<div id="rightFooter">
+				<input type="button" value="리스트" class="btn2" 
+				onclick="location='<%=cp %>/bbs/list.do?${params }';"/> 
 			</div>
 		</div>
 	</div>
-	
-	<!-- writing Section end -->
-	
-	<!-- Footer Section Begin -->
+	</div>
+    <!-- article Section end -->
+         
+    <!-- Footer Section Begin -->
 	<br/><br/><br/><br/><br/><br/><br/><br/>
 	<br/><br/><br/><br/><br/><br/><br/><br/>
 	<br/><br/><br/><br/><br/><br/><br/><br/>
@@ -281,7 +271,7 @@
         </div>
     </div>
     <!-- Search End -->
-<!-- Js Plugins -->
+	<!-- Js Plugins -->
     <script src="<%=cp%>/js/jquery-3.3.1.min.js"></script>
     <script src="<%=cp%>/js/bootstrap.min.js"></script>
     <script src="<%=cp%>/js/jquery.nice-select.min.js"></script>
@@ -294,3 +284,4 @@
     <script src="<%=cp%>/js/main.js"></script>
 </body>
 </html>
+
