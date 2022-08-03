@@ -29,6 +29,7 @@ public class CartServlet extends HttpServlet{
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		request.setCharacterEncoding("utf-8");
+		response.setContentType("text/html;charset=UTF-8");
 		Connection conn = DBConn.getConnection();
 		CartOpenDAO dao = new CartOpenDAO(conn);
 
@@ -100,6 +101,35 @@ public class CartServlet extends HttpServlet{
 
 			url = cp + "/ywsemi/cartOpen.do";
 			response.sendRedirect(url);
+		}
+		else if(uri.indexOf("test.do") != -1){
+			
+			url = "/shopping-cart.jsp";
+			myForward(request, response, url);
+
+		}
+		else if(uri.indexOf("shopCart.do") != -1){
+			//장바구니에 들어왔을 때 전달받는 회원번호
+			int memberNumber = Integer.parseInt(request.getParameter("memberNum"));
+
+			List<CartProductDTO> lists = dao.getCartList(memberNumber);
+
+			for (CartProductDTO cartProductDTO : lists) {
+				System.out.println(cartProductDTO.getName());
+			}
+			
+			StringBuffer result = new StringBuffer("");
+			result.append("{\"result\":[");
+			for(int i = 0; i < lists.size(); i++) {
+				result.append("[{\"value\": \"" + lists.get(i).getMembernum() + "\"},");
+				result.append("{\"value\": \"" + lists.get(i).getProductnum() + "\"},");
+				result.append("{\"value\": \"" + lists.get(i).getCount() + "\"},");
+				result.append("{\"value\": \"" + lists.get(i).getName() + "\"},");
+				result.append("{\"value\": \"" + lists.get(i).getPrice() + "\"}],");
+			}
+			result.append("]}");
+			response.getWriter().write(result.toString());
+			
 		}
 	}
 
