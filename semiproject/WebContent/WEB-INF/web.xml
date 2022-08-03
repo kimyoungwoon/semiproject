@@ -43,7 +43,7 @@
   
    <servlet>
     <servlet-name>memberServlet</servlet-name>
-    <servlet-class>com.member.memberServlet</servlet-class>
+    <servlet-class>com.member.MemberServlet</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>memberServlet</servlet-name>

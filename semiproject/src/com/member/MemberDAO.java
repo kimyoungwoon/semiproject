@@ -24,20 +24,16 @@ public class MemberDAO {
 			
 			try {
 				
-				sql = "insert into member(num,id,pw,name,email,address,tel,gender,date) ";
-				sql += "values (?,?,?,?,?,?,?,?,?)";
+				sql = "insert into member(id,pw,name,date) ";
+				sql += "values (?,?,?,?)";
 				
 				pstmt = conn.prepareStatement(sql);
 				
-				pstmt.setInt(1, dto.getNum());
-				pstmt.setString(2, dto.getId());
-				pstmt.setString(3, dto.getPw());
-				pstmt.setString(4, dto.getName());
-				pstmt.setString(5, dto.getEmail());
-				pstmt.setString(6, dto.getAddress());
-				pstmt.setString(7, dto.getTel());
-				pstmt.setString(8, dto.getGender());
-				pstmt.setString(9, dto.getDate());
+				
+				pstmt.setString(1, dto.getId());
+				pstmt.setString(2, dto.getPw());
+				pstmt.setString(3, dto.getName());
+				pstmt.setString(4, dto.getDate());
 	
 				result = pstmt.executeUpdate();
 				
