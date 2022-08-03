@@ -41,5 +41,16 @@
   </servlet-mapping>
   
   
+   <servlet>
+    <servlet-name>memberServlet</servlet-name>
+    <servlet-class>com.member.memberServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>memberServlet</servlet-name>
+    <url-pattern>/login/*</url-pattern>
+  </servlet-mapping>
+  
+  
 
+	
 </web-app>
