@@ -28,6 +28,7 @@
     <link rel="stylesheet" href="<%=cp%>/css/owl.carousel.min.css" type="text/css">
     <link rel="stylesheet" href="<%=cp%>/css/slicknav.min.css" type="text/css">
     <link rel="stylesheet" href="<%=cp%>/css/style.css" type="text/css">
+    <link rel="stylesheet" href="<%=cp%>/custumCSS/custom.css" type="text/css">
 </head>
 
 <body>
@@ -155,12 +156,12 @@
     <!-- Breadcrumb Section End -->
 
     <!-- Shopping Cart Section Begin -->
-    <section class="shopping-cart spad">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-8">
-                    <div class="shopping__cart__table">
-                        <table>
+    <section class="shopping-cart spad" style = "background-color:black;">
+        <div class="container"align = "center" style = "background-color: blue;">
+            <div class="row"  >
+                <div class="col-lg-8" style = "background-color:red; margin: auto;" >
+                    <div class="shopping__cart__table" style = "background-color:#EEEEEE;">
+                        <table  border = "1" >
                             <thead>
                                 <tr>
                                     <th>Product</th>
@@ -170,8 +171,8 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td class="product__cart__item">
+                               <tr style = "height: 10%;background-color: red;">
+                                    <td class="product__cart__item" >
                                         <div class="product__cart__item__pic">
                                             <img src="<%=cp%>/img/shopping-cart/cart-1.jpg" alt="">
                                         </div>
@@ -182,7 +183,7 @@
                                     </td>
                                     <td class="quantity__item">
                                         <div class="quantity">
-                                            <div class="pro-qty-2">
+                                            <div class="payInput">
                                                 <input type="text" value="1">
                                             </div>
                                         </div>
@@ -202,7 +203,7 @@
                                     </td>
                                     <td class="quantity__item">
                                         <div class="quantity">
-                                            <div class="pro-qty-2">
+                                            <div class="payInput">
                                                 <input type="text" value="1">
                                             </div>
                                         </div>
@@ -222,7 +223,7 @@
                                     </td>
                                     <td class="quantity__item">
                                         <div class="quantity">
-                                            <div class="pro-qty-2">
+                                            <div class="payInput">
                                                 <input type="text" value="1">
                                             </div>
                                         </div>
@@ -242,7 +243,7 @@
                                     </td>
                                     <td class="quantity__item">
                                         <div class="quantity">
-                                            <div class="pro-qty-2">
+                                            <div class="payInput">
                                                 <input type="text" value="1">
                                             </div>
                                         </div>
@@ -262,7 +263,7 @@
                                     </td>
                                     <td class="quantity__item">
                                         <div class="quantity">
-                                            <div class="pro-qty-2">
+                                            <div class="payInput">
                                                 <input type="text" value="1">
                                             </div>
                                         </div>
@@ -282,7 +283,7 @@
                                     </td>
                                     <td class="quantity__item">
                                         <div class="quantity">
-                                            <div class="pro-qty-2">
+                                            <div class="payInput">
                                                 <input type="text" value="1">
                                             </div>
                                         </div>
@@ -302,7 +303,7 @@
                                     </td>
                                     <td class="quantity__item">
                                         <div class="quantity">
-                                            <div class="pro-qty-2">
+                                            <div class="payInput">
                                                 <input type="text" value="1">
                                             </div>
                                         </div>
@@ -322,7 +323,7 @@
                                     </td>
                                     <td class="quantity__item">
                                         <div class="quantity">
-                                            <div class="pro-qty-2">
+                                            <div class="payInput">
                                                 <input type="text" value="1">
                                             </div>
                                         </div>
@@ -342,7 +343,7 @@
                                     </td>
                                     <td class="quantity__item">
                                         <div class="quantity">
-                                            <div class="pro-qty-2">
+                                            <div class="payInput">
                                                 <input type="text" value="1">
                                             </div>
                                         </div>
@@ -362,7 +363,7 @@
                                     </td>
                                     <td class="quantity__item">
                                         <div class="quantity">
-                                            <div class="pro-qty-2">
+                                            <div class="payInput">
                                                 <input type="text" value="1">
                                             </div>
                                         </div>
@@ -372,35 +373,6 @@
                                 </tr>
                             </tbody>
                         </table>
-                    </div>
-                    <div class="row">
-                        <div class="col-lg-6 col-md-6 col-sm-6">
-                            <div class="continue__btn">
-                                <a href="<%=cp%>/shop.jsp">Continue Shopping</a>
-                            </div>
-                        </div>
-                       <!--  <div class="col-lg-6 col-md-6 col-sm-6">
-                            <div class="continue__btn update__btn">
-                                <a href="#"><i class="fa fa-spinner"></i> Update cart</a>
-                            </div>
-                        </div> -->
-                    </div>
-                </div>
-                <div class="col-lg-4">
-                    <div class="cart__discount">
-                        <h6>Discount codes</h6>
-                        <form action="#">
-                            <input type="text" placeholder="Coupon code">
-                            <button type="submit">Apply</button>
-                        </form>
-                    </div>
-                    <div class="cart__total">
-                        <h6>Cart total</h6>
-                        <ul>
-                            <li>Subtotal <span>$ 169.50</span></li>
-                            <li>Total <span>$ 169.50</span></li>
-                        </ul>
-                        <a href="<%=cp %>/checkout.jsp" class="primary-btn">Proceed to checkout</a>
                     </div>
                 </div>
             </div>

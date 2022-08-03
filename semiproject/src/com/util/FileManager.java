@@ -20,7 +20,7 @@ public class FileManager {
 			if(originalFileName==null||originalFileName.equals("")) {
 				originalFileName = saveFileName;
 			}
-			
+			System.out.println();
 			//한글파일이름 깨짐 방지
 			originalFileName = 	
 					new String(originalFileName.getBytes("euc-kr"),"ISO-8859-1");
