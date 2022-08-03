@@ -9,6 +9,7 @@
     <welcome-file>default.htm</welcome-file>
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
+
 <!-- Servlet 게시판 -->
 	<servlet>
 		<servlet-name>cartServlet</servlet-name>
@@ -27,5 +28,18 @@
     <servlet-name>writingServlet</servlet-name>
     <url-pattern>/bbs/*</url-pattern>
   </servlet-mapping>
+
+
+  
+   <servlet>
+    <servlet-name>productServlet</servlet-name>
+    <servlet-class>com.shop.ProductServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>productServlet</servlet-name>
+    <url-pattern>/shopping/*</url-pattern>
+  </servlet-mapping>
+  
+  
 
 </web-app>
