@@ -5,13 +5,13 @@ public class WritingDTO {
 	private int membernum;
 	private int num;
 	private String id;
-	private int pw;
+	private String pw;
 	private String name;
-	private String email;
-	private String hitcount;	
+	private String email;		
 	private String subject;
 	private String content;
-	private String created;
+	private int hitcount;
+	private String savePath;
 	
 	
 
@@ -38,7 +38,8 @@ public class WritingDTO {
 		return pw;
 	}
 	public void setPw(String pw) {
-
+		this.pw = pw;
+	}
 	public String getName() {
 		return name;
 	}
@@ -51,14 +52,6 @@ public class WritingDTO {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-
-	public String getHitcount() {
-		return hitcount;
-	}
-	public void setHitcount(String hitcount) {
-		this.hitcount = hitcount;
-	}
-
 	public String getSubject() {
 		return subject;
 	}
@@ -71,13 +64,17 @@ public class WritingDTO {
 	public void setContent(String content) {
 		this.content = content;
 	}
-
-
-	public String getCreated() {
-		return created;
+	public String getsavePath() {
+		return savePath;
 	}
-	public void setCreated(String created) {
-		this.created = created;
+	public void setsavePath(String savePath) {
+		this.savePath = savePath;
+	}
+	public int getHitcount() {
+		return hitcount;
+	}
+	public void setHitcount(int hitcount) {
+		this.hitcount = hitcount;
 	}
 	
 
