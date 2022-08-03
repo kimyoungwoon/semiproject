@@ -3,6 +3,7 @@ package com.shop;
 import java.io.File;
 import java.io.IOException;
 import java.sql.Connection;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -86,6 +87,52 @@ public class ProductServlet extends HttpServlet {
 				dao.product_insertData(dto);
 				
 			}
+			
+			url = cp + "/shopping/list.do";
+			resp.sendRedirect(url);
+		}else if(uri.indexOf("list.do")!=-1) {
+			
+			String pageNum = req.getParameter("pageNum");
+			
+			int currentPage = 1;
+			
+			if(pageNum!=null) {
+				currentPage = Integer.parseInt(pageNum);
+			}
+			
+			int dataCount = dao.getDataCount();
+			
+			int numPerPage = 9;
+			
+			int totalPage = myPage.getPagecount(numPerPage, dataCount);
+			
+			if(currentPage>totalPage) {
+				currentPage = totalPage;
+			}
+			
+			int start = (currentPage-1)*numPerPage+1;
+			int end = (currentPage*numPerPage);
+			
+			List<ProductDTO> lists =
+					dao.product_getList(start, end);
+			
+			String listUrl = cp + "shopping/list.do";
+			
+			String pageIndexList =
+					myPage.pageIndexList(currentPage, totalPage, listUrl);
+			
+			
+			String imagePath = cp + "/pds/productFile";
+			
+			req.setAttribute("lists", lists);
+			req.setAttribute("pageIndexList", pageIndexList);
+			req.setAttribute("dataCount", dataCount);
+			req.setAttribute("currentPage", currentPage);
+			req.setAttribute("totalPage", totalPage);
+			req.setAttribute("imagePath", imagePath);
+			
+			url = "/index.jsp";
+			foward(req, resp, url);
 		}
 	}
 	
