@@ -195,10 +195,10 @@
                                         <div class="card-body">
                                             <div class="shop__sidebar__brand">
                                                 <ul>
-                                                    <li><a href="#">Louis Vuitton</a></li>
-                                                    <li><a href="#">Chanel</a></li>
-                                                    <li><a href="#">Hermes</a></li>
-                                                    <li><a href="#">Gucci</a></li>
+                                                    <li><a href="<%=cp%>/shopping/list.do?brand=1">Louis Vuitton</a></li>
+                                                    <li><a href="<%=cp%>/shopping/list.do?brand=2">Chanel</a></li>
+                                                    <li><a href="<%=cp%>/shopping/list.do?brand=3">Hermes</a></li>
+                                                    <li><a href="<%=cp%>/shopping/list.do?brand=4">Gucci</a></li>
                                                 </ul>
                                             </div>
                                         </div>
@@ -212,12 +212,12 @@
                                         <div class="card-body">
                                             <div class="shop__sidebar__price">
                                                 <ul>
-                                                    <li><a href="#">$0.00 - $50.00</a></li>
-                                                    <li><a href="#">$50.00 - $100.00</a></li>
-                                                    <li><a href="#">$100.00 - $150.00</a></li>
-                                                    <li><a href="#">$150.00 - $200.00</a></li>
-                                                    <li><a href="#">$200.00 - $250.00</a></li>
-                                                    <li><a href="#">250.00+</a></li>
+                                                    <li><a href="<%=cp%>/shopping/list.do?priceMin=0&priceMax=50">$0.00 - $50.00</a></li>
+                                                    <li><a href="<%=cp%>/shopping/list.do?priceMin=50&priceMax=100">$50.00 - $100.00</a></li>
+                                                    <li><a href="<%=cp%>/shopping/list.do?priceMin=100&priceMax=150">$100.00 - $150.00</a></li>
+                                                    <li><a href="<%=cp%>/shopping/list.do?priceMin=150&priceMax=200">$150.00 - $200.00</a></li>
+                                                    <li><a href="<%=cp%>/shopping/list.do?priceMin=200&priceMax=250">$200.00 - $250.00</a></li>
+                                                    <li><a href="<%=cp%>/shopping/list.do?priceMin=250">250.00+</a></li>
                                                 </ul>
                                             </div>
                                         </div>
