@@ -69,8 +69,8 @@
 				<a href="${articleUrl}&num=${dto.num }">${dto.subject }</a>
 				</dd>				
 				<dd class="name">${dto.name }</dd>				
-				<dd class="created">${dto.created }</dd>				
-				<dd class="hitCount">${dto.hitCount }</dd>				
+				<dd class="savepath">${dto.savePath }</dd>				
+				<dd class="hitcount">${dto.hitcount }</dd>				
 			</dl>	
 		</c:forEach>		
 		</div>

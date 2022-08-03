@@ -56,7 +56,7 @@ public class WritingDAO {
 		String sql;
 
 		try {
-			sql = "insert into writing (num,id,pw,name,email,subject,content,hitCount,savePath) ";
+			sql = "insert into writing (num,id,pw,name,email,subject,content,hitcount,savePath) ";
 			sql += "values (?,?,?,?,?,?,?,0,sysdate) ";
 
 			pstmt = conn.prepareStatement(sql);
@@ -96,7 +96,7 @@ public class WritingDAO {
 			// ����¡ �ϴ� �ڵ�
 			sql = "select * from ( ";
 			sql += "select rownum rnum, data.* from ( ";
-			sql += "select membernum,num,name,subject,hitCount,";
+			sql += "select num,name,subject,hitcount,";
 			sql += "to_char(savePath,'YYYY-MM-DD') savePath ";
 			//sql += "from board order by num desc) data) ";
 		    sql += "from writing where " +searchKey+ " like ? order by num desc) data) ";	   	   
@@ -113,11 +113,10 @@ public class WritingDAO {
 			while (rs.next()) {
 
 				WritingDTO dto = new WritingDTO();
-				dto.setMembernum(rs.getInt("membernum"));
 				dto.setNum(rs.getInt("num"));
 				dto.setName(rs.getString("name"));
 				dto.setSubject(rs.getString("subject"));
-				dto.setHitcount(rs.getInt("hitCount"));
+				dto.setHitcount(rs.getInt("hitcount"));
 				dto.setsavePath(rs.getString("savePath"));
 
 				lists.add(dto);
@@ -181,7 +180,7 @@ public class WritingDAO {
 
 		try {
 
-			sql = "select membernum, num, id, pw, name, email, subject, content, hitCount, savePath ";
+			sql = "select num, id, pw, name, email, subject, content, hitcount, savePath ";
 			sql += "from writing where num = ?";
 
 			pstmt = conn.prepareStatement(sql);
@@ -191,7 +190,6 @@ public class WritingDAO {
 			if (rs.next()) {
 
 				dto = new WritingDTO();
-				dto.setMembernum(rs.getInt("membernum"));
 				dto.setNum(rs.getInt("num"));
 				dto.setId(rs.getString("id"));				
 				dto.setPw(rs.getString("pw"));
@@ -199,7 +197,7 @@ public class WritingDAO {
 				dto.setEmail(rs.getString("email"));
 				dto.setSubject(rs.getString("subject"));
 				dto.setContent(rs.getString("content"));
-				dto.setHitcount(rs.getInt("hitCount"));
+				dto.setHitcount(rs.getInt("hitcount"));
 				dto.setsavePath(rs.getString("savePath"));
 
 			}
@@ -220,7 +218,7 @@ public class WritingDAO {
 		String sql;
 
 		try {
-			sql = "update writing set hitCount = hitCount+1 ";
+			sql = "update writing set hitcount = hitcount+1 ";
 			sql += "where num=?";
 
 			pstmt = conn.prepareStatement(sql);

@@ -132,7 +132,7 @@
 			<dl>
 				<dt>패스워드</dt>
 				<dd>
-					<input type="password" name="pwd" size="35" value="${dto.pwd }"
+					<input type="password" name="pwd" size="35" value="${dto.pw }"
 					maxlength="7" class="boxTF"/>&nbsp;(게시물 수정 및 삭제시 필요!!)
 				</dd>	
 			</dl>
