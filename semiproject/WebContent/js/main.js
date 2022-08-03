@@ -179,6 +179,8 @@
         $button.parent().find('input').val(newVal);
     });
 
+    
+    //장바구니에서 <> 버튼을 누르면 변경 되는 부분
     var proQty = $('.pro-qty-2');
     proQty.prepend('<span class="fa fa-angle-left dec qtybtn"></span>');
     proQty.append('<span class="fa fa-angle-right inc qtybtn"></span>');
@@ -196,12 +198,35 @@
             }
         }
         var tagNum = $button.parent().find('input').attr('id').slice(-1);
-        var price = $('#p' + tagNum).text().slice(0, -1);
+        var price = removeCandWon($('#p' + tagNum).text());
         var sum = $('#sum' + tagNum);
-        sum.text((Number(newVal) * Number(price)) + "원");
+        var bdTotal = $('#beforeDiscount')
+        var apTotal = $('#actualPayment')
+        
+        var curTotal = Number(removeCandWon(bdTotal.text()));
+        
+        
+        var changeValue = Number(newVal) * Number(price);
+        
+       
+        
+        var difNum = changeValue - Number(removeCandWon(sum.text()));
+         console.log(difNum);
+        console.log(typeof difNum);
+//        bdTotal.text() = Number(bdTotal.text())
+        
+        sum.text(changeValue.toLocaleString('ko-KR') + "원");
+        
+        bdTotal.text((Number(curTotal) + difNum).toLocaleString('ko-KR') + "원");
         
         $button.parent().find('input').val(newVal);
     });
+    
+    
+    function removeCandWon(str){
+    	return str.slice(0, -1).replaceAll(",", "");
+    }
+    
 
     /*------------------
         Achieve Counter

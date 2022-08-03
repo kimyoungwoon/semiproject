@@ -2,6 +2,7 @@
 <%@page import="java.util.List"%>
 <%@ page contentType="text/html; charset=UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>  
 <%
 	request.setCharacterEncoding("UTF-8");
 	String cp = request.getContextPath();
@@ -196,7 +197,7 @@
 											</div>
 											<div class="product__cart__item__text">
 												<h6>${dto.name }</h6>
-												<h5 id = "p${tagCount }">${dto.price }원</h5>
+												<h5 id = "p${tagCount }"><fmt:formatNumber value ="${dto.price }" type = "number" />원</h5>
 											</div>
 										</td>
 										<td class="quantity__item">
@@ -206,10 +207,14 @@
 												</div>
 											</div>
 										</td>
-										<td class="cart__price" id = "sum${tagCount }">${dto.count * dto.price }원</td>
-										<td class="cart__close"><i class="fa fa-close"></i></td>
+										<fmt:formatNumber value ="${dto.count * dto.price }" type = "number" var = "sprice" />
+										<td class="cart__price" id = "sum${tagCount }">${sprice }원</td>
+										<td class="cart__close"><a href = "<%=cp%>/ywsemi/cartDelete.do?productNum=${dto.productnum }"><i class="fa fa-close"></i></a></td>
 									</tr>
+									
+									<fmt:parseNumber var = "sumTotal" type = "number" value = "${sumTotal =  sumTotal + dto.count * dto.price}"/>
 								</c:forEach>
+								
 							</tbody>
 						</table>
 					</div>
@@ -237,8 +242,9 @@
 					<div class="cart__total">
 						<h6>Cart total</h6>
 						<ul>
-							<li>Subtotal <span>$ 169.50</span></li>
-							<li>Total <span>$ 169.50</span></li>
+							<fmt:formatNumber value ="${sumTotal }" type = "number" var="comTotal" />
+							<li>Before Discount <span id = "beforeDiscount">${comTotal }원</span></li>
+							<li >Actual Payment <span id = "actualPayment">${comTotal }원</span></li>
 						</ul>
 						<a href="<%=cp%>/checkout.jsp" class="primary-btn">Proceed to
 							checkout</a>
