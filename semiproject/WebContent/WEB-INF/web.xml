@@ -31,7 +31,7 @@
 
 
   
-   <servlet>
+  <servlet>
     <servlet-name>productServlet</servlet-name>
     <servlet-class>com.shop.ProductServlet</servlet-class>
   </servlet>
@@ -39,6 +39,7 @@
     <servlet-name>productServlet</servlet-name>
     <url-pattern>/shopping/*</url-pattern>
   </servlet-mapping>
+  
   
   
 
