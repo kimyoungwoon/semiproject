@@ -79,7 +79,7 @@
                     <div class="col-lg-6 col-md-5">
                         <div class="header__top__right">
                             <div class="header__top__links">
-                                <a href="#">Sign in</a>
+                                <a href="<%=cp%>/login/login.do">Sign in</a>
                                 <a href="#">FAQs</a>
                             </div>
                             <div class="header__top__hover">
@@ -244,7 +244,7 @@
                         <div class="product__item__pic set-bg" data-setbg="<%=cp%>/img/product/product-1.jpg">
                             <span class="label">New</span>
                             <ul class="product__hover">
-                                <li><a href="#"><img src="<%=cp%>/img/icon/heart.png" alt=""></a></li>
+                                <li><a href="./wishList.jsp"><img src="<%=cp%>/img/icon/heart.png" alt=""></a></li>
                                 <li><a href="#"><img src="<%=cp%>/img/icon/compare.png" alt=""> <span>Compare</span></a></li>
                                 <li><a href="#"><img src="<%=cp%>/img/icon/search.png" alt=""></a></li>
                             </ul>

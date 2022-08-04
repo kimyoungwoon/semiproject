@@ -48,8 +48,35 @@
     <servlet-name>productServlet</servlet-name>
     <url-pattern>/shopping/*</url-pattern>
   </servlet-mapping>
-  
 
   
+   <servlet>
+    <servlet-name>memberServlet</servlet-name>
+    <servlet-class>com.member.MemberServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>memberServlet</servlet-name>
+    <url-pattern>/login/*</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+		<servlet-name>PdetailServlet</servlet-name>
+		<servlet-class>com.pDetail.PdetailServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>PdetailServlet</servlet-name>
+		<url-pattern>/pdetail/*</url-pattern>
+	</servlet-mapping>
 
+
+  <servlet>
+		<servlet-name>wishlistServlet</servlet-name>
+		<servlet-class>com.wishlist.wishlistServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>wishlistServlet</servlet-name>
+		<url-pattern>/wishlist/*</url-pattern>
+	</servlet-mapping>
+
+	
 </web-app>

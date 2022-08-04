@@ -180,8 +180,10 @@
     });
 
     var proQty = $('.pro-qty-2');
+    console.log("왜 없어?")
     proQty.prepend('<span class="fa fa-angle-left dec qtybtn"></span>');
     proQty.append('<span class="fa fa-angle-right inc qtybtn"></span>');
+    console.log("여긴 왜 없어?")
     proQty.on('click', '.qtybtn', function () {
         var $button = $(this);
         var oldValue = $button.parent().find('input').val();

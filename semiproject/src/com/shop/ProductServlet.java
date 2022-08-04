@@ -40,10 +40,13 @@ public class ProductServlet extends HttpServlet {
 		req.setCharacterEncoding("UTF-8");
 		Connection conn = DBConn.getConnection();
 		ProductDAO dao = new ProductDAO(conn);
+		ListReturnDAO listReturn_dao = new ListReturnDAO(conn);
 		String cp = req.getContextPath();
 		String uri = req.getRequestURI();
 		MyPage myPage = new MyPage();
 		String url = null;
+		List<ProductDTO> lists = null;
+		
 		
 		String root = getServletContext().getRealPath("/");
 		String path = root + "pds" + File.separator + "productFile";
@@ -82,15 +85,44 @@ public class ProductServlet extends HttpServlet {
 				dto.setPro_size(Integer.parseInt(mr.getParameter("pd_sizeNum")));
 				dto.setColor(Integer.parseInt(mr.getParameter("pd_colorNum")));
 				dto.setTag(Integer.parseInt(mr.getParameter("pd_tagNum")));
-				dto.setSaveFileName("upload");
+				dto.setSaveFileName(mr.getFilesystemName("upload"));
+				
 				
 				dao.product_insertData(dto);
 				
 			}
 			
-			url = cp + "/shopping/list.do";
+			url = cp + "/shopping/insert.do";
 			resp.sendRedirect(url);
-		}else if(uri.indexOf("list.do")!=-1) {
+		}else if(uri.indexOf("list.do")!=-1) {//shop 페이지를 보여줍니다
+			
+			
+			int category = Integer.parseInt(returnNull(req.getParameter("category")));
+			int brand = Integer.parseInt(returnNull(req.getParameter("brand")));
+			int priceMin = Integer.parseInt(returnNull(req.getParameter("priceMin")));
+			int priceMax = Integer.parseInt(returnNull(req.getParameter("priceMax")));
+			
+			
+			
+			//사이즈 별 변수
+			int xs = Integer.parseInt(returnNull(req.getParameter("xs")));
+			int s = Integer.parseInt(returnNull(req.getParameter("s")));
+			int m = Integer.parseInt(returnNull(req.getParameter("m")));
+			int xl = Integer.parseInt(returnNull(req.getParameter("xl")));
+			int xxl = Integer.parseInt(returnNull(req.getParameter("xxl")));
+			int xxxl = Integer.parseInt(returnNull(req.getParameter("xxxl")));
+			int xxxxl = Integer.parseInt(returnNull(req.getParameter("xxxxl")));
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
 			
 			String pageNum = req.getParameter("pageNum");
 			
@@ -113,11 +145,30 @@ public class ProductServlet extends HttpServlet {
 			int start = (currentPage-1)*numPerPage+1;
 			int end = (currentPage*numPerPage);
 			
-			List<ProductDTO> lists =
-					dao.product_getList(start, end);
+			lists = dao.product_getList(start, end);//전체데이터 출력
 			
-			String listUrl = cp + "shopping/list.do";
+			//System.out.println(category);
 			
+			String listUrl = cp + "/shopping/list.do";
+			if(category != -1 ) {
+				
+				lists = listReturn_dao.category_getList(start, end, category);
+				listUrl = cp + "/shopping/list.do?category=" + category;
+				
+				
+			}else if(brand != -1) {
+				lists = listReturn_dao.branding_getList(start, end, brand);
+				listUrl = cp + "/shopping/list.do?brand=" + brand;
+			}else if (priceMin != -1 && priceMax != -1 ) {
+				
+				lists = listReturn_dao.price_getList(start, end, priceMin, priceMax);
+				listUrl = cp + "/shopping/list.do?priceMin=" + priceMin + "&priceMax=" + priceMax;
+			}else if (priceMin != -1 ) {
+				
+				lists = listReturn_dao.priceUp_getList(start, end, priceMin);
+				listUrl = cp + "/shopping/list.do?priceMin=" + priceMin;
+			}
+				
 			String pageIndexList =
 					myPage.pageIndexList(currentPage, totalPage, listUrl);
 			
@@ -131,9 +182,24 @@ public class ProductServlet extends HttpServlet {
 			req.setAttribute("totalPage", totalPage);
 			req.setAttribute("imagePath", imagePath);
 			
-			url = "/index.jsp";
+			url = "/shop.jsp";
 			foward(req, resp, url);
+	
 		}
+	
 	}
+	
+	//파라미터로 오는 분류값이 null이라면 
+	//null을 0으로 바꿔 에러안나게 처리메서드
+	public String returnNull(String str) {
+		
+		if(str==null) {
+			str = "-1";
+		}
+		
+		return str;
+	}
+	
+	
 	
 }
