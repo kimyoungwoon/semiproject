@@ -40,10 +40,10 @@
 <link rel="stylesheet" href="<%=cp%>/css/slicknav.min.css"
 	type="text/css">
 <link rel="stylesheet" href="<%=cp%>/css/style.css" type="text/css">
-<link rel="stylesheet" href="<%=cp%>/custumCSS/custom.css"
+<link rel="stylesheet" href="<%=cp%>/yw_folder/custom.css"
 	type="text/css">
 
-
+<script type="text/javascript" src="<%=cp %>/yw_folder/request_ajax.js"></script>
 
 
 </head>
@@ -187,34 +187,7 @@
 									<th></th>
 								</tr>
 							</thead>
-							<tbody>
-								<c:forEach var="dto" items="${cartList }">
-								<c:set var = "tagCount" value = "${tagCount + 1 }"/>
-									<tr>
-										<td class="product__cart__item">
-											<div class="product__cart__item__pic">
-												<img src="<%=cp%>/img/shopping-cart/cart-1.jpg" alt="">
-											</div>
-											<div class="product__cart__item__text">
-												<h6>${dto.name }</h6>
-												<h5 id = "p${tagCount }"><fmt:formatNumber value ="${dto.price }" type = "number" />원</h5>
-											</div>
-										</td>
-										<td class="quantity__item">
-											<div class="quantity">
-												<div class="pro-qty-2">
-													<input type="text" id = "i${tagCount }" value="${dto.count }"/>
-												</div>
-											</div>
-										</td>
-										<fmt:formatNumber value ="${dto.count * dto.price }" type = "number" var = "sprice" />
-										<td class="cart__price" id = "sum${tagCount }">${sprice }원</td>
-										<td class="cart__close"><a href = "<%=cp%>/ywsemi/cartDelete.do?productNum=${dto.productnum }"><i class="fa fa-close"></i></a></td>
-									</tr>
-									
-									<fmt:parseNumber var = "sumTotal" type = "number" value = "${sumTotal =  sumTotal + dto.count * dto.price}"/>
-								</c:forEach>
-								
+							<tbody id = "productTable">
 							</tbody>
 						</table>
 					</div>
@@ -224,7 +197,7 @@
 								<a href="<%=cp%>/shop.jsp">Continue Shopping</a>
 							</div>
 						</div>
-						<!--  <div class="col-lg-6 col-md-6 col-sm-6">
+						<!-- <div class="col-lg-6 col-md-6 col-sm-6">
                             <div class="continue__btn update__btn">
                                 <a href="#"><i class="fa fa-spinner"></i> Update cart</a>
                             </div>
@@ -244,10 +217,11 @@
 						<ul>
 							<fmt:formatNumber value ="${sumTotal }" type = "number" var="comTotal" />
 							<li>Before Discount <span id = "beforeDiscount">${comTotal }원</span></li>
-							<li >Actual Payment <span id = "actualPayment">${comTotal }원</span></li>
+							<li>Actual Payment <span id = "actualPayment">${comTotal }원</span></li>
 						</ul>
-						<a href="<%=cp%>/checkout.jsp" class="primary-btn">Proceed to
-							checkout</a>
+						<%-- <a href="<%=cp%>/checkout.jsp" class="primary-btn">Proceed to
+							checkout</a> --%>
+							<input class="primary-btn" value = "Proceed to checkout" onclick = "alert();" type="button">
 					</div>
 				</div>
 			</div>

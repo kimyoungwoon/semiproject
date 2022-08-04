@@ -40,8 +40,7 @@ public class MemberServlet extends HttpServlet{
 		//DB연결
 		Connection conn = DBConn.getConnection();
 		MemberDAO dao = new MemberDAO(conn);
-		//CategoryDAO dao1 = new CategoryDAO(conn);
-	
+			
 		
 		String cp = req.getContextPath();
 		String uri = req.getRequestURI();
@@ -49,73 +48,46 @@ public class MemberServlet extends HttpServlet{
 		
 		String url;//포워딩시킬 데이터 저장할 url
 		
-		
-		
-		
+
 		//회원가입 페이지
-		if(uri.indexOf("join.do")!= -1) {
-			
-			// 포워딩은 실제주소를 써야 함
-			String listUrl = cp + "/shop/category/category.do";
-			req.setAttribute("listUrl", listUrl);
-			
-			List<ProductDTO> brandLists = dao2.getBrandLists();
-			//List<ProductDTO> brandLists = dao.getBrandLists();			
-			req.setAttribute("brandLists", brandLists);
-			
-			// 매핑을 해줘야 shoppingmall를 찾아감
-			url = "/shoppingmall/join/join.jsp";
+		if(uri.indexOf("login.do")!= -1) {
+	
+			// 매핑을 해줘야 찾아감
+			url = "/member/login.jsp";
 			forward(req, resp, url);
+
 			
-			
-			
-			
-		}else if(uri.indexOf("join_ok.do")!= -1) {
+		}
+		else if(uri.indexOf("login_ok.do")!= -1) {
 			
 			MemberDTO dto = new MemberDTO();
 			
 			//form  post방식으로 넘어오니까
 			dto.setId(req.getParameter("id"));
+			dto.setPw(req.getParameter("pw"));
 			dto.setName(req.getParameter("name"));
-			dto.setPwd(req.getParameter("pwd"));
-			dto.setEmail1(req.getParameter("email1"));
-			dto.setEmail2(req.getParameter("email2"));
-			dto.setRoadFullAddr(req.getParameter("roadFullAddr"));
-			dto.setHp1(req.getParameter("hp1"));
-			dto.setHp2(req.getParameter("hp2"));
-			dto.setHp3(req.getParameter("hp3"));
-			dto.setBirth_tf(req.getParameter("birth_tf"));
-			dto.setBirth_year(req.getParameter("birth_year"));
-			dto.setBirth_month(req.getParameter("birth_month"));
-			dto.setBirth_day(req.getParameter("birth_day"));
-			dto.setService_email(req.getParameter("service_email"));
-			dto.setService_sms(req.getParameter("service_sms"));
-			dto.setService_dm(req.getParameter("service_dm"));
-			dto.setService_tm(req.getParameter("service_tm"));
+			dto.setDate(req.getParameter("date"));			
 			
 			dao.insertData(dto);
 			
-			url = cp + "/shop/join/login.do";
+			url = cp + "/login/login.do";
 			resp.sendRedirect(url);
 			
 			
 		}else if(uri.indexOf("login.do")!= -1) {
 			
 			//로그인 시 포워드 페이지
-			String listUrl = cp + "/shop/category/category.do";
+			String listUrl = "/semiroject/lndex.jsp";
 			req.setAttribute("listUrl", listUrl);
 
-			List<MemberDTO> brandLists = 
-					dao2.getBrandLists();			
-			req.setAttribute("brandLists", brandLists);
-			
-			url = "/shoppingmall/login/login.jsp";
+
+			url = "/semiproject/member/login.jsp";
 			forward(req, resp, url);
 			
 		}else if(uri.indexOf("login_ok.do")!= -1) {
 			
 			String id = req.getParameter("id");
-			String pwd = req.getParameter("pwd");
+			String pw = req.getParameter("pw");
 			
 			System.out.println(id);
 		
@@ -124,23 +96,23 @@ public class MemberServlet extends HttpServlet{
 			
 			//dto==null 일 경우 아이디가 없음
 			//세션에 있는  pwd가  DB의 pwd와 일치하지 않는 경우
-			if(dto==null || (!dto.getPwd().equals(pwd))) {
+			if(dto==null || (!dto.getPw().equals(pw))) {
 				
-				req.setAttribute("message", "아이디 또는 패스워드를 정확히 입력하세요!");
-				url = "/shoppingmall/login/login.jsp";
+				req.setAttribute("message", "아이디 또는 패스워드를 정확히 입력하세요");
+				url = "/semiroject/member/login.jsp";
 				
 				forward(req, resp, url);
 				
 				return;//로그인 실패 시 더이상의 소스코드가 실행되지 않도록 return작성
 			}
-			if(id.equals("hwcotton")) {
+/*				if(id.equals("hwcotton")) {
 				
 				url = "/shoppingmall/productSave/productSave.jsp";
 				
 				forward(req, resp, url);
 				
 				return;//로그인 실패 시 더이상의 소스코드가 실행되지 않도록 return작성
-			}
+			}*/
 			
 				
 			//서블릿에서 세션만드는 방법
@@ -156,7 +128,7 @@ public class MemberServlet extends HttpServlet{
 			session.setAttribute("customInfo", info);
 
 			//저장했으니 메인화면으로 가기
-			url = cp + "/shop/main/main.do";
+			url = "/semiproject/index.jsp";
 			//세션을 변경시키면 리다이렉트 해야 한다,
 			resp.sendRedirect(url);
 				
@@ -171,7 +143,7 @@ public class MemberServlet extends HttpServlet{
 			session.removeAttribute("customInfo"); //세션에 있는 변수명 삭제
 			session.invalidate();//세션에 있는 데이터 삭제
 			
-			url = cp + "/shop/main/main.do";
+			url = "/semiproject/index.jsp";
 			resp.sendRedirect(url);
 		
 			
@@ -180,10 +152,7 @@ public class MemberServlet extends HttpServlet{
 			String listUrl = cp + "/shop/category/category.do";
 			req.setAttribute("listUrl", listUrl);
 
-			List<ProductDTO> brandLists = 
-					dao2.getBrandLists();			
-			req.setAttribute("brandLists", brandLists);
-			
+
 			
 			HttpSession session = req.getSession();
 			Custominfo info = (Custominfo)session.getAttribute("customInfo");
@@ -192,44 +161,35 @@ public class MemberServlet extends HttpServlet{
 			req.setAttribute("dto", dto);
 			//회원정보수정 포워드 페이지
 			
-			url = "/shoppingmall/join/update.jsp";
+			url = "semii/member/update.jsp";
 			forward(req, resp, url);
 			
-		}else if(uri.indexOf("update_ok.do")!=-1) {
+		}else if(uri.indexOf("updated_ok.do")!=-1) {
 			
 			HttpSession session = req.getSession();
 			Custominfo info = (Custominfo)session.getAttribute("customInfo");
 			
 			
 			MemberDTO dto = new MemberDTO();
-			
-			dto.setId(info.getUserId());
-			//dto.setId(req.getParameter("id"));
-			//dto.setName(req.getParameter("name"));
-			dto.setPwd(req.getParameter("pwd"));
-			dto.setEmail1(req.getParameter("email1"));
-			dto.setEmail2(req.getParameter("email2"));
-			dto.setRoadFullAddr(req.getParameter("roadFullAddr"));
-			dto.setHp1(req.getParameter("hp1"));
-			dto.setHp2(req.getParameter("hp2"));
-			dto.setHp3(req.getParameter("hp3"));
-			dto.setBirth_tf(req.getParameter("birth_tf"));
-			dto.setBirth_year(req.getParameter("birth_year"));
-			dto.setBirth_month(req.getParameter("birth_month"));
-			dto.setBirth_day(req.getParameter("birth_day"));
-			dto.setService_email(req.getParameter("service_email"));
-			dto.setService_sms(req.getParameter("service_sms"));
-			dto.setService_dm(req.getParameter("service_dm"));
-			dto.setService_tm(req.getParameter("service_tm"));
-			
-			
-			dao.updateDate(dto);
 		
-			url = cp + "/shop/main/main.do";
+			dto.setId(info.getId());
+			dto.setPw(req.getParameter("pw"));
+			dto.setName(req.getParameter("name"));
+			dto.setEmail(req.getParameter("email"));
+			dto.setPw(req.getParameter("pw"));
+			dto.setAddress(req.getParameter("address"));
+			dto.setTel(req.getParameter("tel"));
+			dto.setGender(req.getParameter("gender"));
+			dto.setDate(req.getParameter("date"));
+	
+			dao.updateData(dto);
+		
+			url = cp ;
 			resp.sendRedirect(url);
 			
+		}
 		
-		//아이디 중복확인
+		/*//아이디 중복확인
 		}else if(uri.indexOf("idcheck.do")!=-1) {
 			
 			url = "/shoppingmall/join/idcheck.jsp";
@@ -242,7 +202,7 @@ public class MemberServlet extends HttpServlet{
 			System.out.println(id);
 			
 			MemberDTO dto = dao.getReadData(id);
-			
+		
 			
 			
 			if(dto==null || dto.equals(id)) {
@@ -268,8 +228,10 @@ public class MemberServlet extends HttpServlet{
 			
 			url = "/shoppingmall/join/jusoPopup.jsp";
 			forward(req, resp, url);
-			}
+			}*/
+			
 		}
 			
 }
-		
+
+

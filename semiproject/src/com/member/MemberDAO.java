@@ -14,6 +14,36 @@ public class MemberDAO {
 		}
 		
 
+		public int getMaxNum() {
+			
+			int maxNum = 0;
+			
+			PreparedStatement pstmt = null;
+			ResultSet rs = null;
+			String sql;
+			
+	try {
+				
+				sql = "select nvl(max(num),0) from shop";
+				
+				pstmt = conn.prepareStatement(sql);
+				
+				rs = pstmt.executeQuery();
+				
+				if(rs.next()) {
+					maxNum = rs.getInt(1);
+				}
+				
+				rs.close();
+				pstmt.close();
+				
+			} catch (Exception e) {
+				System.out.println(e.toString());
+			}
+			return maxNum;
+		}
+		
+
 		//입력
 		public int insertData(MemberDTO dto) {
 			
@@ -24,20 +54,24 @@ public class MemberDAO {
 			
 			try {
 				
-				sql = "insert into member(num,id,pw,name,email,address,tel,gender,date) ";
-				sql += "values (?,?,?,?,?,?,?,?,?)";
+				sql = "insert into member(id,pw,name,date) ";
+				sql += "values (?,?,?,?)";
 				
 				pstmt = conn.prepareStatement(sql);
 				
-				pstmt.setInt(1, dto.getNum());
-				pstmt.setString(2, dto.getId());
-				pstmt.setString(3, dto.getPw());
-				pstmt.setString(4, dto.getName());
-				pstmt.setString(5, dto.getEmail());
-				pstmt.setString(6, dto.getAddress());
-				pstmt.setString(7, dto.getTel());
-				pstmt.setString(8, dto.getGender());
-				pstmt.setString(9, dto.getDate());
+				pstmt.setString(1, dto.getId());
+				pstmt.setString(2, dto.getPw());
+				pstmt.setString(3, dto.getName());
+				pstmt.setString(4, dto.getDate());
+//				pstmt.setString(5, dto.getAddress());
+//				pstmt.setString(6, dto.getTel());
+//				pstmt.setString(7, dto.getGender());
+//				pstmt.setString(8, dto.getDate());
+//				pstmt.setString(9, dto.getIpAddr());
+				
+				
+				
+				
 	
 				result = pstmt.executeUpdate();
 				
@@ -141,7 +175,7 @@ public class MemberDAO {
 		}
 		
 		//회원정보 수정
-		public int updateDate(MemberDTO dto) {
+		public int updateData(MemberDTO dto) {
 			
 			int result = 0;
 			
@@ -178,6 +212,30 @@ public class MemberDAO {
 			return result;
 			
 		}
+		//데이터 지우기
+		public int deleteData(int num) {
+			
+			int result = 0;
+			PreparedStatement pstmt = null;
+			String sql;
+			
+			try {
+				
+				sql = "delete member where num=?";
+				
+				pstmt = conn.prepareStatement(sql);
+				
+				pstmt.setInt(1, num);
+				
+				result = pstmt.executeUpdate();
+				
+				pstmt.close();
+				
+			} catch (Exception e) {
+				System.out.println(e.toString());
+			}
+			
+			return result;
 		
-		
+		}
 	}

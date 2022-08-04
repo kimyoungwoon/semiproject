@@ -11,6 +11,7 @@ public class MemberDTO {
 	String tel;
 	String gender;
 	String date;
+	String ipAddr;
 	
 	public int getNum() {
 		return num;
@@ -65,6 +66,12 @@ public class MemberDTO {
 	}
 	public void setDate(String date) {
 		this.date = date;
+	}
+	public String getIpAddr() {
+		return ipAddr;
+	}
+	public void setIpAddr(String ipAddr) {
+		this.ipAddr = ipAddr;
 	}
 	
 	

@@ -179,11 +179,11 @@
         $button.parent().find('input').val(newVal);
     });
 
-    
-    //장바구니에서 <> 버튼을 누르면 변경 되는 부분
     var proQty = $('.pro-qty-2');
+    console.log("왜 없어?")
     proQty.prepend('<span class="fa fa-angle-left dec qtybtn"></span>');
     proQty.append('<span class="fa fa-angle-right inc qtybtn"></span>');
+    console.log("여긴 왜 없어?")
     proQty.on('click', '.qtybtn', function () {
         var $button = $(this);
         var oldValue = $button.parent().find('input').val();
@@ -197,36 +197,8 @@
                 newVal = 0;
             }
         }
-        var tagNum = $button.parent().find('input').attr('id').slice(-1);
-        var price = removeCandWon($('#p' + tagNum).text());
-        var sum = $('#sum' + tagNum);
-        var bdTotal = $('#beforeDiscount')
-        var apTotal = $('#actualPayment')
-        
-        var curTotal = Number(removeCandWon(bdTotal.text()));
-        
-        
-        var changeValue = Number(newVal) * Number(price);
-        
-       
-        
-        var difNum = changeValue - Number(removeCandWon(sum.text()));
-         console.log(difNum);
-        console.log(typeof difNum);
-//        bdTotal.text() = Number(bdTotal.text())
-        
-        sum.text(changeValue.toLocaleString('ko-KR') + "원");
-        
-        bdTotal.text((Number(curTotal) + difNum).toLocaleString('ko-KR') + "원");
-        
         $button.parent().find('input').val(newVal);
     });
-    
-    
-    function removeCandWon(str){
-    	return str.slice(0, -1).replaceAll(",", "");
-    }
-    
 
     /*------------------
         Achieve Counter
