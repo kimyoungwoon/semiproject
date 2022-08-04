@@ -97,19 +97,29 @@ public class ProductServlet extends HttpServlet {
 		}else if(uri.indexOf("list.do")!=-1) {//shop 페이지를 보여줍니다
 			
 			
-			
-			String str1 = req.getParameter("category");
-			String str2 = req.getParameter("brand");
-			String str3 = req.getParameter("priceMin");
-			String str4 = req.getParameter("priceMax");
-			
+			int category = Integer.parseInt(returnNull(req.getParameter("category")));
+			int brand = Integer.parseInt(returnNull(req.getParameter("brand")));
+			int priceMin = Integer.parseInt(returnNull(req.getParameter("priceMin")));
+			int priceMax = Integer.parseInt(returnNull(req.getParameter("priceMax")));
 			
 			
 			
-			int category = Integer.parseInt(returnNull(str1));
-			int brand = Integer.parseInt(returnNull(str2));
-			int priceMin = Integer.parseInt(returnNull(str3));
-			int priceMax = Integer.parseInt(returnNull(str4));
+			//사이즈 별 변수
+			int xs = Integer.parseInt(returnNull(req.getParameter("xs")));
+			int s = Integer.parseInt(returnNull(req.getParameter("s")));
+			int m = Integer.parseInt(returnNull(req.getParameter("m")));
+			int xl = Integer.parseInt(returnNull(req.getParameter("xl")));
+			int xxl = Integer.parseInt(returnNull(req.getParameter("xxl")));
+			int xxxl = Integer.parseInt(returnNull(req.getParameter("xxxl")));
+			int xxxxl = Integer.parseInt(returnNull(req.getParameter("xxxxl")));
+			
+			
+			
+			
+			
+			
+			
+			
 			
 			
 			
@@ -137,11 +147,9 @@ public class ProductServlet extends HttpServlet {
 			
 			lists = dao.product_getList(start, end);//전체데이터 출력
 			
-			
-			
 			//System.out.println(category);
 			
-			String listUrl = null;
+			String listUrl = cp + "/shopping/list.do";
 			if(category != -1 ) {
 				
 				lists = listReturn_dao.category_getList(start, end, category);
@@ -160,9 +168,7 @@ public class ProductServlet extends HttpServlet {
 				lists = listReturn_dao.priceUp_getList(start, end, priceMin);
 				listUrl = cp + "/shopping/list.do?priceMin=" + priceMin;
 			}
-			
 				
-			
 			String pageIndexList =
 					myPage.pageIndexList(currentPage, totalPage, listUrl);
 			
@@ -193,5 +199,7 @@ public class ProductServlet extends HttpServlet {
 		
 		return str;
 	}
+	
+	
 	
 }

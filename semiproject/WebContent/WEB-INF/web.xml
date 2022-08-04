@@ -40,6 +40,10 @@
     <url-pattern>/shopping/*</url-pattern>
   </servlet-mapping>
   
-  
+   <servlet>
+    <servlet-name>settingServlet</servlet-name>
+    <servlet-class>com.shop.SettingServlet</servlet-class>
+  </servlet>
+ 
 
 </web-app>

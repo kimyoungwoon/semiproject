@@ -74,6 +74,8 @@ public class ProductDAO {
 			
 			result = pstmt.executeUpdate();
 			
+			
+			
 			pstmt.close();
 			
 		} catch (Exception e) {
