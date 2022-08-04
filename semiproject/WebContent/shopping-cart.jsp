@@ -1,12 +1,9 @@
-<%@page import="com.cart.CartProductDTO"%>
-<%@page import="java.util.List"%>
 <%@ page contentType="text/html; charset=UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>  
 <%
 	request.setCharacterEncoding("UTF-8");
 	String cp = request.getContextPath();
-	/* List<CartProductDTO> lists = (List<CartProductDTO>)request.getAttribute("cartList"); */
 %>
 <!DOCTYPE html>
 <html lang="zxx">
@@ -160,7 +157,7 @@
 			<div class="row">
 				<div class="col-lg-12">
 					<div class="breadcrumb__text">
-						<h4>Shopping Cart</h4>
+						<h4 id = 'sc'>Shopping Cart</h4>
 						<div class="breadcrumb__links">
 							<a href="./index.jsp">Home</a> <a href="./shop.jsp">Shop</a> <span>Shopping
 								Cart</span>
@@ -207,9 +204,9 @@
 				<div class="col-lg-4">
 					<div class="cart__discount">
 						<h6>Discount codes</h6>
-						<form action="#">
+						<form>
 							<input type="text" placeholder="Coupon code">
-							<button type="submit">Apply</button>
+							<button type="button" onclick = "useCoupon(this);">Apply</button>
 						</form>
 					</div>
 					<div class="cart__total">

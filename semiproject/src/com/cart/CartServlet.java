@@ -27,6 +27,8 @@ public class CartServlet extends HttpServlet{
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
+		final int MEMBER_NUM = 3;
+
 		request.setCharacterEncoding("utf-8");
 		response.setContentType("text/html;charset=UTF-8");
 		Connection conn = DBConn.getConnection();
@@ -79,7 +81,7 @@ public class CartServlet extends HttpServlet{
 		}*/
 		else if(uri.indexOf("updatePC.do") != -1){
 			
-			int memberNum  = 2;
+			int memberNum = MEMBER_NUM;
 			int productNum  = Integer.parseInt(request.getParameter("productNum"));
 			int count  = Integer.parseInt(request.getParameter("count"));
 
@@ -88,14 +90,9 @@ public class CartServlet extends HttpServlet{
 		}
 		else if(uri.indexOf("shopCart.do") != -1){
 			//장바구니에 들어왔을 때 전달받는 회원번호
-			int memberNumber = Integer.parseInt(request.getParameter("memberNum"));
+			int memberNum = Integer.parseInt(request.getParameter("memberNum"));
 
-			List<CartProductDTO> lists = dao.getCartList(memberNumber);
-
-			for (CartProductDTO cartProductDTO : lists) {
-				System.out.println(cartProductDTO.getName());
-			}
-
+			List<CartProductDTO> lists = dao.getCartList(memberNum);
 
 			StringBuffer result = new StringBuffer("");
 			result.append("{\"result\":[");
@@ -114,7 +111,7 @@ public class CartServlet extends HttpServlet{
 			//			HttpSession session = request.getSession();
 			//			String memberNum = (String)session.getAttribute("id");
 
-			int memberNum  = 2;
+			int memberNum = MEMBER_NUM;
 			int productNum  = Integer.parseInt(request.getParameter("productNum"));
 
 			dao.deleteCart_Product(memberNum, productNum);
