@@ -26,18 +26,18 @@
                     <img src="<%=cp %>/img/member/tw.png" alt="twitter"/>
                     <img src="<%=cp %>/img/member/gl.png" alt="google"/>
                 </div>
-                <form id="login" action="<%=cp %>/member/login_ok.do" method="post" class="input-group">
-                    <input type="text" class="input-field" placeholder="User Id or Email" name="login_userEmail" required>
-                    <input type="password" class="input-field" placeholder="Enter Password" name="login_userPwd" required>
+                <form id="login" action="<%=cp %>/login/login_ok.do" method="post" class="input-group">
+                    <input type="text" class="input-field" placeholder="User Id" name="id" required>
+                    <input type="password" class="input-field" placeholder="Enter Password" name="pw" required>
                     <div style="margin-top: 10px;"><font size="2pt" color="white">${message }</font></div>
                     <input type="checkbox" class="checkbox"><span>Remember Password</span>
                     <button class="submit"><font size="4pt" color="white" >Login</font></button>
                 </form>
                 <form id="register" action="<%=cp %>/login/login_ok.do" method="post" class="input-group">
-                    <input type="email" class="input-field" placeholder="User Id" name="userId" required>
-                    <input type="password" class="input-field" placeholder="Enter Password" name="userPwd" required>
-                    <input type="text" class="input-field" placeholder="Your Name" name="userName" required>
-                    <input type="text" class="input-field" placeholder="Your Birth" name="userBirth" required>
+                    <input type="text" class="input-field" placeholder="User Id" name="id" required>
+                    <input type="password" class="input-field" placeholder="Enter Password" name="pw" required>
+                    <input type="text" class="input-field" placeholder="Your Name" name="name" required>
+                    <input type="date" class="input-field" placeholder="YYYY-MM-DD" name="birth" required>
                     <input type="checkbox" class="checkbox"><span>Terms and conditions</span>
                     <button class="submit"><font size="3pt" color="white" >REGISTER</font></button>
                 </form>

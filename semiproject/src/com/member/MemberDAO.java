@@ -13,7 +13,7 @@ public class MemberDAO {
 		
 		}
 		
-
+		// num의 최대값 구하기
 		public int getMaxNum() {
 			
 			int maxNum = 0;
@@ -24,7 +24,7 @@ public class MemberDAO {
 			
 	try {
 				
-				sql = "select nvl(max(num),0) from shop";
+				sql = "select nvl(max(num),0) from member";
 				
 				pstmt = conn.prepareStatement(sql);
 				
@@ -50,26 +50,26 @@ public class MemberDAO {
 			int result = 0;
 			PreparedStatement pstmt = null;
 			String sql;
-			
+								
 			
 			try {
 				
-				sql = "insert into member(id,pw,name,date) ";
-				sql += "values (?,?,?,?)";
+				sql = "insert into member(num,id,pw,name,birth) ";
+				sql += " values(?,?,?,?,?)";
 				
 				pstmt = conn.prepareStatement(sql);
 				
-				pstmt.setString(1, dto.getId());
-				pstmt.setString(2, dto.getPw());
-				pstmt.setString(3, dto.getName());
-				pstmt.setString(4, dto.getDate());
+				
+				pstmt.setInt(1, dto.getNum());
+				pstmt.setString(2, dto.getId());
+				pstmt.setString(3, dto.getPw());
+				pstmt.setString(4, dto.getName());
+				pstmt.setString(5, dto.getBirth());
 //				pstmt.setString(5, dto.getAddress());
 //				pstmt.setString(6, dto.getTel());
 //				pstmt.setString(7, dto.getGender());
 //				pstmt.setString(8, dto.getDate());
 //				pstmt.setString(9, dto.getIpAddr());
-				
-				
 				
 				
 	
@@ -79,12 +79,15 @@ public class MemberDAO {
 				
 			} catch (Exception e) {
 				System.out.println(e.toString());
-			}
-			
+					
+				   
+			   }
 			return result;
-			
+				
 		}
 		
+		
+
 		
 		//아이디 검증
 		public int registerCheck(String id) {
@@ -135,7 +138,7 @@ public class MemberDAO {
 			
 			try {
 				//id로 select 해온다.
-				sql = "select num,id,pw,name,email,address,tel,gender,date ";
+				sql = "select num,id,pw,name,email,address,tel,gender,birth ";
 				sql+= "from member where id=?";
 				
 				pstmt = conn.prepareStatement(sql);
@@ -156,7 +159,7 @@ public class MemberDAO {
 					dto.setAddress(rs.getString("address"));
 					dto.setTel(rs.getString("tel"));
 					dto.setGender(rs.getString("gender"));
-					dto.setDate(rs.getString("date"));
+					dto.setBirth(rs.getString("birth"));
 					
 					
 					
@@ -184,7 +187,7 @@ public class MemberDAO {
 			
 			try {
 				
-				sql = "update member set num=?,id=?,pw=?,name=?,email=?,address=?,tel=?,gender=?,date=?,";
+				sql = "update member set num=?,id=?,pw=?,name=?,email=?,address=?,tel=?,gender=?,birth=?,";
 				sql+= " where id=?";
 				
 				pstmt =conn.prepareStatement(sql);
@@ -197,7 +200,7 @@ public class MemberDAO {
 				pstmt.setString(6, dto.getAddress());
 				pstmt.setString(7, dto.getTel());
 				pstmt.setString(8, dto.getGender());
-				pstmt.setString(9, dto.getDate());
+				pstmt.setString(9, dto.getBirth());
 				pstmt.setString(10, dto.getId());
 				
 				result = pstmt.executeUpdate();

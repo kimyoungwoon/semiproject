@@ -61,12 +61,15 @@ public class MemberServlet extends HttpServlet{
 		else if(uri.indexOf("login_ok.do")!= -1) {
 			
 			MemberDTO dto = new MemberDTO();
-			
+			int maxNum = dao.getMaxNum();
 			//form  post방식으로 넘어오니까
+			
+
+			dto.setNum(maxNum + 1);
 			dto.setId(req.getParameter("id"));
 			dto.setPw(req.getParameter("pw"));
 			dto.setName(req.getParameter("name"));
-			dto.setDate(req.getParameter("date"));			
+			dto.setBirth(req.getParameter("birth"));			
 			
 			dao.insertData(dto);
 			
@@ -99,7 +102,7 @@ public class MemberServlet extends HttpServlet{
 			if(dto==null || (!dto.getPw().equals(pw))) {
 				
 				req.setAttribute("message", "아이디 또는 패스워드를 정확히 입력하세요");
-				url = "/semiroject/member/login.jsp";
+				url = "/semiproject/member/login.jsp";
 				
 				forward(req, resp, url);
 				
@@ -180,7 +183,7 @@ public class MemberServlet extends HttpServlet{
 			dto.setAddress(req.getParameter("address"));
 			dto.setTel(req.getParameter("tel"));
 			dto.setGender(req.getParameter("gender"));
-			dto.setDate(req.getParameter("date"));
+			dto.setBirth(req.getParameter("birth"));
 	
 			dao.updateData(dto);
 		

@@ -26,5 +26,5 @@ jsp<jsp:setProperty property="*" name="dto"/>
 	
 	response.sendRedirect("login.do");
 %>
-%>
+
 
