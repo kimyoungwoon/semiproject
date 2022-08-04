@@ -113,17 +113,6 @@ public class ProductServlet extends HttpServlet {
 			int xxxl = Integer.parseInt(returnNull(req.getParameter("xxxl")));
 			int xxxxl = Integer.parseInt(returnNull(req.getParameter("xxxxl")));
 			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
 			String pageNum = req.getParameter("pageNum");
 			
 			int currentPage = 1;
@@ -185,8 +174,53 @@ public class ProductServlet extends HttpServlet {
 			url = "/shop.jsp";
 			foward(req, resp, url);
 	
+		}else if(uri.indexOf("setting.do")!=-1) {//제품(컬러,태그,사이즈)등록 페이지로포워딩 및 리스트반환
+			
+			List<ProductDTO> settinglists = dao.product_getList();
+			
+			String imagePath = cp + "/pds/productFile";
+			
+			req.setAttribute("settinglists", settinglists);
+			req.setAttribute("imagePath", imagePath);
+			
+			url = "/shop/shop_setting.jsp";
+			foward(req, resp, url);
+			
+		}else if(uri.indexOf("insertSize.do")!=-1) {//제품의 사이즈등록
+			
+			int num = Integer.parseInt(returnNull(req.getParameter("size_nameNum")));
+			int sizeNum = Integer.parseInt(returnNull(req.getParameter("pd_sizeNum")));
+			int count = Integer.parseInt(returnNull(req.getParameter("sizeCount")));
+			
+			dao.size_insertData(num, sizeNum, count);
+			
+			url = cp + "/shopping/setting.do";
+			resp.sendRedirect(url);
+			
+			
+		}else if(uri.indexOf("insertColor.do")!=-1) {//제품의 컬러등록
+			
+			int num = Integer.parseInt(returnNull(req.getParameter("color_nameNum")));
+			int colorNum = Integer.parseInt(returnNull(req.getParameter("pd_colorNum")));
+			int count = Integer.parseInt(returnNull(req.getParameter("colorCount")));
+			
+			dao.color_insertData(num, colorNum, count);
+			
+			url = cp + "/shopping/setting.do";
+			resp.sendRedirect(url);
+			
+					
+		}else if(uri.indexOf("insertTag.do")!=-1) {//제품의 태그 등록
+			
+			int num = Integer.parseInt(returnNull(req.getParameter("tag_nameNum")));
+			int tagNum = Integer.parseInt(returnNull(req.getParameter("pd_tagNum")));
+			int count = Integer.parseInt(returnNull(req.getParameter("tagCount")));
+			
+			dao.tag_insertData(num, tagNum, count);
+			resp.sendRedirect(url);
+			
+			
 		}
-	
 	}
 	
 	//파라미터로 오는 분류값이 null이라면 
