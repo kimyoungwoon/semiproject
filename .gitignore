@@ -1,6 +1,8 @@
 # 이 파일은 불필요한 .class 파일이나 build파일 등을 올려주지 않도록 해주는 부분
 # 본인이 작업하다가 뭔가 커밋하는 파일이 많아진다 싶으면 보통 여기가 다른 사람에 의해서 수정되었거나
 # 파일의 내용이 없을 확률이 높다.
+# fork도 분명한 문제점이 있는 것 같다.
+# 다시 branch로 돌아가야 하는 것인가...
 
 # Created by https://www.toptal.com/developers/gitignore/api/java
 # Edit at https://www.toptal.com/developers/gitignore?templates=java
