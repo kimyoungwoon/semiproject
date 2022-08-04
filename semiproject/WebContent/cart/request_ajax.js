@@ -23,7 +23,7 @@ function successConnect(){
 			row.innerHTML = "<input type='hidden' id='productNum' value='" + result[i][1].value + "'/>"
 			+"<td class='product__cart__item'>"
 			+ "<div class='product__cart__item__pic'>"
-			+"<img src='./semiproject/img/shopping-cart/cart-1.jpg'>"
+			+"<img src='/semiproject/img/shopping-cart/cart-1.jpg'>"
 			+"</div>"+"<div class='product__cart__item__text'>"
 			+"<h6>"+ result[i][3].value +"</h6>"
 			+"<h5>" + Number(result[i][4].value).toLocaleString('ko-KR') + "원</h5>"
