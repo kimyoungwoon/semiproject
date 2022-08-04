@@ -1,14 +1,34 @@
-package com.semi;
+package com.cart;
 
-import java.sql.Date;
+public class CartProductDTO {
 
-public class OrderProductDTO {
-
+	
+	
+	
 	private int membernum;
 	private int productnum;
 	private int count;
-	private Date orderdate;
 	
+	//아래 2개는 조인해서 가져오는 데이터
+	private String name;
+	private int price;
+	
+	
+	
+	
+	
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public int getPrice() {
+		return price;
+	}
+	public void setPrice(int price) {
+		this.price = price;
+	}
 	public int getMembernum() {
 		return membernum;
 	}
@@ -27,13 +47,5 @@ public class OrderProductDTO {
 	public void setCount(int count) {
 		this.count = count;
 	}
-	public Date getOrderdate() {
-		return orderdate;
-	}
-	public void setOrderdate(Date orderdate) {
-		this.orderdate = orderdate;
-	}
-	
-	
 	
 }

@@ -1,4 +1,4 @@
-package com.Writing;
+package com.writing;
 
 public class WritingDTO {
 	

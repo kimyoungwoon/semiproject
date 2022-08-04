@@ -1,11 +1,10 @@
-package com.pDetail;
+package com.pdetail;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
-
-import com.pDetail.PdetailDTO;
+import com.pdetail.PdetailDTO;
 
 public class PdetailDAO {
 

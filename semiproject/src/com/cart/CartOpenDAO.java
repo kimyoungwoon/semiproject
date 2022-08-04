@@ -6,7 +6,6 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.semi.CartProductDTO;
 import com.shop.ProductDTO;
 
 public class CartOpenDAO {
@@ -26,7 +25,7 @@ public class CartOpenDAO {
 
 	//장바구니로 들어갔을 때 해당 회원이 추가한 상품 목록을 보여주기 위함.
 	public List<CartProductDTO> getCartList(int pMemberNum) {
-		lists = new ArrayList<>();
+		lists = new ArrayList<CartProductDTO>();
 		try {
 
 			sql = "select membernum, productnum, count, p.name as name, p.price as price from ";

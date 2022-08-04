@@ -1,4 +1,4 @@
-package com.pDetail;
+package com.pdetail;
 
 import java.io.IOException;
 import java.sql.Connection;
@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.pDetail.PdetailDAO;
+import com.pdetail.PdetailDAO;
 import com.util.DBConn;
 
 public class PdetailServlet extends HttpServlet {

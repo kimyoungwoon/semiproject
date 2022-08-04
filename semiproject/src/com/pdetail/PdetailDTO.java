@@ -1,4 +1,4 @@
-package com.pDetail;
+package com.pdetail;
 
 public class PdetailDTO {
 

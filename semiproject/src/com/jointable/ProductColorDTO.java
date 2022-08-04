@@ -1,4 +1,4 @@
-package com.semi;
+package com.jointable;
 
 public class ProductColorDTO {
 
@@ -17,7 +17,8 @@ public class ProductColorDTO {
 	public void setColorNum(int colorNum) {
 		this.colorNum = colorNum;
 	}
-	
-	
-	
 }
+
+
+
+
