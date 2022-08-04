@@ -40,10 +40,10 @@
 <link rel="stylesheet" href="<%=cp%>/css/slicknav.min.css"
 	type="text/css">
 <link rel="stylesheet" href="<%=cp%>/css/style.css" type="text/css">
-<link rel="stylesheet" href="<%=cp%>/yw_folder/custom.css"
+<link rel="stylesheet" href="<%=cp%>/cart/custom.css"
 	type="text/css">
 
-<script type="text/javascript" src="<%=cp %>/yw_folder/request_ajax.js"></script>
+<script type="text/javascript" src="<%=cp %>/cart/request_ajax.js"></script>
 
 
 </head>
