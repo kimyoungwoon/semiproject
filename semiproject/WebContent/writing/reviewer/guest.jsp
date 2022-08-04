@@ -18,8 +18,6 @@
 		
 		var f = document.myForm;
 		
-		
-		
 		f.action = "<%=cp%>/review/write_ok.do";
 		f.submit();
 	}
