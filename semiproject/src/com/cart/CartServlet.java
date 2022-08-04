@@ -12,7 +12,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.semi.CartProductDTO;
 import com.shop.ProductDAO;
 import com.util.DBConn;
 

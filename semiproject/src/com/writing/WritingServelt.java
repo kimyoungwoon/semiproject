@@ -1,4 +1,4 @@
-package com.Writing;
+package com.writing;
 
 import java.io.IOException;
 import java.net.URLDecoder;
@@ -13,10 +13,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-
-import com.Writing.CustomInfo;
 import com.util.DBConn;
 import com.util.MyPage;
+import com.writing.CustomInfo;
 
 public class WritingServelt extends HttpServlet {
 	
@@ -112,7 +111,7 @@ public class WritingServelt extends HttpServlet {
 			}
 			
 			int dataCount = dao.getDataCount(searchKey, searchValue);
-			int numPerPage = 5;
+			int numPerPage = 4;
 			int totalPage = myPage.getPagecount(numPerPage, dataCount);			
 			
 			if(currentPage>totalPage) {

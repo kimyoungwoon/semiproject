@@ -28,72 +28,7 @@
     <link rel="stylesheet" href="<%=cp%>/css/slicknav.min.css" type="text/css">
     <link rel="stylesheet" href="<%=cp%>/css/style.css" type="text/css">
     <link rel="stylesheet" type="text/css" href="<%=cp %>/writing/css/style.css"/>
-	<link rel="stylesheet" type="text/css" href="<%=cp %>/writing/css/created.css"/>
-	
-	<script type="text/javascript" src="<%=cp%>/writing/js/util.js"></script>
-<script type="text/javascript">
-
-
-	function sendIt() {
-		
-		var f= document.myForm;
-		
-		str= f.subject.value;
-		str = str.trim();
-		if(!str) {
-			alert("\n제목을 입력하세요.")
-			f.subject.focus();
-			return;
-		}
-		f.subject.value = str;
-		
-		str= f.name.value;
-		str = str.trim();
-		if(!str) {
-			alert("\이름을 입력하세요.")
-			f.name.focus();
-			return;
-		}
-		
-		/* if(!isValidKorean(str)) {
-			alert("\n이름을 정확히 입력하세요.");
-			f.name.focus();
-			return;
-		} */
-		
-		f.name.value = str;
-		
-		if(f.email.value) {
-			if(!isValidEmail(f.email.value)) {
-				alert("\n정상적인 E-mail을 입력하세요.")
-				f.email.focus();
-				return;
-			}
-		}
-		
-		str= f.content.value;
-		str = str.trim();
-		if(!str) {
-			alert("\n내용을 입력하세요.")
-			f.content.focus();
-			return;
-		}
-		f.content.value = str;
-		
-		str= f.pwd.value;
-		str = str.trim();
-		if(!str) {
-			alert("\n패스워드를 입력하세요.")
-			f.pwd.focus();
-			return;
-		}
-		f.pwd.value = str;
-		
-		f.action = "<%=cp%>/bbs/updated_ok.do";
-		f.submit();		
-		
-	}
-</script>
+	<link rel="stylesheet" type="text/css" href="<%=cp %>/writing/css/article.css"/>
 </head>
 
 <body>
@@ -201,83 +136,60 @@
     </header>
     <!-- Header Section End -->
     
-    <!-- updated Section begin -->
-    
-    <div id="bbs">
+    <!-- article Section begin -->
+	<div id="bbs">
 	<div id="bbs_title">
-	질 문 수 정	
-	</div>
-	
-	<form action="" method="post" name="myForm">
-	<div id ="bbsCreated">
-	
-		<div class="bbsCreated_bottomLine">
-			<dl>
-				<dt>제&nbsp;&nbsp;&nbsp;&nbsp;목</dt>
-				<dd>
-					<input type="text" name="subject"  size="64"
-					maxlength="100" class="boxTF" value="${dto.subject }" />
-				</dd>	
-			</dl>
+		질 문 게 시 판
 		</div>
-		
-		
-		<div class="bbsCreated_bottomLine">
-			<dl>
-				<dt>작&nbsp;성&nbsp;자</dt>
-				<dd>
-					<input type="text" name="name" size="35"
-					maxlength="20" class="boxTF" value="${dto.name }"/>
-				</dd>	
-			</dl>
-		</div>
-		
-		<div class="bbsCreated_bottomLine">
-			<dl>
-				<dt>E-Mail</dt>
-				<dd>
-					<input type="text" name="email" size="35"
-					maxlength="50" class="boxTF" value="${dto.email }"/>
-				</dd>	
-			</dl>
-		</div>
-		
-		<div id="bbsCreated_content">
-			<dl>
-				<dt>내&nbsp;&nbsp;&nbsp;&nbsp;용</dt>
-				<dd>
-					<textarea rows="12" cols="63" name="content" 
-					class="boxTA" >${dto.content }</textarea>
-				</dd>	
-			</dl>
-		</div>
-		
-		<div class="bbsCreated_noLine">
-			<dl>
-				<dt>패스워드</dt>
-				<dd>
-					<input type="password" name="pwd" size="35" value="${dto.pw }"
-					maxlength="7" class="boxTF"/>&nbsp;(게시물 수정 및 삭제시 필요!!)
-				</dd>	
-			</dl>
-		</div>
-		<div id = "bbsCreated_footer">
-			<input type="hidden" name="num" value="${dto.num }"/>
-			<input type="hidden" name="pageNum" value="${pageNum }"/>
-			<input type="hidden" name="searchKey" value="${searchKey }"/>
-			<input type="hidden" name="searchValue" value="${searchValue }"/>
+		<div id ="bbsArticle">
+			<div id ="bbsArticle_header">
+				${dto.subject }
+			</div>
+			<div class="bbsArticle_bottomLine">
+				<dl>
+					<dt>작성자</dt>
+					<dd>${dto.name }</dd>
+					<dt>줄수</dt>
+					<dd>${lineSu }</dd>
+				</dl>
+			</div>
 			
-			<input type="button" value = "수정하기" class="btn2"
-				onclick="sendIt();"/>			
-			<input type="button" value="수정취소" class="btn2"
-				onclick="javascript:location.href='<%=cp%>/bbs/list.do?${params }';">				
-		</div>	
-		</form>	
+			<div class="bbsArticle_bottomLine">
+				<dl>
+					<dt>등록일</dt>
+					<dd>${dto.savePath }</dd>
+					<dt>조회수</dt>
+					<dd>${dto.hitcount }</dd>
+				</dl>
+			</div>
+			
+			<div id="bbsArticle_content">
+				<table width="600" border="0">
+				<tr>
+					<td style="padding: 20px 80px 20px 62px;" valign="top" height="200">
+					${dto.content }
+					</td>
+				</tr>	
+				</table>	
+			</div>
+		
+		<div id="bbsArticle_footer">
+			<div id="leftFooter">
+				<input type="button" value="수정" class="btn2" 
+				onclick="javascript:location.href='<%=cp %>/bbs/updated.do?num=${dto.num }&${params }';"/> 
+				<input type="button" value="삭제" class="btn2" 
+				onclick="javascript:location.href='<%=cp %>/bbs/deleted_ok.do?num=${dto.num }&${params }';"/> 
+			</div>
+			<div id="rightFooter">
+				<input type="button" value="리스트" class="btn2" 
+				onclick="location='<%=cp %>/bbs/list.do?${params }';"/> 
+			</div>
+		</div>
 	</div>
-    
-    <!-- updated Section end -->
-    
-    	<!-- Footer Section Begin -->
+	</div>
+    <!-- article Section end -->
+         
+    <!-- Footer Section Begin -->
 	<br/><br/><br/><br/><br/><br/><br/><br/>
 	<br/><br/><br/><br/><br/><br/><br/><br/>
     <footer class="footer">

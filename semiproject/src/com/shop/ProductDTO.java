@@ -2,9 +2,6 @@ package com.shop;
 
 public class ProductDTO {
 	
-
-	
-
 	private int num;
 	private String name;
 	private int price;  
@@ -14,7 +11,6 @@ public class ProductDTO {
 	private int color;
 	private int tag;
 	private String saveFileName;
-	
 
 	public int getColor() {
 		return color;

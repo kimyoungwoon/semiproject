@@ -10,7 +10,7 @@
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
 
-<!-- Servlet 게시판 -->
+<!-- Servlet 게시판
 	<servlet>
 		<servlet-name>cartServlet</servlet-name>
 		<servlet-class>com.cart.CartServlet</servlet-class>
@@ -19,7 +19,8 @@
 		<servlet-name>cartServlet</servlet-name>
 		<url-pattern>/ywsemi/*</url-pattern>
 	</servlet-mapping>
-  
+   -->
+  <!-- 게시판 -->
   <servlet>
     <servlet-name>writingServlet</servlet-name>
     <servlet-class>com.Writing.WritingServelt</servlet-class>
@@ -28,10 +29,18 @@
     <servlet-name>writingServlet</servlet-name>
     <url-pattern>/bbs/*</url-pattern>
   </servlet-mapping>
-
-
   
-   <servlet>
+  <!-- 리뷰 -->
+  <servlet>
+    <servlet-name>ReviewServlet</servlet-name>
+    <servlet-class>com.review.ReviewServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ReviewServlet</servlet-name>
+    <url-pattern>/review/*</url-pattern>
+  </servlet-mapping>
+ 
+  <servlet>
     <servlet-name>productServlet</servlet-name>
     <servlet-class>com.shop.ProductServlet</servlet-class>
   </servlet>
@@ -39,7 +48,7 @@
     <servlet-name>productServlet</servlet-name>
     <url-pattern>/shopping/*</url-pattern>
   </servlet-mapping>
-  
+
   
    <servlet>
     <servlet-name>memberServlet</servlet-name>
@@ -50,7 +59,24 @@
     <url-pattern>/login/*</url-pattern>
   </servlet-mapping>
   
-  
+  <servlet>
+		<servlet-name>PdetailServlet</servlet-name>
+		<servlet-class>com.pDetail.PdetailServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>PdetailServlet</servlet-name>
+		<url-pattern>/pdetail/*</url-pattern>
+	</servlet-mapping>
+
+
+  <servlet>
+		<servlet-name>wishlistServlet</servlet-name>
+		<servlet-class>com.wishlist.wishlistServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>wishlistServlet</servlet-name>
+		<url-pattern>/wishlist/*</url-pattern>
+	</servlet-mapping>
 
 	
 </web-app>

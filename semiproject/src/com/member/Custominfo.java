@@ -17,6 +17,4 @@ public class Custominfo {
 	public void setName(String Name) {
 		this.Name = Name;
 	}
-
-
 }
