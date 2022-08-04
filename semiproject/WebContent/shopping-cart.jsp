@@ -76,9 +76,9 @@
 					+"<div class='quantity'>"
 						+"<div class='pro-qty-2'>"
 						//왜 span이 안붙을까??
-						+"<span onclick = 'alert()' class='fa fa-angle-left dec qtybtn'></span>"
+						//+"<span onclick = 'alert()' class='fa fa-angle-left dec qtybtn'></span>"
 							+"<input type='text' value='2'>"
-							+"<span onclick = 'alert()' class='fa fa-angle-right inc qtybtn'></span>"
+							//+"<span onclick = 'alert()' class='fa fa-angle-right inc qtybtn'></span>"
 						+"</div>"
 					+"</div>"
 				+"</td>"
