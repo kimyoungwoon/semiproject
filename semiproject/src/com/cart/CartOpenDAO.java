@@ -55,7 +55,31 @@ public class CartOpenDAO {
 		return lists;
 	}
 	
-	public int cart_ProductDelete(int pMeberNum, int pProductNum) {
+	public int updateCart_Product(int pMeberNum, int pProductNum, int count) {
+		int result = 0;
+		PreparedStatement pstmt = null;
+		String sql;
+		
+		try {
+			
+			sql = "update cart_product set count = ? where membernum=? and productNum = ?";
+			
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, count);
+			pstmt.setInt(2, pMeberNum);
+			pstmt.setInt(3, pProductNum);
+			
+			result = pstmt.executeUpdate();
+			
+			pstmt.close();
+			
+		} catch (Exception e) {
+			System.out.println(e.toString());
+		}
+		return result;
+	}
+	
+	public int deleteCart_Product(int pMeberNum, int pProductNum) {
 		int result = 0;
 		PreparedStatement pstmt = null;
 		String sql;
@@ -77,5 +101,6 @@ public class CartOpenDAO {
 		}
 		return result;
 	}
+	
 	
 }

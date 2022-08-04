@@ -47,11 +47,9 @@ public class CartServlet extends HttpServlet{
 		}
 
 		if(uri.indexOf("cartOpen.do") != -1){
-			//장바구니에 들어왔을 때 전달받는 회원번호
-			int memberNumber = 2;
 
-			List<CartProductDTO> lists = dao.getCartList(memberNumber);
-
+			
+			
 			//아래 setattribute는 일부러 해줌.
 			//write.jsp에서 ${pageNum} 이렇게 쓰기 위해서
 			//아래 코드를 지우면  ${param.pageNum} 이렇게 쓰거나
@@ -63,16 +61,7 @@ public class CartServlet extends HttpServlet{
 			url = "/shopping-cart.jsp";
 			myForward(request, response, url);
 		}
-		else if(uri.indexOf("cartDelete.do") != -1){
-			//			로그인 구현 후 id를 세션에 담아서 사용.
-			//			HttpSession session = request.getSession();
-			//			String memberNum = (String)session.getAttribute("id");
-
-			int memberNum  = 2;
-			int productNum  = Integer.parseInt(request.getParameter("productNum"));
-
-			dao.cart_ProductDelete(memberNum, productNum);
-		}
+		
 		/*else if(uri.indexOf("cartToPayment.do") != -1){
 
 
@@ -88,12 +77,15 @@ public class CartServlet extends HttpServlet{
 			url = cp + "/ywsemi/cartOpen.do";
 			response.sendRedirect(url);
 		}*/
-		/*else if(uri.indexOf("test.do") != -1){
+		else if(uri.indexOf("updatePC.do") != -1){
+			
+			int memberNum  = 2;
+			int productNum  = Integer.parseInt(request.getParameter("productNum"));
+			int count  = Integer.parseInt(request.getParameter("count"));
 
-			url = "/shopping-cart.jsp";
-			myForward(request, response, url);
+			dao.updateCart_Product(memberNum, productNum, count);
 
-		}*/
+		}
 		else if(uri.indexOf("shopCart.do") != -1){
 			//장바구니에 들어왔을 때 전달받는 회원번호
 			int memberNumber = Integer.parseInt(request.getParameter("memberNum"));
@@ -116,6 +108,16 @@ public class CartServlet extends HttpServlet{
 			}
 			result.append("]}");
 			response.getWriter().write(result.toString());
+		}
+		else if(uri.indexOf("deleteCart.do") != -1){
+			//			로그인 구현 후 id를 세션에 담아서 사용.
+			//			HttpSession session = request.getSession();
+			//			String memberNum = (String)session.getAttribute("id");
+
+			int memberNum  = 2;
+			int productNum  = Integer.parseInt(request.getParameter("productNum"));
+
+			dao.deleteCart_Product(memberNum, productNum);
 		}
 	}
 
