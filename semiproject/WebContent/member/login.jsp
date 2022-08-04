@@ -33,7 +33,7 @@
                     <input type="checkbox" class="checkbox"><span>Remember Password</span>
                     <button class="submit"><font size="4pt" color="white" >Login</font></button>
                 </form>
-                <form id="register" action="<%=cp %>/member/created_ok.do" method="post" class="input-group">
+                <form id="register" action="<%=cp %>/login/login_ok.do" method="post" class="input-group">
                     <input type="email" class="input-field" placeholder="User Id" name="userId" required>
                     <input type="password" class="input-field" placeholder="Enter Password" name="userPwd" required>
                     <input type="text" class="input-field" placeholder="Your Name" name="userName" required>
