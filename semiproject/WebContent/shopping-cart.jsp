@@ -43,60 +43,7 @@
 <link rel="stylesheet" href="<%=cp%>/yw_folder/custom.css"
 	type="text/css">
 
-<script type="text/javascript">
-	var connectRequest = new XMLHttpRequest();
-	var deleteRequest = new XMLHttpRequest();
-	function reqFunction() {
-		//여기도 마찬가지로 요청할때는 session을 이용해서 하면 됨.
-		//지금 당장은 테스트로 1
-		connectRequest.open("Post", "./ywsemi/shopCart.do?memberNum=" + encodeURIComponent("1"), true);
-		connectRequest.onreadystatechange = successConnect;
-		connectRequest.send(null);
-	}
-
-	function successConnect(){
-		var table = document.getElementById('productTable');
-		table.innerHTML = "";
-		if(connectRequest.readyState == 4 && connectRequest.status == 200) {
-			
-			var object = eval('(' + connectRequest.responseText + ')');
-			var result = object.result;
-			
-			for(var i = 0; i < result.length; i++) {
-				var row = table.insertRow(0);
-					row.innerHTML = "<td class='product__cart__item'>"
-						+ "<div class='product__cart__item__pic'>"
-					+"<img src='<%=cp%>/img/shopping-cart/cart-1.jpg'>"
-					+"</div>"+"<div class='product__cart__item__text'>"
-						+"<h6>"+ result[i][3].value +"</h6>"
-						+"<h5>" + Number(result[i][4].value).toLocaleString('ko-KR') + "원</h5>"
-					+"</div>"
-				+"</td>"
-					+"<td class='quantity__item'>"
-					+"<div class='quantity'>"
-						+"<div class='pro-qty-2'>"
-						//왜 span이 안붙을까??
-						//+"<span onclick = 'alert()' class='fa fa-angle-left dec qtybtn'></span>"
-							+"<input type='text' value='2'>"
-							//+"<span onclick = 'alert()' class='fa fa-angle-right inc qtybtn'></span>"
-						+"</div>"
-					+"</div>"
-				+"</td>"
-					+"<td class='cart__price'>" 
-					+ (Number(result[i][2].value) * Number(result[i][4].value)).toLocaleString('ko-KR')
-					+ "원</td>"
-					+ "<td class='cart__close'><a href = '<%=cp%>/ywsemi/cartDelete.do?productNum='" 
-					+ result[i][1].value	+ "'><i class='fa fa-close'></i></a></td>";
-			}
-		}
-	}
-	
-window.onload = function() {
-	reqFunction();
-}
-
-
-</script>
+<script type="text/javascript" src="<%=cp %>/yw_folder/request_ajax.js"></script>
 
 
 </head>
