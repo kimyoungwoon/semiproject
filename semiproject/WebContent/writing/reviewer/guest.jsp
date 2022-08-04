@@ -12,14 +12,13 @@
 
 <link rel="stylesheet" type="text/css" href="<%=cp %>/review/data/style.css"/>
 
-<script type="text/javascript" src="<%=cp%>/review/data/guest.js"></script>
-
-
 <script type="text/javascript">
 
 	function sendIt() {
 		
 		var f = document.myForm;
+		
+		
 		
 		f.action = "<%=cp%>/review/write_ok.do";
 		f.submit();
@@ -77,24 +76,30 @@
 <tr height="2"><td colspan="2" bgcolor="#ccccc"></td></tr>
 </table>
 
-<table width="560" border="0" cellspacing="0" cellpadding="100"  style="margin: auto;">
+<table width="560" border="0" cellspacing="0" cellpadding="5"  style="margin: auto;">
 <c:forEach var="dto" items="${lists }">
-	<tr height="30">
-		<td align="left" bgcolor="#e6e6e6">NO&nbsp;${dto.num }.이름&nbsp;${dto.name }.제목&nbsp;${dto.subject }</td>
-		
+	<tr height="5">
+		<td align="left" bgcolor="#e6e6e6">NO&nbsp;${dto.num }&nbsp;.&nbsp;이름&nbsp;${dto.name }</td>
+		<td align="right" bgcolor="#e6e6e6">제목&nbsp;${dto.subject }</td>
 		<br/></tr>
-	<tr height="30">	
+	<tr height="5">	
 		<td align="left" bgcolor="#e6e6e6">작성일&nbsp;${dto.savepath }</td>
 		<td align="right" bgcolor="#e6e6e6">
 		<input type="button" value="삭제" 
 		onclick="javascript:location.href='<%=cp%>/review/delete.do?num=${dto.num }';"/></tr>
 		<%-- javascript:location.href='<%=cp%>/guest/delete.jsp?num=<%=dto2.getNum()%>'; --%>
-	<tr><td align="left" bgcolor="#ffffff">${dto.content }</td>
+	<tr><td align="left" bgcolor="#ffffff">${dto.content }<br/></td>
 	</tr>
+	
 </c:forEach>
 </table>
 
+<table align="center">
+<tr>
+	<td align="center">${pageIndexList }</td>
+	</tr>
+	</table>
+	
 </form>
-
 </body>
 </html>
