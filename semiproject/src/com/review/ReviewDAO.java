@@ -51,8 +51,8 @@ public class ReviewDAO {
 
 		try {
 
-			sql = "insert into guest (num,name,subject,content,savepath,hitcount) ";
-			sql += "values (?,?,?,?,sysdate,0) ";
+			sql = "insert into guest (num,name,subject,content,savepath) ";
+			sql += "values (?,?,?,?,sysdate) ";
 
 			pstmt = conn.prepareStatement(sql);
 
@@ -83,7 +83,7 @@ public class ReviewDAO {
 			sql = "select * from (";
 			sql+= "select rownum rnum,data.* from (";
 			sql+= "select num,name,to_char(savepath,'YYYY-MM-DD') savepath,";
-			sql+= "subject,content,hitcount from guest order by num desc) data ) ";
+			sql+= "subject,content from review order by num desc) data ) ";
 			sql+= "where rnum >= ? and rnum <=?";
 
 			pstmt = conn.prepareStatement(sql);
@@ -101,7 +101,6 @@ public class ReviewDAO {
 				dto.setSavepath(rs.getString("savepath"));
 				dto.setSubject(rs.getString("subject"));
 				dto.setContent(rs.getString("content"));
-				dto.setHitcount(rs.getInt("hitcount"));
 
 				lists.add(dto);
 
