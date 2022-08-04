@@ -30,7 +30,7 @@
     <link rel="stylesheet" href="<%=cp%>/css/style.css" type="text/css">
     <link rel="stylesheet" type="text/css" href="<%=cp %>/writing/css/style.css"/>
 	<link rel="stylesheet" type="text/css" href="<%=cp %>/writing/css/list.css"/>
-	
+	<script type="text/javascript" src="<%=cp%>/writing/js/util.js"></script>
 	<script type="text/javascript">
 
 	function sendIt() {
