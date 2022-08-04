@@ -1,4 +1,4 @@
-package com.Writing;
+package com.writing;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;

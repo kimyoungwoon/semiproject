@@ -1,4 +1,4 @@
-package com.semi;
+package com.jointable;
 
 public class ProductTagDTO {
 
