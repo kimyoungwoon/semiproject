@@ -7,10 +7,10 @@
 }
 
 #bbsList_title {
-	width:664px;   /* 690px - (padding-left+border:3px+border:3px) */
+	width:690px;   /* 690px - (padding-left+border:3px+border:3px) */
 	padding-left:20px;
 	height:40px;
-	border:3px solid #D6D4A6;
+	border:3px solid #FF0000;
 	text-align:left;
 	font-weight: bold;
 	line-height:40px;
@@ -33,7 +33,7 @@
 	text-align:right;
 }
 
-#bbsList_header .selectFiled {border:1px solid; border-color:#666666; background-color:#ffffff; font-family:굴림; font-size:9pt;}
+#bbsList_header .selectFiled {border:1px solid; border-color:#1E90FF; background-color:#ffffff; font-family:굴림; font-size:9pt;}
 #bbsList_header .textFiled {border:1px solid; height:13px; padding:2px 2px 2px 2px; border-color:#666666; background-color:#ffffff; font-family:"굴림"; font-size:9pt;}
 
 #bbsList_list {
@@ -49,8 +49,8 @@
 
 #bbsList_list #title {
 	height:30px;
-	border-top:1px solid #CCCCCC;
-	border-bottom:1px solid #CCCCCC;
+	border-top:1px solid #000000;
+	border-bottom:1px solid #000000;
 	background-color: #E6E4E6;
 }
 
@@ -69,8 +69,8 @@
 #bbsList_list .num {width:50px;}
 #bbsList_list .subject {width:420px;}
 #bbsList_list .name {width:90px;}
-#bbsList_list .created {width:65px;}
-#bbsList_list .hitCount {width:60px;}
+#bbsList_list .savepath {width:65px;}
+#bbsList_list .hitcount {width:60px;}
 
 #bbsList_list #lists {
 	clear:both;

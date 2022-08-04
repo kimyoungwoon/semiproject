@@ -112,7 +112,7 @@ public class WritingServelt extends HttpServlet {
 			}
 			
 			int dataCount = dao.getDataCount(searchKey, searchValue);
-			int numPerPage = 5;
+			int numPerPage = 4;
 			int totalPage = myPage.getPagecount(numPerPage, dataCount);			
 			
 			if(currentPage>totalPage) {

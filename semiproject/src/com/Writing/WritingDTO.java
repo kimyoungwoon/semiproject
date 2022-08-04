@@ -2,7 +2,6 @@ package com.Writing;
 
 public class WritingDTO {
 	
-	private int membernum;
 	private int num;
 	private String id;
 	private String pw;
@@ -13,14 +12,6 @@ public class WritingDTO {
 	private int hitcount;
 	private String savePath;
 	
-	
-
-	public int getMembernum() {
-		return membernum;
-	}
-	public void setMembernum(int membernum) {
-		this.membernum = membernum;
-	}
 	public int getNum() {
 		return num;
 	}
