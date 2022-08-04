@@ -1,8 +1,8 @@
-insert into product (num, name, price) values(1, 'Æ®·»Ä¡ÄÚÆ®', 530000);
-insert into product (num, name, price) values(2, '¸°³Ù °¡µğ°Ç', 880000);
-insert into product (num, name, price) values(3, '¼¼¹Ì Á¤Àå', 300000);
-insert into product (num, name, price) values(4, '¹°¹æ¿ï ¿øÇÇ½º', 53000);
-insert into product (num, name, price) values(5, '·ÕÆĞµù', 102000);
+insert into product (num, name, price) values(1, 'íŠ¸ë Œì¹˜ì½”íŠ¸', 530000);
+insert into product (num, name, price) values(2, 'ë¦°ë„¨ ê°€ë””ê±´', 880000);
+insert into product (num, name, price) values(3, 'ì„¸ë¯¸ ì •ì¥', 300000);
+insert into product (num, name, price) values(4, 'ë¬¼ë°©ìš¸ ì›í”¼ìŠ¤', 53000);
+insert into product (num, name, price) values(5, 'ë¡±íŒ¨ë”©', 102000);
 
 select * from tab;
 
@@ -12,11 +12,11 @@ desc member;
 
 desc CART_PRODUCT;
 
-insert into member (num, name) values(1, '±è¿µ¿î');
-insert into member (num, name) values(2, '¾È¼ö¾ğ');
-insert into member (num, name) values(3, 'ÀÌµ¿Áø');
-insert into member (num, name) values(4, 'À±´Ù¿µ');
-insert into member (num, name) values(5, 'Á¤¿µÁø');
+insert into member (num, name) values(1, 'ê¹€ì˜ìš´');
+insert into member (num, name) values(2, 'ì•ˆìˆ˜ì–¸');
+insert into member (num, name) values(3, 'ì´ë™ì§„');
+insert into member (num, name) values(4, 'ìœ¤ë‹¤ì˜');
+insert into member (num, name) values(5, 'ì •ì˜ì§„');
 
 insert into CART_PRODUCT (membernum, productnum, count) values(1, 1, 2);
 insert into CART_PRODUCT (membernum, productnum, count) values(1, 2, 1);
