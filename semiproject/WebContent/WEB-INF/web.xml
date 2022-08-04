@@ -23,7 +23,7 @@
   <!-- 게시판 -->
   <servlet>
     <servlet-name>writingServlet</servlet-name>
-    <servlet-class>com.Writing.WritingServelt</servlet-class>
+    <servlet-class>com.writing.WritingServelt</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>writingServlet</servlet-name>
@@ -61,7 +61,7 @@
   
   <servlet>
 		<servlet-name>PdetailServlet</servlet-name>
-		<servlet-class>com.pDetail.PdetailServlet</servlet-class>
+		<servlet-class>com.pdetail.PdetailServlet</servlet-class>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>PdetailServlet</servlet-name>
