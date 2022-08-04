@@ -27,7 +27,7 @@ public class CartServlet extends HttpServlet{
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		final int MEMBER_NUM = 1;
+		final int MEMBER_NUM = 3;
 
 		request.setCharacterEncoding("utf-8");
 		response.setContentType("text/html;charset=UTF-8");

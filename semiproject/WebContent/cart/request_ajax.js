@@ -6,7 +6,7 @@ var arrProduct = [];
 function registerFunction() {
     //여기도 마찬가지로 요청할때는 session을 이용해서 하면 됨.
     //지금 당장은 테스트로 1
-    connectRequest.open("Post", "./ywsemi/shopCart.do?memberNum=" + eURI("1"), true);
+    connectRequest.open("Post", "./ywsemi/shopCart.do?memberNum=" + eURI("3"), true);
     connectRequest.onreadystatechange = successConnect;
     connectRequest.send(null);
 }
@@ -107,14 +107,19 @@ function changeSubTotal(thisNum, price, count) {
     //지금 당장은 테스트로 1
 }
 //장바구니 총 금액
-function cartTotal() {
+function cartTotal(discount = 1) {
     var arrPrice = $("#productTable").closest("tbody").find("tr").length;
     let totalPrice = 0;
+    let originTotal = 0;
     for (let price of $(".cart__price")) {
         totalPrice += Number(removeCandWon(price.innerText));
     }
+    originTotal = totalPrice;
+    totalPrice = totalPrice * discount;
+    
     totalPrice = totalPrice.toLocaleString("ko-KR");
-    $("#beforeDiscount").text(totalPrice + "원");
+    originTotal = originTotal.toLocaleString("ko-KR");
+    $("#beforeDiscount").text(originTotal + "원");
     $("#actualPayment").text(totalPrice + "원");
 }
 
@@ -130,8 +135,18 @@ function deleteCartProduct(arg, productNum) {
     deleteRequest.open("Post", "./ywsemi/deleteCart.do?productNum=" + eURI(productNum), true);
     //	deleteRequest.onreadystatechange = successConnect;
     deleteRequest.send(null);
-    cartTotal();
     $(arg).closest("tr").remove();
+    cartTotal();
+}
+
+function useCoupon(apply) {
+	var code = $(apply).parent().children('input').val();
+	if(code == "itwill"){
+		alert("10% 할인이 되었습니다.");
+		cartTotal(0.9);
+		return;
+	}
+	alert("사용할 수 없는 코드입니다.");
 }
 
 function removeCandWon(str) {

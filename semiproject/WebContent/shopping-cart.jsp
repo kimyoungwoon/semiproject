@@ -204,9 +204,9 @@
 				<div class="col-lg-4">
 					<div class="cart__discount">
 						<h6>Discount codes</h6>
-						<form action="#">
+						<form>
 							<input type="text" placeholder="Coupon code">
-							<button type="submit">Apply</button>
+							<button type="button" onclick = "useCoupon(this);">Apply</button>
 						</form>
 					</div>
 					<div class="cart__total">
