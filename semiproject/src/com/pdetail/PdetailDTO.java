@@ -7,7 +7,7 @@ public class PdetailDTO {
 	private int price;
 	private int pro_size;
 	private int color;
-	private int count;
+	private int tag;
 	
 	public int getNum() {
 		return num;
@@ -39,11 +39,11 @@ public class PdetailDTO {
 	public void setColor(int color) {
 		this.color = color;
 	}
-	public int getCount() {
-		return count;
+	public int getTag() {
+		return tag;
 	}
-	public void setCount(int count) {
-		this.count = count;
+	public void setTag(int tag) {
+		this.tag = tag;
 	}
 
 	

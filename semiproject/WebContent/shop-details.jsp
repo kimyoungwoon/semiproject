@@ -99,13 +99,13 @@
             <div class="row">
                 <div class="col-lg-3 col-md-3">
                     <div class="header__logo">
-                        <a href="./inex.jsp"><img src="<%=cp%>/img/logo.png" alt=""></a>
+                        <a href="/index.jsp"><img src="<%=cp%>/img/logo.png" alt=""></a>
                     </div>
                 </div>
                 <div class="col-lg-6 col-md-6">
                     <nav class="header__menu mobile-menu">
                         <ul>
-                            <li><a href="./inex.jsp">Home</a></li>
+                            <li><a href="./index.jsp">Home</a></li>
                             <li class="active"><a href="./shop.jsp">Shop</a></li>
                             <li><a href="#">Pages</a>
                                 <ul class="dropdown">
@@ -124,7 +124,7 @@
                 <div class="col-lg-3 col-md-3">
                     <div class="header__nav__option">
                         <a href="#" class="search-switch"><img src="<%=cp%>/img/icon/search.png" alt=""></a>
-                        <a href="#"><img src="<%=cp%>/img/icon/heart.png" alt=""></a>
+                        <a href="./shop-details.jsp"><img src="<%=cp%>/img/icon/heart.png" alt=""></a>
                         <a href="#"><img src="<%=cp%>/img/icon/cart.png" alt=""> <span>0</span></a>
                         <div class="price">$0.00</div>
                     </div>
@@ -153,26 +153,25 @@
                         <ul class="nav nav-tabs" role="tablist">
                             <li class="nav-item">
                                 <a class="nav-link active" data-toggle="tab" href="#tabs-1" role="tab">
-                                    <div class="product__thumb__pic set-bg" data-setbg="<%=cp%>/img/shop-details/thumb-1.png">
+                                    <div class="product__thumb__pic set-bg" data-setbg="${imagePath}/prada1.jpg">
                                     </div>
                                 </a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" data-toggle="tab" href="#tabs-2" role="tab">
-                                    <div class="product__thumb__pic set-bg" data-setbg="<%=cp%>/img/shop-details/thumb-2.png">
+                                    <div class="product__thumb__pic set-bg" data-setbg="${imagePath}/prada3.jpg">
                                     </div>
                                 </a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" data-toggle="tab" href="#tabs-3" role="tab">
-                                    <div class="product__thumb__pic set-bg" data-setbg="<%=cp%>/img/shop-details/thumb-3.png">
+                                    <div class="product__thumb__pic set-bg" data-setbg="${imagePath}/prada2.jpg">
                                     </div>
                                 </a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" data-toggle="tab" href="#tabs-4" role="tab">
-                                    <div class="product__thumb__pic set-bg" data-setbg="<%=cp%>/img/shop-details/thumb-4.png">
-                                        <i class="fa fa-play"></i>
+                                    <div class="product__thumb__pic set-bg" data-setbg="${imagePath}/prada4.jpg">
                                     </div>
                                 </a>
                             </li>
@@ -182,23 +181,22 @@
                         <div class="tab-content">
                             <div class="tab-pane active" id="tabs-1" role="tabpanel">
                                 <div class="product__details__pic__item">
-                                    <img src="<%=cp%>/img/shop-details/product-big-2.png" alt="">
+                                    <img src="${imagePath}/prada1.jpg" alt="">
                                 </div>
                             </div>
                             <div class="tab-pane" id="tabs-2" role="tabpanel">
                                 <div class="product__details__pic__item">
-                                    <img src="<%=cp%>/img/shop-details/product-big-3.png" alt="">
+                                    <img src="${imagePath}/prada3.jpg" alt="">
                                 </div>
                             </div>
                             <div class="tab-pane" id="tabs-3" role="tabpanel">
                                 <div class="product__details__pic__item">
-                                    <img src="<%=cp%>/img/shop-details/product-big.png" alt="">
+                                    <img src="${imagePath}/prada2.jpg" alt="">
                                 </div>
                             </div>
                             <div class="tab-pane" id="tabs-4" role="tabpanel">
                                 <div class="product__details__pic__item">
-                                    <img src="<%=cp%>/img/shop-details/product-big-4.png" alt="">
-                                    <a href="https://www.youtube.com/watch?v=8PJ3_p7VqHw&list=RD8PJ3_p7VqHw&start_radio=1" class="video-popup"><i class="fa fa-play"></i></a>
+                                    <img src="${imagePath}/prada4.jpg" alt="">
                                 </div>
                             </div>
                         </div>
@@ -211,7 +209,7 @@
                 <div class="row d-flex justify-content-center">
                     <div class="col-lg-8">
                         <div class="product__details__text">
-                            <h4>Hooded thermal anorak</h4>
+                            <h4>LOGO PRINT COTTON FLEECE SWEATSHIRT</h4>
                             <div class="rating">
                                 <i class="fa fa-star"></i>
                                 <i class="fa fa-star"></i>
@@ -236,7 +234,7 @@
                                     <label for="l">l
                                         <input type="radio" id="l">
                                     </label>
-                                    <label for="sm">s
+                                    <label for="sm">m
                                         <input type="radio" id="sm">
                                     </label>
                                 </div>
@@ -275,7 +273,7 @@
                                 <h5><span>Guaranteed Safe Checkout</span></h5>
                                 <img src="<%=cp%>/img/shop-details/details-payment.png" alt="">
                                 <ul>
-                                    <li><span>SKU:</span> 3812912</li>
+                                    <li><span>Brand:</span> Prada</li>
                                     <li><span>Categories:</span> Clothes</li>
                                     <li><span>Tag:</span> Clothes, Skin, Body</li>
                                 </ul>

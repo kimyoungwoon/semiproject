@@ -3,6 +3,7 @@ package com.pdetail;
 import java.io.IOException;
 import java.sql.Connection;
 
+import javax.security.auth.message.callback.PrivateKeyCallback.Request;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -46,21 +47,26 @@ public class PdetailServlet extends HttpServlet {
 			
 			dto = dao.getReadData(1);
 			
+			String imageList = cp + "/image/list.do";
+			String imagePath = cp + "/pds/imageFile";
+			
+			req.setAttribute("imagePath", imagePath);
+			
 			url = "/shop-details.jsp";
 			foward(req, resp, url);
+			
+			//카트 디비에 저장시킬 것
+			}else if(uri.indexOf("pdetail_ok.do")!=-1) {
+				
+				int pnum = Integer.parseInt(req.getParameter("pnum"));
+				int mnum = Integer.parseInt(req.getParameter("mnum"));
+				int count = Integer.parseInt(req.getParameter("count"));
+				
+				url = cp;
+				resp.sendRedirect(url);
+				
+			}
 		
-		//카트 디비에 저장시킬 것
-		}else if(uri.indexOf("pdetail_ok.do")!=-1) {
-			
-			int pnum = Integer.parseInt(req.getParameter("pnum"));
-			int mnum = Integer.parseInt(req.getParameter("mnum"));
-			int count = Integer.parseInt(req.getParameter("count"));
-			
-			url = cp;
-			resp.sendRedirect(url);
-			
-		}
-
 	}
 	
 }
