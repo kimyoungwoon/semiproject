@@ -207,7 +207,7 @@
                                 <div class="card">
                                     <div class="card-heading">
                                         <a data-toggle="collapse" data-target="#collapseThree">Filter Price</a>
-                                    </div>
+                                    </div>	
                                     <div id="collapseThree" class="collapse show" data-parent="#accordionExample">
                                         <div class="card-body">
                                             <div class="shop__sidebar__price">
@@ -229,32 +229,31 @@
                                     </div>
                                     <div id="collapseFour" class="collapse show" data-parent="#accordionExample">
                                         <div class="card-body">
+                                        <form action="<%=cp %>/shopping/list.do" method="post">
                                             <div class="shop__sidebar__size">
                                                 <label for="xs">xs
-                                                    <input type="radio" id="xs">
+                                                    <input type="submit" id="xs" value="1" name="xs">
                                                 </label>
                                                 <label for="sm">s
-                                                    <input type="radio" id="sm">
+                                                    <input type="radio" id="sm" value="2" name="s">
                                                 </label>
                                                 <label for="md">m
-                                                    <input type="radio" id="md">
+                                                    <input type="radio" id="md" value="3" name="m">
                                                 </label>
                                                 <label for="xl">xl
-                                                    <input type="radio" id="xl">
-                                                </label>
-                                                <label for="2xl">2xl
-                                                    <input type="radio" id="2xl">
+                                                    <input type="radio" id="xl" value="4" name="xl">
                                                 </label>
                                                 <label for="xxl">xxl
-                                                    <input type="radio" id="xxl">
+                                                    <input type="radio" id="xxl" value="6" name="xxl">
                                                 </label>
                                                 <label for="3xl">3xl
-                                                    <input type="radio" id="3xl">
+                                                    <input type="radio" id="3xl" value="7" name="3xl">
                                                 </label>
                                                 <label for="4xl">4xl
-                                                    <input type="radio" id="4xl">
+                                                    <input type="radio" id="4xl" value="8" name="4xl">
                                                 </label>
                                             </div>
+                                            </form>
                                         </div>
                                     </div>
                                 </div>
