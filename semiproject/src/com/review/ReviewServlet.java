@@ -46,19 +46,21 @@ public class ReviewServlet extends HttpServlet {
 		
 		if(uri.indexOf("write.do")!=-1){
 			
-			url = "/reviewer/guest.jsp";
+			url = cp+ "/writing/reviewer/guest.jsp";
 			forward(req, resp, url);
 			
+		}else if(uri.indexOf("write_ok.do")!=-1){
 			ReviewDTO dto = new ReviewDTO();
 			int maxNum = dao.getMaxNum();
 			
 			dto.setNum(maxNum+1);
-			dto.setSubject(req.getParameter("subject"));
 			dto.setName(req.getParameter("name"));
+			dto.setSubject(req.getParameter("subject"));
 			dto.setContent(req.getParameter("content"));
 			dto.setSavepath(req.getParameter("savepath"));	
 			
-			dao.insertData(dto);
+			dao.insertData(dto);						
+		
 			url = cp+"/review/list.do";
 			resp.sendRedirect(url);
 			
@@ -103,7 +105,7 @@ public class ReviewServlet extends HttpServlet {
 			req.setAttribute("pageIndexList", pageIndexList);
 			req.setAttribute("datacount", dataCount);
 			
-			url = "/reviewer/guest.jsp";
+			url = "/writing/reviewer/guest.jsp";
 			forward(req, resp, url);
 			
 		}else if(uri.indexOf("delete.do")!=-1) {

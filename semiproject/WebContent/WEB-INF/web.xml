@@ -23,7 +23,7 @@
   <!-- 게시판 -->
   <servlet>
     <servlet-name>writingServlet</servlet-name>
-    <servlet-class>com.Writing.WritingServelt</servlet-class>
+    <servlet-class>com.writing.WritingServelt</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>writingServlet</servlet-name>

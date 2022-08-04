@@ -51,7 +51,7 @@ public class ReviewDAO {
 
 		try {
 
-			sql = "insert into guest (num,name,subject,content,savepath) ";
+			sql = "insert into review (num,name,subject,content,savepath) ";
 			sql += "values (?,?,?,?,sysdate) ";
 
 			pstmt = conn.prepareStatement(sql);

@@ -13,6 +13,19 @@
 <link rel="stylesheet" type="text/css" href="<%=cp %>/review/data/style.css"/>
 
 <script type="text/javascript" src="<%=cp%>/review/data/guest.js"></script>
+
+
+<script type="text/javascript">
+
+	function sendIt() {
+		
+		var f = document.myForm;
+		
+		f.action = "<%=cp%>/review/write_ok.do";
+		f.submit();
+	}
+
+</script>
 </head>
 <body>
 
@@ -56,7 +69,7 @@
 
 <tr height="35">
 	<td align="right" colspan="2">
-	<input type="submit" class="btn" value="등록하기" onclick="javascript:location.href='<%=cp%>/review/list.do';"/>
+	<input type="submit" class="btn" value="등록하기" onclick="sendIt()"/>
 	<input type="reset" class="btn" value="다시입력"
 	onclick="document.myForm.name.focus();"/>
 	</td>
@@ -67,31 +80,20 @@
 <table width="560" border="0" cellspacing="0" cellpadding="100"  style="margin: auto;">
 <c:forEach var="dto" items="${lists }">
 	<tr height="30">
-		<td align="left" bgcolor="#e6e6e6">NO&nbsp;${dto.Num }.이름&nbsp;${dto.Name }.제목&nbsp;${dto.subject }</td>
+		<td align="left" bgcolor="#e6e6e6">NO&nbsp;${dto.num }.이름&nbsp;${dto.name }.제목&nbsp;${dto.subject }</td>
 		
 		<br/></tr>
 	<tr height="30">	
-		<td align="left" bgcolor="#e6e6e6">작성일&nbsp;${dto.savePath }</td>
+		<td align="left" bgcolor="#e6e6e6">작성일&nbsp;${dto.savepath }</td>
 		<td align="right" bgcolor="#e6e6e6">
 		<input type="button" value="삭제" 
-		onclick="javascript:location.href='<%=cp%>/review/delete.do?num=${dto.Num }';"/></tr>
+		onclick="javascript:location.href='<%=cp%>/review/delete.do?num=${dto.num }';"/></tr>
 		<%-- javascript:location.href='<%=cp%>/guest/delete.jsp?num=<%=dto2.getNum()%>'; --%>
-	<tr><td align="left" bgcolor="#ffffff">${dto.Content }</td>
+	<tr><td align="left" bgcolor="#ffffff">${dto.content }</td>
 	</tr>
 </c:forEach>
 </table>
-<center>
-	<div>
-			<p>
-				<c:if test="${dataCount!=0 }">
-					${pageIndexList }
-				</c:if>
-				<c:if test="${dataCount==0 }">
-					등록된 게시물이 없습니다.
-				</c:if>
-			</p>
-	</div>
-</center>
+
 </form>
 
 </body>
