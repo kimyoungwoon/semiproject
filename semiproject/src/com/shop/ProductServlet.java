@@ -94,6 +94,7 @@ public class ProductServlet extends HttpServlet {
 			
 			url = cp + "/shopping/insert.do";
 			resp.sendRedirect(url);
+			
 		}else if(uri.indexOf("list.do")!=-1) {//shop 페이지를 보여줍니다
 			
 			
@@ -112,15 +113,6 @@ public class ProductServlet extends HttpServlet {
 			int xxl = Integer.parseInt(returnNull(req.getParameter("xxl")));
 			int xxxl = Integer.parseInt(returnNull(req.getParameter("xxxl")));
 			int xxxxl = Integer.parseInt(returnNull(req.getParameter("xxxxl")));
-			
-			
-			
-			
-			
-			
-			
-			
-			
 			
 			
 			

@@ -2,8 +2,8 @@
     pageEncoding="UTF-8"%>
  <%
  	
- 	request.setCharacterEncoding("UTF-8");
- 	String cp = request.getContextPath();
+	request.setCharacterEncoding("UTF-8");
+	String cp = request.getContextPath();
   
  %>  
 <!DOCTYPE html>

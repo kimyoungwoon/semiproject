@@ -1,4 +1,5 @@
 <%@page import="com.member.MemberDAO"%>
+<%@page import="com.member.MemberDTO"%>
 <%@page import="com.util.DBConn"%>
 <%@page import="java.sql.Connection"%>
 <%@ page contentType="text/html;  charset=UTF-8"%>
@@ -26,5 +27,3 @@ jsp<jsp:setProperty property="*" name="dto"/>
 	
 	response.sendRedirect("login.do");
 %>
-%>
-
