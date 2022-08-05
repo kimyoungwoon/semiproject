@@ -57,8 +57,8 @@ public class ProductDAO {
 		
 		try {
 			
-			sql = "insert into product (num,name,price,category,brand,pro_size,";
-			sql+= "color,tag,saveFileName) values(?,?,?,?,?,?,?,?,?)";
+			sql = "insert into product (num,name,price,category,brand,";
+			sql+= "saveFileName) values(?,?,?,?,?,?)";
 			
 			pstmt = conn.prepareStatement(sql);
 			
@@ -67,10 +67,7 @@ public class ProductDAO {
 			pstmt.setInt(3, dto.getPrice());
 			pstmt.setInt(4, dto.getCategory());
 			pstmt.setInt(5, dto.getBrand());
-			pstmt.setInt(6, dto.getPro_size());
-			pstmt.setInt(7, dto.getColor());
-			pstmt.setInt(8, dto.getTag());
-			pstmt.setString(9, dto.getSaveFileName());
+			pstmt.setString(6, dto.getSaveFileName());
 			
 			
 			result = pstmt.executeUpdate();
@@ -120,94 +117,6 @@ public class ProductDAO {
 		
 	}
 	
-	//출력
-	//페이징처리된 사용자용 전체리스트
-	public List<ProductDTO> product_getList(int start,int end){
-		
-		lists = new ArrayList<ProductDTO>();
-		
-		try {
-			
-			sql = "select * from (select rownum rnum,data.* "; 
-			sql +="from (select num,name,price,category,brand,pro_size,";
-			sql +="color,tag,saveFileName from product order by num desc) data) ";
-			sql +="where rnum >= ? and rnum <= ?";
-			
-			pstmt = conn.prepareStatement(sql);
-			
-			pstmt.setInt(1, start);
-			pstmt.setInt(2, end);
-			
-			rs = pstmt.executeQuery();
-			
-			while(rs.next()) {
-				
-				dto = new ProductDTO();
-				
-				dto.setNum(rs.getInt("num"));
-				dto.setName(rs.getString("name"));
-				dto.setPrice(rs.getInt("price"));
-				dto.setCategory(rs.getInt("category"));
-				dto.setBrand(rs.getInt("brand"));
-				dto.setPro_size(rs.getInt("pro_size"));
-				dto.setColor(rs.getInt("color"));
-				dto.setTag(rs.getInt("tag"));
-				dto.setSaveFileName(rs.getString("saveFileName"));
-				
-				lists.add(dto);
-				
-			}
-			rs.close();
-			pstmt.close();
-			
-		} catch (Exception e) {
-			System.out.println(e.toString());
-		}
-		
-		return lists;
-	}
-	
-	//출력
-	//페이징없는 관리자용 전체데이터 가져오기
-	public List<ProductDTO> product_getList(){
-		
-		lists = new ArrayList<ProductDTO>();
-		
-		try {
-			
-			sql = "select * from product order by num desc";
-			
-			pstmt = conn.prepareStatement(sql);
-			
-			rs = pstmt.executeQuery();
-			
-			while(rs.next()) {
-				
-				dto = new ProductDTO();
-				
-				dto.setNum(rs.getInt("num"));
-				dto.setName(rs.getString("name"));
-				dto.setPrice(rs.getInt("price"));
-				dto.setCategory(rs.getInt("category"));
-				dto.setBrand(rs.getInt("brand"));
-				dto.setPro_size(rs.getInt("pro_size"));
-				dto.setColor(rs.getInt("color"));
-				dto.setTag(rs.getInt("tag"));
-				dto.setSaveFileName(rs.getString("saveFileName"));
-				
-				lists.add(dto);
-				
-			}
-			rs.close();
-			pstmt.close();
-			
-		} catch (Exception e) {
-			System.out.println(e.toString());
-		}
-		
-		return lists;
-	}
-	
 	
 	//페이징시 필요한 데이타카운트값 구하기
 	public int getDataCount() {
@@ -239,8 +148,8 @@ public class ProductDAO {
 		
 		try {
 			
-			sql = "select num,name,price,category,brand,pro_size,";
-			sql+= "color,tag,saveFileName ";
+			sql = "select num,name,price,category,brand,";
+			sql+= "saveFileName ";
 			sql+= "from product where num=?";
 			
 			pstmt = conn.prepareStatement(sql);
@@ -372,6 +281,6 @@ public class ProductDAO {
 		return result;
 	}
 	
-	
+		
 	
 }

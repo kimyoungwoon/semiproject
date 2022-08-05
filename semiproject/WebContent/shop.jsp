@@ -316,13 +316,13 @@
                                     <div id="collapseSix" class="collapse show" data-parent="#accordionExample">
                                         <div class="card-body">
                                             <div class="shop__sidebar__tags">
-                                                <a href="#">Product</a>
-                                                <a href="#">Bags</a>
-                                                <a href="#">Shoes</a>
-                                                <a href="#">Fashio</a>
-                                                <a href="#">Clothing</a>
-                                                <a href="#">Hats</a>
-                                                <a href="#">Accessories</a>
+                                                <a href="<%=cp%>/shopping/list.do?tag=1">Product</a>
+                                                <a href="<%=cp%>/shopping/list.do?tag=2">Bags</a>
+                                                <a href="<%=cp%>/shopping/list.do?tag=3">Shoes</a>
+                                                <a href="<%=cp%>/shopping/list.do?tag=4">Fashio</a>
+                                                <a href="<%=cp%>/shopping/list.do?tag=5">Clothing</a>
+                                                <a href="<%=cp%>/shopping/list.do?tag=6">Hats</a>
+                                                <a href="<%=cp%>/shopping/list.do?tag=7">Accessories</a>
                                             </div>
                                         </div>
                                     </div>
@@ -343,12 +343,14 @@
                             </div>
                             <div class="col-lg-6 col-md-6 col-sm-6">
                                 <div class="shop__product__option__right">
+                                <form action="document.sortForm" >
                                     <p>Sort by Price:</p>
-                                    <select>
-                                        <option value="">Low To High</option>
-                                        <option value="">$0 - $55</option>
-                                        <option value="">$55 - $100</option>
+                                    <select onchange="location.href=this.value">
+                                        <option value="0">New</option>
+                                        <option value="1">Low To High</option>
+                                        <option value="2">High To Low</option>
                                     </select>
+                                </form>    
                                 </div>
                             </div>
                         </div>
@@ -377,7 +379,7 @@
                                         <i class="fa fa-star-o"></i>
                                         <i class="fa fa-star-o"></i>
                                     </div>
-                                    <h5>${dto.price }won</h5>
+                                    <h5>₩ ${dto.price }</h5>
                                     <div class="product__color__select">
                                         <label for="pc-4">
                                             <input type="radio" id="pc-4">
@@ -496,7 +498,8 @@
         </div>
     </div>
     <!-- Search End -->
-
+	
+	
     <!-- Js Plugins -->
     <script src="<%=cp%>/js/jquery-3.3.1.min.js"></script>
     <script src="<%=cp%>/js/bootstrap.min.js"></script>
