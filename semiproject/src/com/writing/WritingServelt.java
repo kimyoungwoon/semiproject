@@ -36,7 +36,7 @@ public class WritingServelt extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
-		//req.setCharacterEncoding("UTF-8");
+		req.setCharacterEncoding("UTF-8");
 		String cp = req.getContextPath();	//http://localhost:8080/������Ʈ��
 		String uri = req.getRequestURI();	//study/bbs/created.do
 		//DB����
@@ -61,7 +61,7 @@ public class WritingServelt extends HttpServlet {
 			
 			if(info==null) {
 				
-				url= "/writing/created.jsp";
+				url="/writing/created.jsp";
 				forward(req, resp, url);
 				return;
 				
@@ -111,7 +111,7 @@ public class WritingServelt extends HttpServlet {
 			}
 			
 			int dataCount = dao.getDataCount(searchKey, searchValue);
-			int numPerPage = 4;
+			int numPerPage = 7;
 			int totalPage = myPage.getPagecount(numPerPage, dataCount);			
 			
 			if(currentPage>totalPage) {

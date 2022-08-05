@@ -8,7 +8,7 @@ import java.util.List;
 
 import com.shop.ProductDTO;
 
-public class CartOpenDAO {
+public class CartProductDAO {
 
 	private Connection conn;
 
@@ -19,7 +19,7 @@ public class CartOpenDAO {
 	List<CartProductDTO> lists = null;
 	CartProductDTO dto = null;
 
-	public CartOpenDAO(Connection conn) {
+	public CartProductDAO(Connection conn) {
 		this.conn = conn;
 	}
 
@@ -55,7 +55,31 @@ public class CartOpenDAO {
 		return lists;
 	}
 	
-	public int cart_ProductDelete(int pMeberNum, int pProductNum) {
+	public int updateCart_Product(int pMeberNum, int pProductNum, int count) {
+		int result = 0;
+		PreparedStatement pstmt = null;
+		String sql;
+		
+		try {
+			
+			sql = "update cart_product set count = ? where membernum=? and productNum = ?";
+			
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, count);
+			pstmt.setInt(2, pMeberNum);
+			pstmt.setInt(3, pProductNum);
+			
+			result = pstmt.executeUpdate();
+			
+			pstmt.close();
+			
+		} catch (Exception e) {
+			System.out.println(e.toString());
+		}
+		return result;
+	}
+	
+	public int deleteCart_Product(int pMeberNum, int pProductNum) {
 		int result = 0;
 		PreparedStatement pstmt = null;
 		String sql;
@@ -67,6 +91,27 @@ public class CartOpenDAO {
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, pMeberNum);
 			pstmt.setInt(2, pProductNum);
+			
+			result = pstmt.executeUpdate();
+			
+			pstmt.close();
+			
+		} catch (Exception e) {
+			System.out.println(e.toString());
+		}
+		return result;
+	}
+	
+	public int deleteCartMember(int pMeberNum) {
+		int result = 0;
+		PreparedStatement pstmt = null;
+		String sql;
+		
+		try {
+			sql = "delete cart_product where membernum=?";
+			
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, pMeberNum);
 			
 			result = pstmt.executeUpdate();
 			

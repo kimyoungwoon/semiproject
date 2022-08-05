@@ -15,7 +15,7 @@ public class PdetailDAO {
 	}
 	
 	//입력
-	public int insertData(PdetailDTO dto) {
+	public int insertData(int mnum,int pnum,int count) {
 		
 		int result = 0;
 		PreparedStatement pstmt = null;
@@ -23,17 +23,15 @@ public class PdetailDAO {
 		
 		try {
 			
-			sql = "insert into cart_product (num,name,price,pro_size,color,count) ";
-			sql+= "values (?,?,?,?,?,?)";
+			sql = "insert into cart_product (membernum,productnum,count) ";
+			sql+= "values (?,?,?)";
 			
 			pstmt = conn.prepareStatement(sql);
 			
-			pstmt.setInt(1, dto.getNum());
-			pstmt.setString(2, dto.getName());
-			pstmt.setInt(3, dto.getPrice());
-			pstmt.setInt(4, dto.getSize());
-			pstmt.setInt(5, dto.getColor());
-			pstmt.setInt(6, dto.getCount());
+			pstmt.setInt(1, mnum);
+			pstmt.setInt(2, pnum);
+			pstmt.setInt(3, count);
+		
 					
 			result = pstmt.executeUpdate();
 			
@@ -57,7 +55,7 @@ public class PdetailDAO {
 
 		try {
 			//num으로 select 해온다
-			sql = "select num,name,price,pro_size,color,count ";
+			sql = "select num,name,price,pro_size,color,tag ";
 			sql+= "from product where num=?";
 
 			pstmt = conn.prepareStatement(sql);
@@ -75,7 +73,7 @@ public class PdetailDAO {
 				dto.setPrice(Integer.parseInt(rs.getString("price")));
 				dto.setSize(Integer.parseInt(rs.getString("pro_size")));
 				dto.setColor(Integer.parseInt(rs.getString("color")));
-				dto.setCount(Integer.parseInt(rs.getString("count")));
+				dto.setTag(Integer.parseInt(rs.getString("tag")));
 				
 			}
 			
