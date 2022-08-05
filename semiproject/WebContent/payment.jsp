@@ -28,6 +28,8 @@
     <link rel="stylesheet" href="<%=cp%>/css/owl.carousel.min.css" type="text/css">
     <link rel="stylesheet" href="<%=cp%>/css/slicknav.min.css" type="text/css">
     <link rel="stylesheet" href="<%=cp%>/css/style.css" type="text/css">
+    <script type="text/javascript" src="<%=cp %>/payment/paymentPage.js"></script>
+    
 </head>
 
 <body>
@@ -158,7 +160,7 @@
     <section class="checkout spad">
         <div class="container">
             <div class="checkout__form">
-                <form action="#">
+                <form action="/semiproject/order/payment_ok.do" method = "post">
                     <div class="row">
                         <div class="col-lg-8 col-md-6">
                             <h6 class="coupon__code"><span class="icon_tag_alt"></span> Have a coupon? <a href="#">Click
@@ -244,10 +246,10 @@
                                 <h4 class="order__title">Your order</h4>
                                 <div class="checkout__order__products">Product <span>Total</span></div>
                                 <ul class="checkout__total__products">
-                                    <li>01. Vanilla salted caramel <span>$ 300.0</span></li>
-                                    <li>02. German chocolate <span>$ 170.0</span></li>
-                                    <li>03. Sweet autumn <span>$ 170.0</span></li>
-                                    <li>04. Cluten free mini dozen <span>$ 110.0</span></li>
+                                    <!-- <li>01. Vanilla salted caramel <span class = "subTotal">$ 300.0</span></li>
+                                    <li>02. German chocolate <span class = "subTotal">$ 170.0</span></li>
+                                    <li>03. Sweet autumn <span class = "subTotal">$ 170.0</span></li>
+                                    <li>04. Cluten free mini dozen <span class = "subTotal">$ 110.0</span></li> -->
                                 </ul>
                                 <ul class="checkout__total__all">
                                     <li>Subtotal <span>$750.99</span></li>

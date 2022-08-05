@@ -10,14 +10,24 @@
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
 
-	<!-- Servlet 게시판 -->
+	<!-- CartServlet -->
 	<servlet>
 		<servlet-name>cartServlet</servlet-name>
 		<servlet-class>com.cart.CartServlet</servlet-class>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>cartServlet</servlet-name>
-		<url-pattern>/ywsemi/*</url-pattern>
+		<url-pattern>/cart/*</url-pattern>
+	</servlet-mapping>
+	
+	<!-- OrderServlet -->
+	<servlet>
+		<servlet-name>orderServlet</servlet-name>
+		<servlet-class>com.order.OrderServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>orderServlet</servlet-name>
+		<url-pattern>/order/*</url-pattern>
 	</servlet-mapping>
    
   <!-- 게시판 -->
