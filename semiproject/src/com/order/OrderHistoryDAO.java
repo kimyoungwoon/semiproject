@@ -32,7 +32,7 @@ public class OrderHistoryDAO {
 
 		try {
 
-			sql = "select nvl(max(num), 0) from order_history";
+			sql = "select nvl(max(ordernum), 0) from order_history";
 
 			pstmt = conn.prepareStatement(sql);
 
