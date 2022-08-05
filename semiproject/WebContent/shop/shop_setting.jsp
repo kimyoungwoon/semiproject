@@ -111,7 +111,7 @@ bordercolor="#d6d4a6" align="center" style="margin: auto;">
 
 	<tr>
 		<td height="40" align="center">
-			<input type="button" value="등록하기" class="btn2" onclick="sendIt();"/>
+			<input type="submit" value="등록하기" class="btn2"/>
 		</td>
 	</tr>
 <tr><td colspan="2" height="e" bgcolor="#dbdbdb" align="center"></td></tr>

@@ -21,6 +21,90 @@ public class ListReturnDAO {
 		this.conn = conn;
 	}
 	
+	//출력
+	//페이징처리된 사용자용 전체리스트
+	public List<ProductDTO> product_getList(int start,int end){
+
+		lists = new ArrayList<ProductDTO>();
+
+		try {
+
+			sql = "select * from (select rownum rnum,data.* "; 
+			sql +="from (select num,name,price,category,brand,saveFileName ";
+			sql +="from product order by num desc) data) ";
+			sql +="where rnum >= ? and rnum <= ?";
+
+			pstmt = conn.prepareStatement(sql);
+
+			pstmt.setInt(1, start);
+			pstmt.setInt(2, end);
+
+			rs = pstmt.executeQuery();
+
+			while(rs.next()) {
+
+				dto = new ProductDTO();
+
+				dto.setNum(rs.getInt("num"));
+				dto.setName(rs.getString("name"));
+				dto.setPrice(rs.getInt("price"));
+				dto.setCategory(rs.getInt("category"));
+				dto.setBrand(rs.getInt("brand"));
+				dto.setSaveFileName(rs.getString("saveFileName"));
+
+				lists.add(dto);
+
+			}
+			rs.close();
+			pstmt.close();
+
+		} catch (Exception e) {
+			System.out.println(e.toString());
+		}
+
+		return lists;
+	}
+	
+	
+	//출력
+	//페이징없는 관리자용 전체데이터 가져오기
+	public List<ProductDTO> product_getList(){
+
+		lists = new ArrayList<ProductDTO>();
+
+		try {
+
+			sql = "select * from product order by num desc";
+
+			pstmt = conn.prepareStatement(sql);
+
+			rs = pstmt.executeQuery();
+
+			while(rs.next()) {
+
+				dto = new ProductDTO();
+
+				dto.setNum(rs.getInt("num"));
+				dto.setName(rs.getString("name"));
+				dto.setPrice(rs.getInt("price"));
+				dto.setCategory(rs.getInt("category"));
+				dto.setBrand(rs.getInt("brand"));
+				dto.setSaveFileName(rs.getString("saveFileName"));
+
+				lists.add(dto);
+
+			}
+			rs.close();
+			pstmt.close();
+
+		} catch (Exception e) {
+			System.out.println(e.toString());
+		}
+
+		return lists;
+	}
+	
+	
 	//카테고리별 해당 전체리스트를 반환
 	public List<ProductDTO> category_getList(int start,int end,int category){
 
