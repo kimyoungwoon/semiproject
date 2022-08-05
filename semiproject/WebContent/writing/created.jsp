@@ -265,7 +265,10 @@
 			<input type="reset" value="다시입력" class="btn2"
 				onclick="document.myForm.subject.focus();"/>
 			<input type="button" value="작성취소" class="btn2"
-				onclick="javascript:location.href='<%=cp%>/bbs/list.do';">				
+				onclick="javascript:location.href='<%=cp%>/bbs/list.do';">					
+		</div>
+		<div id = "bbsCreated_footer">
+			
 		</div>
 	</div>
 	</form>
