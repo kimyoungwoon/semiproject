@@ -93,6 +93,7 @@ public class ProductServlet extends HttpServlet {
 			
 			url = cp + "/shopping/insert.do";
 			resp.sendRedirect(url);
+			
 		}else if(uri.indexOf("list.do")!=-1) {//shop 페이지를 보여줍니다
 			
 			
@@ -100,10 +101,12 @@ public class ProductServlet extends HttpServlet {
 			int brand = Integer.parseInt(returnNull(req.getParameter("brand")));
 			int priceMin = Integer.parseInt(returnNull(req.getParameter("priceMin")));
 			int priceMax = Integer.parseInt(returnNull(req.getParameter("priceMax")));
+
 			int size = Integer.parseInt(returnNull(req.getParameter("size")));
 			int color = Integer.parseInt(returnNull(req.getParameter("color")));
 			int tag = Integer.parseInt(returnNull(req.getParameter("tag")));
 			String sortPath = cp + "/shopping/list.do";
+
 			
 			
 			String pageNum = req.getParameter("pageNum");
