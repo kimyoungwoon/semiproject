@@ -50,7 +50,7 @@ public class MemberServlet extends HttpServlet{
 		
 
 		//회원가입 페이지
-		if(uri.indexOf("login.do")!= -1) {
+		if(uri.indexOf("created.do")!= -1) {
 	
 			// 매핑을 해줘야 찾아감
 			url = "/member/login.jsp";
@@ -58,7 +58,7 @@ public class MemberServlet extends HttpServlet{
 
 			
 		}
-		else if(uri.indexOf("login_ok.do")!= -1) {
+		else if(uri.indexOf("created_ok.do")!= -1) {
 			
 			MemberDTO dto = new MemberDTO();
 			int maxNum = dao.getMaxNum();
@@ -80,7 +80,7 @@ public class MemberServlet extends HttpServlet{
 		}else if(uri.indexOf("login.do")!= -1) {
 			
 			//로그인 시 포워드 페이지
-			String listUrl = "/semiroject/lndex.jsp";
+			String listUrl = "/semiproject/login/login.do";
 			req.setAttribute("listUrl", listUrl);
 
 
@@ -93,6 +93,8 @@ public class MemberServlet extends HttpServlet{
 			String pw = req.getParameter("pw");
 			
 			System.out.println(id);
+			System.out.println(pw);
+		
 		
 			MemberDTO dto = dao.getReadData(id);
 			
@@ -102,7 +104,7 @@ public class MemberServlet extends HttpServlet{
 			if(dto==null || (!dto.getPw().equals(pw))) {
 				
 				req.setAttribute("message", "아이디 또는 패스워드를 정확히 입력하세요");
-				url = "/semiproject/member/login.jsp";
+				url = "member/login.jsp";
 				
 				forward(req, resp, url);
 				
@@ -162,6 +164,7 @@ public class MemberServlet extends HttpServlet{
 			
 			MemberDTO dto = dao.getReadData(info.getId());
 			req.setAttribute("dto", dto);
+			
 			//회원정보수정 포워드 페이지
 			
 			url = "semii/member/update.jsp";
@@ -189,13 +192,12 @@ public class MemberServlet extends HttpServlet{
 		
 			url = cp ;
 			resp.sendRedirect(url);
-			
-		}
+					
 		
-		/*//아이디 중복확인
+		//아이디 중복확인
 		}else if(uri.indexOf("idcheck.do")!=-1) {
 			
-			url = "/shoppingmall/join/idcheck.jsp";
+			url = "/semiproject/login/idcheck.jsp";
 			forward(req, resp, url);
 			
 		}else if(uri.indexOf("idcheck_ok.do")!=-1) {
@@ -207,12 +209,11 @@ public class MemberServlet extends HttpServlet{
 			MemberDTO dto = dao.getReadData(id);
 		
 			
-			
-			if(dto==null || dto.equals(id)) {
+					if(dto==null || dto.equals(id)) {
 				
 				req.setAttribute("message", "이미사용중인 아이디입니다");
 				
-				url = "/shoppingmall/join/idcheck.jsp";
+				url = "/semiproject/login/idcheck.jsp";
 				forward(req, resp, url);
 				return;
 				
@@ -221,20 +222,16 @@ public class MemberServlet extends HttpServlet{
 				req.setAttribute("message2", "사용가능한 아이디입니다.");
 				
 
-				url = "/shoppingmall/join/idcheck.jsp";
+				url = "/semiproject/login/idcheck.jsp";
 				forward(req, resp, url);
 				return;
 			}
-			
-		}else if(uri.indexOf("jusoPopup.do")!=-1) {
-			
-			
-			url = "/shoppingmall/join/jusoPopup.jsp";
-			forward(req, resp, url);
-			}*/
-			
 		}
-			
+	}
 }
+			
+		
+		
+			
 
 

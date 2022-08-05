@@ -32,8 +32,10 @@
                     <div style="margin-top: 10px;"><font size="2pt" color="white">${message }</font></div>
                     <input type="checkbox" class="checkbox"><span>Remember Password</span>
                     <button class="submit"><font size="4pt" color="white" >Login</font></button>
+              
+               
                 </form>
-                <form id="register" action="<%=cp %>/login/login_ok.do" method="post" class="input-group">
+                <form id="register" action="<%=cp %>/login/created_ok.do" method="post" class="input-group">
                     <input type="text" class="input-field" placeholder="User Id" name="id" required>
                     <input type="password" class="input-field" placeholder="Enter Password" name="pw" required>
                     <input type="text" class="input-field" placeholder="Your Name" name="name" required>
@@ -43,6 +45,8 @@
                 </form>
             </div>
         </div>
+        
+        
         <script>
             var x = document.getElementById("login");
             var y = document.getElementById("register");
