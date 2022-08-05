@@ -1,13 +1,13 @@
 @CHARSET "UTF-8";
 
 #bbsList {
-	width:690px;
+	width:750px;
 	margin:30px auto;
 	text-align:left;
 }
 
 #bbsList_title {
-	width:690px;   /* 690px - (padding-left+border:3px+border:3px) */
+	width:750px;   /* 690px - (padding-left+border:3px+border:3px) */
 	padding-left:20px;
 	height:40px;
 	border:3px solid #FF0000;
@@ -23,9 +23,9 @@
 }
 
 #bbsList_header #leftHeader{
-	float:left;
+	float:center;
 	width:345px;
-	text-align:left;
+	text-align:center;
 }
 #bbsList_header #rightHeader{
 	float:right;
@@ -33,8 +33,8 @@
 	text-align:right;
 }
 
-#bbsList_header .selectFiled {border:1px solid; border-color:#1E90FF; background-color:#ffffff; font-family:굴림; font-size:9pt;}
-#bbsList_header .textFiled {border:1px solid; height:13px; padding:2px 2px 2px 2px; border-color:#666666; background-color:#ffffff; font-family:"굴림"; font-size:9pt;}
+#bbsList_header .selectFiled {border:1px solid; border-color:#1E90FF; background-color:#CCFFFF; font-family:굴림; font-size:9pt; }
+#bbsList_header .textFiled {border:1px solid; height:42px; padding:3px 3px 3px 3px; border-color:#666666; background-color:#ffffff; font-family:"굴림"; font-size:9pt;}
 
 #bbsList_list {
 	clear:both;
@@ -48,16 +48,16 @@
 }
 
 #bbsList_list #title {
-	height:30px;
+	height:36px;
 	border-top:1px solid #000000;
 	border-bottom:1px solid #000000;
-	background-color: #E6E4E6;
+	background-color: #FCF8E8;
 }
 
 #bbsList_list #title dl {
-	height:27px;
-	border-left:0px solid #5db062;
-	border-right:0px solid #5db062;
+	height:35px;
+	border-left:1px solid #000000;
+	border-right:1px solid #000000;
 }
 
 #bbsList_list #title dt {
@@ -66,11 +66,11 @@
 	text-align:center;
 }
 
-#bbsList_list .num {width:50px;}
+#bbsList_list .num {width:60px;}
 #bbsList_list .subject {width:420px;}
-#bbsList_list .name {width:90px;}
-#bbsList_list .savepath {width:65px;}
-#bbsList_list .hitcount {width:60px;}
+#bbsList_list .name {width:100px;}
+#bbsList_list .savepath {width:85px;}
+#bbsList_list .hitcount {width:80px;}
 
 #bbsList_list #lists {
 	clear:both;
@@ -78,7 +78,7 @@
 
 #bbsList_list #lists dl {
 	float:left;
-	border-bottom:1px solid #E4E4E4;
+	border-bottom:1px solid #FCF8E8;
 }
 
 #bbsList_list dd.subject {

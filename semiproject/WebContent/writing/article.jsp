@@ -138,8 +138,12 @@
     
     <!-- article Section begin -->
 	<div id="bbs">
-	<div id="bbs_title">
-		질 문 게 시 판
+	<div class="container">
+			<div class="row">
+				<div class="col-lg-12">
+					<h1 class="related-title">QuestioN</h1>
+				</div>
+			</div>
 		</div>
 		<div id ="bbsArticle">
 			<div id ="bbsArticle_header">

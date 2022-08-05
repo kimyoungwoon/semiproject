@@ -10,8 +10,17 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 
-<link rel="stylesheet" type="text/css" href="<%=cp %>/review/data/style.css"/>
-
+    <!-- Css Styles -->
+    <link rel="stylesheet" type="text/css" href="<%=cp %>/writing/reviewer/data/style.css"/>
+	<link rel="stylesheet" type="text/css" href="<%=cp %>/writing/reviewer/data/newstyle.css"/>
+    <link rel="stylesheet" href="<%=cp%>/css/bootstrap.min.css" type="text/css">
+    <link rel="stylesheet" href="<%=cp%>/css/font-awesome.min.css" type="text/css">
+    <link rel="stylesheet" href="<%=cp%>/css/elegant-icons.css" type="text/css">
+    <link rel="stylesheet" href="<%=cp%>/css/magnific-popup.css" type="text/css">
+    <link rel="stylesheet" href="<%=cp%>/css/nice-select.css" type="text/css">
+    <link rel="stylesheet" href="<%=cp%>/css/owl.carousel.min.css" type="text/css">
+    <link rel="stylesheet" href="<%=cp%>/css/slicknav.min.css" type="text/css">
+    <link rel="stylesheet" href="<%=cp%>/css/style.css" type="text/css">
 <script type="text/javascript">
 
 	function sendIt() {
@@ -26,78 +35,77 @@
 </head>
 <body>
 
-<table width="560" border="2" cellspacing="0" cellpadding="3" style="margin: auto;">
-<tr height="50">
-	<td bgcolor="#ffffff" style="padding-left: 10px">
-	<b>리 뷰 글</b>
-	</td>
-</tr>	
-</table>
-<br/>
+<section class="related spad">
+       <div class="container">
+           <div class="row">
+               <div class="col-lg-12">
+                   <h2 class="related-title">Review Board</h2>
+               </div>
+           </div>
+       </div>
+</section>       	    
 
-<form action="" method="post" name="myForm">
 
-<table width="560" border="0" cellspacing="0" cellpadding="3" style="margin: auto;">
 
-<tr height="2"><td colspan="2" bgcolor="#cccccc"></td></tr>
-<tr height="30">
-	<td align="center" width="100" bgcolor="#e6e6e6">작성자</td>
-	<td style="padding-left: 5px;">
-	<input type="text" name="name" size="20"  class="txtField"/>
-	</td>
-</tr>
+<div class="container">	
+		<form action="" method="post" name="myForm">					       
+		          <div class="col-lg-12">
+		               <h4 class="related-title">Please Write a Review</h4>
+		          </div>			       						
+			<table width="600" border="0px" style="margin: auto;">
+					<tr height="60">
+						<td align="center" width="100" bgcolor="#E7FEFF">작성자</td>
+						<td align="left" style="padding-left: 5px ;" bgcolor="#E7FEFF">
+						<input type="text" name="name" size="20"  class="txtField"/>
+						</td>
+					</tr>					
+					<tr height="60">
+						<td align="center" width="100" bgcolor="#E7FEFF">제목</td>
+						<td align="left" style="padding-left: 5px;" bgcolor="#E7FEFF">
+						<input type="text" name="subject" size="54" class="txtField"/>
+						</td>
+					</tr>						
+					<tr height="100">
+						<td align="center" width="100" bgcolor="#E7FEFF">내용</td>
+						<td align="left" style="padding-left: 5px;" bgcolor="#E7FEFF">						
+						<textarea rows="12" cols="56" name="content" class="boxTA"></textarea>
+						</td>
+					</tr>
+				
+					<tr height="10">
+						<td align="right" colspan="2" bgcolor="#E7FEFF">
+						<input type="submit" class="btn2" value="등록하기" onclick="sendIt()"/>
+						<input type="reset" class="btn2" value="다시입력"
+						onclick="document.myForm.name.focus();"/>
+						</td>
+					</tr>	
+	<!-- 				<tr height="2"><td colspan="2" bgcolor="#ccccc"></td></tr> -->
+					</table>
+					
+					<table width="600" border="0" cellspacing="0" cellpadding="5"  style="margin: auto;">
+					<c:forEach var="dto" items="${lists }">
+						<tr height="20">
+							<td align="left" bgcolor="#E7FEFF">NO&nbsp;${dto.num }&nbsp;.&nbsp;이름&nbsp;${dto.name }</td>
+							<td align="right" bgcolor="#E7FEFF">제목&nbsp;${dto.subject }</td>
+							<br/></tr>
+						<tr height="20">	
+							<td align="left" bgcolor="#E7FEFF">작성일&nbsp;${dto.savepath }</td>
+							<td align="right" bgcolor="#E7FEFF">
+							<input type="button" class="btn2" value="삭제" 
+							onclick="javascript:location.href='<%=cp%>/review/delete.do?num=${dto.num }';"/></tr>
+							<%-- javascript:location.href='<%=cp%>/guest/delete.jsp?num=<%=dto2.getNum()%>'; --%>
+						<tr><td align="left" bgcolor="#ffffff">${dto.content }<br/></td>
+						</tr>					
+					</c:forEach>
+					</table>			
+					<table style="margin: auto;">
+					<tr>
+						<td style="margin: auto;">${pageIndexList }</td>
+					</tr>
+			</table>				
+		</form>
+		
+</div>
 
-<tr height="2"><td colspan="2" bgcolor="#cccccc"></td></tr>
-<tr height="30">
-	<td align="center" width="100" bgcolor="#e6e6e6">제목</td>
-	<td style="padding-left: 5px;">
-	<input type="text" name="subject" size="20" class="txtField"/>
-	</td>
-</tr>	
-
-<tr height="2"><td colspan="2" bgcolor="#cccccc"></td></tr>
-<tr height="30">
-	<td align="center" width="100" bgcolor="#e6e6e6">내용</td>
-	<td style="padding-left: 5px;">
-	
-	<textarea rows="12" cols="50" name="content" class="boxTA"></textarea>
-	</td>
-</tr>
-
-<tr height="35">
-	<td align="right" colspan="2">
-	<input type="submit" class="btn" value="등록하기" onclick="sendIt()"/>
-	<input type="reset" class="btn" value="다시입력"
-	onclick="document.myForm.name.focus();"/>
-	</td>
-</tr>	
-<tr height="2"><td colspan="2" bgcolor="#ccccc"></td></tr>
-</table>
-
-<table width="560" border="0" cellspacing="0" cellpadding="5"  style="margin: auto;">
-<c:forEach var="dto" items="${lists }">
-	<tr height="5">
-		<td align="left" bgcolor="#e6e6e6">NO&nbsp;${dto.num }&nbsp;.&nbsp;이름&nbsp;${dto.name }</td>
-		<td align="right" bgcolor="#e6e6e6">제목&nbsp;${dto.subject }</td>
-		<br/></tr>
-	<tr height="5">	
-		<td align="left" bgcolor="#e6e6e6">작성일&nbsp;${dto.savepath }</td>
-		<td align="right" bgcolor="#e6e6e6">
-		<input type="button" value="삭제" 
-		onclick="javascript:location.href='<%=cp%>/review/delete.do?num=${dto.num }';"/></tr>
-		<%-- javascript:location.href='<%=cp%>/guest/delete.jsp?num=<%=dto2.getNum()%>'; --%>
-	<tr><td align="left" bgcolor="#ffffff">${dto.content }<br/></td>
-	</tr>
-	
-</c:forEach>
-</table>
-
-<table align="center">
-<tr>
-	<td align="center">${pageIndexList }</td>
-	</tr>
-	</table>
-	
-</form>
 </body>
 </html>
