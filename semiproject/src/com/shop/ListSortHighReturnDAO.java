@@ -6,7 +6,7 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ListSortReturnDAO {
+public class ListSortHighReturnDAO {
 
 	private Connection conn;
 
@@ -17,7 +17,7 @@ public class ListSortReturnDAO {
 	List<ProductDTO> lists = null;
 	ProductDTO dto = null;
 
-	public ListSortReturnDAO (Connection conn) {
+	public ListSortHighReturnDAO (Connection conn) {
 		this.conn = conn;
 	}
 
@@ -31,7 +31,7 @@ public class ListSortReturnDAO {
 
 			sql = "select * from (select rownum rnum,data.* "; 
 			sql +="from (select num,name,price,category,brand,saveFileName ";
-			sql +="from product order by price) data) ";
+			sql +="from product order by price desc) data) ";
 			sql +="where rnum >= ? and rnum <= ?";
 
 			pstmt = conn.prepareStatement(sql);
@@ -74,7 +74,7 @@ public class ListSortReturnDAO {
 			//select * from (select rownum rnum,data.* from (select num,name,price,category,brand,pro_size,color,tag,saveFileName from product where category = 2 order by num desc) data) where rnum >= 1 and rnum <=1;
 			sql =  "select * from (select rownum rnum,data.* ";
 			sql+= "from (select num,name,price,category,brand,pro_size,";
-			sql+= "color,tag,saveFileName from product where category = ? order by price) ";
+			sql+= "color,tag,saveFileName from product where category = ? order by price desc) ";
 			sql+= "data) where rnum >= ? and rnum <=?";
 
 			pstmt = conn.prepareStatement(sql);
@@ -123,7 +123,7 @@ public class ListSortReturnDAO {
 			//select * from (select rownum rnum,data.* from (select num,name,price,category,brand,pro_size,color,tag,saveFileName from product where category = 2 order by num desc) data) where rnum >= 1 and rnum <=1;
 			sql =  "select * from (select rownum rnum,data.* ";
 			sql+= "from (select num,name,price,category,brand,pro_size,";
-			sql+= "color,tag,saveFileName from product where brand = ? order by price) ";
+			sql+= "color,tag,saveFileName from product where brand = ? order by price desc) ";
 			sql+= "data) where rnum >= ? and rnum <=?";
 
 			pstmt = conn.prepareStatement(sql);
@@ -172,7 +172,7 @@ public class ListSortReturnDAO {
 			//select * from (select rownum rnum,data.* from (select num,name,price,category,brand,pro_size,color,tag,saveFileName from product where category = 2 order by num desc) data) where rnum >= 1 and rnum <=1;
 			sql =  "select * from (select rownum rnum,data.* ";
 			sql+= "from (select num,name,price,category,brand,pro_size,";
-			sql+= "color,tag,saveFileName from product where price >= ? and price <= ? order by price) ";
+			sql+= "color,tag,saveFileName from product where price >= ? and price <= ? order by price desc) ";
 			sql+= "data) where rnum >= ? and rnum <=?";
 
 			pstmt = conn.prepareStatement(sql);
@@ -221,7 +221,7 @@ public class ListSortReturnDAO {
 			//select * from (select rownum rnum,data.* from (select num,name,price,category,brand,pro_size,color,tag,saveFileName from product where category = 2 order by num desc) data) where rnum >= 1 and rnum <=1;
 			sql =  "select * from (select rownum rnum,data.* ";
 			sql+= "from (select num,name,price,category,brand,pro_size,";
-			sql+= "color,tag,saveFileName from product where price >= ? order by price) ";
+			sql+= "color,tag,saveFileName from product where price >= ? order by price desc) ";
 			sql+= "data) where rnum >= ? and rnum <=?";
 
 			pstmt = conn.prepareStatement(sql);
@@ -272,7 +272,7 @@ public class ListSortReturnDAO {
 			sql+= "select e.num,e.name,e.price,e.category,e.brand,e.savefilename,";
 			sql+= "d.PRODUCTNUM,d.sizenum from PRODUCT E,PRODUCT_SIZE D ";
 			sql+= "WHERE E.NUM = D.PRODUCTNUM AND D.SIZENUM = ? ";
-			sql+= "order by price) data) where rnum >= ? and rnum <=?";
+			sql+= "order by price desc) data) where rnum >= ? and rnum <=?";
 
 			pstmt = conn.prepareStatement(sql);
 
@@ -319,7 +319,7 @@ public class ListSortReturnDAO {
 			sql+= "select e.num,e.name,e.price,e.category,e.brand,e.savefilename,";
 			sql+= "d.PRODUCTNUM,d.colornum from PRODUCT E,PRODUCT_COLOR D ";
 			sql+= "WHERE E.NUM = D.PRODUCTNUM AND D.colorNUM = ? ";
-			sql+= "order by price) data) where rnum >= ? and rnum <=?";
+			sql+= "order by price desc) data) where rnum >= ? and rnum <=?";
 
 			pstmt = conn.prepareStatement(sql);
 
@@ -366,7 +366,7 @@ public class ListSortReturnDAO {
 			sql+= "select e.num,e.name,e.price,e.category,e.brand,e.savefilename,";
 			sql+= "d.PRODUCTNUM,d.TAGNUM from PRODUCT E,PRODUCT_TAG D ";
 			sql+= "WHERE E.NUM = D.PRODUCTNUM AND D.TAGNUM = ? ";
-			sql+= "order by price) data) where rnum >= ? and rnum <=?";
+			sql+= "order by price desc) data) where rnum >= ? and rnum <=?";
 
 			pstmt = conn.prepareStatement(sql);
 
