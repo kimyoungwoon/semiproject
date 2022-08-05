@@ -56,7 +56,7 @@
         <div class="offcanvas__nav__option">
             <a href="#" class="search-switch"><img src="<%=cp%>/img/icon/search.png" alt=""></a>
             <a href="#"><img src="<%=cp%>/img/icon/heart.png" alt=""></a>
-            <a href="#"><img src="<%=cp%>/img/icon/cart.png" alt=""> <span>0</span></a>
+            <a href=""><img src="<%=cp%>/img/icon/cart.png" alt=""> <span>0</span></a>
             <div class="price">$0.00</div>
         </div>
         <div id="mobile-menu-wrap"></div>
@@ -111,7 +111,7 @@
                                 <ul class="dropdown">
                                     <li><a href="./about.jsp">About Us</a></li>
                                     <li><a href="./shop-details.jsp">Shop Details</a></li>
-                                    <li><a href="./shopping-cart.jsp">Shopping Cart</a></li>
+                                    <li><a href="/semiproject/shopping-cart.jsp">Shopping Cart</a></li>
                                     <li><a href="./checkout.jsp">Check Out</a></li>
                                     <li><a href="./blog-details.jsp">Blog Details</a></li>
                                 </ul>

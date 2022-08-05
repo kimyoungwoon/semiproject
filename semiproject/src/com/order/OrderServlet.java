@@ -76,7 +76,7 @@ public class OrderServlet extends HttpServlet{
 			
 			//주문내역 테이블 입력
 			orderDAO.insertOrderHistory(memberNum, orderNum, sumCost);
-			//cartDAO.deleteCartMember(memberNum);
+			cartDAO.deleteCartMember(memberNum);
 			
 			url = cp + "/order/orderHistory.do";
 			response.sendRedirect(url);

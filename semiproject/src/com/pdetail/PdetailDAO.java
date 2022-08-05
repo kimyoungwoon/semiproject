@@ -44,7 +44,7 @@ public class PdetailDAO {
 	}
 	
 	
-	//데이터 읽어오기
+	//num으로 한개의 데이터 가져오기
 	public PdetailDTO getReadData(int num) {
 
 		PdetailDTO dto = null;
@@ -55,7 +55,7 @@ public class PdetailDAO {
 
 		try {
 			//num으로 select 해온다
-			sql = "select num,name,price,pro_size,color,tag ";
+			sql = "select num,name,price,tag ";
 			sql+= "from product where num=?";
 
 			pstmt = conn.prepareStatement(sql);
@@ -68,12 +68,10 @@ public class PdetailDAO {
 
 				dto = new PdetailDTO();
 
-				dto.setNum(Integer.parseInt(rs.getString("num")));
+				dto.setNum(rs.getInt("num"));
 				dto.setName(rs.getString("name"));
-				dto.setPrice(Integer.parseInt(rs.getString("price")));
-				dto.setSize(Integer.parseInt(rs.getString("pro_size")));
-				dto.setColor(Integer.parseInt(rs.getString("color")));
-				dto.setTag(Integer.parseInt(rs.getString("tag")));
+				dto.setPrice(rs.getInt("price"));
+				dto.setTag(rs.getInt("tag"));
 				
 			}
 			

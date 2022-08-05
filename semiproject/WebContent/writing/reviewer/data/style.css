@@ -47,11 +47,13 @@ ul {
 td {font-size: 10pt;
 border-radius: 15px;}
 
+
+
 .btn1 {font-size: 9pt; color:rgb(0,0,0); background-color:rgb(245,245,245); line-height:16px;}
 .btn2 {   
 	color:#000000;
 	font: normal 9pt '굴림','trebuchet ms',helvetica,sans-serif;
-	background-color:#CCFFFF;
+	background-color:#FCF8E8;
 	border:1px solid;
 	border-color: #696 #363 #363 #696;
 	line-height:16px;
@@ -61,4 +63,4 @@ border-radius: 15px;}
 }
 
 .boxTF { border:1px solid; height:15px; margin-top:7px; padding:2px 2px 2px 2px; border-color:#666666; background-color:#ffffff; font-family:"굴림"; font-size:9pt; }
-.boxTA { border:1px solid; height:130px; margin-top:7px; padding:2px 2px 2px 2px; border-color:#666666; background-color:#ffffff; font-family:"굴림"; font-size:9pt; }
+.boxTA { border:1px solid; height:150px; margin-top:7px; padding:2px 2px 2px 2px; border-color:#666666; background-color:#ffffff; font-family:"굴림"; font-size:9pt; }

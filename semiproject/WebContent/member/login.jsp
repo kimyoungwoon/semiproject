@@ -2,8 +2,8 @@
     pageEncoding="UTF-8"%>
  <%
  	
- 	request.setCharacterEncoding("UTF-8");
- 	String cp = request.getContextPath();
+	request.setCharacterEncoding("UTF-8");
+	String cp = request.getContextPath();
   
  %>  
 <!DOCTYPE html>
@@ -41,7 +41,7 @@
                     <input type="text" class="input-field" placeholder="Your Name" name="name" required>
                     <input type="date" class="input-field" placeholder="YYYY-MM-DD" name="birth" required>
                     <input type="checkbox" class="checkbox"><span>Terms and conditions</span>
-                    <button class="submit"><font size="3pt" color="white" >REGISTER</font></button>
+                    <button class="submit"><font size="3pt" color="white" >REGISTER</font></button>4
                 </form>
             </div>
         </div>
