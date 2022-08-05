@@ -10,7 +10,7 @@ public class MemberDTO {
 	String address;
 	String tel;
 	String gender;
-	String date;
+	String birth;
 	String ipAddr;
 	
 	public int getNum() {
@@ -61,11 +61,11 @@ public class MemberDTO {
 	public void setGender(String gender) {
 		this.gender = gender;
 	}
-	public String getDate() {
-		return date;
+	public String getBirth() {
+		return birth;
 	}
-	public void setDate(String date) {
-		this.date = date;
+	public void setBirth(String birth) {
+		this.birth = birth;
 	}
 	public String getIpAddr() {
 		return ipAddr;
