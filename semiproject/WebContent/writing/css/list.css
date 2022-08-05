@@ -48,21 +48,21 @@
 }
 
 #bbsList_list #title {
-	height:36px;
+	height:42px;
 	border-top:1px solid #000000;
 	border-bottom:1px solid #000000;
 	background-color: #FCF8E8;
 }
 
 #bbsList_list #title dl {
-	height:35px;
+	height:41px;
 	border-left:1px solid #000000;
 	border-right:1px solid #000000;
 }
 
 #bbsList_list #title dt {
 	float:left;
-	line-height:34px;
+	line-height:42px;
 	text-align:center;
 }
 
@@ -96,4 +96,13 @@
 	line-height:32px;
 	margin-top:5px;
 	text-align:center;
+}
+
+#write-form {
+	margin: 0 auto;
+	width : 800px;
+	height : 530px;
+  	top: 15%;
+  	left: 40%;
+  	border: 3px solid #1d1e22;
 }
