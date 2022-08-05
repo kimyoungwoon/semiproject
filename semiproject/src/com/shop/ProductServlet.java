@@ -43,6 +43,7 @@ public class ProductServlet extends HttpServlet {
 		ProductDAO dao = new ProductDAO(conn);
 		ListReturnDAO listReturn_dao = new ListReturnDAO(conn);
 		ListSortReturnDAO listSortReturn_dao = new ListSortReturnDAO(conn);
+		ListSortHighReturnDAO listSortHighReturn_dao = new ListSortHighReturnDAO(conn);
 		String cp = req.getContextPath();
 		String uri = req.getRequestURI();
 		MyPage myPage = new MyPage();
@@ -105,7 +106,8 @@ public class ProductServlet extends HttpServlet {
 			int size = Integer.parseInt(returnNull(req.getParameter("size")));
 			int color = Integer.parseInt(returnNull(req.getParameter("color")));
 			int tag = Integer.parseInt(returnNull(req.getParameter("tag")));
-			String sortPath = cp + "/shopping/list.do";
+
+			String sortPath = cp + "/shopping/list.do?";//정렬기준경로
 
 			
 			
@@ -138,33 +140,33 @@ public class ProductServlet extends HttpServlet {
 			if(category != -1 ) {
 				
 				lists = listReturn_dao.category_getList(start, end, category);
-				listUrl = cp + "/shopping/list.do?category=" + category;
+				listUrl = cp + sortPath + "category=" + category;
 				
 				
 			}else if(brand != -1) {
 				lists = listReturn_dao.branding_getList(start, end, brand);
-				listUrl = cp + "/shopping/list.do?brand=" + brand;
+				listUrl = cp + sortPath + "brand=" + brand;
 			}else if (priceMin != -1 && priceMax != -1 ) {
 				
 				lists = listReturn_dao.price_getList(start, end, priceMin, priceMax);
-				listUrl = cp + "/shopping/list.do?priceMin=" + priceMin + "&priceMax=" + priceMax;
+				listUrl = cp +  sortPath +"priceMin=" + priceMin + "&priceMax=" + priceMax;
 			}else if (priceMin != -1 ) {
 				
 				lists = listReturn_dao.priceUp_getList(start, end, priceMin);
-				listUrl = cp + "/shopping/list.do?priceMin=" + priceMin;
+				listUrl = cp + sortPath +"priceMin=" + priceMin;
 			}else if (size != -1) {
 				
 				lists = listReturn_dao.size_getList(start, end, size);
-				listUrl = cp + "/shopping/list.do?size=" + size;
+				listUrl = cp + sortPath + "size=" + size;
 				
 			}else if (color != -1) {
 				
 				lists = listReturn_dao.color_getList(start, end, color);
-				listUrl = cp + "/shopping/list.do?color=" + color;
+				listUrl = cp + sortPath + "color=" + color;
 			}else if (tag != -1) {
 				
 				lists = listReturn_dao.tag_getList(start, end, tag);
-				listUrl = cp + "/shopping/list.do?tag=" + tag;
+				listUrl = cp + sortPath + "tag=" + tag;
 			}
 				
 			String pageIndexList =
@@ -243,7 +245,7 @@ public class ProductServlet extends HttpServlet {
 			int color = Integer.parseInt(returnNull(req.getParameter("color")));
 			int tag = Integer.parseInt(returnNull(req.getParameter("tag")));
 			int sort = Integer.parseInt(returnNull(req.getParameter("sort")));
-			String sortPath = cp + "/shopping/listsortlow.do";
+			String sortPath = cp + "/shopping/listsortlow.do?sort=" + sort + "&";//정렬기준경로
 			
 			
 			String pageNum = req.getParameter("pageNum");
@@ -275,33 +277,33 @@ public class ProductServlet extends HttpServlet {
 			if(category != -1 ) {
 				
 				lists = listSortReturn_dao.category_getList(start, end, category);
-				listUrl = cp + "/shopping/listsortlow.do?category=" + category;
+				listUrl = cp + sortPath + "category=" + category;
 				
 				
 			}else if(brand != -1) {
 				lists = listSortReturn_dao.branding_getList(start, end, brand);
-				listUrl = cp + "/shopping/listsortlow.do?brand=" + brand;
+				listUrl = cp + sortPath + "brand=" + brand;
 			}else if (priceMin != -1 && priceMax != -1 ) {
 				
 				lists = listSortReturn_dao.price_getList(start, end, priceMin, priceMax);
-				listUrl = cp + "/shopping/listsortlow.do?priceMin=" + priceMin + "&priceMax=" + priceMax;
+				listUrl = cp + sortPath + "priceMin=" + priceMin + "&priceMax=" + priceMax;
 			}else if (priceMin != -1 ) {
 				
 				lists = listSortReturn_dao.priceUp_getList(start, end, priceMin);
-				listUrl = cp + "/shopping/listsortlow.do?priceMin=" + priceMin;
+				listUrl = cp + sortPath + "priceMin=" + priceMin;
 			}else if (size != -1) {
 				
 				lists = listSortReturn_dao.size_getList(start, end, size);
-				listUrl = cp + "/shopping/listsortlow.do?size=" + size;
+				listUrl = cp + sortPath + "size=" + size;
 				
 			}else if (color != -1) {
 				
 				lists = listSortReturn_dao.color_getList(start, end, color);
-				listUrl = cp + "/shopping/listsortlow.do?color=" + color;
+				listUrl = cp + sortPath + "color=" + color;
 			}else if (tag != -1) {
 				
 				lists = listSortReturn_dao.tag_getList(start, end, tag);
-				listUrl = cp + "/shopping/listsortlow.do?tag=" + tag;
+				listUrl = cp + sortPath + "tag=" + tag;
 			}
 				
 			String pageIndexList =
@@ -310,7 +312,7 @@ public class ProductServlet extends HttpServlet {
 			
 			String imagePath = cp + "/pds/productFile";
 			
-			req.setAttribute("sorthPath", sortPath);
+			req.setAttribute("sortPath", sortPath);
 			req.setAttribute("lists", lists);
 			req.setAttribute("pageIndexList", pageIndexList);
 			req.setAttribute("totalDataCount", dataCount);
@@ -324,6 +326,93 @@ public class ProductServlet extends HttpServlet {
 			
 			
 		}else if(uri.indexOf("sorthigh.do")!=-1) {
+			
+			int category = Integer.parseInt(returnNull(req.getParameter("category")));
+			int brand = Integer.parseInt(returnNull(req.getParameter("brand")));
+			int priceMin = Integer.parseInt(returnNull(req.getParameter("priceMin")));
+			int priceMax = Integer.parseInt(returnNull(req.getParameter("priceMax")));
+			int size = Integer.parseInt(returnNull(req.getParameter("size")));
+			int color = Integer.parseInt(returnNull(req.getParameter("color")));
+			int tag = Integer.parseInt(returnNull(req.getParameter("tag")));
+			int sort = Integer.parseInt(returnNull(req.getParameter("sort")));
+			String sortPath = cp + "/shopping/listsorthigh.do?sort=" + sort + "&";//정렬기준경로
+			
+			
+			String pageNum = req.getParameter("pageNum");
+			
+			int currentPage = 1;
+			
+			if(pageNum!=null) {
+				currentPage = Integer.parseInt(pageNum);
+			}
+			
+			int dataCount = dao.getDataCount();
+			
+			int numPerPage = 9;
+			
+			int totalPage = myPage.getPagecount(numPerPage, dataCount);
+			
+			if(currentPage>totalPage) {
+				currentPage = totalPage;
+			}
+			
+			int start = (currentPage-1)*numPerPage+1;
+			int end = (currentPage*numPerPage);
+			
+			lists = listSortHighReturn_dao.product_getList(start, end);//전체데이터 출력
+			
+			//System.out.println(category);
+			
+			String listUrl = cp + "/shopping/listsorthigh.do";
+			if(category != -1 ) {
+				
+				lists = listSortHighReturn_dao.category_getList(start, end, category);
+				listUrl = cp + sortPath + "category=" + category;
+				
+				
+			}else if(brand != -1) {
+				lists = listSortHighReturn_dao.branding_getList(start, end, brand);
+				listUrl = cp + sortPath + "brand=" + brand;
+			}else if (priceMin != -1 && priceMax != -1 ) {
+				
+				lists = listSortHighReturn_dao.price_getList(start, end, priceMin, priceMax);
+				listUrl = cp + sortPath + "priceMin=" + priceMin + "&priceMax=" + priceMax;
+			}else if (priceMin != -1 ) {
+				
+				lists = listSortHighReturn_dao.priceUp_getList(start, end, priceMin);
+				listUrl = cp + sortPath + "priceMin=" + priceMin;
+			}else if (size != -1) {
+				
+				lists = listSortHighReturn_dao.size_getList(start, end, size);
+				listUrl = cp + sortPath + "size=" + size;
+				
+			}else if (color != -1) {
+				
+				lists = listSortHighReturn_dao.color_getList(start, end, color);
+				listUrl = cp + sortPath + "color=" + color;
+			}else if (tag != -1) {
+				
+				lists = listSortHighReturn_dao.tag_getList(start, end, tag);
+				listUrl = cp + sortPath + "tag=" + tag;
+			}
+				
+			String pageIndexList =
+					myPage.pageIndexList(currentPage, totalPage, listUrl);
+			
+			
+			String imagePath = cp + "/pds/productFile";
+			
+			req.setAttribute("sortPath", sortPath);
+			req.setAttribute("lists", lists);
+			req.setAttribute("pageIndexList", pageIndexList);
+			req.setAttribute("totalDataCount", dataCount);
+			req.setAttribute("currentPage", currentPage);
+			req.setAttribute("totalPage", totalPage);
+			req.setAttribute("imagePath", imagePath);
+			req.setAttribute("pageNum", pageNum);
+			
+			url = "/shop.jsp";
+			foward(req, resp, url);
 			
 			
 		}else if(uri.indexOf("addCart.do")!=-1) {

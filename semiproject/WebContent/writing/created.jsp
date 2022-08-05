@@ -29,8 +29,6 @@
 	<link rel="stylesheet" type="text/css" href="<%=cp %>/writing/css/style.css"/>
 	<link rel="stylesheet" type="text/css" href="<%=cp %>/writing/css/created.css"/>
 
-
-<script type="text/javascript" src="<%=cp%>/writing/js/util.js"></script>
 <script type="text/javascript">
 
 	function sendIt() {
@@ -254,7 +252,7 @@
 		
 		<div class="bbsCreated_noLine">
 			<dl>
-				<dt>패스워드</dt>
+				<dt>비밀번호</dt>
 				<dd>
 					<input type="password" name="pwd" size="35"
 					maxlength="7" class="boxTF"/>
@@ -263,8 +261,7 @@
 		</div>
 		
 		<div id = "bbsCreated_footer">
-			<input type="button" value = "등록하기" class="btn2"
-				onclick="sendIt();"/>
+			<input type="button" value ="등록하기" class="btn2" onclick="sendIt();"/>
 			<input type="reset" value="다시입력" class="btn2"
 				onclick="document.myForm.subject.focus();"/>
 			<input type="button" value="작성취소" class="btn2"

@@ -108,6 +108,7 @@
 			</div>
 		</div>
 	</div>
+	
 	<div class="container">
 		<div class="row">
 			<div class="col-lg-3 col-md-3">
@@ -148,6 +149,7 @@
 		</div>
 	</div>
 	</header>
+	
 	<!-- Header Section End -->
 
 	<!-- writing Section Begin -->
@@ -156,6 +158,7 @@
 	<br />
 	<br />
 	<br />
+	
 	<div id="bbsList">		
 		<div class="container">
 			<div class="row">
@@ -166,18 +169,18 @@
 		</div>
 		<div id="bbsList_header">
 			<div id="rightHeader">
-				<input type="button" value=" 글올리기 " class="btn2"
+				<input type="button" value=" Post " class="btn2"
 				onclick="javascript:location.href='<%=cp%>/bbs/created.do';" />
 			</div>
 
 			<div id="bbsList_list">
 				<div id="title">
 					<dl>
-						<dt class="num">번호</dt>
-						<dt class="subject">제목</dt>
-						<dt class="name">작성자</dt>
-						<dt class="savepath">작성일</dt>
-						<dt class="hitcount">조회수</dt>
+						<dt class="num">Number</dt>
+						<dt class="subject">Subject</dt>
+						<dt class="name">Name</dt>
+						<dt class="savepath">Date Created</dt>
+						<dt class="hitcount">views</dt>
 					</dl>
 				</div>
 				<div id="lists">
@@ -200,25 +203,26 @@
 						${pageIndexList }
 					</c:if>
 						<c:if test="${dataCount==0 }">
-						등록된 게시물이 없습니다.
+						There is no registered post.
 					</c:if>
 					</p>
 				</div>
 				<div id="leftHeader" style="margin: auto;">
 					<form action="" method="post" name="searchForm" >
 						<select name="searchKey" class="selectField">
-							<option value="subject">제목</option>
-							<option value="name">작성자</option>
-							<option value="content">내용</option>
+							<option value="subject">Subject</option>
+							<option value="name">Name</option>
+							<option value="content">Content</option>
 						</select> 
 						<input type="text" name="searchValue" class="textField" /> <input
-						type="button" value=" 검 색 " class="btn2" onclick="sendIt();" />
+						type="button" value=" Search " class="btn2" onclick="sendIt();" />
 					</form>
 					</div>
 				
 			</div>
 		</div>
 	</div>
+	
 	<!-- writing Section end -->
 
 	<!-- Footer Section Begin -->
