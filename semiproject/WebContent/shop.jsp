@@ -175,13 +175,13 @@
                                         <div class="card-body">
                                             <div class="shop__sidebar__categories">
                                                 <ul class="nice-scroll">
-                                                    <li><a href="<%=cp%>/shopping/list.do?category=1">Men (20)</a></li>
-                                                    <li><a href="<%=cp%>/shopping/list.do?category=2">Women (20)</a></li>
-                                                    <li><a href="<%=cp%>/shopping/list.do?category=3">Bags (20)</a></li>
-                                                    <li><a href="<%=cp%>/shopping/list.do?category=4">Clothing (20)</a></li>
-                                                    <li><a href="<%=cp%>/shopping/list.do?category=5">Shoes (20)</a></li>
-                                                    <li><a href="<%=cp%>/shopping/list.do?category=6">Accessories (20)</a></li>
-                                                    <li><a href="<%=cp%>/shopping/list.do?category=7">Kids (20)</a></li>
+                                                    <li><a href="${sortPath }category=1">Men (20)</a></li>
+                                                    <li><a href="${sortPath }category=2">Women (20)</a></li>
+                                                    <li><a href="${sortPath }category=3">Bags (20)</a></li>
+                                                    <li><a href="${sortPath }category=4">Clothing (20)</a></li>
+                                                    <li><a href="${sortPath }category=5">Shoes (20)</a></li>
+                                                    <li><a href="${sortPath }category=6">Accessories (20)</a></li>
+                                                    <li><a href="${sortPath }category=7">Kids (20)</a></li>
                                                 </ul>
                                             </div>
                                         </div>
@@ -195,10 +195,10 @@
                                         <div class="card-body">
                                             <div class="shop__sidebar__brand">
                                                 <ul>
-                                                    <li><a href="<%=cp%>/shopping/list.do?brand=1">Louis Vuitton</a></li>
-                                                    <li><a href="<%=cp%>/shopping/list.do?brand=2">Chanel</a></li>
-                                                    <li><a href="<%=cp%>/shopping/list.do?brand=3">Hermes</a></li>
-                                                    <li><a href="<%=cp%>/shopping/list.do?brand=4">Gucci</a></li>
+                                                    <li><a href="${sortPath }brand=1">Louis Vuitton</a></li>
+                                                    <li><a href="${sortPath }brand=2">Chanel</a></li>
+                                                    <li><a href="${sortPath }brand=3">Hermes</a></li>
+                                                    <li><a href="${sortPath }brand=4">Gucci</a></li>
                                                 </ul>
                                             </div>
                                         </div>
@@ -212,12 +212,12 @@
                                         <div class="card-body">
                                             <div class="shop__sidebar__price">
                                                 <ul>
-                                                    <li><a href="<%=cp%>/shopping/list.do?priceMin=0&priceMax=50">$0.00 - $50.00</a></li>
-                                                    <li><a href="<%=cp%>/shopping/list.do?priceMin=50&priceMax=100">$50.00 - $100.00</a></li>
-                                                    <li><a href="<%=cp%>/shopping/list.do?priceMin=100&priceMax=150">$100.00 - $150.00</a></li>
-                                                    <li><a href="<%=cp%>/shopping/list.do?priceMin=150&priceMax=200">$150.00 - $200.00</a></li>
-                                                    <li><a href="<%=cp%>/shopping/list.do?priceMin=200&priceMax=250">$200.00 - $250.00</a></li>
-                                                    <li><a href="<%=cp%>/shopping/list.do?priceMin=250">250.00+</a></li>
+                                                    <li><a href="${sortPath }priceMin=0&priceMax=50">$0.00 - $50.00</a></li>
+                                                    <li><a href="${sortPath }priceMin=50&priceMax=100">$50.00 - $100.00</a></li>
+                                                    <li><a href="${sortPath }priceMin=100&priceMax=150">$100.00 - $150.00</a></li>
+                                                    <li><a href="${sortPath }priceMin=150&priceMax=200">$150.00 - $200.00</a></li>
+                                                    <li><a href="${sortPath }priceMin=200&priceMax=250">$200.00 - $250.00</a></li>
+                                                    <li><a href="${sortPath }priceMin=250">250.00+</a></li>
                                                 </ul>
                                             </div>
                                         </div>
@@ -232,31 +232,31 @@
                                             <div class="shop__sidebar__size">
                                                 <label for="xs">xs
                                                 	 <input type="radio" id="xs"
-                                                	  onclick="location.href='<%=cp%>/shopping/list.do?size=1';"/>
+                                                	  onclick="location.href='${sortPath }size=1';"/>
                                                 </label>
                                                 <label for="sm">s
                                                     <input type="radio" id="sm" 
-                                                    onclick="location.href='<%=cp%>/shopping/list.do?size=2';"/>
+                                                    onclick="location.href='${sortPath }size=2';"/>
                                                 </label>
                                                 <label for="md">m
                                                     <input type="radio" id="md" 
-                                                    onclick="location.href='<%=cp%>/shopping/list.do?size=3';"/>
+                                                    onclick="location.href='${sortPath }size=3';"/>
                                                 </label>
                                                 <label for="xl">xl
                                                     <input type="radio" id="xl"
-                                                     onclick="location.href='<%=cp%>/shopping/list.do?size=4';"/>
+                                                     onclick="location.href='${sortPath }size=4';"/>
                                                 </label>
                                                 <label for="xxl">xxl
                                                     <input type="radio" id="xxl" 
-                                                    onclick="location.href='<%=cp%>/shopping/list.do?size=5';"/>
+                                                    onclick="location.href='${sortPath }size=5';"/>
                                                 </label>
                                                 <label for="3xl">3xl
                                                     <input type="radio" id="3xl"
-                                                     onclick="location.href='<%=cp%>/shopping/list.do?size=6';"/>
+                                                     onclick="location.href='${sortPath }size=6';"/>
                                                 </label>
                                                 <label for="4xl">4xl
                                                     <input type="radio" id="4xl" 
-                                                    onclick="location.href='<%=cp%>/shopping/list.do?size=7';"/>
+                                                    onclick="location.href='${sortPath }size=7';"/>
                                                 </label>
                                             </div>
                                         </div>
@@ -271,39 +271,39 @@
                                             <div class="shop__sidebar__color">
                                                 <label class="c-1" for="sp-1">
                                                     <input type="radio" id="sp-1"
-                                                    onclick="location.href='<%=cp%>/shopping/list.do?color=1';"/>
+                                                    onclick="location.href='${sortPath }color=1';"/>
                                                 </label>
                                                 <label class="c-2" for="sp-2">
                                                     <input type="radio" id="sp-2"
-                                                    onclick="location.href='<%=cp%>/shopping/list.do?color=2';"/>
+                                                    onclick="location.href='${sortPath }color=2';"/>
                                                 </label>
                                                 <label class="c-3" for="sp-3">
                                                     <input type="radio" id="sp-3"
-                                                    onclick="location.href='<%=cp%>/shopping/list.do?color=3';"/>
+                                                    onclick="location.href='${sortPath }color=3';"/>
                                                 </label>
                                                 <label class="c-4" for="sp-4">
                                                     <input type="radio" id="sp-4"
-                                                    onclick="location.href='<%=cp%>/shopping/list.do?color=4';"/>
+                                                    onclick="location.href='${sortPath }color=4';"/>
                                                 </label>
                                                 <label class="c-5" for="sp-5">
                                                     <input type="radio" id="sp-5"
-                                                    onclick="location.href='<%=cp%>/shopping/list.do?color=5';"/>
+                                                    onclick="location.href='${sortPath }color=5';"/>
                                                 </label>
                                                 <label class="c-6" for="sp-6">
                                                     <input type="radio" id="sp-6"
-                                                    onclick="location.href='<%=cp%>/shopping/list.do?color=6';"/>
+                                                    onclick="location.href='${sortPath }color=6';"/>
                                                 </label>
                                                 <label class="c-7" for="sp-7">
                                                     <input type="radio" id="sp-7"
-                                                    onclick="location.href='<%=cp%>/shopping/list.do?color=7';"/>
+                                                    onclick="location.href='${sortPath }color=7';"/>
                                                 </label>
                                                 <label class="c-8" for="sp-8">
                                                     <input type="radio" id="sp-8"
-                                                    onclick="location.href='<%=cp%>/shopping/list.do?color=8';"/>
+                                                    onclick="location.href='${sortPath }color=8';"/>
                                                 </label>
                                                 <label class="c-9" for="sp-9">
                                                     <input type="radio" id="sp-9"
-                                                    onclick="location.href='<%=cp%>/shopping/list.do?color=9';"/>
+                                                    onclick="location.href='${sortPath }color=9';"/>
                                                 </label>
                                             </div>
                                         </div>
@@ -316,13 +316,13 @@
                                     <div id="collapseSix" class="collapse show" data-parent="#accordionExample">
                                         <div class="card-body">
                                             <div class="shop__sidebar__tags">
-                                                <a href="<%=cp%>/shopping/list.do?tag=1">Product</a>
-                                                <a href="<%=cp%>/shopping/list.do?tag=2">Bags</a>
-                                                <a href="<%=cp%>/shopping/list.do?tag=3">Shoes</a>
-                                                <a href="<%=cp%>/shopping/list.do?tag=4">Fashio</a>
-                                                <a href="<%=cp%>/shopping/list.do?tag=5">Clothing</a>
-                                                <a href="<%=cp%>/shopping/list.do?tag=6">Hats</a>
-                                                <a href="<%=cp%>/shopping/list.do?tag=7">Accessories</a>
+                                                <a href="${sortPath }tag=1">Product</a>
+                                                <a href="${sortPath }tag=2">Bags</a>
+                                                <a href="${sortPath }tag=3">Shoes</a>
+                                                <a href="${sortPath }tag=4">Fashio</a>
+                                                <a href="${sortPath }tag=5">Clothing</a>
+                                                <a href="${sortPath }tag=6">Hats</a>
+                                                <a href="${sortPath }tag=7">Accessories</a>
                                             </div>
                                         </div>
                                     </div>
@@ -346,9 +346,9 @@
                                 <form action="document.sortForm" >
                                     <p>Sort by Price:</p>
                                     <select onchange="location.href=this.value">
-                                        <option value="0">New</option>
-                                        <option value="http://localhost:8080/<%=cp%>/shopping/listsortlow.do?sort=1">Low To High</option>
-                                        <option value="2">High To Low</option>
+                                        <option value="http://localhost:8080<%=cp%>/shopping/list.do">New</option>
+                                        <option value="http://localhost:8080<%=cp%>/shopping/listsortlow.do?sort=1">Low To High</option>
+                                        <option value="http://localhost:8080<%=cp%>/shopping/listsorthigh.do?sort=2">High To Low</option>
                                     </select>
                                 </form>    
                                 </div>
