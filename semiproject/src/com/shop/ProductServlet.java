@@ -10,6 +10,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
@@ -102,6 +103,8 @@ public class ProductServlet extends HttpServlet {
 			int size = Integer.parseInt(returnNull(req.getParameter("size")));
 			int color = Integer.parseInt(returnNull(req.getParameter("color")));
 			int tag = Integer.parseInt(returnNull(req.getParameter("tag")));
+			String sortPath = cp + "/shopping/list.do";
+			
 			
 			String pageNum = req.getParameter("pageNum");
 			
@@ -167,6 +170,7 @@ public class ProductServlet extends HttpServlet {
 			
 			String imagePath = cp + "/pds/productFile";
 			
+			req.setAttribute("sortPath", sortPath);
 			req.setAttribute("lists", lists);
 			req.setAttribute("pageIndexList", pageIndexList);
 			req.setAttribute("totalDataCount", dataCount);
@@ -226,7 +230,7 @@ public class ProductServlet extends HttpServlet {
 			resp.sendRedirect(url);
 			
 			
-		}else if(uri.indexOf("listsortlow.do")!=-1) {
+		}else if(uri.indexOf("listsortlow.do")!=-1) {//로우솔트로 왔을때리스트
 			
 			int category = Integer.parseInt(returnNull(req.getParameter("category")));
 			int brand = Integer.parseInt(returnNull(req.getParameter("brand")));
@@ -235,6 +239,9 @@ public class ProductServlet extends HttpServlet {
 			int size = Integer.parseInt(returnNull(req.getParameter("size")));
 			int color = Integer.parseInt(returnNull(req.getParameter("color")));
 			int tag = Integer.parseInt(returnNull(req.getParameter("tag")));
+			int sort = Integer.parseInt(returnNull(req.getParameter("sort")));
+			String sortPath = cp + "/shopping/listsortlow.do";
+			
 			
 			String pageNum = req.getParameter("pageNum");
 			
@@ -300,6 +307,7 @@ public class ProductServlet extends HttpServlet {
 			
 			String imagePath = cp + "/pds/productFile";
 			
+			req.setAttribute("sorthPath", sortPath);
 			req.setAttribute("lists", lists);
 			req.setAttribute("pageIndexList", pageIndexList);
 			req.setAttribute("totalDataCount", dataCount);
@@ -313,6 +321,19 @@ public class ProductServlet extends HttpServlet {
 			
 			
 		}else if(uri.indexOf("sorthigh.do")!=-1) {
+			
+			
+		}else if(uri.indexOf("addCart.do")!=-1) {
+			
+			int productNum = Integer.parseInt(returnNull(req.getParameter("productNum")));
+			
+			
+			HttpSession session = req.getSession();
+			session.getAttribute("membernum");
+			
+			int memberNum = 1;
+			
+			int productCount = dao.insertCart(memberNum, productNum);
 			
 			
 		}

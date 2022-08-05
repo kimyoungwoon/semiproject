@@ -347,7 +347,7 @@
                                     <p>Sort by Price:</p>
                                     <select onchange="location.href=this.value">
                                         <option value="0">New</option>
-                                        <option value="1">Low To High</option>
+                                        <option value="http://localhost:8080/<%=cp%>/shopping/listsortlow.do?sort=1">Low To High</option>
                                         <option value="2">High To Low</option>
                                     </select>
                                 </form>    
@@ -371,7 +371,7 @@
                                 </div>
                                 <div class="product__item__text">
                                     <h6>${dto.name }</h6>
-                                    <a href="#" class="add-cart">+ Add To Cart</a>
+                                    <a href="<%=cp %>/shopping/addCart.do?productNum=${dto.num}" class="add-cart">+ Add To Cart</a>
                                     <div class="rating">
                                         <i class="fa fa-star-o"></i>
                                         <i class="fa fa-star-o"></i>
