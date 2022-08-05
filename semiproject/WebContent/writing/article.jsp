@@ -29,6 +29,23 @@
     <link rel="stylesheet" href="<%=cp%>/css/style.css" type="text/css">
     <link rel="stylesheet" type="text/css" href="<%=cp %>/writing/css/style.css"/>
 	<link rel="stylesheet" type="text/css" href="<%=cp %>/writing/css/article.css"/>
+
+<script type="text/javascript">
+
+function deleteIt() {
+
+	 if (confirm("정말 삭제하시겠습니까??") == true){    //확인
+
+		 document.deleted.submit();
+
+	 }else{   //취소
+	     return false;
+	 }
+	}
+</script>
+
+
+
 </head>
 
 <body>
@@ -176,19 +193,22 @@
 				</tr>	
 				</table>	
 			</div>
-		
+		<form action="<%=cp %>/bbs/deleted_ok.do?num=${dto.num }&${params }" name="deleted" method="post">
 		<div id="bbsArticle_footer">
 			<div id="leftFooter">
 				<input type="button" value="수정" class="btn2" 
 				onclick="javascript:location.href='<%=cp %>/bbs/updated.do?num=${dto.num }&${params }';"/> 
 				<input type="button" value="삭제" class="btn2" 
-				onclick="javascript:location.href='<%=cp %>/bbs/deleted_ok.do?num=${dto.num }&${params }';"/> 
+				onclick="deleteIt()"/> 
+															
 			</div>
 			<div id="rightFooter">
 				<input type="button" value="리스트" class="btn2" 
 				onclick="location='<%=cp %>/bbs/list.do?${params }';"/> 
 			</div>
 		</div>
+		</form>
+		
 	</div>
 	</div>
     <!-- article Section end -->
