@@ -52,15 +52,6 @@ bordercolor="#d6d4a6" align="center" style="margin: auto;">
 		</td>
 	</tr>
 	<tr>
-		<td width="140" height="30" bgcolor="#eeeeee" style="padding-left: 20px;">
-		수량
-		</td>
-		<td width="600" style="padding-left: 10px;" bgcolor="#eeeeee">
-		<input type="text" name="sizeCount" size="5" maxlength="20" class="boxTF"/>
-		</td>
-	
-	</tr>
-	<tr>
 		<td height="40" align="center">
 			<input type="submit" value="등록하기" class="btn2"/>
 		</td>
@@ -89,14 +80,7 @@ bordercolor="#d6d4a6" align="center" style="margin: auto;">
 		<input type="text" name="pd_colorNum" size="5" maxlength="20" class="boxTF"/>
 		</td>
 	</tr>	
-	<tr>
-		<td width="140" height="30" bgcolor="#eeeeee" style="padding-left: 20px;">
-		수량
-		</td>
-		<td width="600" style="padding-left: 10px;" bgcolor="#eeeeee">
-		<input type="text" name="colorCount" size="5" maxlength="20" class="boxTF"/>
-		</td>
-	</tr>
+
 	<tr>
 		<td height="40" align="center">
 			<input type="submit" value="등록하기" class="btn2"/>
@@ -124,14 +108,7 @@ bordercolor="#d6d4a6" align="center" style="margin: auto;">
 		<input type="text" name="pd_tagNum" size="5" maxlength="20" class="boxTF"/>
 		</td>
 	</tr>
-	<tr>
-		<td width="140" height="30" bgcolor="#eeeeee" style="padding-left: 20px;">
-		수량
-		</td>
-		<td width="600" style="padding-left: 10px;" bgcolor="#eeeeee">
-		<input type="text" name="tagCount" size="5" maxlength="20" class="boxTF"/>
-		</td>
-	</tr>
+
 	<tr>
 		<td height="40" align="center">
 			<input type="button" value="등록하기" class="btn2" onclick="sendIt();"/>
@@ -145,10 +122,8 @@ bordercolor="#d6d4a6" align="center" style="margin: auto;">
 <table width="600" border="0" cellpadding="0" cellspacing="3" align="center" style="margin: auto;">
 	<tr>
 		<td height="40" align="center">
-		<input type="button" value="등록하기" class="btn2" onclick="sendIt();"/>
-		<input type="reset" value="다시입력" class="btn2" onclick="document.myForm.pd_name.focus();"/>
 		<input type="submit" value="등록취소" class="btn2" 
-		onclick="javascript:location.href='<%=cp%>shopping/list.do';"/>
+		onclick="javascript:location.href='<%=cp%>/shopping/list.do';"/>
 		</td>
 	</tr>
 </table>

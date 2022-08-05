@@ -229,31 +229,36 @@
                                     </div>
                                     <div id="collapseFour" class="collapse show" data-parent="#accordionExample">
                                         <div class="card-body">
-                                        <form action="<%=cp %>/shopping/list.do" method="post">
                                             <div class="shop__sidebar__size">
                                                 <label for="xs">xs
-                                                    <input type="submit" id="xs" value="1" name="xs">
+                                                	 <input type="radio" id="xs"
+                                                	  onclick="location.href='<%=cp%>/shopping/list.do?size=1';"/>
                                                 </label>
                                                 <label for="sm">s
-                                                    <input type="radio" id="sm" value="2" name="s">
+                                                    <input type="radio" id="sm" 
+                                                    onclick="location.href='<%=cp%>/shopping/list.do?size=2';"/>
                                                 </label>
                                                 <label for="md">m
-                                                    <input type="radio" id="md" value="3" name="m">
+                                                    <input type="radio" id="md" 
+                                                    onclick="location.href='<%=cp%>/shopping/list.do?size=3';"/>
                                                 </label>
                                                 <label for="xl">xl
-                                                    <input type="radio" id="xl" value="4" name="xl">
+                                                    <input type="radio" id="xl"
+                                                     onclick="location.href='<%=cp%>/shopping/list.do?size=4';"/>
                                                 </label>
                                                 <label for="xxl">xxl
-                                                    <input type="radio" id="xxl" value="6" name="xxl">
+                                                    <input type="radio" id="xxl" 
+                                                    onclick="location.href='<%=cp%>/shopping/list.do?size=5';"/>
                                                 </label>
                                                 <label for="3xl">3xl
-                                                    <input type="radio" id="3xl" value="7" name="3xl">
+                                                    <input type="radio" id="3xl"
+                                                     onclick="location.href='<%=cp%>/shopping/list.do?size=6';"/>
                                                 </label>
                                                 <label for="4xl">4xl
-                                                    <input type="radio" id="4xl" value="8" name="4xl">
+                                                    <input type="radio" id="4xl" 
+                                                    onclick="location.href='<%=cp%>/shopping/list.do?size=7';"/>
                                                 </label>
                                             </div>
-                                            </form>
                                         </div>
                                     </div>
                                 </div>
@@ -265,31 +270,40 @@
                                         <div class="card-body">
                                             <div class="shop__sidebar__color">
                                                 <label class="c-1" for="sp-1">
-                                                    <input type="radio" id="sp-1">
+                                                    <input type="radio" id="sp-1"
+                                                    onclick="location.href='<%=cp%>/shopping/list.do?color=1';"/>
                                                 </label>
                                                 <label class="c-2" for="sp-2">
-                                                    <input type="radio" id="sp-2">
+                                                    <input type="radio" id="sp-2"
+                                                    onclick="location.href='<%=cp%>/shopping/list.do?color=2';"/>
                                                 </label>
                                                 <label class="c-3" for="sp-3">
-                                                    <input type="radio" id="sp-3">
+                                                    <input type="radio" id="sp-3"
+                                                    onclick="location.href='<%=cp%>/shopping/list.do?color=3';"/>
                                                 </label>
                                                 <label class="c-4" for="sp-4">
-                                                    <input type="radio" id="sp-4">
+                                                    <input type="radio" id="sp-4"
+                                                    onclick="location.href='<%=cp%>/shopping/list.do?color=4';"/>
                                                 </label>
                                                 <label class="c-5" for="sp-5">
-                                                    <input type="radio" id="sp-5">
+                                                    <input type="radio" id="sp-5"
+                                                    onclick="location.href='<%=cp%>/shopping/list.do?color=5';"/>
                                                 </label>
                                                 <label class="c-6" for="sp-6">
-                                                    <input type="radio" id="sp-6">
+                                                    <input type="radio" id="sp-6"
+                                                    onclick="location.href='<%=cp%>/shopping/list.do?color=6';"/>
                                                 </label>
                                                 <label class="c-7" for="sp-7">
-                                                    <input type="radio" id="sp-7">
+                                                    <input type="radio" id="sp-7"
+                                                    onclick="location.href='<%=cp%>/shopping/list.do?color=7';"/>
                                                 </label>
                                                 <label class="c-8" for="sp-8">
-                                                    <input type="radio" id="sp-8">
+                                                    <input type="radio" id="sp-8"
+                                                    onclick="location.href='<%=cp%>/shopping/list.do?color=8';"/>
                                                 </label>
                                                 <label class="c-9" for="sp-9">
-                                                    <input type="radio" id="sp-9">
+                                                    <input type="radio" id="sp-9"
+                                                    onclick="location.href='<%=cp%>/shopping/list.do?color=9';"/>
                                                 </label>
                                             </div>
                                         </div>

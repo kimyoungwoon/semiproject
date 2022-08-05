@@ -121,6 +121,7 @@ public class ProductDAO {
 	}
 	
 	//출력
+	//페이징처리된 사용자용 전체리스트
 	public List<ProductDTO> product_getList(int start,int end){
 		
 		lists = new ArrayList<ProductDTO>();
@@ -166,6 +167,7 @@ public class ProductDAO {
 		return lists;
 	}
 	
+	//출력
 	//페이징없는 관리자용 전체데이터 가져오기
 	public List<ProductDTO> product_getList(){
 		
@@ -294,14 +296,15 @@ public class ProductDAO {
 		return result;
 	}
 	
-	//제품에 컬러 추가 (추가할 수량(count)을 받아서 한번에추가 
-	public int color_insertData(int num,int colorNum,int count) {
+	//입력
+	//제품에 컬러 추가
+	public int color_insertData(int num,int colorNum) {
 		
 		int result = 0;
 		
 		try {
 			
-			for(int i=0;i<count;i++) {
+			
 			sql = "insert into product_color (productnum,colornum) ";
 			sql+= "values (?,?)";
 			
@@ -310,22 +313,23 @@ public class ProductDAO {
 			pstmt.setInt(2, colorNum);
 			result = pstmt.executeUpdate();
 			pstmt.close();
-			}		
+					
 		} catch (Exception e) {
 			System.out.println(e.toString());
 		}
 		return result;
 	}
 	
-	//제품에 사이즈 추가 (추가할 수량(count)을 받아서 한번에추가 
-	public int size_insertData(int num,int sizeNum,int count) {
+	//입력
+	//제품에 사이즈 추가
+	public int size_insertData(int num,int sizeNum) {
 		
 		int result = 0;
 		
 		try {
 			;
 			
-			for(int i=0;i<count;i++) {
+			
 				sql = "insert into product_size (productnum,sizenum) ";
 				sql+= "values (?,?)";
 
@@ -335,7 +339,7 @@ public class ProductDAO {
 				result = pstmt.executeUpdate();
 				pstmt.close();
 				
-			}
+			
 					
 		} catch (Exception e) {
 			System.out.println(e.toString());
@@ -343,14 +347,15 @@ public class ProductDAO {
 		return result;
 	}
 	
-	//제품에 사이즈 추가 (추가할 수량(count)을 받아서 한번에추가
-	public int tag_insertData(int num,int tagNum,int count) {
+	//입력
+	//제품에 사이즈 추가
+	public int tag_insertData(int num,int tagNum) {
 		
 		int result = 0;
 		
 		try {
 			
-			for(int i=0;i<count;i++) {
+			
 			sql = "insert into product_tag (productnum,tagnum) ";
 			sql+= "values (?,?)";
 			
@@ -360,10 +365,13 @@ public class ProductDAO {
 			result = pstmt.executeUpdate();
 			pstmt.close();
 			
-			}		
+				
 		} catch (Exception e) {
 			System.out.println(e.toString());
 		}
 		return result;
 	}
+	
+	
+	
 }

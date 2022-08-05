@@ -2,9 +2,6 @@ package com.cart;
 
 public class CartProductDTO {
 
-	
-	
-	
 	private int membernum;
 	private int productnum;
 	private int count;
@@ -12,9 +9,6 @@ public class CartProductDTO {
 	//아래 2개는 조인해서 가져오는 데이터
 	private String name;
 	private int price;
-	
-	
-	
 	
 	
 	public String getName() {

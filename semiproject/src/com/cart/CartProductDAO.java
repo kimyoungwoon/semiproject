@@ -8,7 +8,7 @@ import java.util.List;
 
 import com.shop.ProductDTO;
 
-public class CartOpenDAO {
+public class CartProductDAO {
 
 	private Connection conn;
 
@@ -19,7 +19,7 @@ public class CartOpenDAO {
 	List<CartProductDTO> lists = null;
 	CartProductDTO dto = null;
 
-	public CartOpenDAO(Connection conn) {
+	public CartProductDAO(Connection conn) {
 		this.conn = conn;
 	}
 
@@ -102,5 +102,25 @@ public class CartOpenDAO {
 		return result;
 	}
 	
+	public int deleteCartMember(int pMeberNum) {
+		int result = 0;
+		PreparedStatement pstmt = null;
+		String sql;
+		
+		try {
+			sql = "delete cart_product where membernum=?";
+			
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, pMeberNum);
+			
+			result = pstmt.executeUpdate();
+			
+			pstmt.close();
+			
+		} catch (Exception e) {
+			System.out.println(e.toString());
+		}
+		return result;
+	}
 	
 }

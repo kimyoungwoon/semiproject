@@ -101,17 +101,9 @@ public class ProductServlet extends HttpServlet {
 			int brand = Integer.parseInt(returnNull(req.getParameter("brand")));
 			int priceMin = Integer.parseInt(returnNull(req.getParameter("priceMin")));
 			int priceMax = Integer.parseInt(returnNull(req.getParameter("priceMax")));
-			
-			
-			
-			//사이즈 별 변수
-			int xs = Integer.parseInt(returnNull(req.getParameter("xs")));
-			int s = Integer.parseInt(returnNull(req.getParameter("s")));
-			int m = Integer.parseInt(returnNull(req.getParameter("m")));
-			int xl = Integer.parseInt(returnNull(req.getParameter("xl")));
-			int xxl = Integer.parseInt(returnNull(req.getParameter("xxl")));
-			int xxxl = Integer.parseInt(returnNull(req.getParameter("xxxl")));
-			int xxxxl = Integer.parseInt(returnNull(req.getParameter("xxxxl")));
+			int size = Integer.parseInt(returnNull(req.getParameter("size")));
+			int color = Integer.parseInt(returnNull(req.getParameter("color")));
+			int tag = Integer.parseInt(returnNull(req.getParameter("tag")));
 			
 			String pageNum = req.getParameter("pageNum");
 			
@@ -156,6 +148,19 @@ public class ProductServlet extends HttpServlet {
 				
 				lists = listReturn_dao.priceUp_getList(start, end, priceMin);
 				listUrl = cp + "/shopping/list.do?priceMin=" + priceMin;
+			}else if (size != -1) {
+				
+				lists = listReturn_dao.size_getList(start, end, size);
+				listUrl = cp + "/shopping/list.do?size=" + size;
+				
+			}else if (color != -1) {
+				
+				lists = listReturn_dao.color_getList(start, end, color);
+				listUrl = cp + "/shopping/list.do?color=" + color;
+			}else if (tag != -1) {
+				
+				lists = listReturn_dao.tag_getList(start, end, tag);
+				listUrl = cp + "/shopping/list.do?tag=" + tag;
 			}
 				
 			String pageIndexList =
@@ -166,10 +171,11 @@ public class ProductServlet extends HttpServlet {
 			
 			req.setAttribute("lists", lists);
 			req.setAttribute("pageIndexList", pageIndexList);
-			req.setAttribute("dataCount", dataCount);
+			req.setAttribute("totalDataCount", dataCount);
 			req.setAttribute("currentPage", currentPage);
 			req.setAttribute("totalPage", totalPage);
 			req.setAttribute("imagePath", imagePath);
+			req.setAttribute("pageNum", pageNum);
 			
 			url = "/shop.jsp";
 			foward(req, resp, url);
@@ -190,9 +196,9 @@ public class ProductServlet extends HttpServlet {
 			
 			int num = Integer.parseInt(returnNull(req.getParameter("size_nameNum")));
 			int sizeNum = Integer.parseInt(returnNull(req.getParameter("pd_sizeNum")));
-			int count = Integer.parseInt(returnNull(req.getParameter("sizeCount")));
 			
-			dao.size_insertData(num, sizeNum, count);
+			
+			dao.size_insertData(num, sizeNum);
 			
 			url = cp + "/shopping/setting.do";
 			resp.sendRedirect(url);
@@ -202,9 +208,9 @@ public class ProductServlet extends HttpServlet {
 			
 			int num = Integer.parseInt(returnNull(req.getParameter("color_nameNum")));
 			int colorNum = Integer.parseInt(returnNull(req.getParameter("pd_colorNum")));
-			int count = Integer.parseInt(returnNull(req.getParameter("colorCount")));
 			
-			dao.color_insertData(num, colorNum, count);
+			
+			dao.color_insertData(num, colorNum);
 			
 			url = cp + "/shopping/setting.do";
 			resp.sendRedirect(url);
@@ -214,9 +220,9 @@ public class ProductServlet extends HttpServlet {
 			
 			int num = Integer.parseInt(returnNull(req.getParameter("tag_nameNum")));
 			int tagNum = Integer.parseInt(returnNull(req.getParameter("pd_tagNum")));
-			int count = Integer.parseInt(returnNull(req.getParameter("tagCount")));
 			
-			dao.tag_insertData(num, tagNum, count);
+			
+			dao.tag_insertData(num, tagNum);
 			resp.sendRedirect(url);
 			
 			
