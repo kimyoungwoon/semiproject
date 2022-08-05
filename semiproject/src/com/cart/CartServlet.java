@@ -34,7 +34,7 @@ public class CartServlet extends HttpServlet{
 
 		String cp = request.getContextPath();
 		String uri = request.getRequestURI();
-
+		//System.out.println(cp);  /semiproject
 		String url = null;
 
 		//파일 저장 경로 설정
@@ -86,7 +86,8 @@ public class CartServlet extends HttpServlet{
 			int memberNum = Integer.parseInt(request.getParameter("memberNum"));
 
 			List<CartProductDTO> lists = dao.getCartList(memberNum);
-
+			String imagePath = cp + "/img/pds/";
+			
 			StringBuffer result = new StringBuffer("");
 			result.append("{\"result\":[");
 			for(int i = 0; i < lists.size(); i++) {
@@ -94,7 +95,9 @@ public class CartServlet extends HttpServlet{
 				result.append("{\"value\": \"" + lists.get(i).getProductnum() + "\"},");
 				result.append("{\"value\": \"" + lists.get(i).getCount() + "\"},");
 				result.append("{\"value\": \"" + lists.get(i).getName() + "\"},");
-				result.append("{\"value\": \"" + lists.get(i).getPrice() + "\"}],");
+				result.append("{\"value\": \"" + lists.get(i).getPrice() + "\"},");
+				result.append("{\"value\": \"" + cp + "/img/pds/" + lists.get(i).getSaveFileName() + "\"}],");
+				
 			}
 			result.append("]}");
 			response.getWriter().write(result.toString());
