@@ -37,10 +37,10 @@
 <link rel="stylesheet" href="<%=cp%>/css/slicknav.min.css"
 	type="text/css">
 <link rel="stylesheet" href="<%=cp%>/css/style.css" type="text/css">
-<link rel="stylesheet" href="<%=cp%>/cart/custom.css"
+<link rel="stylesheet" href="<%=cp%>/payment/custom.css"
 	type="text/css">
 
-<script type="text/javascript" src="<%=cp %>/cart/request_ajax.js"></script>
+<script type="text/javascript" src="<%=cp %>/payment/cartPage.js"></script>
 
 
 </head>
@@ -213,12 +213,12 @@
 						<h6>Cart total</h6>
 						<ul>
 							<fmt:formatNumber value ="${sumTotal }" type = "number" var="comTotal" />
-							<li>Before Discount <span id = "beforeDiscount">${comTotal }원</span></li>
-							<li>Actual Payment <span id = "actualPayment">${comTotal }원</span></li>
+							<li>Before Discount <span id = "beforeDiscount">₩ ${comTotal }</span></li>
+							<li>Actual Payment <span id = "actualPayment">₩ {comTotal }</span></li>
 						</ul>
 						<%-- <a href="<%=cp%>/checkout.jsp" class="primary-btn">Proceed to
 							checkout</a> --%>
-							<input class="primary-btn" value = "Proceed to checkout" onclick = "alert();" type="button">
+							<input class="primary-btn" value = "Proceed to checkout" onclick = "location.href ='<%=cp%>/order/payment.do'" type="button">
 					</div>
 				</div>
 			</div>
@@ -321,7 +321,5 @@
 	<script src="<%=cp%>/js/mixitup.min.js"></script>
 	<script src="<%=cp%>/js/owl.carousel.min.js"></script>
 	<script src="<%=cp%>/js/main.js"></script>
-
 </body>
-
 </html>

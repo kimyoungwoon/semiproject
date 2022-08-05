@@ -1,19 +1,23 @@
-package com.cart;
+package com.order;
 
-import java.sql.Date;
-
-public class OrderProductDTO {
+public class OrderDetailDTO {
 
 	private int membernum;
+	private int ordernum;
 	private int productnum;
 	private int count;
-	private Date orderdate;
 	
 	public int getMembernum() {
 		return membernum;
 	}
 	public void setMembernum(int membernum) {
 		this.membernum = membernum;
+	}
+	public int getOrdernum() {
+		return ordernum;
+	}
+	public void setOrdernum(int ordernum) {
+		this.ordernum = ordernum;
 	}
 	public int getProductnum() {
 		return productnum;
@@ -27,13 +31,5 @@ public class OrderProductDTO {
 	public void setCount(int count) {
 		this.count = count;
 	}
-	public Date getOrderdate() {
-		return orderdate;
-	}
-	public void setOrderdate(Date orderdate) {
-		this.orderdate = orderdate;
-	}
-	
-	
 	
 }

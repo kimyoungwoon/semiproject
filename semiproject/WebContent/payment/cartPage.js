@@ -6,7 +6,7 @@ var arrProduct = [];
 function registerFunction() {
     //여기도 마찬가지로 요청할때는 session을 이용해서 하면 됨.
     //지금 당장은 테스트로 1
-    connectRequest.open("Post", "./ywsemi/shopCart.do?memberNum=" + eURI("3"), true);
+    connectRequest.open("Post", "./cart/shopCart.do?memberNum=" + eURI("1"), true);
     connectRequest.onreadystatechange = successConnect;
     connectRequest.send(null);
 }
@@ -32,9 +32,9 @@ function successConnect() {
                 "<h6>" +
                 result[i][3].value +
                 "</h6>" +
-                "<h5>" +
+                "<h5>₩ " +
                 Number(result[i][4].value).toLocaleString("ko-KR") +
-                "원</h5>" +
+                "</h5>" +
                 "</div>" +
                 "</td>" +
                 "<td class='quantity__item'>" +
@@ -56,9 +56,9 @@ function successConnect() {
                 "</div>" +
                 "</div>" +
                 "</td>" +
-                "<td class='cart__price'>" +
+                "<td class='cart__price'>₩ " +
                 (Number(result[i][2].value) * Number(result[i][4].value)).toLocaleString("ko-KR") +
-                "원</td>" +
+                "</td>" +
                 "<td class='cart__close'>" +
                 "<a href='javascript:void(0);' onclick='javascript:deleteCartProduct(" +
                 "this" +
@@ -101,11 +101,12 @@ function operationCount(thisNum, inc = null) {
 
 //각 상품별 소계
 function changeSubTotal(thisNum, price, count) {
-    thisNum.text((price * count).toLocaleString("ko-KR") + "원");
+    thisNum.text("₩ " + (price * count).toLocaleString("ko-KR") );
 
     //여기도 마찬가지로 요청할때는 session을 이용해서 하면 됨.
     //지금 당장은 테스트로 1
 }
+
 //장바구니 총 금액
 function cartTotal(discount = 1) {
     var arrPrice = $("#productTable").closest("tbody").find("tr").length;
@@ -119,20 +120,20 @@ function cartTotal(discount = 1) {
     
     totalPrice = totalPrice.toLocaleString("ko-KR");
     originTotal = originTotal.toLocaleString("ko-KR");
-    $("#beforeDiscount").text(originTotal + "원");
-    $("#actualPayment").text(totalPrice + "원");
+    $("#beforeDiscount").text("₩ " + originTotal);
+    $("#actualPayment").text("₩ " + totalPrice);
 }
 
 //상품 개수 정보 수정
 function updateCartProductCount(productNum, count) {
-    updateRequest.open("get", "./ywsemi/updatePC.do?productNum=" + eURI(productNum) + "&count=" + eURI(count), true);
+    updateRequest.open("get", "./cart/updatePC.do?productNum=" + eURI(productNum) + "&count=" + eURI(count), true);
     ////	updateRequest.onreadystatechange = successConnect;
     updateRequest.send(null);
 }
 
 //상품 삭제
 function deleteCartProduct(arg, productNum) {
-    deleteRequest.open("Post", "./ywsemi/deleteCart.do?productNum=" + eURI(productNum), true);
+    deleteRequest.open("Post", "./cart/deleteCart.do?productNum=" + eURI(productNum), true);
     //	deleteRequest.onreadystatechange = successConnect;
     deleteRequest.send(null);
     $(arg).closest("tr").remove();
@@ -150,7 +151,7 @@ function useCoupon(apply) {
 }
 
 function removeCandWon(str) {
-    return str.slice(0, -1).replaceAll(",", "");
+    return str.slice(2).replaceAll(",", "");
 }
 
 window.onload = function () {

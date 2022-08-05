@@ -1,4 +1,4 @@
-package com.cart;
+package com.order;
 
 import java.io.File;
 import java.io.IOException;
@@ -12,10 +12,13 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.cart.CartProductDAO;
+import com.cart.CartProductDTO;
 import com.shop.ProductDAO;
 import com.util.DBConn;
 
-public class CartServlet extends HttpServlet{
+public class OrderServlet extends HttpServlet{
+
 	private static final long serialVersionUID = 1L;
 
 	@Override
@@ -25,41 +28,23 @@ public class CartServlet extends HttpServlet{
 
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
 		final int MEMBER_NUM = 1;
 
 		request.setCharacterEncoding("utf-8");
 		response.setContentType("text/html;charset=UTF-8");
+		
 		Connection conn = DBConn.getConnection();
-		CartProductDAO dao = new CartProductDAO(conn);
+		OrderHistoryDAO orderDAO = new OrderHistoryDAO(conn);
+		OrderDetailDAO orderDetailDAO = new OrderDetailDAO(conn);
+		CartProductDAO cartDAO = new CartProductDAO(conn);
 
 		String cp = request.getContextPath();
 		String uri = request.getRequestURI();
-
 		String url = null;
 
-		//파일 저장 경로 설정
-		String root = getServletContext().getRealPath("/");
-		String path = root + "pds" + File.separator + "imageFile";
 
-		File f = new File(path);
-		if(!f.exists()) {
-			f.mkdirs();
-		}
-
-		if(uri.indexOf("cart.do") != -1){
-			
-			//아래 setattribute는 일부러 해줌.
-			//write.jsp에서 ${pageNum} 이렇게 쓰기 위해서
-			//아래 코드를 지우면  ${param.pageNum} 이렇게 쓰거나
-			//request.getParameter("pageNum") 이걸로 직접 받으면 된다.
-			//두개는 동일한 방식인데 문법의 차이만 있을 뿐.
-			//일단 param을 사용하기 위해서 주석처리.
-			//			request.setAttribute("pageNum", request.getParameter("pageNum"));
-			
-			url = "/shopping-cart.jsp";
-			myForward(request, response, url);
-		}
-		else if(uri.indexOf("payment.do") != -1){
+		if(uri.indexOf("payment.do") != -1){
 			//			로그인 구현 후 id를 세션에 담아서 사용.
 			//			HttpSession session = request.getSession();
 			//			String memberNum = (String)session.getAttribute("id");
@@ -70,19 +55,40 @@ public class CartServlet extends HttpServlet{
 			url = "/payment.jsp";
 			myForward(request, response, url);
 		}
-		else if(uri.indexOf("updatePC.do") != -1){
+		else if(uri.indexOf("payment_ok.do") != -1){
+			System.out.println("결제 완료");
+//			로그인 구현 후 id를 세션에 담아서 사용.
+			//			HttpSession session = request.getSession();
+			//			String memberNum = (String)session.getAttribute("id");
 			
-			int memberNum = MEMBER_NUM;
-			int productNum  = Integer.parseInt(request.getParameter("productNum"));
-			int count  = Integer.parseInt(request.getParameter("count"));
-
-			dao.updateCart_Product(memberNum, productNum, count);
+//			int memberNum  = MEMBER_NUM;
+//			int orderNum = orderDAO.getMaxNum();
+//			
+//			List<CartProductDTO> list = cartDAO.getCartList(memberNum);
+//			int sumCost = 0;
+//			for (CartProductDTO cartProductDTO : list) {
+//				orderDetailDAO.insertOrderDetail(orderNum, cartProductDTO);
+//				sumCost += cartProductDTO.getCount() * cartProductDTO.getPrice();
+//			}
+//			
+//			orderDAO.insertOrderHistory(memberNum, orderNum, sumCost);
+//			cartDAO.deleteCartMember(memberNum);
+			
+			url = cp + "/order/orderHistory.do";
+			response.sendRedirect(url);
 		}
-		else if(uri.indexOf("shopCart.do") != -1){
+		
+		else if(uri.indexOf("orderHistory.do") != -1){
+			
+			//추후에는 결제 성공 페이지로
+			url = "/semiproject/shopping-cart.jsp";
+			myForward(request, response, url);
+		}
+		else if(uri.indexOf("paymentList.do") != -1){
 			//장바구니에 들어왔을 때 전달받는 회원번호
 			int memberNum = Integer.parseInt(request.getParameter("memberNum"));
 
-			List<CartProductDTO> lists = dao.getCartList(memberNum);
+			List<CartProductDTO> lists = cartDAO.getCartList(memberNum);
 
 			StringBuffer result = new StringBuffer("");
 			result.append("{\"result\":[");
@@ -96,15 +102,14 @@ public class CartServlet extends HttpServlet{
 			result.append("]}");
 			response.getWriter().write(result.toString());
 		}
-		else if(uri.indexOf("deleteCart.do") != -1){
+		else if(uri.indexOf("deleteOrder.do") != -1){
 			//			로그인 구현 후 id를 세션에 담아서 사용.
 			//			HttpSession session = request.getSession();
 			//			String memberNum = (String)session.getAttribute("id");
-
 			int memberNum = MEMBER_NUM;
-			int productNum  = Integer.parseInt(request.getParameter("productNum"));
+			int orderNum  = Integer.parseInt(request.getParameter("orderNum"));
 
-			dao.deleteCart_Product(memberNum, productNum);
+			orderDAO.deleteOrderHistory(memberNum, orderNum);
 		}
 	}
 
@@ -112,4 +117,6 @@ public class CartServlet extends HttpServlet{
 		RequestDispatcher rd = request.getRequestDispatcher(url);
 		rd.forward(request, response);
 	}
+
+
 }
