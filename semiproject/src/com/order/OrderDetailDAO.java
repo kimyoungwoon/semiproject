@@ -31,7 +31,7 @@ public class OrderDetailDAO {
 
 		try {
 
-			sql = "select nvl(max(num), 0) from order_detail";
+			sql = "select nvl(max(ordernum), 0) from order_detail";
 
 			pstmt = conn.prepareStatement(sql);
 

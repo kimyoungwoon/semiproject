@@ -140,6 +140,7 @@ function deleteCartProduct(arg, productNum) {
     cartTotal();
 }
 
+//쿠폰 사용
 function useCoupon(apply) {
 	var code = $(apply).parent().children('input').val();
 	if(code == "itwill"){
@@ -149,6 +150,18 @@ function useCoupon(apply) {
 	}
 	alert("사용할 수 없는 코드입니다.");
 }
+
+//폼 이동
+function sendIt(){
+	var f = document.cartForm;
+	var discountCost = $("#actualPayment").text().replaceAll(/\D/gm, "");
+	
+	f.discountCost.value = discountCost;
+	f.method = "post"
+	f.action = "/semiproject/order/payment.do";
+	f.submit();
+}
+
 
 function removeCandWon(str) {
     return str.slice(2).replaceAll(",", "");

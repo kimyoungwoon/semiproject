@@ -48,7 +48,8 @@ public class OrderServlet extends HttpServlet{
 			//			로그인 구현 후 id를 세션에 담아서 사용.
 			//			HttpSession session = request.getSession();
 			//			String memberNum = (String)session.getAttribute("id");
-
+			String aa = (String)request.getParameter("discountCost");
+			System.out.println(aa);
 			int memberNum  = MEMBER_NUM;
 			//int productNum  = Integer.parseInt(request.getParameter("productNum"));
 
@@ -61,18 +62,21 @@ public class OrderServlet extends HttpServlet{
 			//			HttpSession session = request.getSession();
 			//			String memberNum = (String)session.getAttribute("id");
 			
-//			int memberNum  = MEMBER_NUM;
-//			int orderNum = orderDAO.getMaxNum();
-//			
-//			List<CartProductDTO> list = cartDAO.getCartList(memberNum);
-//			int sumCost = 0;
-//			for (CartProductDTO cartProductDTO : list) {
-//				orderDetailDAO.insertOrderDetail(orderNum, cartProductDTO);
-//				sumCost += cartProductDTO.getCount() * cartProductDTO.getPrice();
-//			}
-//			
-//			orderDAO.insertOrderHistory(memberNum, orderNum, sumCost);
-//			cartDAO.deleteCartMember(memberNum);
+			int memberNum  = MEMBER_NUM;
+			int orderNum = orderDAO.getMaxNum() + 1;
+			
+			List<CartProductDTO> list = cartDAO.getCartList(memberNum);
+			int sumCost = 0;
+			
+			//주문상세 테이블 입력
+			for (CartProductDTO cartProductDTO : list) {
+				orderDetailDAO.insertOrderDetail(orderNum, cartProductDTO);
+				sumCost += cartProductDTO.getCount() * cartProductDTO.getPrice();
+			}
+			
+			//주문내역 테이블 입력
+			orderDAO.insertOrderHistory(memberNum, orderNum, sumCost);
+			//cartDAO.deleteCartMember(memberNum);
 			
 			url = cp + "/order/orderHistory.do";
 			response.sendRedirect(url);
@@ -81,10 +85,12 @@ public class OrderServlet extends HttpServlet{
 		else if(uri.indexOf("orderHistory.do") != -1){
 			
 			//추후에는 결제 성공 페이지로
-			url = "/semiproject/shopping-cart.jsp";
+			url = "/shopping-cart.jsp";
 			myForward(request, response, url);
 		}
 		else if(uri.indexOf("paymentList.do") != -1){
+			
+			
 			//장바구니에 들어왔을 때 전달받는 회원번호
 			int memberNum = Integer.parseInt(request.getParameter("memberNum"));
 

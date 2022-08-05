@@ -212,13 +212,15 @@
 					<div class="cart__total">
 						<h6>Cart total</h6>
 						<ul>
-							<fmt:formatNumber value ="${sumTotal }" type = "number" var="comTotal" />
-							<li>Before Discount <span id = "beforeDiscount">₩ ${comTotal }</span></li>
-							<li>Actual Payment <span id = "actualPayment">₩ {comTotal }</span></li>
+							<li>Before Discount <span id = "beforeDiscount">₩ 0</span></li>
+							<li>Actual Payment <span id = "actualPayment">₩ 0</span></li>
 						</ul>
 						<%-- <a href="<%=cp%>/checkout.jsp" class="primary-btn">Proceed to
 							checkout</a> --%>
-							<input class="primary-btn" value = "Proceed to checkout" onclick = "location.href ='<%=cp%>/order/payment.do'" type="button">
+						<form name="cartForm">
+							<input type = "hidden" name = "discountCost" value = "0"/>
+							<input class="primary-btn" value = "Proceed to checkout" onclick = "sendIt();" type="button">
+						</form>
 					</div>
 				</div>
 			</div>
