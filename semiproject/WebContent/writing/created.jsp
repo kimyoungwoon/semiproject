@@ -201,9 +201,13 @@
 
 <!-- created Section begin -->
 <div id="bbs">
-	<div id="bbs_title"><!-- css 파일을 따로 지정해주지 않으면 스타일링 불가 -->
-	질 문 게 시 판 작 성	
-	</div>
+	<div class="container">
+			<div class="row">
+				<div class="col-lg-12">
+					<h1 class="related-title">QuestioN</h1>
+				</div>
+			</div>
+		</div>
 	
 	<form action="" method="post" name="myForm">
 	
@@ -253,7 +257,7 @@
 				<dt>패스워드</dt>
 				<dd>
 					<input type="password" name="pwd" size="35"
-					maxlength="7" class="boxTF"/>&nbsp;(게시물 수정 및 삭제시 필요!!)
+					maxlength="7" class="boxTF"/>
 				</dd>	
 			</dl>
 		</div>
