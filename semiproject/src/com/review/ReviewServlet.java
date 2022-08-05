@@ -97,13 +97,14 @@ public class ReviewServlet extends HttpServlet {
 			List<ReviewDTO> lists = dao.getListData(start, end);
 			
 			//페이징 처리
-			String listUrl = "guest.jsp";
+			String listUrl = "list.do";
 			String pageIndexList = 
 				myPage.pageIndexList(currentPage, totalPage, listUrl);
 			
 			req.setAttribute("lists", lists); //���� ���� ������ ������
 			req.setAttribute("pageIndexList", pageIndexList);
 			req.setAttribute("datacount", dataCount);
+			
 			
 			url = "/writing/reviewer/guest.jsp";
 			forward(req, resp, url);
@@ -115,7 +116,7 @@ public class ReviewServlet extends HttpServlet {
 			
 			dao.deleteData(num);
 			
-			url = cp + "/review/list.do?"+pageNum;
+			url = cp + "/review/list.do";
 
 			resp.sendRedirect(url);
 		}

@@ -1,12 +1,9 @@
-<%@page import="com.cart.CartProductDTO"%>
-<%@page import="java.util.List"%>
 <%@ page contentType="text/html; charset=UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>  
 <%
 	request.setCharacterEncoding("UTF-8");
 	String cp = request.getContextPath();
-	/* List<CartProductDTO> lists = (List<CartProductDTO>)request.getAttribute("cartList"); */
 %>
 <!DOCTYPE html>
 <html lang="zxx">
@@ -40,10 +37,10 @@
 <link rel="stylesheet" href="<%=cp%>/css/slicknav.min.css"
 	type="text/css">
 <link rel="stylesheet" href="<%=cp%>/css/style.css" type="text/css">
-<link rel="stylesheet" href="<%=cp%>/yw_folder/custom.css"
+<link rel="stylesheet" href="<%=cp%>/payment/custom.css"
 	type="text/css">
 
-<script type="text/javascript" src="<%=cp %>/yw_folder/request_ajax.js"></script>
+<script type="text/javascript" src="<%=cp %>/payment/cartPage.js"></script>
 
 
 </head>
@@ -160,7 +157,7 @@
 			<div class="row">
 				<div class="col-lg-12">
 					<div class="breadcrumb__text">
-						<h4>Shopping Cart</h4>
+						<h4 id = 'sc'>Shopping Cart</h4>
 						<div class="breadcrumb__links">
 							<a href="./index.jsp">Home</a> <a href="./shop.jsp">Shop</a> <span>Shopping
 								Cart</span>
@@ -207,21 +204,23 @@
 				<div class="col-lg-4">
 					<div class="cart__discount">
 						<h6>Discount codes</h6>
-						<form action="#">
+						<form>
 							<input type="text" placeholder="Coupon code">
-							<button type="submit">Apply</button>
+							<button type="button" onclick = "useCoupon(this);">Apply</button>
 						</form>
 					</div>
 					<div class="cart__total">
 						<h6>Cart total</h6>
 						<ul>
-							<fmt:formatNumber value ="${sumTotal }" type = "number" var="comTotal" />
-							<li>Before Discount <span id = "beforeDiscount">${comTotal }원</span></li>
-							<li>Actual Payment <span id = "actualPayment">${comTotal }원</span></li>
+							<li>Before Discount <span id = "beforeDiscount">₩ 0</span></li>
+							<li>Actual Payment <span id = "actualPayment">₩ 0</span></li>
 						</ul>
 						<%-- <a href="<%=cp%>/checkout.jsp" class="primary-btn">Proceed to
 							checkout</a> --%>
-							<input class="primary-btn" value = "Proceed to checkout" onclick = "alert();" type="button">
+						<form name="cartForm">
+							<input type = "hidden" name = "discountCost" value = "0"/>
+							<input class="primary-btn" value = "Proceed to checkout" onclick = "sendIt();" type="button">
+						</form>
 					</div>
 				</div>
 			</div>
@@ -324,7 +323,5 @@
 	<script src="<%=cp%>/js/mixitup.min.js"></script>
 	<script src="<%=cp%>/js/owl.carousel.min.js"></script>
 	<script src="<%=cp%>/js/main.js"></script>
-
 </body>
-
 </html>

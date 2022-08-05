@@ -204,9 +204,13 @@
     <!-- updated Section begin -->
     
     <div id="bbs">
-	<div id="bbs_title">
-	질 문 수 정	
-	</div>
+	<div class="container">
+			<div class="row">
+				<div class="col-lg-12">
+					<h1 class="related-title">QuestioN</h1>
+				</div>
+			</div>
+		</div>
 	
 	<form action="" method="post" name="myForm">
 	<div id ="bbsCreated">
@@ -254,10 +258,10 @@
 		
 		<div class="bbsCreated_noLine">
 			<dl>
-				<dt>패스워드</dt>
+				<dt>비밀번호</dt>
 				<dd>
 					<input type="password" name="pwd" size="35" value="${dto.pw }"
-					maxlength="7" class="boxTF"/>&nbsp;(게시물 수정 및 삭제시 필요!!)
+					maxlength="7" class="boxTF"/>
 				</dd>	
 			</dl>
 		</div>

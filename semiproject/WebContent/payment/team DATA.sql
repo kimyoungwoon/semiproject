@@ -34,3 +34,6 @@ insert into CART_PRODUCT (membernum, productnum, count) values(5, 13, 1);
 select * from CART_PRODUCT;
 
 commit;
+
+select h.membernum, h.ordernum, h.orderdate, d.productnum, d.count from order_history h, order_detail d 
+where h.membernum = d.membernum and h.ordernum = d.ordernum;

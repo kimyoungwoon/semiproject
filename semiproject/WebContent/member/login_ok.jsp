@@ -9,8 +9,10 @@
               String cp = request.getContextPath();
  %>
  
-jsp<jsp:useBean id="dto" class="com.member.MemberDTO" scope="page"/>
-jsp<jsp:setProperty property="*" name="dto"/>
+<jsp:useBean id="dto" class="com.member.MemberDTO" scope="page"/>
+<jsp:setProperty property="*" name="dto"/>
+
+
 <%
 
 	Connection conn = DBConn.getConnection();

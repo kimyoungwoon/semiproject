@@ -32,7 +32,7 @@ bordercolor="#d6d4a6" align="center" style="margin: auto;">
 
 <tr height="40">
 	<td style="padding-left: 20px;">
-	<b>이미지 게시판</b>
+	<b>이미지 게시판</b><span><a href="<%=cp%>/shopping/setting.do"> <button>제품추가</button></a> </span>
 	</td>
 </tr>
 </table>
@@ -79,34 +79,7 @@ bordercolor="#d6d4a6" align="center" style="margin: auto;">
 	</tr>
 <tr><td colspan="2" height="e" bgcolor="#dbdbdb" align="center"></td></tr>
 <tr><td colspan="2" height="1" bgcolor="#dbdbdb" align="center"></td></tr>
-	<tr>
-		<td width="140" height="30" bgcolor="#eeeeee" style="padding-left: 20px;">
-		사이즈 번호
-		</td>
-		<td width="600" style="padding-left: 10px;" bgcolor="#eeeeee">
-		<input type="text" name="pd_sizeNum" size="48" maxlength="20" class="boxTF"/>
-		</td>
-	</tr>
-<tr><td colspan="2" height="e" bgcolor="#dbdbdb" align="center"></td></tr>
-<tr><td colspan="2" height="1" bgcolor="#dbdbdb" align="center"></td></tr>
-	<tr>
-		<td width="140" height="30" bgcolor="#eeeeee" style="padding-left: 20px;">
-		컬러 번호
-		</td>
-		<td width="600" style="padding-left: 10px;" bgcolor="#eeeeee">
-		<input type="text" name="pd_colorNum" size="48" maxlength="20" class="boxTF"/>
-		</td>
-	</tr>
-<tr><td colspan="2" height="e" bgcolor="#dbdbdb" align="center"></td></tr>
-<tr><td colspan="2" height="1" bgcolor="#dbdbdb" align="center"></td></tr>
-	<tr>
-		<td width="140" height="30" bgcolor="#eeeeee" style="padding-left: 20px;">
-		태그 번호
-		</td>
-		<td width="600" style="padding-left: 10px;" bgcolor="#eeeeee">
-		<input type="text" name="pd_tagNum" size="48" maxlength="20" class="boxTF"/>
-		</td>
-	</tr>
+
 <tr><td colspan="2" height="e" bgcolor="#dbdbdb" align="center"></td></tr>
 <tr><td colspan="2" height="1" bgcolor="#dbdbdb" align="center"></td></tr>
 	<tr>
