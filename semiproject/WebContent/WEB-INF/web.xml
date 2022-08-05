@@ -78,15 +78,4 @@
 		<url-pattern>/pDetail/*</url-pattern>
 	</servlet-mapping>
 
-
-  <servlet>
-		<servlet-name>wishlistServlet</servlet-name>
-		<servlet-class>com.wishlist.wishlistServlet</servlet-class>
-	</servlet>
-	<servlet-mapping>
-		<servlet-name>wishlistServlet</servlet-name>
-		<url-pattern>/wishlist/*</url-pattern>
-	</servlet-mapping>
-
-	
 </web-app>

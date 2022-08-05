@@ -159,13 +159,13 @@
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" data-toggle="tab" href="#tabs-2" role="tab">
-                                    <div class="product__thumb__pic set-bg" data-setbg="${imagePath}/prada3.jpg">
+                                    <div class="product__thumb__pic set-bg" data-setbg="${imagePath}/prada2.jpg">
                                     </div>
                                 </a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" data-toggle="tab" href="#tabs-3" role="tab">
-                                    <div class="product__thumb__pic set-bg" data-setbg="${imagePath}/prada2.jpg">
+                                    <div class="product__thumb__pic set-bg" data-setbg="${imagePath}/prada3.jpg">
                                     </div>
                                 </a>
                             </li>
@@ -186,12 +186,12 @@
                             </div>
                             <div class="tab-pane" id="tabs-2" role="tabpanel">
                                 <div class="product__details__pic__item">
-                                    <img src="${imagePath}/prada3.jpg" alt="">
+                                    <img src="${imagePath}/prada2.jpg" alt="">
                                 </div>
                             </div>
                             <div class="tab-pane" id="tabs-3" role="tabpanel">
                                 <div class="product__details__pic__item">
-                                    <img src="${imagePath}/prada2.jpg" alt="">
+                                    <img src="${imagePath}/prada3.jpg" alt="">
                                 </div>
                             </div>
                             <div class="tab-pane" id="tabs-4" role="tabpanel">
@@ -209,7 +209,7 @@
                 <div class="row d-flex justify-content-center">
                     <div class="col-lg-8">
                         <div class="product__details__text">
-                            <h4>LOGO PRINT COTTON FLEECE SWEATSHIRT</h4>
+                            <h4>${dto.name }</h4>
                             <div class="rating">
                                 <i class="fa fa-star"></i>
                                 <i class="fa fa-star"></i>
@@ -218,27 +218,27 @@
                                 <i class="fa fa-star-o"></i>
                                 <span> - 5 Reviews</span>
                             </div>
-                            <h3>$270.00 <span>70.00</span></h3>
+                            <h3>${dto.price }</h3>
                             <p>Coat with quilted lining and an adjustable hood. Featuring long sleeves with adjustable
                                 cuff tabs, adjustable asymmetric hem with elastic side tabs and a front zip fastening
                             with placket.</p>
                             <div class="product__details__option">
-                                <div class="product__details__option__size">
+                                <div class="product__details__option__size" >
                                     <span>Size:</span>
-                                    <label for="xxl">xxl
-                                        <input type="radio" id="xxl">
-                                    </label>
-                                    <label class="active" for="xl">xl
+                                    <label for="xl">xl
                                         <input type="radio" id="xl">
                                     </label>
-                                    <label for="l">l
+                                    <label class="active" for="l">l
                                         <input type="radio" id="l">
                                     </label>
-                                    <label for="sm">m
-                                        <input type="radio" id="sm">
+                                    <label for="m">m
+                                        <input type="radio" id="m">
+                                    </label>
+                                    <label for="s">s
+                                        <input type="radio" id="s">
                                     </label>
                                 </div>
-                                <div class="product__details__option__color">
+                                <div class="product__details__option__color" id="pcolor">
                                     <span>Color:</span>
                                     <label class="c-1" for="sp-1">
                                         <input type="radio" id="sp-1">
@@ -273,9 +273,9 @@
                                 <h5><span>Guaranteed Safe Checkout</span></h5>
                                 <img src="<%=cp%>/img/shop-details/details-payment.png" alt="">
                                 <ul>
-                                    <li><span>Brand:</span> Prada</li>
-                                    <li><span>Categories:</span> Clothes</li>
-                                    <li><span>Tag:</span> Clothes, Skin, Body</li>
+                                    <li><span>Brand:</span> ${dto.brand }</li>
+                                    <li><span>Categories:</span> ${dto.category }</li>
+                                    <li><span>Tag:</span> ${dto.tag }</li>
                                 </ul>
                             </div>
                         </div>

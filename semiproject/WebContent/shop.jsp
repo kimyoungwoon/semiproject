@@ -56,7 +56,7 @@
         <div class="offcanvas__nav__option">
             <a href="#" class="search-switch"><img src="<%=cp%>/img/icon/search.png" alt=""></a>
             <a href="#"><img src="<%=cp%>/img/icon/heart.png" alt=""></a>
-            <a href="#"><img src="<%=cp%>/img/icon/cart.png" alt=""> <span>0</span></a>
+            <a href=""><img src="<%=cp%>/img/icon/cart.png" alt=""> <span>0</span></a>
             <div class="price">$0.00</div>
         </div>
         <div id="mobile-menu-wrap"></div>
@@ -111,7 +111,7 @@
                                 <ul class="dropdown">
                                     <li><a href="./about.jsp">About Us</a></li>
                                     <li><a href="./shop-details.jsp">Shop Details</a></li>
-                                    <li><a href="./shopping-cart.jsp">Shopping Cart</a></li>
+                                    <li><a href="/semiproject/shopping-cart.jsp">Shopping Cart</a></li>
                                     <li><a href="./checkout.jsp">Check Out</a></li>
                                     <li><a href="./blog-details.jsp">Blog Details</a></li>
                                 </ul>
@@ -347,7 +347,7 @@
                                     <p>Sort by Price:</p>
                                     <select onchange="location.href=this.value">
                                         <option value="0">New</option>
-                                        <option value="1">Low To High</option>
+                                        <option value="http://localhost:8080/<%=cp%>/shopping/listsortlow.do?sort=1">Low To High</option>
                                         <option value="2">High To Low</option>
                                     </select>
                                 </form>    
@@ -371,7 +371,7 @@
                                 </div>
                                 <div class="product__item__text">
                                     <h6>${dto.name }</h6>
-                                    <a href="#" class="add-cart">+ Add To Cart</a>
+                                    <a href="<%=cp %>/shopping/addCart.do?productNum=${dto.num}" class="add-cart">+ Add To Cart</a>
                                     <div class="rating">
                                         <i class="fa fa-star-o"></i>
                                         <i class="fa fa-star-o"></i>

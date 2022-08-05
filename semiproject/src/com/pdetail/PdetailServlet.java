@@ -9,6 +9,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.pdetail.PdetailDAO;
 import com.util.DBConn;
@@ -22,14 +23,14 @@ public class PdetailServlet extends HttpServlet {
 		doPost(req, resp);
 	}
 
-	protected void foward(HttpServletRequest req, HttpServletResponse resp, String url) throws ServletException, IOException {
+	protected void forward(HttpServletRequest req, HttpServletResponse resp, String url) throws ServletException, IOException {
 		RequestDispatcher rd = req.getRequestDispatcher(url);
 		rd.forward(req, resp);
 	}
 	
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
+		
 		req.setCharacterEncoding("UTF-8");
 		
 		Connection conn = DBConn.getConnection();
@@ -40,33 +41,45 @@ public class PdetailServlet extends HttpServlet {
 		
 		String url;
 		
-		//상세 페이지
+		//세션에 올릴 데이터 객체
+		CustomInfo info = new CustomInfo();
+		
+		PdetailDTO dto = new PdetailDTO();
+		info.setNum(dto.getNum());
+		
+		//세션에 info 등록
+		HttpSession session = req.getSession();
+		
+		session.setAttribute("customInfo", info);
+		
+		url = cp + "/shop-details.jsp";
+		
+		//상세 페이지로 데이터 받아오기
 		if(uri.indexOf("pdetail.do")!=-1) {
-		
-			PdetailDTO dto = new PdetailDTO();
 			
-			dto = dao.getReadData(1);
-			
-			String imageList = cp + "/image/list.do";
-			String imagePath = cp + "/pds/imageFile";
-			
+			int num = 0;// Integer.parseInt(req.getParameter("num"));
+			dto = dao.getReadData(num);
+
+			String imagePath = cp + "/img/shop-details";
+
 			req.setAttribute("imagePath", imagePath);
-			
+			req.setAttribute("dto", dto);
+
 			url = "/shop-details.jsp";
-			foward(req, resp, url);
-			
-			//카트 디비에 저장시킬 것
-			}else if(uri.indexOf("pdetail_ok.do")!=-1) {
-				
-				int pnum = Integer.parseInt(req.getParameter("pnum"));
-				int mnum = Integer.parseInt(req.getParameter("mnum"));
-				int count = Integer.parseInt(req.getParameter("count"));
-				
-				url = cp;
-				resp.sendRedirect(url);
-				
-			}
-		
+			forward(req, resp, url);
+
+		//카트 디비에 저장시킬 것
+		}else if(uri.indexOf("insert.do")!=-1) {
+
+			int pnum = Integer.parseInt(req.getParameter("pnum"));
+			int mnum = Integer.parseInt(req.getParameter("mnum"));
+			int count = Integer.parseInt(req.getParameter("count"));
+
+			url = cp;
+			resp.sendRedirect(url);
+
+		}
+
 	}
 	
 }

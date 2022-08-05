@@ -281,6 +281,45 @@ public class ProductDAO {
 		return result;
 	}
 	
+	
+	
+	public int insertCart(int memberNum,int productNum) {
 		
+		int result = 0;
+
+		try {
+			sql = "select count from cart_product where membernum = ? and productnum = ?";
+
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, memberNum);
+			pstmt.setInt(2, productNum);
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				result = rs.getInt(1);
+			}
+			
+			if(result == 0) {
+				sql = "insert into cart_product (membernum, productnum, count) ";
+				sql+= "values (?,?,1)";
+			}
+			else {
+				sql = "update cart_product set count = count + 1 "
+					+ "where membernum = ? and productnum = ?";
+			}
+			
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, memberNum);
+			pstmt.setInt(2, productNum);
+			
+			result = pstmt.executeUpdate();
+			pstmt.close();
+			rs.close();
+
+		} catch (Exception e) {
+			System.out.println(e.toString());
+		}
+		return result;
+	}	
 	
 }
