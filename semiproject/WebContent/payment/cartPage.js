@@ -26,7 +26,7 @@ function successConnect() {
                 "'/>" +
                 "<td class='product__cart__item'>" +
                 "<div class='product__cart__item__pic'>" +
-                "<img src='/semiproject/img/shopping-cart/cart-1.jpg'>" +
+                "<img src='" + result[i][5].value +"' style='width:90px; height:90px;'>" +
                 "</div>" +
                 "<div class='product__cart__item__text'>" +
                 "<h6>" +
@@ -161,7 +161,6 @@ function sendIt(){
 	f.action = "/semiproject/order/payment.do";
 	f.submit();
 }
-
 
 function removeCandWon(str) {
     return str.slice(2).replaceAll(",", "");
