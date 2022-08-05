@@ -327,7 +327,6 @@ public class ProductServlet extends HttpServlet {
 			
 			int productNum = Integer.parseInt(returnNull(req.getParameter("productNum")));
 			
-			
 			HttpSession session = req.getSession();
 			session.getAttribute("membernum");
 			
@@ -335,7 +334,8 @@ public class ProductServlet extends HttpServlet {
 			
 			int productCount = dao.insertCart(memberNum, productNum);
 			
-			
+			url = cp + "/shopping/list.do";
+			resp.sendRedirect(url);
 		}
 	}
 	
