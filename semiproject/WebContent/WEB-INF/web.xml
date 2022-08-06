@@ -10,6 +10,16 @@
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
 
+	<!-- NavigationServlet -->
+	<servlet>
+		<servlet-name>navServlet</servlet-name>
+		<servlet-class>com.nav.NavigationServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>navServlet</servlet-name>
+		<url-pattern>/nav/*</url-pattern>
+	</servlet-mapping>
+
 	<!-- CartServlet -->
 	<servlet>
 		<servlet-name>cartServlet</servlet-name>

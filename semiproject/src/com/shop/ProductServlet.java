@@ -173,9 +173,9 @@ public class ProductServlet extends HttpServlet {
 					myPage.pageIndexList(currentPage, totalPage, listUrl);
 			
 //			테스트를 위해서 프로젝트 내부 path 생성- 영운
-//			String imagePath = cp + "/img/pds/";
+			String imagePath = cp + "/img/pds/";
 			
-			String imagePath = cp + "/pds/productFile";
+			//String imagePath = cp + "/pds/productFile";
 			
 			req.setAttribute("sortPath", sortPath);
 			req.setAttribute("lists", lists);
