@@ -1,3 +1,4 @@
+<script type="text/javascript" src="<%=cp%>/payment/nav.js"></script>
 <!-- Page Preloder -->
 	<div id="preloder">
 		<div class="loader"></div>
@@ -71,14 +72,14 @@
 				<div class="col-lg-6 col-md-6">
 					<nav class="header__menu mobile-menu">
 						<ul>
-							<li><a href="./index.jsp">Home</a></li>
-							<li class="active"><a href="<%=cp %>/shopping/list.do">Shop</a></li>
+							<li><a href="<%=cp %>/index.jsp">Home</a></li>
+							<li ><a href="<%=cp %>/shopping/list.do">Shop</a></li>
 							<li><a href="#">Pages</a>
 								<ul class="dropdown">
 									<li><a href="./about.jsp">About Us</a></li>
 									<li><a href="./shop-details.jsp">Shop Details</a></li>
 									<li><a href="<%=cp %>/cart/cart.do">Shopping Cart</a></li>
-									<li><a href="./checkout.jsp">Check Out</a></li>
+									<li><a href="<%=cp %>/checkout.jsp">Check Out</a></li>
 									<li><a href="./blog-details.jsp">Blog Details</a></li>
 								</ul></li>
 							<li><a href="./blog.jsp">Blog</a></li>
@@ -91,7 +92,7 @@
 						<a href="#" class="search-switch">
 						<img src="<%=cp%>/img/icon/search.png" alt=""></a> 
 						<a href="#"><img src="<%=cp%>/img/icon/heart.png" alt=""></a> 
-						<a href="#"><img src="<%=cp%>/img/icon/cart.png" alt=""><span>5</span></a>
+						<a href="<%=cp %>/cart/cart.do"><img src="<%=cp%>/img/icon/cart.png" alt=""><span>5</span></a>
 						<div class="price">&#8361;350,000</div>
 					</div>
 				</div>

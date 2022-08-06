@@ -26,7 +26,6 @@ public class CartServlet extends HttpServlet{
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		final int MEMBER_NUM = 1;
-
 		request.setCharacterEncoding("utf-8");
 		response.setContentType("text/html;charset=UTF-8");
 		Connection conn = DBConn.getConnection();
@@ -59,20 +58,20 @@ public class CartServlet extends HttpServlet{
 			url = "/shopping-cart.jsp";
 			myForward(request, response, url);
 		}
-//		else if(uri.indexOf("payment.do") != -1){
-//			//			로그인 구현 후 id를 세션에 담아서 사용.
-//			//			HttpSession session = request.getSession();
-//			//			String memberNum = (String)session.getAttribute("id");
-//			
-//			String discountCost  = request.getParameter("discountCost");
-//			
-//			//int productNum  = Integer.parseInt(request.getParameter("productNum"));
-//			
-//			request.setAttribute("discountCost", discountCost);
-//			
-//			url = cp +"/order/payment.do";
-//			response.sendRedirect(url);
-//		}
+		else if(uri.indexOf("curCartCount.do") != -1){
+			//			로그인 구현 후 id를 세션에 담아서 사용.
+			//			HttpSession session = request.getSession();
+			//			String memberNum = (String)session.getAttribute("id");
+			
+			String discountCost  = request.getParameter("discountCost");
+			
+			//int productNum  = Integer.parseInt(request.getParameter("productNum"));
+			
+			request.setAttribute("discountCost", discountCost);
+			
+			url = cp +"/order/payment.do";
+			response.sendRedirect(url);
+		}
 		else if(uri.indexOf("updatePC.do") != -1){
 			
 			int memberNum = MEMBER_NUM;
