@@ -52,7 +52,9 @@ public class OrderServlet extends HttpServlet{
 			System.out.println(aa);
 			int memberNum  = MEMBER_NUM;
 			//int productNum  = Integer.parseInt(request.getParameter("productNum"));
-
+			HttpSession session = request.getSession();
+			session.setAttribute("id", "ingn");
+			System.out.println("로그인");
 			url = "/payment.jsp";
 			myForward(request, response, url);
 		}
@@ -89,6 +91,7 @@ public class OrderServlet extends HttpServlet{
 			myForward(request, response, url);
 		}
 		else if(uri.indexOf("paymentList.do") != -1){
+			//임시로 여기 오면 로그인 한거임
 			
 			
 			//장바구니에 들어왔을 때 전달받는 회원번호
