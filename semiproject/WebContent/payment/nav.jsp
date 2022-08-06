@@ -47,7 +47,7 @@
 					<div class="col-lg-6 col-md-5">
 						<div class="header__top__right">
 							<div class="header__top__links">
-								<a href="#">Sign in</a> <a href="#">FAQs</a>
+								<a href="#" class = "desk_sign">Sign in</a> <a href="#">FAQs</a>
 							</div>
 							<div class="header__top__hover">
 								<span>Usd <i class="arrow_carrot-down"></i></span>
@@ -79,7 +79,7 @@
 									<li><a href="./about.jsp">About Us</a></li>
 									<li><a href="./shop-details.jsp">Shop Details</a></li>
 									<li><a href="<%=cp %>/cart/cart.do">Shopping Cart</a></li>
-									<li><a href="<%=cp %>/checkout.jsp">Check Out</a></li>
+									<li><a href="<%=cp %>/order/payment.do">Check Out</a></li>
 									<li><a href="./blog-details.jsp">Blog Details</a></li>
 								</ul></li>
 							<li><a href="./blog.jsp">Blog</a></li>

@@ -47,6 +47,9 @@ public class CartServlet extends HttpServlet{
 
 		if(uri.indexOf("cart.do") != -1){
 			
+			HttpSession session = request.getSession();
+			session.removeAttribute("id");
+			System.out.println("로그아웃");
 			//아래 setattribute는 일부러 해줌.
 			//write.jsp에서 ${pageNum} 이렇게 쓰기 위해서
 			//아래 코드를 지우면  ${param.pageNum} 이렇게 쓰거나

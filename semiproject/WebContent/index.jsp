@@ -5,6 +5,7 @@
 
     <!-- Header Section End -->
    <%@include file = "payment/nav.jsp"  %>
+   
 
     <!-- Hero Section Begin -->
     <section class="hero">
