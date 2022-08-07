@@ -73,7 +73,7 @@ public class MemberServlet extends HttpServlet{
 			
 			dao.insertData(dto);
 			
-			url = cp + "/login/login.do";
+			url = cp + "/login/created.do";
 			resp.sendRedirect(url);
 			
 			
