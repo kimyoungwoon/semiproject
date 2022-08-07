@@ -112,7 +112,6 @@ public class ReviewServlet extends HttpServlet {
 		}else if(uri.indexOf("delete.do")!=-1) {
 			
 			int num = Integer.parseInt(req.getParameter("num"));
-			String pageNum = req.getParameter("pageNum");
 			
 			dao.deleteData(num);
 			
