@@ -1,26 +1,4 @@
-<%@ page contentType="text/html; charset=UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%
-	request.setCharacterEncoding("UTF-8");
-	String cp= request.getContextPath();
-%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Male-Fashion | Template</title>
-
-    <!-- Css Styles -->
-    <link rel="stylesheet" type="text/css" href="<%=cp %>/writing/reviewer/data/style.css"/>
-	<link rel="stylesheet" type="text/css" href="<%=cp %>/writing/reviewer/data/newstyle.css"/>
-    <link rel="stylesheet" href="<%=cp%>/css/bootstrap.min.css" type="text/css">
-    <link rel="stylesheet" href="<%=cp%>/css/font-awesome.min.css" type="text/css">
-    <link rel="stylesheet" href="<%=cp%>/css/elegant-icons.css" type="text/css">
-    <link rel="stylesheet" href="<%=cp%>/css/magnific-popup.css" type="text/css">
-    <link rel="stylesheet" href="<%=cp%>/css/nice-select.css" type="text/css">
-    <link rel="stylesheet" href="<%=cp%>/css/owl.carousel.min.css" type="text/css">
-    <link rel="stylesheet" href="<%=cp%>/css/slicknav.min.css" type="text/css">
-    <link rel="stylesheet" href="<%=cp%>/css/style.css" type="text/css">
+<%@include file = "/payment/header.jsp"  %>
 <script type="text/javascript">
 
 	function sendIt() {
@@ -59,7 +37,7 @@
 	}
 
 </script>
-</head>
+
 <body>
 
 <section class="related spad">

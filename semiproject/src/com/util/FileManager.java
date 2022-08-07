@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 
 public class FileManager {
 
-	//ÆÄÀÏ ´Ù¿î·Îµå
+	// íŒŒì¼ ë‹¤ìš´ë¡œë“œ
 	public static boolean doFileDownload(HttpServletResponse response,
 			String saveFileName,String originalFileName,String path) {
 		
@@ -20,22 +20,22 @@ public class FileManager {
 			if(originalFileName==null||originalFileName.equals("")) {
 				originalFileName = saveFileName;
 			}
-			System.out.println();
-			//ÇÑ±ÛÆÄÀÏÀÌ¸§ ±úÁü ¹æÁö
+
+			// í•œê¸€íŒŒì¼ì´ë¦„ ê¹¨ì§ ë°©ì§€
 			originalFileName = 	
 					new String(originalFileName.getBytes("euc-kr"),"ISO-8859-1");
 			
-			File f = new File(fullPath);//ÆÄÀÏÀÌ ÀÖ´ÂÁö °Ë»ç
+			File f = new File(fullPath);// íŒŒì¼ì´ ìˆëŠ”ì§€ ê²€ì‚¬
 			
-			if(!f.exists()) {//¾øÀ¸¸é
+			if (!f.exists()) {// ì—†ìœ¼ë©´
 				return false;
 			}
 			
-			//ÆÄÀÏ ´Ù¿î·Îµå
-			response.setContentType("application/octet-stream");//¸ÆÀº unknown
+			// íŒŒì¼ ë‹¤ìš´ë¡œë“œ
+			response.setContentType("application/octet-stream");// ë§¥ì€ unknown
 			
 			response.setHeader("Content-disposition",
-					"attachment;fileName=" + originalFileName);//Çì´õÀÇÁ¤º¸
+					"attachment;fileName=" + originalFileName);// í—¤ë”ì˜ì •ë³´
 			
 			BufferedInputStream bis = 
 					new BufferedInputStream(new FileInputStream(f));
@@ -61,7 +61,7 @@ public class FileManager {
 		return true;
 	}
 	
-	//ÆÄÀÏ»èÁ¦
+	// íŒŒì¼ì‚­ì œ
 	public static void doFiledelete(String fileName,String path) {
 		
 		
@@ -71,7 +71,7 @@ public class FileManager {
 			File f = new File(filePath);
 
 			if(f.exists()) {
-				f.delete();//¹°¸®Àû ÆÄÀÏ »èÁ¦
+				f.delete();// ë¬¼ë¦¬ì  íŒŒì¼ ì‚­ì œ
 			}
 		}catch (Exception e) {
 			System.out.println(e.toString());

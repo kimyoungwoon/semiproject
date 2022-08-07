@@ -1,6 +1,7 @@
 package com.member;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.sql.Connection;
 import java.util.Enumeration;
 
@@ -11,6 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.cart.CartProductDAO;
 import com.util.DBConn;
 
 public class MemberServlet extends HttpServlet {
@@ -44,7 +46,7 @@ public class MemberServlet extends HttpServlet {
 		String cp = req.getContextPath();
 		String uri = req.getRequestURI();
 
-		String url;// 포워딩시킬 데이터 저장할 url
+		String url = null;// 포워딩시킬 데이터 저장할 url
 
 		// 회원가입 페이지
 		if (uri.indexOf("created.do") != -1) {
@@ -58,110 +60,68 @@ public class MemberServlet extends HttpServlet {
 			MemberDTO dto = new MemberDTO();
 			int maxNum = dao.getMaxNum();
 			// form post방식으로 넘어오니까
+			
+			System.out.println(req.getParameter("id"));
+			
+			if(dao.registerCheck(req.getParameter("id"))) {
+				//true면 중복
+				System.out.println("아이디 없는데?");
+				url = cp + "/login/register_fail.do";
+			}
+			else if(req.getParameter("id") != null && !req.getParameter("id").equals("")) {
+				url = cp + "/login/register_success.do";
+				dto.setNum(maxNum + 1);
+				dto.setId(req.getParameter("id"));
+				dto.setPw(req.getParameter("pw"));
+				dto.setName(req.getParameter("name"));
+				dto.setBirth(req.getParameter("birth"));
 
-			dto.setNum(maxNum + 1);
-			dto.setId(req.getParameter("id"));
-			dto.setPw(req.getParameter("pw"));
-			dto.setName(req.getParameter("name"));
-			dto.setBirth(req.getParameter("birth"));
-
-			dao.insertData(dto);
-
-			url = cp + "/login/created.do";
+				dao.insertData(dto);
+			}
+			else {
+				url = cp + "/login/register_fail.do";
+			}
+			
 			resp.sendRedirect(url);
 
-		} else if (uri.indexOf("login.do") != -1) {
+		} else if (uri.indexOf("register_success.do") != -1) {
 
-			// 로그인 시 포워드 페이지
-			String listUrl = "/semiproject/login/login.do";
-			req.setAttribute("listUrl", listUrl);
+			url = "/member/register_success.jsp";
+			forward(req, resp, url);
 
-			url = "/semiproject/member/login.jsp";
+		}else if (uri.indexOf("register_fail.do") != -1) {
+
+			url = "/member/register_fail.jsp";
+			forward(req, resp, url);
+		}
+		
+		else if (uri.indexOf("login.do") != -1) {
+
+			url = "/member/login.jsp";
 			forward(req, resp, url);
 
 			// 아이디 중복확인
-		} else if (uri.indexOf("idcheck.do") != -1) {
-
-			url = "/semiproject/login/idcheck.jsp";
-			forward(req, resp, url);
-
-		} else if (uri.indexOf("idcheck_ok.do") != -1) {
-
-			Enumeration enums = req.getParameterNames();
-
-			while (enums.hasMoreElements()) {
-
-				String key = (String) enums.nextElement();
-				String value = req.getParameter(key);
-				System.out.println("이넘: " + key + " : " + value + "<br>");
-			}
-			String id = req.getParameter("id");
-
-			if (id == null) {
-				req.setAttribute("checkid", "");
-
-			}
-
-			System.out.println(id);
-
-			int result = dao.registerCheck(id);
-
-			if (result == 0) {
-
-				req.setAttribute("checkid", id);
-				req.setAttribute("message", "이미사용중인 아이디입니다");
-
-				url = "/member/login.jsp";
-				forward(req, resp, url);
-				return;
-
-			} else {
-				req.setAttribute("checkid", id);
-				req.setAttribute("message", "사용가능한 아이디입니다.");
-
-				url = "/member/login.jsp";
-				forward(req, resp, url);
-			}
-
-			// url = "member/login.jsp";
-			// forward(req, resp, url);
-
-			// url = "/semiproject/login/created.do";
-			// //세션을 변경시키면 리다이렉트 해야 한다,
-			// resp.sendRedirect(url);
-
 		} else if (uri.indexOf("login_ok.do") != -1) {
 
-			String id = req.getParameter("id");
-			String pw = req.getParameter("pw");
+			String id = req.getParameter("login_id");
+			String pw = req.getParameter("login_pw");
 
 			System.out.println(id);
 			System.out.println(pw);
 
 			MemberDTO dto = dao.getReadData(id);
-
-			// dto==null 일 경우 아이디가 없음
-			// 세션에 있는 pwd가 DB의 pwd와 일치하지 않는 경우
+			
+//			// dto==null 일 경우 아이디가 없음
+//			// 세션에 있는 pwd가 DB의 pwd와 일치하지 않는 경우
 			if (dto == null || (!dto.getPw().equals(pw))) {
-
 				req.setAttribute("message", "아이디 또는 패스워드를 정확히 입력하세요");
-				url = "member/login.jsp";
-
+				
+				url = "/member/login.jsp";
 				forward(req, resp, url);
-
-				return;// 로그인 실패 시 더이상의 소스코드가 실행되지 않도록 return작성
+				return;
 			}
-			/*
-			 * if(id.equals("hwcotton")) {
-			 * 
-			 * url = "/shoppingmall/productSave/productSave.jsp";
-			 * 
-			 * forward(req, resp, url);
-			 * 
-			 * return;//로그인 실패 시 더이상의 소스코드가 실행되지 않도록 return작성
-			 * }
-			 */
 
+			// 로그인 실패 시 더이상의 소스코드가 실행되지 않도록 return작성
 			// 서블릿에서 세션만드는 방법
 			HttpSession session = req.getSession();
 

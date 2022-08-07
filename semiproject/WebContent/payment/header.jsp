@@ -29,4 +29,3 @@
     <link rel="stylesheet" href="<%=cp %>/css/slicknav.min.css" type="text/css">
     <link rel="stylesheet" href="<%=cp %>/css/style.css" type="text/css">
 </head>
-    <%-- <jsp:include page = "header.jsp"/> --%>

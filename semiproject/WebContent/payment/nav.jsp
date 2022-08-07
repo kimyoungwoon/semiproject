@@ -46,7 +46,7 @@
 					<div class="col-lg-6 col-md-5">
 						<div class="header__top__right">
 							<div class="header__top__links">
-								<a href="#" class = "desk_sign">Sign in</a> <a href="<%=cp %>/order/orderHistoryList.do">FAQs</a>
+								<a href="<%=cp %>/login/created.do" class = "desk_sign">Sign in</a> <a href="<%=cp %>/order/orderHistoryList.do">FAQs</a>
 							</div>
 							<div class="header__top__hover">
 								<span>Usd <i class="arrow_carrot-down"></i></span>

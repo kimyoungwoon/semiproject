@@ -1,5 +1,17 @@
+<%@page import="java.util.Enumeration"%>
 <%@include file = "payment/header.jsp"  %>
 
+<%
+ Enumeration enums = session.getAttributeNames();
+
+while(enums.hasMoreElements()) {
+ 
+String key = (String)enums.nextElement();
+//String value = (String)session.getAttribute(key);
+System.out.println("í›„ì•„"+key + " : " +"<br>");
+} 
+
+%>
 
 <body>
 
@@ -122,7 +134,7 @@
                             </ul>
                         </div>
                         <div class="product__item__text">
-                            <h6>Piqué Biker Jacket</h6>
+                            <h6>PiquÃ© Biker Jacket</h6>
                             <a href="#" class="add-cart">+ Add To Cart</a>
                             <div class="rating">
                                 <i class="fa fa-star-o"></i>
@@ -156,7 +168,7 @@
                             </ul>
                         </div>
                         <div class="product__item__text">
-                            <h6>Piqué Biker Jacket</h6>
+                            <h6>PiquÃ© Biker Jacket</h6>
                             <a href="#" class="add-cart">+ Add To Cart</a>
                             <div class="rating">
                                 <i class="fa fa-star-o"></i>
@@ -565,7 +577,7 @@
                 <div class="col-lg-12 text-center">
                     <div class="footer__copyright__text">
                         <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                        <p>Copyright ©
+                        <p>Copyright Â©
                             <script>
                                 document.write(new Date().getFullYear());
                             </script>2020
