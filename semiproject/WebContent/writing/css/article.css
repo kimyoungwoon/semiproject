@@ -30,7 +30,7 @@
 #bbsArticle_header {
 	height:35px;
 	line-height:35px;
-	border-bottom:2px solid #DBDBDB;
+	border-bottom:2px solid #FCF8E8;
 	text-align:center;
 }
 
@@ -40,7 +40,7 @@
 	width:60px;
 	line-height:35px;
 	text-align:center;
-	background-color:#EEEEEE;
+	background-color:#FCF8E8;
 }
 
 #bbsArticle dd {
@@ -55,7 +55,7 @@
 .bbsArticle_bottomLine {
 	height:35px;
 	line-height:35px;
-	border-bottom:1px solid #DBDBDB;
+	border-bottom:1px solid #FCF8E8;
 	clear:both;
 	text-align:left;
 }
@@ -68,7 +68,7 @@
 
 #bbsArticle_content {
 	overflow: visible;
-	border-bottom:1px solid #DBDBDB;
+	border-bottom:1px solid #FCF8E8;
 	text-align:left;
 }
 
