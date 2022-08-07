@@ -2,6 +2,7 @@ package com.shop;
 
 import java.io.File;
 import java.io.IOException;
+import java.net.URLDecoder;
 import java.sql.Connection;
 import java.util.List;
 
@@ -59,56 +60,26 @@ public class ProductServlet extends HttpServlet {
 			f.mkdirs();
 		}
 		
-		if(uri.indexOf("insert.do")!=-1) {//관리자 제품추가뷰 보여주기
-			
-			
-			url = "/shop/shop_admin.jsp";
-			foward(req, resp, url);
-			
-		}else if(uri.indexOf("insert_ok.do")!=-1) {//실제 디비에 제품정보 추가
-			
-			String encType = "UTF-8";
-			int maxSize = 10*1024*1024;
-			
-			MultipartRequest mr =
-					new MultipartRequest(req, path, maxSize, encType,
-							new DefaultFileRenamePolicy());
-			
-			if(mr.getFile("upload")!=null) {
-				
-				ProductDTO dto = new ProductDTO();
-				
-				int maxNum = dao.getMaxNum();
-				
-				dto.setNum(maxNum + 1);
-				dto.setName(mr.getParameter("pd_name"));
-				dto.setPrice(Integer.parseInt(mr.getParameter("pd_price")));
-				dto.setCategory(Integer.parseInt(mr.getParameter("pd_categoryNum")));
-				dto.setBrand(Integer.parseInt(mr.getParameter("pd_brandNum")));
-				dto.setSaveFileName(mr.getFilesystemName("upload"));
-				
-				
-				dao.product_insertData(dto);
-				
-			}
-			
-			url = cp + "/shopping/insert.do";
-			resp.sendRedirect(url);
-			
-		}else if(uri.indexOf("list.do")!=-1) {//shop 페이지를 보여줍니다
+		if(uri.indexOf("list.do")!=-1) {//shop 페이지를 보여줍니다
 			
 			
 			int category = Integer.parseInt(returnNull(req.getParameter("category")));
 			int brand = Integer.parseInt(returnNull(req.getParameter("brand")));
 			int priceMin = Integer.parseInt(returnNull(req.getParameter("priceMin")));
 			int priceMax = Integer.parseInt(returnNull(req.getParameter("priceMax")));
-
 			int size = Integer.parseInt(returnNull(req.getParameter("size")));
 			int color = Integer.parseInt(returnNull(req.getParameter("color")));
 			int tag = Integer.parseInt(returnNull(req.getParameter("tag")));
-
 			String sortPath = cp + "/shopping/list.do?";//정렬기준경로
-
+			String searchValue = req.getParameter("searchValue");
+			
+			if (searchValue == null) {
+				searchValue = "";
+			}else {
+				if (req.getMethod().equalsIgnoreCase("GET")) {
+					searchValue = URLDecoder.decode(searchValue, "UTF-8");
+				}
+			}
 			
 			
 			String pageNum = req.getParameter("pageNum");
@@ -119,7 +90,7 @@ public class ProductServlet extends HttpServlet {
 				currentPage = Integer.parseInt(pageNum);
 			}
 			
-			int dataCount = dao.getDataCount();
+			int dataCount = dao.getDataCount(searchValue);
 			
 			int numPerPage = 9;
 			
@@ -132,7 +103,8 @@ public class ProductServlet extends HttpServlet {
 			int start = (currentPage-1)*numPerPage+1;
 			int end = (currentPage*numPerPage);
 			
-			lists = listReturn_dao.product_getList(start, end);//전체데이터 출력
+			
+			lists = listReturn_dao.product_getList(start, end, searchValue);//전체데이터 출력
 			
 			//System.out.println(category);
 			
@@ -172,10 +144,8 @@ public class ProductServlet extends HttpServlet {
 			String pageIndexList =
 					myPage.pageIndexList(currentPage, totalPage, listUrl);
 			
-//			테스트를 위해서 프로젝트 내부 path 생성- 영운
-			String imagePath = cp + "/img/pds/";
-			
-			//String imagePath = cp + "/pds/productFile";
+
+			String imagePath = cp + "/pds/productFile";
 			
 			req.setAttribute("sortPath", sortPath);
 			req.setAttribute("lists", lists);
@@ -189,54 +159,6 @@ public class ProductServlet extends HttpServlet {
 			url = "/shop.jsp";
 			foward(req, resp, url);
 	
-		}else if(uri.indexOf("setting.do")!=-1) {//제품(컬러,태그,사이즈)등록 페이지로포워딩 및 리스트반환
-			
-			List<ProductDTO> settinglists = listReturn_dao.product_getList();
-			
-			String imagePath = cp + "/pds/productFile";
-			
-			req.setAttribute("settinglists", settinglists);
-			req.setAttribute("imagePath", imagePath);
-			
-			url = "/shop/shop_setting.jsp";
-			foward(req, resp, url);
-			
-		}else if(uri.indexOf("insertSize.do")!=-1) {//제품의 사이즈등록
-			
-			int num = Integer.parseInt(returnNull(req.getParameter("size_nameNum")));
-			int sizeNum = Integer.parseInt(returnNull(req.getParameter("pd_sizeNum")));
-			
-			
-			dao.size_insertData(num, sizeNum);
-			
-			url = cp + "/shopping/setting.do";
-			resp.sendRedirect(url);
-			
-			
-		}else if(uri.indexOf("insertColor.do")!=-1) {//제품의 컬러등록
-			
-			int num = Integer.parseInt(returnNull(req.getParameter("color_nameNum")));
-			int colorNum = Integer.parseInt(returnNull(req.getParameter("pd_colorNum")));
-			
-			
-			dao.color_insertData(num, colorNum);
-			
-			url = cp + "/shopping/setting.do";
-			resp.sendRedirect(url);
-			
-					
-		}else if(uri.indexOf("insertTag.do")!=-1) {//제품의 태그 등록
-			
-			int num = Integer.parseInt(returnNull(req.getParameter("tag_nameNum")));
-			int tagNum = Integer.parseInt(returnNull(req.getParameter("pd_tagNum")));
-			
-			
-			dao.tag_insertData(num, tagNum);
-			
-			url = cp + "/shopping/setting.do";
-			resp.sendRedirect(url);
-			
-			
 		}else if(uri.indexOf("listsortlow.do")!=-1) {//로우솔트로 왔을때리스트
 			
 			int category = Integer.parseInt(returnNull(req.getParameter("category")));
@@ -248,7 +170,15 @@ public class ProductServlet extends HttpServlet {
 			int tag = Integer.parseInt(returnNull(req.getParameter("tag")));
 			int sort = Integer.parseInt(returnNull(req.getParameter("sort")));
 			String sortPath = cp + "/shopping/listsortlow.do?sort=" + sort + "&";//정렬기준경로
-			
+			String searchValue = req.getParameter("searchValue");
+
+			if (searchValue == null) {
+				searchValue = "";
+			}else {
+				if (req.getMethod().equalsIgnoreCase("GET")) {
+					searchValue = URLDecoder.decode(searchValue, "UTF-8");
+				}
+			}
 			
 			String pageNum = req.getParameter("pageNum");
 			
@@ -258,7 +188,7 @@ public class ProductServlet extends HttpServlet {
 				currentPage = Integer.parseInt(pageNum);
 			}
 			
-			int dataCount = dao.getDataCount();
+			int dataCount = dao.getDataCount(searchValue);
 			
 			int numPerPage = 9;
 			
@@ -279,33 +209,33 @@ public class ProductServlet extends HttpServlet {
 			if(category != -1 ) {
 				
 				lists = listSortReturn_dao.category_getList(start, end, category);
-				listUrl = cp + sortPath + "category=" + category;
+				listUrl = sortPath + "category=" + category;
 				
 				
 			}else if(brand != -1) {
 				lists = listSortReturn_dao.branding_getList(start, end, brand);
-				listUrl = cp + sortPath + "brand=" + brand;
+				listUrl = sortPath + "brand=" + brand;
 			}else if (priceMin != -1 && priceMax != -1 ) {
 				
 				lists = listSortReturn_dao.price_getList(start, end, priceMin, priceMax);
-				listUrl = cp + sortPath + "priceMin=" + priceMin + "&priceMax=" + priceMax;
+				listUrl = sortPath + "priceMin=" + priceMin + "&priceMax=" + priceMax;
 			}else if (priceMin != -1 ) {
 				
 				lists = listSortReturn_dao.priceUp_getList(start, end, priceMin);
-				listUrl = cp + sortPath + "priceMin=" + priceMin;
+				listUrl = sortPath + "priceMin=" + priceMin;
 			}else if (size != -1) {
 				
 				lists = listSortReturn_dao.size_getList(start, end, size);
-				listUrl = cp + sortPath + "size=" + size;
+				listUrl = sortPath + "size=" + size;
 				
 			}else if (color != -1) {
 				
 				lists = listSortReturn_dao.color_getList(start, end, color);
-				listUrl = cp + sortPath + "color=" + color;
+				listUrl = sortPath + "color=" + color;
 			}else if (tag != -1) {
 				
 				lists = listSortReturn_dao.tag_getList(start, end, tag);
-				listUrl = cp + sortPath + "tag=" + tag;
+				listUrl = sortPath + "tag=" + tag;
 			}
 				
 			String pageIndexList =
@@ -327,7 +257,7 @@ public class ProductServlet extends HttpServlet {
 			foward(req, resp, url);
 			
 			
-		}else if(uri.indexOf("sorthigh.do")!=-1) {
+		}else if(uri.indexOf("listsorthigh.do")!=-1) {//솔트하이로 왔을때 경로
 			
 			int category = Integer.parseInt(returnNull(req.getParameter("category")));
 			int brand = Integer.parseInt(returnNull(req.getParameter("brand")));
@@ -338,7 +268,15 @@ public class ProductServlet extends HttpServlet {
 			int tag = Integer.parseInt(returnNull(req.getParameter("tag")));
 			int sort = Integer.parseInt(returnNull(req.getParameter("sort")));
 			String sortPath = cp + "/shopping/listsorthigh.do?sort=" + sort + "&";//정렬기준경로
-			
+			String searchValue = req.getParameter("searchValue");
+
+			if (searchValue == null) {
+				searchValue = "";
+			}else {
+				if (req.getMethod().equalsIgnoreCase("GET")) {
+					searchValue = URLDecoder.decode(searchValue, "UTF-8");
+				}
+			}
 			
 			String pageNum = req.getParameter("pageNum");
 			
@@ -348,7 +286,7 @@ public class ProductServlet extends HttpServlet {
 				currentPage = Integer.parseInt(pageNum);
 			}
 			
-			int dataCount = dao.getDataCount();
+			int dataCount = dao.getDataCount(searchValue);
 			
 			int numPerPage = 9;
 			
@@ -369,33 +307,33 @@ public class ProductServlet extends HttpServlet {
 			if(category != -1 ) {
 				
 				lists = listSortHighReturn_dao.category_getList(start, end, category);
-				listUrl = cp + sortPath + "category=" + category;
+				listUrl = sortPath + "category=" + category;
 				
 				
 			}else if(brand != -1) {
 				lists = listSortHighReturn_dao.branding_getList(start, end, brand);
-				listUrl = cp + sortPath + "brand=" + brand;
+				listUrl = sortPath + "brand=" + brand;
 			}else if (priceMin != -1 && priceMax != -1 ) {
 				
 				lists = listSortHighReturn_dao.price_getList(start, end, priceMin, priceMax);
-				listUrl = cp + sortPath + "priceMin=" + priceMin + "&priceMax=" + priceMax;
+				listUrl = sortPath + "priceMin=" + priceMin + "&priceMax=" + priceMax;
 			}else if (priceMin != -1 ) {
 				
 				lists = listSortHighReturn_dao.priceUp_getList(start, end, priceMin);
-				listUrl = cp + sortPath + "priceMin=" + priceMin;
+				listUrl = sortPath + "priceMin=" + priceMin;
 			}else if (size != -1) {
 				
 				lists = listSortHighReturn_dao.size_getList(start, end, size);
-				listUrl = cp + sortPath + "size=" + size;
+				listUrl = sortPath + "size=" + size;
 				
 			}else if (color != -1) {
 				
 				lists = listSortHighReturn_dao.color_getList(start, end, color);
-				listUrl = cp + sortPath + "color=" + color;
+				listUrl = sortPath + "color=" + color;
 			}else if (tag != -1) {
 				
 				lists = listSortHighReturn_dao.tag_getList(start, end, tag);
-				listUrl = cp + sortPath + "tag=" + tag;
+				listUrl = sortPath + "tag=" + tag;
 			}
 				
 			String pageIndexList =
@@ -403,6 +341,7 @@ public class ProductServlet extends HttpServlet {
 			
 			
 			String imagePath = cp + "/pds/productFile";
+			
 			req.setAttribute("sortPath", sortPath);
 			req.setAttribute("lists", lists);
 			req.setAttribute("pageIndexList", pageIndexList);
@@ -419,6 +358,7 @@ public class ProductServlet extends HttpServlet {
 		}else if(uri.indexOf("addCart.do")!=-1) {
 			
 			int productNum = Integer.parseInt(returnNull(req.getParameter("productNum")));
+			
 			
 			HttpSession session = req.getSession();
 			session.getAttribute("membernum");

@@ -23,6 +23,67 @@ public class CartProductDAO {
 		this.conn = conn;
 	}
 
+	
+	public int getDataCount() {
+		int dataCount = 0;
+
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String sql;
+
+		try {
+
+			sql = "select nvl(count(*), 0) from cart_product";
+
+			pstmt = conn.prepareStatement(sql);
+
+			rs = pstmt.executeQuery();
+
+			if (rs.next()) {
+				dataCount = rs.getInt(1);
+			}
+
+			rs.close();
+			pstmt.close();
+
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+
+		return dataCount;
+	}
+	
+	//회원번호를 기준으로 갯수를 가져옴.
+	public int getDataCount(int pMemberNum) {
+		int dataCount = 0;
+
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String sql;
+		try {
+
+			sql = "select nvl(count(*), 0) from cart_product where memberNum = ?";
+
+			pstmt = conn.prepareStatement(sql);
+
+			pstmt.setInt(1, pMemberNum);
+			
+			rs = pstmt.executeQuery();
+
+			if (rs.next()) {
+				dataCount = rs.getInt(1);
+			}
+
+			rs.close();
+			pstmt.close();
+
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+
+		return dataCount;
+	}
+	
 	//장바구니로 들어갔을 때 해당 회원이 추가한 상품 목록을 보여주기 위함.
 	public List<CartProductDTO> getCartList(int pMemberNum) {
 		lists = new ArrayList<CartProductDTO>();

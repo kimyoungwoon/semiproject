@@ -73,8 +73,8 @@ public class ListSortHighReturnDAO {
 		try {
 			//select * from (select rownum rnum,data.* from (select num,name,price,category,brand,pro_size,color,tag,saveFileName from product where category = 2 order by num desc) data) where rnum >= 1 and rnum <=1;
 			sql =  "select * from (select rownum rnum,data.* ";
-			sql+= "from (select num,name,price,category,brand,pro_size,";
-			sql+= "color,tag,saveFileName from product where category = ? order by price desc) ";
+			sql+= "from (select num,name,price,category,brand,";
+			sql+= "saveFileName from product where category = ? order by price desc) ";
 			sql+= "data) where rnum >= ? and rnum <=?";
 
 			pstmt = conn.prepareStatement(sql);
@@ -94,9 +94,6 @@ public class ListSortHighReturnDAO {
 				dto.setPrice(rs.getInt("price"));
 				dto.setCategory(rs.getInt("category"));
 				dto.setBrand(rs.getInt("brand"));
-				dto.setPro_size(rs.getInt("pro_size"));
-				dto.setColor(rs.getInt("color"));
-				dto.setTag(rs.getInt("tag"));
 				dto.setSaveFileName(rs.getString("saveFileName"));
 
 				lists.add(dto);
@@ -122,8 +119,8 @@ public class ListSortHighReturnDAO {
 		try {
 			//select * from (select rownum rnum,data.* from (select num,name,price,category,brand,pro_size,color,tag,saveFileName from product where category = 2 order by num desc) data) where rnum >= 1 and rnum <=1;
 			sql =  "select * from (select rownum rnum,data.* ";
-			sql+= "from (select num,name,price,category,brand,pro_size,";
-			sql+= "color,tag,saveFileName from product where brand = ? order by price desc) ";
+			sql+= "from (select num,name,price,category,brand,";
+			sql+= "saveFileName from product where brand = ? order by price desc) ";
 			sql+= "data) where rnum >= ? and rnum <=?";
 
 			pstmt = conn.prepareStatement(sql);
@@ -143,9 +140,6 @@ public class ListSortHighReturnDAO {
 				dto.setPrice(rs.getInt("price"));
 				dto.setCategory(rs.getInt("category"));
 				dto.setBrand(rs.getInt("brand"));
-				dto.setPro_size(rs.getInt("pro_size"));
-				dto.setColor(rs.getInt("color"));
-				dto.setTag(rs.getInt("tag"));
 				dto.setSaveFileName(rs.getString("saveFileName"));
 
 				lists.add(dto);
@@ -171,8 +165,8 @@ public class ListSortHighReturnDAO {
 		try {
 			//select * from (select rownum rnum,data.* from (select num,name,price,category,brand,pro_size,color,tag,saveFileName from product where category = 2 order by num desc) data) where rnum >= 1 and rnum <=1;
 			sql =  "select * from (select rownum rnum,data.* ";
-			sql+= "from (select num,name,price,category,brand,pro_size,";
-			sql+= "color,tag,saveFileName from product where price >= ? and price <= ? order by price desc) ";
+			sql+= "from (select num,name,price,category,brand,";
+			sql+= "saveFileName from product where price >= ? and price <= ? order by price desc) ";
 			sql+= "data) where rnum >= ? and rnum <=?";
 
 			pstmt = conn.prepareStatement(sql);
@@ -193,9 +187,6 @@ public class ListSortHighReturnDAO {
 				dto.setPrice(rs.getInt("price"));
 				dto.setCategory(rs.getInt("category"));
 				dto.setBrand(rs.getInt("brand"));
-				dto.setPro_size(rs.getInt("pro_size"));
-				dto.setColor(rs.getInt("color"));
-				dto.setTag(rs.getInt("tag"));
 				dto.setSaveFileName(rs.getString("saveFileName"));
 
 				lists.add(dto);
@@ -220,8 +211,8 @@ public class ListSortHighReturnDAO {
 		try {
 			//select * from (select rownum rnum,data.* from (select num,name,price,category,brand,pro_size,color,tag,saveFileName from product where category = 2 order by num desc) data) where rnum >= 1 and rnum <=1;
 			sql =  "select * from (select rownum rnum,data.* ";
-			sql+= "from (select num,name,price,category,brand,pro_size,";
-			sql+= "color,tag,saveFileName from product where price >= ? order by price desc) ";
+			sql+= "from (select num,name,price,category,brand,";
+			sql+= "saveFileName from product where price >= ? order by price desc) ";
 			sql+= "data) where rnum >= ? and rnum <=?";
 
 			pstmt = conn.prepareStatement(sql);
@@ -241,9 +232,6 @@ public class ListSortHighReturnDAO {
 				dto.setPrice(rs.getInt("price"));
 				dto.setCategory(rs.getInt("category"));
 				dto.setBrand(rs.getInt("brand"));
-				dto.setPro_size(rs.getInt("pro_size"));
-				dto.setColor(rs.getInt("color"));
-				dto.setTag(rs.getInt("tag"));
 				dto.setSaveFileName(rs.getString("saveFileName"));
 
 				lists.add(dto);

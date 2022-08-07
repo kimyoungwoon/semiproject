@@ -1,4 +1,5 @@
 var navRequest = new XMLHttpRequest();
+var countCartRequest = new XMLHttpRequest();
 
 function navFunction() {
 	//sessionStorage.setItem("mine", "회원정보 1");
@@ -7,6 +8,7 @@ function navFunction() {
 	navRequest.open("Post", "http://localhost:8080/semiproject/nav/session.do", true);
 	navRequest.onreadystatechange = navSuccessConnect;
 	navRequest.send(null);
+	countCart();
 }
 
 function navSuccessConnect() {
@@ -27,15 +29,26 @@ function navSuccessConnect() {
 	}
 }
 
-function checkLogin(state) {
-	
-	
-
-
-
+//nav 장바구니 갯수
+function countCart() {
+	countCartRequest.open("Post", "http://localhost:8080/semiproject/cart/countCart.do", true);
+	countCartRequest.onreadystatechange = function() {
+		if (countCartRequest.readyState == 4 && countCartRequest.status == 200) {
+			var object = eval("(" + countCartRequest.responseText + ")");
+			var result = object.result;
+			
+			var signText = $('#h_menu_countCart').children('span');
+			signText.text(result);
+		}
+	};
+	countCartRequest.send(null);
 }
 
 
+function checkLogin(state) {
+	
+
+}
 
 window.addEventListener("load", function () {
 	navFunction();
@@ -66,3 +79,5 @@ window.addEventListener("load", function () {
 function eURI(component) {
 	return encodeURIComponent(component);
 }
+
+

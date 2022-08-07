@@ -57,8 +57,14 @@ public class NavigationServlet extends HttpServlet{
 			StringBuffer result = new StringBuffer("");
 //			result.append("{\"result\":\"" + (String)session.getAttribute("servlet") + "\"}");
 			result.append("{\"result\":\"" + json + "\"}");
-			System.out.println(result);
 			response.getWriter().write(result.toString());
+		}
+		else if(uri.indexOf("wishList.do") != -1){
+			
+			
+			
+			url = "/wishList.jsp";
+			myForward(request, response, url);
 		}
 	}
 

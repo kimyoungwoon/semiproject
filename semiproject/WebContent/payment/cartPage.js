@@ -1,6 +1,7 @@
 var connectRequest = new XMLHttpRequest();
 var updateRequest = new XMLHttpRequest();
 var deleteRequest = new XMLHttpRequest();
+var countCartRequest = new XMLHttpRequest();
 var arrProduct = [];
 
 function registerFunction() {
@@ -101,7 +102,7 @@ function operationCount(thisNum, inc = null) {
 
 //각 상품별 소계
 function changeSubTotal(thisNum, price, count) {
-    thisNum.text("&#8361; " + (price * count).toLocaleString("ko-KR") );
+    thisNum.html("&#8361; " + (price * count).toLocaleString("ko-KR") );
 
     //여기도 마찬가지로 요청할때는 session을 이용해서 하면 됨.
     //지금 당장은 테스트로 1
@@ -138,6 +139,22 @@ function deleteCartProduct(arg, productNum) {
     deleteRequest.send(null);
     $(arg).closest("tr").remove();
     cartTotal();
+    countCart();
+}
+
+//nav 카트 갯수 처리
+function countCart() {
+	countCartRequest.open("Post", "http://localhost:8080/semiproject/cart/countCart.do", true);
+	countCartRequest.onreadystatechange = function() {
+		if (countCartRequest.readyState == 4 && countCartRequest.status == 200) {
+			var object = eval("(" + countCartRequest.responseText + ")");
+			var result = object.result;
+			
+			var signText = $('#h_menu_countCart').children('span');
+			signText.text(result);
+		}
+	};
+	countCartRequest.send(null);
 }
 
 //쿠폰 사용
@@ -154,9 +171,9 @@ function useCoupon(apply) {
 //폼 이동
 function sendIt(){
 	var f = document.cartForm;
-	var discountCost = $("#actualPayment").text().replaceAll(/\D/gm, "");
+	var actualPayment = $("#actualPayment").text().replaceAll(/\D/gm, "");
 	
-	f.discountCost.value = discountCost;
+	f.discountCost.value = actualPayment;
 	f.method = "post"
 	f.action = "/semiproject/order/payment.do";
 	f.submit();
