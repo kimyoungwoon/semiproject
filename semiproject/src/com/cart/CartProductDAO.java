@@ -28,7 +28,7 @@ public class CartProductDAO {
 		lists = new ArrayList<CartProductDTO>();
 		try {
 
-			sql = "select membernum, productnum, count, p.name as name, p.price as price from ";
+			sql = "select membernum, productnum, count, p.name as name, p.price as price, p.savefilename as savefilename from ";
 			sql+= "cart_product c, product p where membernum = ? and p.num = c.productnum";
 
 			pstmt = conn.prepareStatement(sql);
@@ -44,6 +44,7 @@ public class CartProductDAO {
 				dto.setCount(rs.getInt(3));
 				dto.setName(rs.getString(4));
 				dto.setPrice(rs.getInt(5));
+				dto.setSaveFileName(rs.getString(6));
 				
 				lists.add(dto);
 			}

@@ -9,7 +9,7 @@ public class CartProductDTO {
 	//아래 2개는 조인해서 가져오는 데이터
 	private String name;
 	private int price;
-	
+	private String saveFileName;
 	
 	public String getName() {
 		return name;
@@ -41,5 +41,12 @@ public class CartProductDTO {
 	public void setCount(int count) {
 		this.count = count;
 	}
+	public String getSaveFileName() {
+		return saveFileName;
+	}
+	public void setSaveFileName(String saveFileName) {
+		this.saveFileName = saveFileName;
+	}
+	
 	
 }

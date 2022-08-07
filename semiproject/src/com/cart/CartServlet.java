@@ -26,7 +26,6 @@ public class CartServlet extends HttpServlet{
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		final int MEMBER_NUM = 1;
-
 		request.setCharacterEncoding("utf-8");
 		response.setContentType("text/html;charset=UTF-8");
 		Connection conn = DBConn.getConnection();
@@ -34,7 +33,7 @@ public class CartServlet extends HttpServlet{
 
 		String cp = request.getContextPath();
 		String uri = request.getRequestURI();
-
+		//System.out.println(cp);  /semiproject
 		String url = null;
 
 		//파일 저장 경로 설정
@@ -48,6 +47,9 @@ public class CartServlet extends HttpServlet{
 
 		if(uri.indexOf("cart.do") != -1){
 			
+			HttpSession session = request.getSession();
+			session.removeAttribute("id");
+			System.out.println("로그아웃");
 			//아래 setattribute는 일부러 해줌.
 			//write.jsp에서 ${pageNum} 이렇게 쓰기 위해서
 			//아래 코드를 지우면  ${param.pageNum} 이렇게 쓰거나
@@ -59,20 +61,20 @@ public class CartServlet extends HttpServlet{
 			url = "/shopping-cart.jsp";
 			myForward(request, response, url);
 		}
-//		else if(uri.indexOf("payment.do") != -1){
-//			//			로그인 구현 후 id를 세션에 담아서 사용.
-//			//			HttpSession session = request.getSession();
-//			//			String memberNum = (String)session.getAttribute("id");
-//			
-//			String discountCost  = request.getParameter("discountCost");
-//			
-//			//int productNum  = Integer.parseInt(request.getParameter("productNum"));
-//			
-//			request.setAttribute("discountCost", discountCost);
-//			
-//			url = cp +"/order/payment.do";
-//			response.sendRedirect(url);
-//		}
+		else if(uri.indexOf("curCartCount.do") != -1){
+			//			로그인 구현 후 id를 세션에 담아서 사용.
+			//			HttpSession session = request.getSession();
+			//			String memberNum = (String)session.getAttribute("id");
+			
+			String discountCost  = request.getParameter("discountCost");
+			
+			//int productNum  = Integer.parseInt(request.getParameter("productNum"));
+			
+			request.setAttribute("discountCost", discountCost);
+			
+			url = cp +"/order/payment.do";
+			response.sendRedirect(url);
+		}
 		else if(uri.indexOf("updatePC.do") != -1){
 			
 			int memberNum = MEMBER_NUM;
@@ -86,7 +88,8 @@ public class CartServlet extends HttpServlet{
 			int memberNum = Integer.parseInt(request.getParameter("memberNum"));
 
 			List<CartProductDTO> lists = dao.getCartList(memberNum);
-
+			String imagePath = cp + "/img/pds/";
+			
 			StringBuffer result = new StringBuffer("");
 			result.append("{\"result\":[");
 			for(int i = 0; i < lists.size(); i++) {
@@ -94,7 +97,9 @@ public class CartServlet extends HttpServlet{
 				result.append("{\"value\": \"" + lists.get(i).getProductnum() + "\"},");
 				result.append("{\"value\": \"" + lists.get(i).getCount() + "\"},");
 				result.append("{\"value\": \"" + lists.get(i).getName() + "\"},");
-				result.append("{\"value\": \"" + lists.get(i).getPrice() + "\"}],");
+				result.append("{\"value\": \"" + lists.get(i).getPrice() + "\"},");
+				result.append("{\"value\": \"" + cp + "/img/pds/" + lists.get(i).getSaveFileName() + "\"}],");
+				
 			}
 			result.append("]}");
 			response.getWriter().write(result.toString());
