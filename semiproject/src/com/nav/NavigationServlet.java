@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.cart.CartProductDTO;
+import com.util.CustomInfo;
 import com.util.DBConn;
 
 public class NavigationServlet extends HttpServlet{
@@ -58,6 +59,19 @@ public class NavigationServlet extends HttpServlet{
 //			result.append("{\"result\":\"" + (String)session.getAttribute("servlet") + "\"}");
 			result.append("{\"result\":\"" + json + "\"}");
 			response.getWriter().write(result.toString());
+		}
+		else if(uri.indexOf("checkLogin.do") != -1){
+			
+			CustomInfo info =  (CustomInfo)session.getAttribute("customInfo");
+			
+			if(info != null) {
+				//접속자 저장하는 db도 만드는 게 좋을 듯
+				
+				StringBuffer result = new StringBuffer("");
+				result.append("{\"result\":\"" + "MyPage" + "\"}");
+				response.getWriter().write(result.toString());
+			}
+			
 		}
 		else if(uri.indexOf("wishList.do") != -1){
 			
