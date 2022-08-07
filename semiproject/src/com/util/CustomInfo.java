@@ -1,4 +1,4 @@
-package com.member;
+package com.util;
 
 public class CustomInfo {
 
@@ -19,6 +19,5 @@ public class CustomInfo {
 		this.name = name;
 	}
 
-	
 }
 

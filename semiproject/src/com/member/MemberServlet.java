@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.cart.CartProductDAO;
+import com.util.CustomInfo;
 import com.util.DBConn;
 
 public class MemberServlet extends HttpServlet {
@@ -61,20 +62,21 @@ public class MemberServlet extends HttpServlet {
 			int maxNum = dao.getMaxNum();
 			// form post방식으로 넘어오니까
 			
-			System.out.println(req.getParameter("id"));
+			String id = req.getParameter("reg_id");
 			
-			if(dao.registerCheck(req.getParameter("id"))) {
+			System.out.println(id);
+			
+			if(dao.registerCheck(id)) {
 				//true면 중복
-				System.out.println("아이디 없는데?");
 				url = cp + "/login/register_fail.do";
 			}
-			else if(req.getParameter("id") != null && !req.getParameter("id").equals("")) {
+			else if(id != null && !id.equals("")) {
 				url = cp + "/login/register_success.do";
 				dto.setNum(maxNum + 1);
-				dto.setId(req.getParameter("id"));
-				dto.setPw(req.getParameter("pw"));
-				dto.setName(req.getParameter("name"));
-				dto.setBirth(req.getParameter("birth"));
+				dto.setId(id);
+				dto.setPw(req.getParameter("reg_pw"));
+				dto.setName(req.getParameter("reg_name"));
+				dto.setBirth(req.getParameter("reg_birth"));
 
 				dao.insertData(dto);
 			}

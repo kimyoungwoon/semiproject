@@ -41,16 +41,14 @@ public class PdetailServlet extends HttpServlet {
 		
 		String url;
 		
-		//세션에 올릴 데이터 객체
-		CustomInfo info = new CustomInfo();
 		
 		PdetailDTO dto = new PdetailDTO();
-		info.setNum(dto.getNum());
+		//info.setNum(dto.getNum());
 		
 		//세션에 info 등록
 		HttpSession session = req.getSession();
 		
-		session.setAttribute("customInfo", info);
+		//session.setAttribute("customInfo", info);
 		
 		url = cp + "/shop-details.jsp";
 		

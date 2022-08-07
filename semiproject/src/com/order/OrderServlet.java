@@ -17,7 +17,6 @@ import com.cart.CartProductDTO;
 import com.member.MemberDAO;
 import com.member.MemberDTO;
 import com.shop.ProductDAO;
-import com.sun.org.apache.bcel.internal.generic.NEW;
 import com.util.DBConn;
 
 public class OrderServlet extends HttpServlet{

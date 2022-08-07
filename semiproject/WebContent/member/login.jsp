@@ -21,7 +21,6 @@ $(document).ready(function() {
 	loginfunc();
     $("button").click(function(event) {
         event.preventDefault();
-        console.log("이거 때문익나?")
         //alert("This form will not submit");
     });
 });
@@ -76,14 +75,11 @@ $(document).ready(function() {
 
 
 			<form id="id_register" name="regiForm" method="post" class="input-group">
-				<input type="text" class="input-field" placeholder="User Id"
-					name="reg_id" value="${checkid }" required> <input type="password" class="input-field"
-					placeholder="Enter Password" name="reg_pw" required> <input
-					type="text" class="input-field" placeholder="Your Name" name="reg_name"
-					required> <input type="date" class="input-field"
-					placeholder="YYYY-MM-DD" name="reg_birth" required> <input
-					type="checkbox" class="checkbox"><span>Terms and
-					conditions</span>
+				<input type="text" class="input-field" placeholder="User Id" name="reg_id" value="${checkid }" required> 
+					<input type="password" class="input-field" placeholder="Enter Password" name="reg_pw" required> 
+					<input type="text" class="input-field" placeholder="Your Name" name="reg_name" required> 
+					<input type="date" class="input-field" placeholder="YYYY-MM-DD" name="reg_birth" required>
+					<input type="checkbox" class="checkbox"><span>Terms and conditions</span>
 				<button class="submit" onclick="registerMember();">
 					<font size="3pt" color="white">REGISTER</font>
 				</button>

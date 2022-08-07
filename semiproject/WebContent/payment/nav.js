@@ -1,5 +1,6 @@
 var navRequest = new XMLHttpRequest();
 var countCartRequest = new XMLHttpRequest();
+var signInRequest = new XMLHttpRequest();
 
 function navFunction() {
 	//sessionStorage.setItem("mine", "회원정보 1");
@@ -9,6 +10,7 @@ function navFunction() {
 	navRequest.onreadystatechange = navSuccessConnect;
 	navRequest.send(null);
 	countCart();
+	checkLogin();
 }
 
 function navSuccessConnect() {
@@ -44,37 +46,28 @@ function countCart() {
 	countCartRequest.send(null);
 }
 
-
-function checkLogin(state) {
-	
-
+//로그인 확인
+function checkLogin() {
+	signInRequest.open("Post", "http://localhost:8080/semiproject/nav/checkLogin.do", true);
+	signInRequest.onreadystatechange = function() {
+		if (signInRequest.readyState == 4 && signInRequest.status == 200) {
+			var object = eval("(" + signInRequest.responseText + ")");
+			var result = object.result;
+			console.log(result);
+			//<a href="#" class="desk_sign">MyPage</a>
+			
+			var signText = $('.desk_sign');
+			signText.html("<a href='#' class='desk_sign'>My Page</a>");
+			console.log(signText);
+			//signText.text(result);
+		}
+	};
+	signInRequest.send(null);
 }
 
 window.addEventListener("load", function () {
 	navFunction();
 });
-
-
-
-////폼 이동
-//function sendIt(){
-//var f = document.cartForm;
-//var discountCost = $("#actualPayment").text().replaceAll(/\D/gm, "");
-
-//f.discountCost.value = discountCost;
-//f.method = "post"
-//f.action = "/semiproject/order/payment.do";
-//f.submit();
-//}
-
-//function removeCandWon(str) {
-//return str.slice(2).replaceAll(",", "");
-//}
-
-//window.onload = function () {
-//navFunction();
-//};
-
 
 function eURI(component) {
 	return encodeURIComponent(component);

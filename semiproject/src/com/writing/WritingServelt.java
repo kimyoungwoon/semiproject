@@ -13,9 +13,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.util.CustomInfo;
 import com.util.DBConn;
 import com.util.MyPage;
-import com.writing.CustomInfo;
 
 public class WritingServelt extends HttpServlet {
 	

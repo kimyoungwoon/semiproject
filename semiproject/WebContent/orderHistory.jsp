@@ -1,5 +1,5 @@
 <%@include file = "payment/header.jsp"  %>
-<link rel="stylesheet" href="<%=cp%>/custumCSS/custom.css" type="text/css">
+<link rel="stylesheet" href="<%=cp%>/payment/custom.css" type="text/css">
 <script type="text/javascript" src="<%=cp %>/payment/orderHistory.js"></script>
 
 <body>
