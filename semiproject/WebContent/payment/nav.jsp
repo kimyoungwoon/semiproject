@@ -25,7 +25,6 @@
 			<img src="<%=cp%>/img/icon/search.png" alt=""></a> 
 			<a href="#"><img src="<%=cp%>/img/icon/heart.png" alt=""></a> 
 			<a href="#"><img src="<%=cp%>/img/icon/cart.png" alt=""> <span>5</span></a>
-			<div class="price">$5.00</div>
 		</div>
 		<div id="mobile-menu-wrap"></div>
 		<div class="offcanvas__text">
@@ -47,7 +46,7 @@
 					<div class="col-lg-6 col-md-5">
 						<div class="header__top__right">
 							<div class="header__top__links">
-								<a href="#" class = "desk_sign">Sign in</a> <a href="#">FAQs</a>
+								<a href="#" class = "desk_sign">Sign in</a> <a href="<%=cp %>/order/orderHistoryList.do">FAQs</a>
 							</div>
 							<div class="header__top__hover">
 								<span>Usd <i class="arrow_carrot-down"></i></span>
@@ -91,9 +90,8 @@
 					<div class="header__nav__option">
 						<a href="#" class="search-switch">
 						<img src="<%=cp%>/img/icon/search.png" alt=""></a> 
-						<a href="#"><img src="<%=cp%>/img/icon/heart.png" alt=""></a> 
-						<a href="<%=cp %>/cart/cart.do"><img src="<%=cp%>/img/icon/cart.png" alt=""><span>5</span></a>
-						<div class="price">&#8361;350,000</div>
+						<a href="<%=cp %>/nav/wishList.do"><img src="<%=cp%>/img/icon/heart.png" alt=""></a> 
+						<a href="<%=cp %>/cart/cart.do" id = "h_menu_countCart"><img src="<%=cp%>/img/icon/cart.png" alt=""><span>5</span></a>
 					</div>
 				</div>
 			</div>

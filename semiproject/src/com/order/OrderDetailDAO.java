@@ -138,4 +138,34 @@ public class OrderDetailDAO {
 		return lists;
 	}
 	
+	//장바구니로 들어갔을 때 해당 회원이 추가한 상품 목록을 보여주기 위함.
+		public String[] getOrderOnce(int pMemberNum, int pOrderNum) {
+			lists = new ArrayList<OrderDetailDTO>();
+			String[] saveFileName = null;
+			try {
+				
+				sql = "select name, savefilename, (select count(*) from order_detail where membernum = ? and orderNum = ?) "
+				+ "from product where num = (select productNum from order_detail where membernum = ? and orderNum = ? and rownum = 1)";
+				pstmt = conn.prepareStatement(sql);
+				
+				pstmt.setInt(1, pMemberNum);
+				pstmt.setInt(2, pOrderNum);
+				pstmt.setInt(3, pMemberNum);
+				pstmt.setInt(4, pOrderNum);
+				
+				rs = pstmt.executeQuery();
+				
+				if(rs.next()) {
+					saveFileName = new String[3];
+					saveFileName[0] = rs.getString(1);
+					saveFileName[1] = rs.getString(2);
+					saveFileName[2] = rs.getString(3);
+				}
+				rs.close();
+				pstmt.close();
+			} catch (Exception e) {
+				System.out.println(e.toString());
+			}
+			return saveFileName;
+		}
 }

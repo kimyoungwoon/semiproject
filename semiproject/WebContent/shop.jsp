@@ -1,10 +1,9 @@
 <%@include file = "payment/header.jsp"  %>
 
-<body>
-
-	 <!-- Header Section End -->
+<body>  
+    <!-- Header Section End -->
     <%@include file = "payment/nav.jsp"  %>
-   
+  
 
     <!-- Breadcrumb Section Begin -->
     <section class="breadcrumb-option">
@@ -31,8 +30,8 @@
                 <div class="col-lg-3">
                     <div class="shop__sidebar">
                         <div class="shop__sidebar__search">
-                            <form action="#">
-                                <input type="text" placeholder="Search...">
+                            <form action="${sortPath }">
+                                <input type="text" placeholder="Search..." name="searchValue">
                                 <button type="submit"><span class="icon_search"></span></button>
                             </form>
                         </div>
@@ -369,7 +368,8 @@
         </div>
     </div>
     <!-- Search End -->
-    
+	
+	
     <%@include file = "payment/footer.jsp"  %>
 </body>
 

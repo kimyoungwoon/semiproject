@@ -12,8 +12,20 @@
     <head>
         <title>로그인 / 회원가입</title>
         <link rel="stylesheet" href="<%=cp %>/css/loginstyle.css">
+        <script type="text/javascript">
+			function idcheckFunction(){
+				console.log("하하하")
+			f = document.regiForm;
+					
+	    	f.action="<%=cp%>/login/idcheck_ok.do";
+	  	 	f.submit();
+
+			}
+		</script>
     </head>
-    <body background="<%=cp %>/img/member/background1.jpg">
+    
+    <body background="<%=cp %>/img/member/background2.gif">
+    
         <div class="wrap">
             <div class="form-wrap">
                 <div class="button-wrap">
@@ -25,23 +37,25 @@
                    <img src="<%=cp %>/img/member/fb.png" alt="facebook"/>
                     <img src="<%=cp %>/img/member/tw.png" alt="twitter"/>
                     <img src="<%=cp %>/img/member/gl.png" alt="google"/>
-                </div>
+                </div>          
                 <form id="login" action="<%=cp %>/login/login_ok.do" method="post" class="input-group">
                     <input type="text" class="input-field" placeholder="User Id" name="id" required>
                     <input type="password" class="input-field" placeholder="Enter Password" name="pw" required>
                     <div style="margin-top: 10px;"><font size="2pt" color="white">${message }</font></div>
                     <input type="checkbox" class="checkbox"><span>Remember Password</span>
                     <button class="submit"><font size="4pt" color="white" >Login</font></button>
-              
-               
                 </form>
-                <form id="register" action="<%=cp %>/login/created_ok.do" method="post" class="input-group">
-                    <input type="text" class="input-field" placeholder="User Id" name="id" required>
-                    <input type="password" class="input-field" placeholder="Enter Password" name="pw" required>
+                
+       
+                <form id="register" name = "regiForm" action="<%=cp %>/login/created_ok.do" method="post" class="input-group" >
+                    <input type="text" class="input-field" placeholder="User Id" name="id" value="${checkid }" required > 
+                 
+                    <input type="button" value="id check" onClick="idcheckFunction();" ${message }> 
+                    <input type="password" class="input-field" placeholder="Enter Password" name="pw" required >
                     <input type="text" class="input-field" placeholder="Your Name" name="name" required>
                     <input type="date" class="input-field" placeholder="YYYY-MM-DD" name="birth" required>
                     <input type="checkbox" class="checkbox"><span>Terms and conditions</span>
-                    <button class="submit"><font size="3pt" color="white" >REGISTER</font></button>4
+                    <button class="submit"><font size="3pt" color="white" >REGISTER</font></button>
                 </form>
             </div>
         </div>
@@ -66,4 +80,3 @@
             }
         </script>
     </body>
-</html>

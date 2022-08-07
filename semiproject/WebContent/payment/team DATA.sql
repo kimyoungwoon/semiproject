@@ -38,15 +38,15 @@ commit;
 select h.membernum, h.ordernum, h.orderdate, d.productnum, d.count from order_history h, order_detail d 
 where h.membernum = d.membernum and h.ordernum = d.ordernum;
 
-insert into member (num,id,pw,name,email,address,tel,gender,birth,ipaddr) values(1, 'prettier','11','김영운', 'bHphHq7y@outlook.com','경기도','01057670457','M','1968-03-02','225.232.255.172');
-insert into member (num,id,pw,name,email,address,tel,gender,birth,ipaddr) values(2, 'crlf11','11','안수언', 'G7nh7@dreamwiz.com','전라도','01057670457','M','1998-01-16','111.122.182.212');
-insert into member (num,id,pw,name,email,address,tel,gender,birth,ipaddr) values(3, 'utffe3','11','이동진', 'd8jgpj@lycos.co.kr','충청도','01057670457','M','2002-11-05','123.214.178.212');
-insert into member (num,id,pw,name,email,address,tel,gender,birth,ipaddr) values(4, 'procceed3','11','윤다영', 'EhghcjrO@hotmail.com','강원도','01057670457','W','1978-02-08','188.182.192.202');
-insert into member (num,id,pw,name,email,address,tel,gender,birth,ipaddr) values(5, 'checkout1','11','정영진', 'oGIs3kqg@intizen.com','제주도','01057670457','M','1991-04-30','164.012.001.102');
-insert into member (num,id,pw,name,email,address,tel,gender,birth,ipaddr) values(6, 'applyapple','11','최재혁', 'Ktd0Kc6o@outlook.com','함경북도','01057670457','W','1958-07-25','136.200.098.034');
-insert into member (num,id,pw,name,email,address,tel,gender,birth,ipaddr) values(7, 'discountplz1','11','쌍은지', 'vVt9i@nate.com','경상도','01057670457','M','1977-12-01','211.228.209.122');
-insert into member (num,id,pw,name,email,address,tel,gender,birth,ipaddr) values(8, 'shopperkim5','11','오세라', 'A3U@empal.com','평안남도','01057670457','M','1988-05-15','216.164.132.098');
-insert into member (num,id,pw,name,email,address,tel,gender,birth,ipaddr) values(9, 'inmemna3','11','김수지', '16jv73@dreamwiz.com','황해도','01057670457','N','2002-06-18','119.212.062.132');
+insert into member (num,id,pw,name,email,address,tel,gender,birth,ipaddr) values(1, 'prettier','11','김영운', 'bHphHq7y@outlook.com','경기도','01089565417','M','1968-03-02','225.232.255.172');
+insert into member (num,id,pw,name,email,address,tel,gender,birth,ipaddr) values(2, 'crlf11','11','안수언', 'G7nh7@dreamwiz.com','전라도','01018785101','M','1998-01-16','111.122.182.212');
+insert into member (num,id,pw,name,email,address,tel,gender,birth,ipaddr) values(3, 'utffe3','11','이동진', 'd8jgpj@lycos.co.kr','충청도','01081245687','M','2002-11-05','123.214.178.212');
+insert into member (num,id,pw,name,email,address,tel,gender,birth,ipaddr) values(4, 'procceed3','11','윤다영', 'EhghcjrO@hotmail.com','강원도','01006731147','W','1978-02-08','188.182.192.202');
+insert into member (num,id,pw,name,email,address,tel,gender,birth,ipaddr) values(5, 'checkout1','11','정영진', 'oGIs3kqg@intizen.com','제주도','01034360457','M','1991-04-30','164.012.001.102');
+insert into member (num,id,pw,name,email,address,tel,gender,birth,ipaddr) values(6, 'applyapple','11','최재혁', 'Ktd0Kc6o@outlook.com','함경북도','01015340457','W','1958-07-25','136.200.098.034');
+insert into member (num,id,pw,name,email,address,tel,gender,birth,ipaddr) values(7, 'discountplz1','11','쌍은지', 'vVt9i@nate.com','경상도','01017895312','M','1977-12-01','211.228.209.122');
+insert into member (num,id,pw,name,email,address,tel,gender,birth,ipaddr) values(8, 'shopperkim5','11','오세라', 'A3U@empal.com','평안남도','01093419021','M','1988-05-15','216.164.132.098');
+insert into member (num,id,pw,name,email,address,tel,gender,birth,ipaddr) values(9, 'inmemna3','11','김수지', '16jv73@dreamwiz.com','황해도','01016389661','N','2002-06-18','119.212.062.132');
 insert into member (num,id,pw,name,email,address,tel,gender,birth,ipaddr) values(10,'trenchch123','11', '안시연', 'LXNGUrrpi@hanmir.com','서울','01057670457','N','2010-11-11','201.062.092.221');
 
 
