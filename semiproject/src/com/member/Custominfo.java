@@ -4,7 +4,7 @@ public class Custominfo {
 
 	private String Id;
 	private String Name;
-	
+
 	public String getId() {
 		return Id;
 	}

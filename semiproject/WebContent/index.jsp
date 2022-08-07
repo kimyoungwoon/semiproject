@@ -86,11 +86,11 @@
                                 <a href="#">FAQs</a>
                             </div>
                             <div class="header__top__hover">
-                                <span>Usd <i class="arrow_carrot-down"></i></span>
+                                <span>MyPage <i class="arrow_carrot-down"></i></span>
                                 <ul>
-                                    <li>USD</li>
-                                    <li>EUR</li>
-                                    <li>USD</li>
+                                    <li>Mypage</li>
+                                    <li>Cart</li>
+                                    <li>Logout</li>
                                 </ul>
                             </div>
                         </div>

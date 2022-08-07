@@ -1,7 +1,7 @@
 package com.member;
 
 public class MemberDTO {
-	
+
 	int num;
 	String id;
 	String pw;
@@ -12,7 +12,7 @@ public class MemberDTO {
 	String gender;
 	String birth;
 	String ipAddr;
-	
+
 	public int getNum() {
 		return num;
 	}
@@ -73,7 +73,7 @@ public class MemberDTO {
 	public void setIpAddr(String ipAddr) {
 		this.ipAddr = ipAddr;
 	}
-	
-	
-	
+
+
+
 }

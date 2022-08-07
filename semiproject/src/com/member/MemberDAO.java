@@ -177,47 +177,47 @@ public class MemberDAO {
 
 	}
 
-//	//아이디와 비밀번호가 맞는지 체크
-//	public boolean isLogin(String id, String pw)
-//	{
-//		boolean flag=false;
-//
-//		Connection conn=null;
-//		PreparedStatement pstmt=null;
-//		ResultSet rs=null;
-//
-//		String sql="select * from member where id=? and pw=?";
-//
-//		conn=db.getConnection();
-//		
-//		try {
-//			pstmt=conn.prepareStatement(sql);
-//
-//			pstmt.setString(1, id);
-//			pstmt.setString(2, pw);
-//
-//			rs=pstmt.executeQuery();
-//
-//			//비밀번호가 맞는 데이터가 있으면 true 반환
-//			if(rs.next())
-//				flag=true;
-//		} catch (Exception e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}finally {
-//			try {
-//				rs.close();
-//				pstmt.close();
-//				conn.close();
-//			} catch (Exception e) {
-//				// TODO Auto-generated catch block
-//				e.printStackTrace();
-//			}
-//
-//		}
-//
-//		return flag;
-//	}
+	//	//아이디와 비밀번호가 맞는지 체크
+	//	public boolean isLogin(String id, String pw)
+	//	{
+	//		boolean flag=false;
+	//
+	//		Connection conn=null;
+	//		PreparedStatement pstmt=null;
+	//		ResultSet rs=null;
+	//
+	//		String sql="select * from member where id=? and pw=?";
+	//
+	//		conn=db.getConnection();
+	//		
+	//		try {
+	//			pstmt=conn.prepareStatement(sql);
+	//
+	//			pstmt.setString(1, id);
+	//			pstmt.setString(2, pw);
+	//
+	//			rs=pstmt.executeQuery();
+	//
+	//			//비밀번호가 맞는 데이터가 있으면 true 반환
+	//			if(rs.next())
+	//				flag=true;
+	//		} catch (Exception e) {
+	//			// TODO Auto-generated catch block
+	//			e.printStackTrace();
+	//		}finally {
+	//			try {
+	//				rs.close();
+	//				pstmt.close();
+	//				conn.close();
+	//			} catch (Exception e) {
+	//				// TODO Auto-generated catch block
+	//				e.printStackTrace();
+	//			}
+	//
+	//		}
+	//
+	//		return flag;
+	//	}
 
 	//회원정보 수정
 	public int updateData(MemberDTO dto) {

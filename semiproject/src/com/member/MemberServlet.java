@@ -87,6 +87,39 @@ public class MemberServlet extends HttpServlet{
 			url = "/semiproject/member/login.jsp";
 			forward(req, resp, url);
 			
+			
+			//아이디 중복확인
+			}else if(uri.indexOf("idcheck.do")!=-1) {
+				
+				url = "/semiproject/login/idcheck.jsp";
+				forward(req, resp, url);
+				
+			}else if(uri.indexOf("idcheck_ok.do")!=-1) {
+				
+				String id = req.getParameter("id");
+				
+				System.out.println(id);
+				
+				int result = dao.registerCheck(id);
+			
+				
+						if(result==0) {
+					
+					req.setAttribute("message", "이미사용중인 아이디입니다");
+					
+					url = "/semiproject/login/idcheck.jsp";
+					forward(req, resp, url);
+					return;
+					
+				}else {
+					
+					req.setAttribute("message", "사용가능한 아이디입니다.");
+					
+
+					url = "/semiproject/login/idcheck.jsp";
+					forward(req, resp, url);
+				}
+						
 		}else if(uri.indexOf("login_ok.do")!= -1) {
 			
 			String id = req.getParameter("id");
@@ -167,7 +200,7 @@ public class MemberServlet extends HttpServlet{
 			
 			//회원정보수정 포워드 페이지
 			
-			url = "semii/member/update.jsp";
+			url = "semiproject/member/updated.jsp";
 			forward(req, resp, url);
 			
 		}else if(uri.indexOf("updated_ok.do")!=-1) {
@@ -194,38 +227,7 @@ public class MemberServlet extends HttpServlet{
 			resp.sendRedirect(url);
 					
 		
-		//아이디 중복확인
-		}else if(uri.indexOf("idcheck.do")!=-1) {
-			
-			url = "/semiproject/login/idcheck.jsp";
-			forward(req, resp, url);
-			
-		}else if(uri.indexOf("idcheck_ok.do")!=-1) {
-			
-			String id = req.getParameter("id");
-			
-			System.out.println(id);
-			
-			MemberDTO dto = dao.getReadData(id);
-		
-			
-					if(dto==null || dto.equals(id)) {
-				
-				req.setAttribute("message", "이미사용중인 아이디입니다");
-				
-				url = "/semiproject/login/idcheck.jsp";
-				forward(req, resp, url);
-				return;
-				
-			}else {
-				
-				req.setAttribute("message2", "사용가능한 아이디입니다.");
-				
 
-				url = "/semiproject/login/idcheck.jsp";
-				forward(req, resp, url);
-				return;
-			}
 		}
 	}
 }
