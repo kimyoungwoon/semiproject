@@ -9,4 +9,3 @@
     <script src="<%=cp %>/js/mixitup.min.js"></script>
     <script src="<%=cp %>/js/owl.carousel.min.js"></script>
     <script src="<%=cp %>/js/main.js"></script>
-    <%-- <jsp:include page = "header.jsp"/> --%>

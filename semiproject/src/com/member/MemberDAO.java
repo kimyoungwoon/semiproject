@@ -81,46 +81,39 @@ public class MemberDAO {
 	}
 
 	// 아이디 검증
-	public int registerCheck(String id) {
+	public boolean registerCheck(String id) {
 
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		String SQL = "select * from member where id=?";
-
+		String sql = null;
+		boolean result = false;
 		try {
-
-			pstmt = conn.prepareStatement(SQL);
+//			sql = "select nvl(id, 0) from member where id=?";
+			sql = "select count(id) from member where id = ?";
+			
+			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, id);
 			rs = pstmt.executeQuery();
+				
+			//true면 중복이고 이미 있는 아이디
 			if (rs.next()) {
-				return 0; // 이미 존재하는 회원
-			} else {
-				return 1; // 가입 가능한 회원
+				if(rs.getInt(1) != 0) {
+					result = true;
+				}
 			}
 
 		} catch (Exception e) {
 			e.printStackTrace();
-		} finally {
-
-			try {
-				if (rs != null)
-					rs.close();
-				if (pstmt != null)
-					pstmt.close();
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-		}
-		return -1; // DB오류
+		} 
+		return result;
 	}
 
 	// 데이터 읽어오기 - 로그인 할 때
 	public MemberDTO getReadData(String id) {
 
-		MemberDTO dto = null;
-
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
+		MemberDTO dto = null;
 		String sql;
 
 		try {
