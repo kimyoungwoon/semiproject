@@ -126,6 +126,7 @@ public class ReviewServlet extends HttpServlet {
 			req.setAttribute("pageIndexList", pageIndexList);
 			req.setAttribute("totalArticle", totalArticle);
 			req.setAttribute("totalPage", totalPage);
+			req.setAttribute("dataCount", dataCount);	
 			
 			// list.jsp 페이지로 포워드
 			url = "/writing/reviewer/guest.jsp";
