@@ -10,7 +10,7 @@ function navFunction() {
 	navRequest.onreadystatechange = navSuccessConnect;
 	navRequest.send(null);
 	checkLogin();
-//	countCart();
+	
 }
 
 function navSuccessConnect() {
@@ -28,11 +28,13 @@ function countCart() {
 	countCartRequest.onreadystatechange = function() {
 		if (countCartRequest.readyState == 4 && countCartRequest.status == 200) {
 			if(countCartRequest.responseText != null && countCartRequest.responseText != "" ){
-				console.log(countCartRequest.responseText);
 				var object = eval("(" + countCartRequest.responseText + ")");
-//				var result = object.result;
-//				var signText = $('#h_menu_countCart').children('span');
-//				signText.text(result);
+				var result = object.result;
+				var hCartCountText = $('#h_menu_countCart').children('span');
+				var oCartCountText = $('#o_menu_countCart').children('span');
+				console.log(oCartCountText);
+				hCartCountText.text(result);
+				oCartCountText.text(result);
 			}
 		}
 	};
@@ -47,13 +49,13 @@ function checkLogin() {
 			if(signInRequest.responseText != null && signInRequest.responseText != "" ){
 				var object = eval("(" + signInRequest.responseText + ")");
 				var result = object.result;
-				console.log(result);
 				//<a href="#" class="desk_sign">MyPage</a>
 				if(result == "Logging"){
 					var hearderTop = $('.header__top__links');
 					var signText = hearderTop.children('.desk_sign');
 					signText.html("<a href='#' class='desk_sign'>My Page</a>");
 					hearderTop.append("<a href='http://localhost:8080/semiproject/login/logout_ok.do' id = 'logout_btn'>Log Out</a>");
+					countCart();
 				}
 			}
 			//signText.text(result);

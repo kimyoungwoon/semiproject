@@ -5,7 +5,11 @@ public class OrderDetailDTO {
 	private int membernum;
 	private int ordernum;
 	private int productnum;
+	private int price;
 	private int count;
+	private String name;
+	private String saveFileName;
+	
 	
 	public int getMembernum() {
 		return membernum;
@@ -24,6 +28,26 @@ public class OrderDetailDTO {
 	}
 	public void setProductnum(int productnum) {
 		this.productnum = productnum;
+	}
+	
+	public int getPrice() {
+		return price;
+	}
+	public void setPrice(int price) {
+		this.price = price;
+	}
+	
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public String getSaveFileName() {
+		return saveFileName;
+	}
+	public void setSaveFileName(String saveFileName) {
+		this.saveFileName = saveFileName;
 	}
 	public int getCount() {
 		return count;

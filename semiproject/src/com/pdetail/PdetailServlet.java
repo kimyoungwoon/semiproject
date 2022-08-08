@@ -86,29 +86,8 @@ public class PdetailServlet extends HttpServlet {
 			url = cp;
 			resp.sendRedirect(url);
 
-//		}else if(color !=-1) {
-//			lists = dao.sizeOption(size, startnum, endnum);
-//			url = "/shop-details.jsp";
-//		}else if(size !=-1) {
-//			lists = dao.colorOption(color, startnum, endnum);
-//			url = "/shop-details.jsp";
-			
-			
-//		}else if(uri.indexOf("insertCart.do")!=-1) {
-//
-//			session.getAttribute("num");
-//			
-//			int num = 1;
-//			String name = dao.sizeCart(num);
-//			
-//			url = cp + "";
-//			resp.sendRedirect(url);
-//			
-//		}
+		}
+	}
 
-		
-	}
-	
-	}
 }
 

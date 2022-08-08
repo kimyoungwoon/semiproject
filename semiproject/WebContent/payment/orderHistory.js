@@ -1,6 +1,7 @@
 var orderHistoryRequest = new XMLHttpRequest();
 var deleteRequest = new XMLHttpRequest();
-
+var detailRequest = new XMLHttpRequest();
+var orderNumber = 0;
 
 function registerFunction() {
 	//여기도 마찬가지로 요청할때는 session을 이용해서 하면 됨.
@@ -9,9 +10,6 @@ function registerFunction() {
 	orderHistoryRequest.onreadystatechange = readConnect;
 	orderHistoryRequest.send(null);
 }
-
-
-
 
 function readConnect() {
 	var table = document.getElementById("orderTable");
@@ -24,7 +22,9 @@ function readConnect() {
 		for (var i = 0; i < result.length; i++) {
 			var row = table.insertRow(0);
 			row.innerHTML = "<td height = '50px' class='product__cart__item' >"
-				+"<a href='#'>"
+				+"<a href='javascript:void(0);' onclick='javascript:orderDetailView("
+		        +result[i][1].value
+		        +");'>"
 				+"<div class='product__cart__item__pic'>"
 				+"<img src='" + result[i][5].value +"' style='width:90px; height:90px;'>"
 				+"</div>"
@@ -47,24 +47,24 @@ function readConnect() {
 }
 
 //해당 주문 클릭스 주문 상세로 가도록 구현할 메서드
-function operationCount(thisNum, inc = null) {
+function orderDetailView(orderNum) {
+	
+	location.href = "./orderDetail.do?orderNum=" + orderNum;
+	
+}
 
+//폼 이동
+function sendIt(){
+	var f = document.cartForm;
+	var actualPayment = $("#actualPayment").text().replaceAll(/\D/gm, "");
+	
+	f.discountCost.value = actualPayment;
+	f.method = "post"
+	f.action = "/semiproject/order/payment.do";
+	f.submit();
 }
 
 //주문 삭제
-function deleteCartProduct(arg, orderNum) {
-	
-	var result = confirm("정말 삭제하시겠습니까?");
-	if(!result){
-	    return;
-	}
-	deleteRequest.open("Post", "./order/deleteOrder.do?orderNum=" + eURI(orderNum), true);
-	//	deleteRequest.onreadystatechange = successConnect;
-	deleteRequest.send(null);	//주석 처리 해제 시 제대로 삭제 됨.
-	$(arg).closest("tr").remove();
-}
-
-//주문 상세보이기
 function deleteCartProduct(arg, orderNum) {
 	
 	var result = confirm("정말 삭제하시겠습니까?");
