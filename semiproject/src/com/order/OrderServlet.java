@@ -126,13 +126,8 @@ public class OrderServlet extends HttpServlet{
 			//장바구니에 들어왔을 때 전달받는 회원번호
 			//우리는 membernum은 int인데 dao 수정 해야할듯.
 			//			int memberNum = (int)session.getAttribute("membernum");
-			System.out.println(memberNum);
+			
 			MemberDTO memberInfo = memberDAO.getReadDataNum(memberNum);
-
-			System.out.println(memberInfo.getName());
-			System.out.println(memberInfo.getTel());
-			System.out.println(memberInfo.getEmail() );
-			System.out.println(memberInfo.getAddress());
 
 			StringBuffer result = new StringBuffer("");
 			result.append("{\"result\":[");

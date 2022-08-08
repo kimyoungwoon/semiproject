@@ -3,7 +3,6 @@
 <script type="text/javascript" src="<%=cp %>/payment/orderDetail.js"></script>
 <%@ page contentType="text/html; charset=UTF-8"%>
 
-
 <%
 	request.setCharacterEncoding("UTF-8");
 	System.out.println("디테일" + request.getParameter("orderNum"));

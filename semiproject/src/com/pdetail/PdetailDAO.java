@@ -25,9 +25,7 @@ public class PdetailDAO {
 	
 	//입력
 	public int insertData(int mnum,int pnum,int count) {
-		
 		int result = 0;
-		
 		try {
 			
 			sql = "insert into cart_product (membernum,productnum,count) ";

@@ -206,6 +206,41 @@ public class ProductDAO {
 		return dto;
 	}
 	
+	//삭제시 필요한 하나의 DTO 가져오기
+		public ProductDTO product_details_getReadData(int num) {
+			
+			try {
+				
+				sql = "select num,name,price,category,brand,savefilename1,savefilename2,savefilename3,savefilename4 ";
+				sql+= "from product where num=?";
+				
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setInt(1, num);
+				
+				rs = pstmt.executeQuery();
+				
+				if(rs.next()) {
+					
+					dto = new ProductDTO();
+					
+					dto.setNum(rs.getInt(1));
+					dto.setName(rs.getString(2));
+					dto.setPrice(rs.getInt(3));
+					dto.setCategory(rs.getInt(4));
+					dto.setBrand(rs.getInt(5));
+					
+					dto.setSaveFileName1(rs.getString(6));
+					dto.setSaveFileName2(rs.getString(7));
+					dto.setSaveFileName3(rs.getString(8));
+					dto.setSaveFileName4(rs.getString(9));
+				}
+				rs.close();
+				pstmt.close();
+			} catch (Exception e) {
+				System.out.println(e.toString());
+			}
+			return dto;
+		}
 
 	
 	
