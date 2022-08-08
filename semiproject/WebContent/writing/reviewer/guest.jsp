@@ -1,4 +1,5 @@
 <%@include file = "/payment/header.jsp"  %>
+<%@ page contentType="text/html; charset=UTF-8"%>
 <script type="text/javascript">
 
 	function sendIt() {
@@ -113,19 +114,25 @@
 						<td align="right" bgcolor="#ffffff">&nbsp;${dto.content }</td>						
 						</tr>					
 					</c:forEach>
-					</table>			
+					
+					</table>
+					
 					<table style="margin: auto;">
+					<br/><br/>
 					<tr>
 						<td style="margin: auto;">
+						<p>
 						<c:if test="${dataCount!=0 }">
 							${pageIndexList }
 						</c:if>
 						<c:if test="${dataCount==0 }">
-							등록된 파일이 없습니다
+							There is no registered post.
 						</c:if>
+						</p>
 						</td>
 					</tr>
-			</table>				
+					</table>		
+									
 		</form>
 		
 </div>

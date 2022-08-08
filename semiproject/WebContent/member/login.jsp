@@ -1,14 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-<%
+    pageEncoding="UTF-8"%>
+ <%
  	
 	request.setCharacterEncoding("UTF-8");
 	String cp = request.getContextPath();
-	
- %>
+  
+ %>  
 <!DOCTYPE html>
 
 <html>
+
 <head>
 <title>로그인 / 회원가입</title>
 
@@ -113,19 +114,21 @@ $(document).ready(function() {
 	<script>
             var x = document.getElementById("id_login");
             var y = document.getElementById("id_register");
+
             var z = document.getElementById("btn");
             
             
-            function loginfunc(){
+            function login(){
                 x.style.left = "50px";
                 y.style.left = "450px";
                 z.style.left = "0";
             }
 
-            function registerfunc(){
+            function register(){
                 x.style.left = "-400px";
                 y.style.left = "50px";
                 z.style.left = "110px";
             }
         </script>
-</body>
+    </body>
+</html>

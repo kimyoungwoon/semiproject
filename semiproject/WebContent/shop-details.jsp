@@ -22,7 +22,9 @@
                         <ul class="nav nav-tabs" role="tablist">
                             <li class="nav-item">
                                 <a class="nav-link active" data-toggle="tab" href="#tabs-1" role="tab">
+
                                     <div class="product__thumb__pic set-bg" data-setbg="img/shop-details/thumb-1.png">
+
                                     </div>
                                 </a>
                             </li>
@@ -51,12 +53,16 @@
                         <div class="tab-content">
                             <div class="tab-pane active" id="tabs-1" role="tabpanel">
                                 <div class="product__details__pic__item">
+
                                     <img src="img/shop-details/product-big-2.png" alt="">
+
                                 </div>
                             </div>
                             <div class="tab-pane" id="tabs-2" role="tabpanel">
                                 <div class="product__details__pic__item">
+
                                     <img src="img/shop-details/product-big-3.png" alt="">
+
                                 </div>
                             </div>
                             <div class="tab-pane" id="tabs-3" role="tabpanel">

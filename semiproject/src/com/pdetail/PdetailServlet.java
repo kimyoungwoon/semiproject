@@ -2,6 +2,7 @@ package com.pdetail;
 
 import java.io.IOException;
 import java.sql.Connection;
+import java.util.List;
 
 import javax.security.auth.message.callback.PrivateKeyCallback.Request;
 import javax.servlet.RequestDispatcher;
@@ -12,7 +13,9 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.pdetail.PdetailDAO;
+import com.shop.ProductDTO;
 import com.util.DBConn;
+
 
 public class PdetailServlet extends HttpServlet {
 
@@ -38,21 +41,28 @@ public class PdetailServlet extends HttpServlet {
 		
 		String cp = req.getContextPath();
 		String uri = req.getRequestURI();
+		//List<PdetailDTO> lists = null;
 		
 		String url;
-		
 		
 		PdetailDTO dto = new PdetailDTO();
 		//info.setNum(dto.getNum());
 		
 		//세션에 info 등록
-		HttpSession session = req.getSession();
+		//HttpSession session = req.getSession();
 		
 		//session.setAttribute("customInfo", info);
 		
 		url = cp + "/shop-details.jsp";
 		
 		//상세 페이지로 데이터 받아오기
+//		int color;
+//		int size;
+//		int startnum, endnum;
+		//lists = dao.sizeOption(size, startnum, endnum);
+		//lists = dao.colorOption(color, startnum, endnum);
+		
+		
 		if(uri.indexOf("pdetail.do")!=-1) {
 			
 			int num = 0;// Integer.parseInt(req.getParameter("num"));
@@ -75,6 +85,9 @@ public class PdetailServlet extends HttpServlet {
 
 			url = cp;
 			resp.sendRedirect(url);
+
 		}
 	}
+
 }
+
