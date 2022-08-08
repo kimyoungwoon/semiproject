@@ -1,21 +1,28 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
- <%
+	pageEncoding="UTF-8"%>
+<%
  	
 	request.setCharacterEncoding("UTF-8");
 	String cp = request.getContextPath();
-  
- %>  
+	
+ %>
 <!DOCTYPE html>
 
 <html>
+<<<<<<< HEAD
 
+=======
+>>>>>>> parent of 91bf387 (Merge pull request #89 from youngjin3/Second-Main)
 <head>
 <title>로그인 / 회원가입</title>
 
 <%@include file = "../payment/footer.jsp"  %>
 <link rel="stylesheet" href="<%=cp %>/css/loginstyle.css">
+<<<<<<< HEAD
 <script type="text/javascript" src="<%=cp %>/member/js/util.js"></script>
+=======
+
+>>>>>>> parent of 91bf387 (Merge pull request #89 from youngjin3/Second-Main)
 
 <script type="text/javascript">
 $(document).ready(function() {
@@ -26,6 +33,7 @@ $(document).ready(function() {
     });
 });
 		function registerMember(){
+<<<<<<< HEAD
 			
 			 const regex = /^[0-9a-z]{8,17}$/;
 			 
@@ -48,6 +56,8 @@ $(document).ready(function() {
 			    }
 			
 			
+=======
+>>>>>>> parent of 91bf387 (Merge pull request #89 from youngjin3/Second-Main)
 			f = document.regiForm;
 					
 	    	f.action="<%=cp %>/login/created_ok.do";
@@ -98,7 +108,11 @@ $(document).ready(function() {
 
 
 			<form id="id_register" name="regiForm" method="post" class="input-group">
+<<<<<<< HEAD
 				<input type="text" class="input-field" placeholder="User Id" name="reg_id" value="${checkid }" onkeydown = "checkID(event);" required> 
+=======
+				<input type="text" class="input-field" placeholder="User Id" name="reg_id" value="${checkid }" required> 
+>>>>>>> parent of 91bf387 (Merge pull request #89 from youngjin3/Second-Main)
 					<input type="password" class="input-field" placeholder="Enter Password" name="reg_pw" required> 
 					<input type="text" class="input-field" placeholder="Your Name" name="reg_name" required> 
 					<input type="date" class="input-field" placeholder="YYYY-MM-DD" name="reg_birth" required>
@@ -114,21 +128,23 @@ $(document).ready(function() {
 	<script>
             var x = document.getElementById("id_login");
             var y = document.getElementById("id_register");
+<<<<<<< HEAD
 
+=======
+>>>>>>> parent of 91bf387 (Merge pull request #89 from youngjin3/Second-Main)
             var z = document.getElementById("btn");
             
             
-            function login(){
+            function loginfunc(){
                 x.style.left = "50px";
                 y.style.left = "450px";
                 z.style.left = "0";
             }
 
-            function register(){
+            function registerfunc(){
                 x.style.left = "-400px";
                 y.style.left = "50px";
                 z.style.left = "110px";
             }
         </script>
-    </body>
-</html>
+</body>

@@ -1,49 +1,37 @@
-<%@ page contentType="text/html; charset=UTF-8"%>
-<%
-	request.setCharacterEncoding("UTF-8");
-	String cp = request.getContextPath();
-%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>회원수정</title>
+<%@include file = "../payment/header.jsp"  %>
 
-<link rel="stylesheet" type="text/css"href="<%=cp%>/css/style.css" />
-<link rel="stylesheet" type="text/css"href="<%=cp%>css/loginstyle.css" />
-
-<script type="text/javascript" src="<%=cp%>/member/js/util.js"></script>
 <script type="text/javascript">
+
 	function sendIt(){
 	
 		var f = document.myForm;
 	
-		str = f.userPwd.value;
+		str = f.pw.value;
 		if(!str){
 			alert("패스워드를 입력하세요");
-			f.userPwd.focus();
+			f.pw.focus();
 			return;
 		}
 		
-		f.userPwd.value = str;
+		f.pw.value = str;
 	
-		str = f.userBirth.value;
+		str = f.birth.value;
 		if(!str){
 			alert("생년월일을 입력하세요");
-			f.userBirth.focus();
+			f.birth.focus();
 			return;
 		}
 		
-		f.userBirth.value = str;
+		f.birth.value = str;
 	
-		str = f.userTel.value;
+		str = f.tel.value;
 		if(!str){
 		alert("연락처를 입력하세요");
-			f.userTel.focus();
+			f.tel.focus();
 			return;
 		}
 		
-		f.userTel.value = str;
+		f.tel.value = str;
 	
 		f.action = "<%=cp%>/login/updated_ok.do";
 		f.submit();
@@ -52,75 +40,234 @@
 	
 </script>
 
-</head>
+
 <body>
+	
+    <!-- Header Section End -->
+	<%@include file = "../payment/nav.jsp"  %>
+	
+	
+	<div id="bbs" margin="auto" align="center">
+	
+	<div class="container">
+			<div class="row">
+				<div class="col-lg-12">
+					<h1 class="related-title">modify</h1>
+				</div>
+			</div>
+		</div>
+	<div id ="bbsCreated">
+	
 
-	<div id="login">
-		<div id="login_title">회&nbsp;원&nbsp;수&nbsp;정</div>
+		<div id="bbs_title">회&nbsp;원&nbsp;수&nbsp;정</div><br/>
 		<form action="" method="post" name="myForm">
-
-			<div id="loginupdated">
-				<div class="loginupdated_bottomLine">
+				<span>필수입력사항</span>
+			<div id="bbsCreated">
+				<div class="bbsCreated_bottomLine">
 					<dl>
 						<dt>아&nbsp;이&nbsp;디</dt>
 						<dd>
-						${dto.userId }
+						${dto.id }
 						</dd>
 					</dl>
 				</div>
 
-				<div class="loginupdated_bottomLine">
+				<div class="bbsCreated_bottomLine">
+					<dl>
+						<dt>패&nbsp;스&nbsp;워&nbsp;드</dt>
+						<dd>
+							<input type="password" name="pw" size="35" maxlength="20"
+								value="${dto.pw }" class="boxTF" />
+						</dd>
+					</dl>
+				</div>
+				
+				<div class="bbsCreated_bottomLine">
 					<dl>
 						<dt>이&nbsp;&nbsp;&nbsp;&nbsp;름</dt>
 						<dd>
-						${dto.userName }
+						${dto.name }
 						</dd>
 					</dl>
 				</div>
 
-				<div class="loginupdated_bottomLine">
-					<dl>
-						<dt>패스워드</dt>
-						<dd>
-							<input type="text" name="userPwd" size="35" maxlength="20"
-								value="${dto.userPwd }" class="boxTF" />
-						</dd>
-					</dl>
-				</div>
 
-				<div class="loginupdated_bottomLine">
+				<div class="bbsCreated_bottomLine">
 					<dl>
 						<dt>
-						생&nbsp;&nbsp;&nbsp;&nbsp;일
+						E&nbsp;&nbsp;mail&nbsp;
 						</dt>
 						<dd>
-							<input type="text" name="userBirth" size="35" maxlength="50"
-								value="${dto.userBirth }" class="boxTF" /><b>[YYYY-MM-DD]</b>
+							<input type="text" name="email" size="35" maxlength="50"
+								value="${dto.email }" class="boxTF" />
 						</dd>
 					</dl>
 				</div>
-
-				<div class="loginupdated_bottomLine">
+				
+				<div class="bbsCreated_bottomLine">
 					<dl>
 						<dt>
-						전&nbsp;&nbsp;&nbsp;&nbsp;화
+						주&nbsp;&nbsp;소&nbsp;
 						</dt>
 						<dd>
-							<input type="text" name="userTel" size="35" maxlength="50"
-								value="${dto.userTel }" class="boxTF" />
+							<input type="text" name="adderss" size="35" maxlength="50"
+								value="${dto.address }" class="boxTF" />
+								<input class="boxTF2" type="text" placeholder="상세주소"
+								id="detailaddress">
+						</dd>
+					</dl>
+				</div>
+				
+					<div class="bbsCreated_bottomLine">
+					<dl>
+						<dt>
+						전&nbsp;화&nbsp;번&nbsp;호
+						</dt>
+						<dd>
+							<input type="text" name="tel" size="35" maxlength="50"
+								value="${dto.tel }" class="boxTF" />
+						</dd>
+					</dl>
+				</div>
+				
+				<div class="bbsCreated_bottomLine">
+					<dl>
+						<dt>
+						성&nbsp;&nbsp;별&nbsp;
+						</dt>
+						<dd>
+							<input type="text" name="gender" size="35" maxlength="50"
+								value="${dto.gender }" class="boxTF" />
 						</dd>
 					</dl>
 				</div>
 
+			<div class="bbsCreated_bottomLine">
+					<dl>
+						<dt>
+						생&nbsp;년&nbsp;월&nbsp;일
+						</dt>
+						<dd>
+							<input type="text" name="birth" size="35" maxlength="50"
+								value="${dto.birth }" class="boxTF" /><b>YYYY-MM-DD</b>
+						</dd>
+					</dl>
+				</div>
+			
 			</div>
+			<input type="hidden" name="num" value="${dto.num }"/>
+			<input type="hidden" name="id" value="${dto.id }"/>
+			<input type="hidden" name="name" value="${dto.name }"/>
+		
 
-			<div id="loginCreated_footer">
-				<input type="button" value="수정하기" class="btn2" onclick="sendIt()" />
-				<input type="button" value="수정취소" class="btn2"
+			<div id="bbsCreated_footer">
+				<input type="submit" value="수정하기" class="btn2" onclick="sendIt()" />
+				<input type="submit" value="수정취소" class="btn2"
 					onclick="javascript:location.href='<%=cp %>';" />
 			</div>
 		</form>
 
 	</div>
+	
+	<br/>
+		<br/>
+			<br/>
+				<br/>
+					<br/>
+						<br/>
+							<br/>
+								<br/>
+									<br/>
+										<br/>
+											<br/>
+												<br/>
+													<br/>
+														<br/>
+															<br/>
+															
+	 
+       <!-- Footer Section Begin -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 col-md-6 col-sm-6">
+                    <div class="footer__about">
+                        <div class="footer__logo">
+                            <a href="#"><img src="<%=cp%>/img/footer-logo.png" alt=""></a>
+                        </div>
+                        <p>The customer is at the heart of our unique business model, which includes design.</p>
+                        <a href="#"><img src="<%=cp%>/img/payment.png" alt=""></a>
+                    </div>
+                </div>
+                <div class="col-lg-2 offset-lg-1 col-md-3 col-sm-6">
+                    <div class="footer__widget">
+                        <h6>Shopping</h6>
+                        <ul>
+                            <li><a href="#">Clothing Store</a></li>
+                            <li><a href="#">Trending Shoes</a></li>
+                            <li><a href="#">Accessories</a></li>
+                            <li><a href="#">Sale</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-6">
+                    <div class="footer__widget">
+                        <h6>Shopping</h6>
+                        <ul>
+                            <li><a href="#">Contact Us</a></li>
+                            <li><a href="#">Payment Methods</a></li>
+                            <li><a href="#">Delivary</a></li>
+                            <li><a href="#">Return & Exchanges</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-3 offset-lg-1 col-md-6 col-sm-6">
+                    <div class="footer__widget">
+                        <h6>NewLetter</h6>
+                        <div class="footer__newslatter">
+                            <p>Be the first to know about new arrivals, look books, sales & promos!</p>
+                            <form action="#">
+                                <input type="text" placeholder="Your email">
+                                <button type="submit"><span class="icon_mail_alt"></span></button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <div class="footer__copyright__text">
+                        <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                        <p>Copyright ©
+                            <script>
+                                document.write(new Date().getFullYear());
+                            </script>2020
+                            All rights reserved | This template is made with <i class="fa fa-heart-o"
+                            aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+                        </p>
+                        <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- Footer Section End -->
+
+    <!-- Search Begin -->
+    <div class="search-model">
+        <div class="h-100 d-flex align-items-center justify-content-center">
+            <div class="search-close-switch">+</div>
+            <form class="search-model-form">
+                <input type="text" id="search-input" placeholder="Search here.....">
+            </form>
+        </div>
+    </div>
+    <!-- Search End -->
+
+ <!-- Product Section End -->
+    <%@include file = "../payment/footer.jsp"  %>
+
+	
 </body>
+
 </html>
