@@ -3,6 +3,7 @@ package com.member;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.Date;
 
 public class MemberDAO {
 
@@ -252,10 +253,11 @@ public class MemberDAO {
 
 		try {
 
-			sql = "update member set num=?,id=?,pw=?,name=?,email=?,address=?,tel=?,gender=?,birth=?,";
-			sql += " where id=?";
+			sql = "update member set num=?,id=?,pw=?,name=?,email=?,address=?,tel=?,gender=?,birth=? ";
+			sql += "where id=?";
 
 			pstmt = conn.prepareStatement(sql);
+			System.out.println(dto.getBirth());
 			// pstmt.setString(1, dto.getName());
 			pstmt.setInt(1, dto.getNum());
 			pstmt.setString(2, dto.getId());
