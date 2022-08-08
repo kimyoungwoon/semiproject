@@ -1,7 +1,6 @@
 <%@page import="java.util.Enumeration"%>
 <%@include file = "payment/header.jsp"  %>
 
-
 <body>
 
     <!-- Header Section End -->

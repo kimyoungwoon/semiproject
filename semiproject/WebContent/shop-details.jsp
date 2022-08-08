@@ -22,25 +22,26 @@
                         <ul class="nav nav-tabs" role="tablist">
                             <li class="nav-item">
                                 <a class="nav-link active" data-toggle="tab" href="#tabs-1" role="tab">
-                                    <div class="product__thumb__pic set-bg" data-setbg="${imagePath}/prada1.jpg">
+                                    <div class="product__thumb__pic set-bg" data-setbg="img/shop-details/thumb-1.png">
                                     </div>
                                 </a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" data-toggle="tab" href="#tabs-2" role="tab">
-                                    <div class="product__thumb__pic set-bg" data-setbg="${imagePath}/prada2.jpg">
+                                    <div class="product__thumb__pic set-bg" data-setbg="img/shop-details/thumb-2.png">
                                     </div>
                                 </a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" data-toggle="tab" href="#tabs-3" role="tab">
-                                    <div class="product__thumb__pic set-bg" data-setbg="${imagePath}/prada3.jpg">
+                                    <div class="product__thumb__pic set-bg" data-setbg="img/shop-details/thumb-3.png">
                                     </div>
                                 </a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" data-toggle="tab" href="#tabs-4" role="tab">
-                                    <div class="product__thumb__pic set-bg" data-setbg="${imagePath}/prada4.jpg">
+                                    <div class="product__thumb__pic set-bg" data-setbg="img/shop-details/thumb-4.png">
+                                        <i class="fa fa-play"></i>
                                     </div>
                                 </a>
                             </li>
@@ -50,22 +51,23 @@
                         <div class="tab-content">
                             <div class="tab-pane active" id="tabs-1" role="tabpanel">
                                 <div class="product__details__pic__item">
-                                    <img src="${imagePath}/prada1.jpg" alt="">
+                                    <img src="img/shop-details/product-big-2.png" alt="">
                                 </div>
                             </div>
                             <div class="tab-pane" id="tabs-2" role="tabpanel">
                                 <div class="product__details__pic__item">
-                                    <img src="${imagePath}/prada2.jpg" alt="">
+                                    <img src="img/shop-details/product-big-3.png" alt="">
                                 </div>
                             </div>
                             <div class="tab-pane" id="tabs-3" role="tabpanel">
                                 <div class="product__details__pic__item">
-                                    <img src="${imagePath}/prada3.jpg" alt="">
+                                    <img src="img/shop-details/product-big.png" alt="">
                                 </div>
                             </div>
                             <div class="tab-pane" id="tabs-4" role="tabpanel">
                                 <div class="product__details__pic__item">
-                                    <img src="${imagePath}/prada4.jpg" alt="">
+                                    <img src="img/shop-details/product-big-4.png" alt="">
+                                    <a href="https://www.youtube.com/watch?v=8PJ3_p7VqHw&list=RD8PJ3_p7VqHw&start_radio=1" class="video-popup"><i class="fa fa-play"></i></a>
                                 </div>
                             </div>
                         </div>
@@ -78,7 +80,7 @@
                 <div class="row d-flex justify-content-center">
                     <div class="col-lg-8">
                         <div class="product__details__text">
-                            <h4>${dto.name }</h4>
+                            <h4>Hooded thermal anorak</h4>
                             <div class="rating">
                                 <i class="fa fa-star"></i>
                                 <i class="fa fa-star"></i>
@@ -87,27 +89,27 @@
                                 <i class="fa fa-star-o"></i>
                                 <span> - 5 Reviews</span>
                             </div>
-                            <h3>${dto.price }</h3>
+                            <h3>$270.00 <span>70.00</span></h3>
                             <p>Coat with quilted lining and an adjustable hood. Featuring long sleeves with adjustable
                                 cuff tabs, adjustable asymmetric hem with elastic side tabs and a front zip fastening
                             with placket.</p>
                             <div class="product__details__option">
-                                <div class="product__details__option__size" >
+                                <div class="product__details__option__size">
                                     <span>Size:</span>
-                                    <label for="xl">xl
+                                    <label for="xxl">xxl
+                                        <input type="radio" id="xxl">
+                                    </label>
+                                    <label class="active" for="xl">xl
                                         <input type="radio" id="xl">
                                     </label>
-                                    <label class="active" for="l">l
+                                    <label for="l">l
                                         <input type="radio" id="l">
                                     </label>
-                                    <label for="m">m
-                                        <input type="radio" id="m">
-                                    </label>
-                                    <label for="s">s
-                                        <input type="radio" id="s">
+                                    <label for="sm">s
+                                        <input type="radio" id="sm">
                                     </label>
                                 </div>
-                                <div class="product__details__option__color" id="pcolor">
+                                <div class="product__details__option__color">
                                     <span>Color:</span>
                                     <label class="c-1" for="sp-1">
                                         <input type="radio" id="sp-1">
@@ -140,11 +142,11 @@
                             </div>
                             <div class="product__details__last__option">
                                 <h5><span>Guaranteed Safe Checkout</span></h5>
-                                <img src="<%=cp%>/img/shop-details/details-payment.png" alt="">
+                                <img src="img/shop-details/details-payment.png" alt="">
                                 <ul>
-                                    <li><span>Brand:</span> ${dto.brand }</li>
-                                    <li><span>Categories:</span> ${dto.category }</li>
-                                    <li><span>Tag:</span> ${dto.tag }</li>
+                                    <li><span>SKU:</span> 3812912</li>
+                                    <li><span>Categories:</span> Clothes</li>
+                                    <li><span>Tag:</span> Clothes, Skin, Body</li>
                                 </ul>
                             </div>
                         </div>
@@ -286,12 +288,12 @@
             <div class="row">
                 <div class="col-lg-3 col-md-6 col-sm-6 col-sm-6">
                     <div class="product__item">
-                        <div class="product__item__pic set-bg" data-setbg="<%=cp%>/img/product/product-1.jpg">
+                        <div class="product__item__pic set-bg" data-setbg="img/product/product-1.jpg">
                             <span class="label">New</span>
                             <ul class="product__hover">
-                                <li><a href="#"><img src="<%=cp%>/img/icon/heart.png" alt=""></a></li>
-                                <li><a href="#"><img src="<%=cp%>/img/icon/compare.png" alt=""> <span>Compare</span></a></li>
-                                <li><a href="#"><img src="<%=cp%>/img/icon/search.png" alt=""></a></li>
+                                <li><a href="#"><img src="img/icon/heart.png" alt=""></a></li>
+                                <li><a href="#"><img src="img/icon/compare.png" alt=""> <span>Compare</span></a></li>
+                                <li><a href="#"><img src="img/icon/search.png" alt=""></a></li>
                             </ul>
                         </div>
                         <div class="product__item__text">
@@ -321,11 +323,11 @@
                 </div>
                 <div class="col-lg-3 col-md-6 col-sm-6 col-sm-6">
                     <div class="product__item">
-                        <div class="product__item__pic set-bg" data-setbg="<%=cp%>/img/product/product-2.jpg">
+                        <div class="product__item__pic set-bg" data-setbg="img/product/product-2.jpg">
                             <ul class="product__hover">
-                                <li><a href="#"><img src="<%=cp%>/img/icon/heart.png" alt=""></a></li>
-                                <li><a href="#"><img src="<%=cp%>/img/icon/compare.png" alt=""> <span>Compare</span></a></li>
-                                <li><a href="#"><img src="<%=cp%>/img/icon/search.png" alt=""></a></li>
+                                <li><a href="#"><img src="img/icon/heart.png" alt=""></a></li>
+                                <li><a href="#"><img src="img/icon/compare.png" alt=""> <span>Compare</span></a></li>
+                                <li><a href="#"><img src="img/icon/search.png" alt=""></a></li>
                             </ul>
                         </div>
                         <div class="product__item__text">
@@ -355,12 +357,12 @@
                 </div>
                 <div class="col-lg-3 col-md-6 col-sm-6 col-sm-6">
                     <div class="product__item sale">
-                        <div class="product__item__pic set-bg" data-setbg="<%=cp%>/img/product/product-3.jpg">
+                        <div class="product__item__pic set-bg" data-setbg="img/product/product-3.jpg">
                             <span class="label">Sale</span>
                             <ul class="product__hover">
-                                <li><a href="#"><img src="<%=cp%>/img/icon/heart.png" alt=""></a></li>
-                                <li><a href="#"><img src="<%=cp%>/img/icon/compare.png" alt=""> <span>Compare</span></a></li>
-                                <li><a href="#"><img src="<%=cp%>/img/icon/search.png" alt=""></a></li>
+                                <li><a href="#"><img src="img/icon/heart.png" alt=""></a></li>
+                                <li><a href="#"><img src="img/icon/compare.png" alt=""> <span>Compare</span></a></li>
+                                <li><a href="#"><img src="img/icon/search.png" alt=""></a></li>
                             </ul>
                         </div>
                         <div class="product__item__text">
@@ -390,11 +392,11 @@
                 </div>
                 <div class="col-lg-3 col-md-6 col-sm-6 col-sm-6">
                     <div class="product__item">
-                        <div class="product__item__pic set-bg" data-setbg="<%=cp%>/img/product/product-4.jpg">
+                        <div class="product__item__pic set-bg" data-setbg="img/product/product-4.jpg">
                             <ul class="product__hover">
-                                <li><a href="#"><img src="<%=cp%>/img/icon/heart.png" alt=""></a></li>
-                                <li><a href="#"><img src="<%=cp%>/img/icon/compare.png" alt=""> <span>Compare</span></a></li>
-                                <li><a href="#"><img src="<%=cp%>/img/icon/search.png" alt=""></a></li>
+                                <li><a href="#"><img src="img/icon/heart.png" alt=""></a></li>
+                                <li><a href="#"><img src="img/icon/compare.png" alt=""> <span>Compare</span></a></li>
+                                <li><a href="#"><img src="img/icon/search.png" alt=""></a></li>
                             </ul>
                         </div>
                         <div class="product__item__text">
@@ -434,10 +436,10 @@
                 <div class="col-lg-3 col-md-6 col-sm-6">
                     <div class="footer__about">
                         <div class="footer__logo">
-                            <a href="#"><img src="<%=cp%>/img/footer-logo.png" alt=""></a>
+                            <a href="#"><img src="img/footer-logo.png" alt=""></a>
                         </div>
                         <p>The customer is at the heart of our unique business model, which includes design.</p>
-                        <a href="#"><img src="<%=cp%>/img/payment.png" alt=""></a>
+                        <a href="#"><img src="img/payment.png" alt=""></a>
                     </div>
                 </div>
                 <div class="col-lg-2 offset-lg-1 col-md-3 col-sm-6">
@@ -504,6 +506,8 @@
         </div>
     </div>
     <!-- Search End -->
+
+    <!-- Js Plugins -->
 
     <%@include file = "payment/footer.jsp"  %>
 </body>

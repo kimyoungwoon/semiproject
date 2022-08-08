@@ -75,9 +75,6 @@ public class PdetailServlet extends HttpServlet {
 
 			url = cp;
 			resp.sendRedirect(url);
-
 		}
-
 	}
-	
 }
