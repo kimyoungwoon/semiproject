@@ -22,9 +22,7 @@
                         <ul class="nav nav-tabs" role="tablist">
                             <li class="nav-item">
                                 <a class="nav-link active" data-toggle="tab" href="#tabs-1" role="tab">
-
                                     <div class="product__thumb__pic set-bg" data-setbg="img/shop-details/thumb-1.png">
-
                                     </div>
                                 </a>
                             </li>
@@ -99,7 +97,7 @@
                             <p>Coat with quilted lining and an adjustable hood. Featuring long sleeves with adjustable
                                 cuff tabs, adjustable asymmetric hem with elastic side tabs and a front zip fastening
                             with placket.</p>
-                            <div class="product__details__option">
+                           <!--  <div class="product__details__option">
                                 <div class="product__details__option__size">
                                     <span>Size:</span>
                                     <label for="xxl">xxl
@@ -133,7 +131,7 @@
                                         <input type="radio" id="sp-9">
                                     </label>
                                 </div>
-                            </div>
+                            </div> -->
                             <div class="product__details__cart__option">
                                 <div class="quantity">
                                     <div class="pro-qty">
@@ -144,7 +142,7 @@
                             </div>
                             <div class="product__details__btns__option">
                                 <a href="#"><i class="fa fa-heart"></i> add to wishlist</a>
-                                <a href="#"><i class="fa fa-exchange"></i> Add To Compare</a>
+                               <!--  <a href="#"><i class="fa fa-exchange"></i> Add To Compare</a> -->
                             </div>
                             <div class="product__details__last__option">
                                 <h5><span>Guaranteed Safe Checkout</span></h5>

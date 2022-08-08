@@ -1,4 +1,6 @@
 <%@include file = "payment/header.jsp"  %>
+<script type="text/javascript" src="<%=cp %>/payment/shop.js"></script>
+
 
 <body>  
     <!-- Header Section End -->
@@ -230,15 +232,17 @@
                     	<c:forEach var="dto" items="${lists}">
                         <div class="col-lg-4 col-md-6 col-sm-6">
                             <div class="product__item">
-                                <div class="product__item__pic set-bg" data-setbg="${imagePath }/${dto.saveFileName}">
-                                
+                                <div class="product__item__pic set-bg" data-setbg="${imagePath }/${dto.saveFileName}" 
+                                style="cursor:pointer;">
+                                 
                                     <ul class="product__hover">
                                         <li><a href="#"><img src="<%=cp%>/img/icon/heart.png" alt=""></a></li>
-                                        <li><a href="#"><img src="<%=cp%>/img/icon/compare.png" alt=""> <span>Compare</span></a>
-                                        </li>
-                                        <li><a href="#"><img src="<%=cp%>/img/icon/search.png" alt=""></a></li>
+                                        <%-- <li><a href="#"><img src="<%=cp%>/img/icon/compare.png" alt=""> <span>Compare</span></a>
+                                        </li> --%>
+                                       <%--  <li><a href="#"><img src="<%=cp%>/img/icon/search.png" alt=""></a></li> --%>
                                     </ul>
                                 </div>
+                                
                                 <div class="product__item__text">
                                     <h6>${dto.name }</h6>
                                     <a href="<%=cp %>/shopping/addCart.do?productNum=${dto.num}" class="add-cart">+ Add To Cart</a>
