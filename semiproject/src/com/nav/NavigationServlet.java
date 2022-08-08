@@ -68,10 +68,9 @@ public class NavigationServlet extends HttpServlet{
 				//접속자 저장하는 db도 만드는 게 좋을 듯
 				
 				StringBuffer result = new StringBuffer("");
-				result.append("{\"result\":\"" + "MyPage" + "\"}");
+				result.append("{\"result\":\"" + "Logging" + "\"}");
 				response.getWriter().write(result.toString());
 			}
-			
 		}
 		else if(uri.indexOf("wishList.do") != -1){
 			

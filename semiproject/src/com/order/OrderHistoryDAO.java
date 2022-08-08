@@ -53,6 +53,39 @@ public class OrderHistoryDAO {
 
 		return maxNum;
 	}
+	
+	public int getMaxNum(int pMemberNum)
+	{
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String sql;
+		int maxNum = 0;
+
+		try {
+
+			sql = "select nvl(max(ordernum), 0) from order_history where membernum = ?";
+
+			pstmt = conn.prepareStatement(sql);
+
+			pstmt.setInt(1, pMemberNum);
+			
+			rs = pstmt.executeQuery();
+
+
+			if(rs.next()) {
+				maxNum = rs.getInt(1);
+			}
+
+			rs.close();
+			pstmt.close();
+
+
+		} catch (Exception e) {
+			System.out.println(e.toString());
+		}
+
+		return maxNum;
+	}
 
 	public int getDataCount() {
 		int dataCount = 0;
