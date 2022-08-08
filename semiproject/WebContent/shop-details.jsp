@@ -1,9 +1,11 @@
 <%@include file = "payment/header.jsp"  %>
-
+<script type="text/javascript" src="<%=cp %>/payment/shop-details.js"></script>
+<%@ page contentType="text/html; charset=UTF-8"%>
 <body>
     <!-- Header Section End -->
     <%@include file = "payment/nav.jsp"  %>
 
+	<input type="hidden" id="iProductNum" value="<%=request.getParameter("productNum")%>" />
     <!-- Shop Details Section Begin -->
     <section class="shop-details">
         <div class="product__details__pic">
@@ -19,8 +21,8 @@
                 </div>
                 <div class="row">
                     <div class="col-lg-3 col-md-3">
-                        <ul class="nav nav-tabs" role="tablist">
-                            <li class="nav-item">
+                        <ul class="nav nav-tabs" role="tablist" id = "detail_pic">
+                           <!--  <li class="nav-item" >
                                 <a class="nav-link active" data-toggle="tab" href="#tabs-1" role="tab">
                                     <div class="product__thumb__pic set-bg" data-setbg="img/shop-details/thumb-1.png">
                                     </div>
@@ -44,7 +46,7 @@
                                         <i class="fa fa-play"></i>
                                     </div>
                                 </a>
-                            </li>
+                            </li> -->
                         </ul>
                     </div>
                     <div class="col-lg-6 col-md-9">

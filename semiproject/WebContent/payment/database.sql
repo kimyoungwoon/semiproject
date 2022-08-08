@@ -42,6 +42,10 @@ CREATE TABLE product (
   color number(20),
   tag number(20),
   savefilename varchar2(50) not null
+  savefilename1 varchar2(50),
+  savefilename2 varchar2(50),
+  savefilename3 varchar2(50),
+  savefilename4 varchar2(50)
 );
 
 
@@ -155,3 +159,4 @@ ALTER TABLE tag ADD unique (num);
 ALTER TABLE product_tag ADD FOREIGN KEY (productnum) REFERENCES product (tag);
 
 ALTER TABLE product_tag ADD FOREIGN KEY (tagNum) REFERENCES tag (num);
+

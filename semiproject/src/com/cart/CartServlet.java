@@ -100,7 +100,7 @@ public class CartServlet extends HttpServlet{
 				result.append("{\"value\": \"" + lists.get(i).getCount() + "\"},");
 				result.append("{\"value\": \"" + lists.get(i).getName() + "\"},");
 				result.append("{\"value\": \"" + lists.get(i).getPrice() + "\"},");
-				result.append("{\"value\": \"" + cp + "/img/pds/" + lists.get(i).getSaveFileName() + "\"}],");
+				result.append("{\"value\": \"" + cp + "/img/pds/" + lists.get(i).getSaveFileName() + "\"}]}");
 				
 			}
 			result.append("]}");

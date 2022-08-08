@@ -1,6 +1,16 @@
 <%@include file = "payment/header.jsp"  %>
-<script type="text/javascript" src="<%=cp %>/payment/shop.js"></script>
+<%@ page contentType="text/html; charset=UTF-8"%>
 
+
+<script type="text/javascript">
+
+//제품 사진 누르면 상세페이지로 이동
+function goProductDetail(productNum) {
+	console.log("하이"+ productNum);
+	location.href = "../pdetail/pdetail.do?productNum=" + productNum;
+}
+
+</script>
 
 <body>  
     <!-- Header Section End -->
@@ -232,8 +242,8 @@
                     	<c:forEach var="dto" items="${lists}">
                         <div class="col-lg-4 col-md-6 col-sm-6">
                             <div class="product__item">
-                                <div class="product__item__pic set-bg" data-setbg="${imagePath }/${dto.saveFileName}" 
-                                style="cursor:pointer;">
+                                <div class="product__item__pic set-bg" data-setbg="${imagePath }/${dto.saveFileName}"
+                                onclick = "goProductDetail('${dto.num}');" style="cursor:pointer;">
                                  
                                     <ul class="product__hover">
                                         <li><a href="#"><img src="<%=cp%>/img/icon/heart.png" alt=""></a></li>
