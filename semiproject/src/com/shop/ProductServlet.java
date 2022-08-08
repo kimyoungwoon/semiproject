@@ -74,6 +74,7 @@ public class ProductServlet extends HttpServlet {
 			String sortPath = cp + "/shopping/list.do?";//정렬기준경로
 			String searchValue = req.getParameter("searchValue");
 			
+			
 			if (searchValue == null) {
 				searchValue = "";
 			}else {
@@ -114,7 +115,6 @@ public class ProductServlet extends HttpServlet {
 				
 				lists = listReturn_dao.category_getList(start, end, category);
 				listUrl = cp + sortPath + "category=" + category;
-				
 				
 			}else if(brand != -1) {
 				lists = listReturn_dao.branding_getList(start, end, brand);

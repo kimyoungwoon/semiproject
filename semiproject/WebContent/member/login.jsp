@@ -25,28 +25,6 @@ $(document).ready(function() {
     });
 });
 		function registerMember(){
-			
-			 const regex = /^[0-9a-z]{8,17}$/;
-			 
-
-			    if (pInputID.value.length == eCheckResult.EMPTY) {
-			        infoText.innerText = "필수 정보입니다.";
-			    } else if (/*db적용시 중복값 체크*/ null) {
-			        // "이미 사용중이거나 탈퇴한 아이디입니다."
-
-			        //트리거 하나 만들어서 삭제되는 아이디를 다른 테이블에 저장해두자.
-			        //그래서 그걸 가지고 탈퇴한 아이디도 체크해보자.
-
-			        alert("중복값 체크");
-			    } else if (!regex.test(pInputID.value)) {
-			        infoText.innerText = "5~20자의 영문 소문자, 숫자와 특수기호(_),(-)만 사용 가능합니다.";
-			    } else {
-			        infoText.style = "display: default; color: green";
-			        infoText.innerText = "멋진 아이디네요!";
-			        return true;
-			    }
-			
-			
 			f = document.regiForm;
 					
 	    	f.action="<%=cp %>/login/created_ok.do";
@@ -97,7 +75,7 @@ $(document).ready(function() {
 
 
 			<form id="id_register" name="regiForm" method="post" class="input-group">
-				<input type="text" class="input-field" placeholder="User Id" name="reg_id" value="${checkid }" onkeydown = "checkID(event);" required> 
+				<input type="text" class="input-field" placeholder="User Id" name="reg_id" value="${checkid }" required> 
 
 					<input type="password" class="input-field" placeholder="Enter Password" name="reg_pw" required> 
 					<input type="text" class="input-field" placeholder="Your Name" name="reg_name" required> 
