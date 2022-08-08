@@ -63,20 +63,26 @@ public class MemberServlet extends HttpServlet {
 			// form post방식으로 넘어오니까
 			
 			String id = req.getParameter("reg_id");
+			String pw  = req.getParameter("reg_pw");
+			String name  = req.getParameter("reg_name");
+			String birth  = req.getParameter("reg_birth");
 			
-			System.out.println(id);
+			
 			
 			if(dao.registerCheck(id)) {
 				//true면 중복
 				url = cp + "/login/register_fail.do";
 			}
-			else if(id != null && !id.equals("")) {
+			else if(id != null && !id.equals("")
+					&& pw != null && !pw.equals("")
+					&& name != null && !name.equals("")
+					&& birth != null && !birth.equals("")) 	{
 				url = cp + "/login/register_success.do";
 				dto.setNum(maxNum + 1);
 				dto.setId(id);
-				dto.setPw(req.getParameter("reg_pw"));
-				dto.setName(req.getParameter("reg_name"));
-				dto.setBirth(req.getParameter("reg_birth"));
+				dto.setPw(pw);
+				dto.setName(name);
+				dto.setBirth(birth);
 
 				dao.insertData(dto);
 			}
@@ -120,6 +126,10 @@ public class MemberServlet extends HttpServlet {
 				
 				url = "/member/login.jsp";
 				forward(req, resp, url);
+				
+				//로그인은 세션변경이지만 이건 로그인 실패니까 포워드로 해도 될듯?
+//				url = "/semiproject/member/login.jsp";
+//				resp.sendRedirect(url);
 				return;
 			}
 
@@ -131,6 +141,7 @@ public class MemberServlet extends HttpServlet {
 			CustomInfo info = new CustomInfo();
 
 			info.setId(dto.getId());
+			info.setNum(dto.getNum());
 			if (dto.getName() == null) {
 				info.setName("");
 			}
@@ -145,7 +156,7 @@ public class MemberServlet extends HttpServlet {
 			resp.sendRedirect(url);
 
 			// 로그아웃
-		} else if (uri.indexOf("logout.do") != -1) {
+		} else if (uri.indexOf("logout_ok.do") != -1) {
 
 			HttpSession session = req.getSession();
 

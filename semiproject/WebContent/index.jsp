@@ -1,17 +1,6 @@
 <%@page import="java.util.Enumeration"%>
 <%@include file = "payment/header.jsp"  %>
 
-<%
- Enumeration enums = session.getAttributeNames();
-
-while(enums.hasMoreElements()) {
- 
-String key = (String)enums.nextElement();
-//String value = (String)session.getAttribute(key);
-System.out.println("후아"+key + " : " +"<br>");
-} 
-
-%>
 
 <body>
 

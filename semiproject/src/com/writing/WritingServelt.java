@@ -37,7 +37,7 @@ public class WritingServelt extends HttpServlet {
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
 		req.setCharacterEncoding("UTF-8");
-		String cp = req.getContextPath();	//http://localhost:8080/������Ʈ��
+		String cp = req.getContextPath();	//http://192.168.16.6:8080/������Ʈ��
 		String uri = req.getRequestURI();	//study/bbs/created.do
 		//DB����
 

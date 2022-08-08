@@ -7,7 +7,7 @@ var arrProduct = [];
 function registerFunction() {
     //여기도 마찬가지로 요청할때는 session을 이용해서 하면 됨.
     //지금 당장은 테스트로 1
-    connectRequest.open("Post", "./cart/shopCart.do?memberNum=" + eURI("1"), true);
+    connectRequest.open("Post", "./cart/cartList.do?memberNum=" + eURI("1"), true);
     connectRequest.onreadystatechange = successConnect;
     connectRequest.send(null);
 }
@@ -144,7 +144,7 @@ function deleteCartProduct(arg, productNum) {
 
 //nav 카트 갯수 처리
 function countCart() {
-	countCartRequest.open("Post", "http://localhost:8080/semiproject/cart/countCart.do", true);
+	countCartRequest.open("Post", "http://192.168.16.6:8080/semiproject/cart/countCart.do", true);
 	countCartRequest.onreadystatechange = function() {
 		if (countCartRequest.readyState == 4 && countCartRequest.status == 200) {
 			var object = eval("(" + countCartRequest.responseText + ")");

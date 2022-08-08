@@ -15,6 +15,7 @@ import javax.servlet.http.HttpSession;
 
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
+import com.util.CustomInfo;
 import com.util.DBConn;
 import com.util.MyPage;
 
@@ -357,15 +358,18 @@ public class ProductServlet extends HttpServlet {
 			
 		}else if(uri.indexOf("addCart.do")!=-1) {
 			
-			int productNum = Integer.parseInt(returnNull(req.getParameter("productNum")));
-			
-			
 			HttpSession session = req.getSession();
-			session.getAttribute("membernum");
+			CustomInfo info =  (CustomInfo)session.getAttribute("customInfo");
+			int productNum = Integer.parseInt(returnNull(req.getParameter("productNum")));
+			int memberNum = 0;
 			
-			int memberNum = 1;
 			
-			int productCount = dao.insertCart(memberNum, productNum);
+			if(info != null) {
+				//접속자 저장하는 db도 만드는 게 좋을 듯
+				memberNum = info.getNum();
+			}
+			
+			int result = dao.insertCart(memberNum, productNum);
 			
 			url = cp + "/shopping/list.do";
 			resp.sendRedirect(url);
