@@ -2,10 +2,18 @@ package com.util;
 
 public class CustomInfo {
 
+	private int num;
 	private String id;
 	private String name;
 	
 	
+	
+	public int getNum() {
+		return num;
+	}
+	public void setNum(int num) {
+		this.num = num;
+	}
 	public String getId() {
 		return id;
 	}

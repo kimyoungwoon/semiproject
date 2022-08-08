@@ -7,7 +7,7 @@ var arrProduct = [];
 function registerFunction() {
     //여기도 마찬가지로 요청할때는 session을 이용해서 하면 됨.
     //지금 당장은 테스트로 1
-    connectRequest.open("Post", "./cart/shopCart.do?memberNum=" + eURI("1"), true);
+    connectRequest.open("Post", "./cart/cartList.do?memberNum=" + eURI("1"), true);
     connectRequest.onreadystatechange = successConnect;
     connectRequest.send(null);
 }
