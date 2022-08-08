@@ -179,6 +179,17 @@ ol {
 	padding: 14px 30px;
 }
 
+.file-btn {
+	font-size: 14px;
+	color: #ffffff;
+	background: #111111;
+	font-weight: 700;
+	border: none;
+	text-transform: uppercase;
+	display: block;
+	padding: 14px 30px;
+}
+
 /* Preloder */
 
 #preloder {

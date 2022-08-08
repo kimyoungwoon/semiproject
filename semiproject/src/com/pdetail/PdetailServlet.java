@@ -1,5 +1,6 @@
 package com.pdetail;
 
+import java.io.File;
 import java.io.IOException;
 import java.sql.Connection;
 import java.util.List;
@@ -14,9 +15,15 @@ import javax.servlet.http.HttpSession;
 
 import com.member.MemberDTO;
 import com.pdetail.PdetailDAO;
+
+import com.review.ReviewDAO;
+import com.review.ReviewDTO;
+
 import com.shop.ProductDAO;
 import com.shop.ProductDTO;
+
 import com.util.DBConn;
+import com.util.MyPage;
 
 
 public class PdetailServlet extends HttpServlet {
@@ -49,6 +56,23 @@ public class PdetailServlet extends HttpServlet {
 		
 		String url;
 		
+
+		//수언
+		MyPage myPage = new MyPage();
+		ReviewDAO reviewdao = new ReviewDAO(conn);
+		
+		
+
+		// 파일 업로드 위치 지정
+		String root = getServletContext().getRealPath("/");
+		String path = root + "pds" + File.separator + "imageFile";
+		//
+		
+		
+		
+		
+		PdetailDTO dto = new PdetailDTO();
+
 		//info.setNum(dto.getNum());
 		
 		//세션에 info 등록
@@ -90,6 +114,55 @@ public class PdetailServlet extends HttpServlet {
 
 			url = cp;
 			resp.sendRedirect(url);
+
+
+			
+		}else if(uri.indexOf("review.do")!=-1) {
+			
+				String pageNum = req.getParameter("pageNum");
+				int currentPage = 1; // 처음 띄우는 리스트 페이지
+				if (pageNum != null) {
+					currentPage = Integer.parseInt(pageNum);
+				}
+
+				int dataCount = reviewdao.getDataCount();
+				int numPerPage = 3;
+				int totalPage = myPage.getPagecount(numPerPage, dataCount);
+				if (currentPage > totalPage) {
+					currentPage = totalPage;
+				}
+				int start = (currentPage - 1) * numPerPage + 1;
+
+				int end = currentPage * numPerPage;
+
+				String listUrl = cp + "/detail/review.do";
+
+				List<ReviewDTO> lists = reviewdao.getListData(start, end);
+				String pageIndexList = myPage.pageIndexList(currentPage, totalPage,
+						listUrl);
+				// 삭제경로
+				String deletePath = cp + "/review/delete.do";
+				// 이미지파일경로
+				String imagePath = cp + "/pds/imageFile";
+				req.setAttribute("imagePath", imagePath);
+				
+				int totalArticle = reviewdao.getDataCount();
+
+				// 파일정보 테이블을 리스트로 전달
+				
+				req.setAttribute("lists", lists);
+				req.setAttribute("pageNum", pageNum);
+				req.setAttribute("currentPage", currentPage);
+				req.setAttribute("deletePath", deletePath);
+				req.setAttribute("pageIndexList", pageIndexList);
+				req.setAttribute("totalArticle", totalArticle);
+				req.setAttribute("totalPage", totalPage);
+				req.setAttribute("dataCount", dataCount);	
+				
+				// list.jsp 페이지로 포워드
+				url = "/shop-details.jsp";
+				forward(req, resp, url);
+			
 		}
 		else if(uri.indexOf("pdetailList.do")!=-1) {
 			int productNum = Integer.parseInt(req.getParameter("productNum"));
