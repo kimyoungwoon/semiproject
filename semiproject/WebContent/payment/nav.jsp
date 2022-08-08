@@ -49,11 +49,18 @@
 								<a href="<%=cp %>/login/created.do" class = "desk_sign">Sign in</a> 
 							</div>
 							<div class="header__top__hover">
-								<span>Usd <i class="arrow_carrot-down"></i></span>
+								<span>List <i class="arrow_carrot-down"></i></span>
 								<ul>
-									<li>USD</li>
-									<li>EUR</li>
-									<li>USD</li>
+								<c:choose>  
+                                	<c:when test="${empty sessionScope.customInfo.id }" >                      
+                           		</c:when>
+                           		<c:otherwise>
+                           		 	<a href="<%=cp %>/login/updated.do"><li>MyPage</li></a>
+                                    <li>Cart</li>                               
+                           			</c:otherwise>
+                           		
+                                </c:choose>   
+                                    
 								</ul>
 							</div>
 						</div>

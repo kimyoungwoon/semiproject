@@ -1,4 +1,8 @@
 <%@include file = "../payment/header.jsp"  %>
+<%@ page contentType="text/html; charset=UTF-8"%>
+<link rel="stylesheet" type="text/css"href="<%=cp%>/member/css/style.css" />
+<link rel="stylesheet" type="text/css" href="<%=cp%>/member/css/list.css" />
+<script type="text/javascript" src="<%=cp%>/member/js/util.js"></script>
 
 <script type="text/javascript">
 
@@ -13,26 +17,6 @@
 			return;
 		}
 		
-		f.pw.value = str;
-	
-		str = f.birth.value;
-		if(!str){
-			alert("생년월일을 입력하세요");
-			f.birth.focus();
-			return;
-		}
-		
-		f.birth.value = str;
-	
-		str = f.tel.value;
-		if(!str){
-		alert("연락처를 입력하세요");
-			f.tel.focus();
-			return;
-		}
-		
-		f.tel.value = str;
-	
 		f.action = "<%=cp%>/login/updated_ok.do";
 		f.submit();
 		
@@ -51,7 +35,7 @@
 	
 	<div class="container">
 			<div class="row">
-				<div class="col-lg-12">
+				<div class="col-lg-12"><br/><br/><br/>
 					<h1 class="related-title">modify</h1>
 				</div>
 			</div>
@@ -76,7 +60,7 @@
 					<dl>
 						<dt>패&nbsp;스&nbsp;워&nbsp;드</dt>
 						<dd>
-							<input type="password" name="pw" size="35" maxlength="20"
+							<input type="password" name="pw" size="35" maxlength="20" placeholder="password"
 								value="${dto.pw }" class="boxTF" />
 						</dd>
 					</dl>
@@ -95,10 +79,10 @@
 				<div class="bbsCreated_bottomLine">
 					<dl>
 						<dt>
-						E&nbsp;&nbsp;mail&nbsp;
+						E-mail&nbsp;
 						</dt>
 						<dd>
-							<input type="text" name="email" size="35" maxlength="50"
+							<input type="text" name="email" size="35" maxlength="50" placeholder="E-Mail"
 								value="${dto.email }" class="boxTF" />
 						</dd>
 					</dl>
@@ -110,10 +94,8 @@
 						주&nbsp;&nbsp;소&nbsp;
 						</dt>
 						<dd>
-							<input type="text" name="adderss" size="35" maxlength="50"
-								value="${dto.address }" class="boxTF" />
-								<input class="boxTF2" type="text" placeholder="상세주소"
-								id="detailaddress">
+							<input type="text" name="address" size="35" maxlength="50" placeholder="address"
+								value="${dto.address }" class="boxTF" />						
 						</dd>
 					</dl>
 				</div>
@@ -124,7 +106,7 @@
 						전&nbsp;화&nbsp;번&nbsp;호
 						</dt>
 						<dd>
-							<input type="text" name="tel" size="35" maxlength="50"
+							<input type="text" name="tel" size="35" maxlength="50" placeholder="Tel"
 								value="${dto.tel }" class="boxTF" />
 						</dd>
 					</dl>
@@ -136,7 +118,7 @@
 						성&nbsp;&nbsp;별&nbsp;
 						</dt>
 						<dd>
-							<input type="text" name="gender" size="35" maxlength="50"
+							<input type="text" name="gender" size="35" maxlength="50" placeholder="gender"
 								value="${dto.gender }" class="boxTF" />
 						</dd>
 					</dl>
@@ -148,16 +130,16 @@
 						생&nbsp;년&nbsp;월&nbsp;일
 						</dt>
 						<dd>
-							<input type="text" name="birth" size="35" maxlength="50"
-								value="${dto.birth }" class="boxTF" /><b>YYYY-MM-DD</b>
+	  					${dto.birth }
 						</dd>
 					</dl>
 				</div>
 			
 			</div>
-			<input type="hidden" name="num" value="${dto.num }"/>
+			<input type="hidden"  name="num" value="${dto.num }"/>
 			<input type="hidden" name="id" value="${dto.id }"/>
 			<input type="hidden" name="name" value="${dto.name }"/>
+			<input type="hidden" name="birth" value="${dto.birth }"/>
 		
 
 			<div id="bbsCreated_footer">
@@ -165,6 +147,16 @@
 				<input type="submit" value="수정취소" class="btn2"
 					onclick="javascript:location.href='<%=cp %>';" />
 			</div>
+				
+				<br/>
+					<br/>
+				<div id="bbsCreated_footer">
+				<input type="button" value="회원탈퇴" class="btn2" onclick= />
+			
+			</div>
+			
+			
+			
 		</form>
 
 	</div>
@@ -181,9 +173,7 @@
 										<br/>
 											<br/>
 												<br/>
-													<br/>
-														<br/>
-															<br/>
+													
 															
 	 
        <!-- Footer Section Begin -->
