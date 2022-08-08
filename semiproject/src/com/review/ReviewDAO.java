@@ -52,16 +52,16 @@ public class ReviewDAO {
 
 		try {
 
-			sql = "insert into review (num,name,subject,content,savepath,saveFileName) ";
-			sql += "values (?,?,?,?,sysdate,?) ";
+			sql = "insert into review (num,name,subject,content,saveFileName,savepath) ";
+			sql += "values (?,?,?,?,?,sysdate) ";
 
 			pstmt = conn.prepareStatement(sql);
-
+			
 			pstmt.setInt(1, dto.getNum());
-			pstmt.setString(2, dto.getName());
+			pstmt.setString(2, dto.getName());		
 			pstmt.setString(3, dto.getSubject());
 			pstmt.setString(4, dto.getContent());
-			pstmt.setString(5, dto.getSaveFileName());
+			pstmt.setString(5, dto.getSaveFileName());			
 
 			result = pstmt.executeUpdate();
 			pstmt.close();
@@ -87,7 +87,7 @@ public class ReviewDAO {
 			sql += "select num,name,to_char(savepath,'YYYY-MM-DD') savepath,";
 			sql += "subject,content,saveFileName from review order by num desc) data ) ";
 			sql += "where rnum >= ? and rnum <=?";
-
+			
 			pstmt = conn.prepareStatement(sql);
 
 			pstmt.setInt(1, start);

@@ -1,4 +1,5 @@
 <%@include file = "../payment/header.jsp"  %>
+<%@ page contentType="text/html; charset=UTF-8"%>
     
     <link rel="stylesheet" type="text/css" href="<%=cp %>/writing/css/style.css"/>
 	<link rel="stylesheet" type="text/css" href="<%=cp %>/writing/css/created.css"/>
