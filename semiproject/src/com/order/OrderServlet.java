@@ -126,13 +126,8 @@ public class OrderServlet extends HttpServlet{
 			//장바구니에 들어왔을 때 전달받는 회원번호
 			//우리는 membernum은 int인데 dao 수정 해야할듯.
 			//			int memberNum = (int)session.getAttribute("membernum");
-			System.out.println(memberNum);
+			
 			MemberDTO memberInfo = memberDAO.getReadDataNum(memberNum);
-
-			System.out.println(memberInfo.getName());
-			System.out.println(memberInfo.getTel());
-			System.out.println(memberInfo.getEmail() );
-			System.out.println(memberInfo.getAddress());
 
 			StringBuffer result = new StringBuffer("");
 			result.append("{\"result\":[");
@@ -188,6 +183,38 @@ public class OrderServlet extends HttpServlet{
 				result.append("{\"value\": \"" + lists.get(i).getCount() + "\"},");
 				result.append("{\"value\": \"" + lists.get(i).getName() + "\"},");
 				result.append("{\"value\": \"" + lists.get(i).getPrice() + "\"}],");
+			}
+			result.append("]}");
+			response.getWriter().write(result.toString());
+		}
+		else if(uri.indexOf("orderDetail.do") != -1){
+
+			String orderNum = request.getParameter("orderNum");
+			System.out.println(orderNum);
+			
+			url = "/orderDetail.jsp";
+			myForward(request, response, url);
+			
+//			url = cp + "/index.jsp";
+//			response.sendRedirect(url);
+			
+		}
+		else if(uri.indexOf("orderDetailList.do") != -1){
+			
+			int orderNum = Integer.parseInt(request.getParameter("orderNum"));
+			List<OrderDetailDTO> lists = orderDetailDAO.getOrderDetailList(memberNum, orderNum);
+			
+			
+			StringBuffer result = new StringBuffer("");
+			result.append("{\"result\":[");
+			for(int i = 0; i < lists.size(); i++) {
+				result.append("[{\"value\": \"" + lists.get(i).getMembernum() + "\"},");
+				result.append("{\"value\": \"" + lists.get(i).getOrdernum() + "\"},");
+				result.append("{\"value\": \"" + lists.get(i).getProductnum() + "\"},");
+				result.append("{\"value\": \"" + lists.get(i).getPrice() + "\"},");
+				result.append("{\"value\": \"" + lists.get(i).getCount() + "\"},");
+				result.append("{\"value\": \"" + lists.get(i).getName() + "\"},");
+				result.append("{\"value\": \"" + lists.get(i).getSaveFileName() + "\"}],");
 			}
 			result.append("]}");
 			response.getWriter().write(result.toString());

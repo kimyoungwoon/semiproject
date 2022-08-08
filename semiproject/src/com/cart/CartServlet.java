@@ -100,7 +100,7 @@ public class CartServlet extends HttpServlet{
 				result.append("{\"value\": \"" + lists.get(i).getCount() + "\"},");
 				result.append("{\"value\": \"" + lists.get(i).getName() + "\"},");
 				result.append("{\"value\": \"" + lists.get(i).getPrice() + "\"},");
-				result.append("{\"value\": \"" + cp + "/img/pds/" + lists.get(i).getSaveFileName() + "\"}],");
+				result.append("{\"value\": \"" + cp + "/img/pds/" + lists.get(i).getSaveFileName() + "\"}]}");
 				
 			}
 			result.append("]}");
@@ -111,14 +111,12 @@ public class CartServlet extends HttpServlet{
 			//			HttpSession session = request.getSession();
 			//			String memberNum = (String)session.getAttribute("id");
 
-			
 			System.out.println("여기 아니냐??");
 			StringBuffer result = new StringBuffer("");
 			result.append("{\"result\":\"" + String.valueOf(dao.getDataCount(memberNum)) + "\"}");
 			System.out.println(result);
 			response.getWriter().write(result.toString());
 		}
-		
 		else if(uri.indexOf("deleteCart.do") != -1){
 			//			로그인 구현 후 id를 세션에 담아서 사용.
 			//			HttpSession session = request.getSession();

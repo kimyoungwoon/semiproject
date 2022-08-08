@@ -1,4 +1,16 @@
 <%@include file = "payment/header.jsp"  %>
+<%@ page contentType="text/html; charset=UTF-8"%>
+
+
+<script type="text/javascript">
+
+//제품 사진 누르면 상세페이지로 이동
+function goProductDetail(productNum) {
+	console.log("하이"+ productNum);
+	location.href = "../pdetail/pdetail.do?productNum=" + productNum;
+}
+
+</script>
 
 <body>  
     <!-- Header Section End -->
@@ -216,9 +228,9 @@
                                 <form action="document.sortForm" >
                                     <p>Sort by Price:</p>
                                     <select onchange="location.href=this.value">
-                                        <option value="http://192.168.16.6:8080<%=cp%>/shopping/list.do">New</option>
-                                        <option value="http://192.168.16.6:8080<%=cp%>/shopping/listsortlow.do?sort=1">Low To High</option>
-                                        <option value="http://192.168.16.6:8080<%=cp%>/shopping/listsorthigh.do?sort=2">High To Low</option>
+                                        <option value="http://localhost:8080<%=cp%>/shopping/list.do">New</option>
+                                        <option value="http://localhost:8080<%=cp%>/shopping/listsortlow.do?sort=1">Low To High</option>
+                                        <option value="http://localhost:8080<%=cp%>/shopping/listsorthigh.do?sort=2">High To Low</option>
                                     </select>
                                 </form>    
                                 </div>
@@ -230,15 +242,17 @@
                     	<c:forEach var="dto" items="${lists}">
                         <div class="col-lg-4 col-md-6 col-sm-6">
                             <div class="product__item">
-                                <div class="product__item__pic set-bg" data-setbg="${imagePath }/${dto.saveFileName}">
-                                
+                                <div class="product__item__pic set-bg" data-setbg="${imagePath }/${dto.saveFileName}"
+                                onclick = "goProductDetail('${dto.num}');" style="cursor:pointer;">
+                                 
                                     <ul class="product__hover">
                                         <li><a href="#"><img src="<%=cp%>/img/icon/heart.png" alt=""></a></li>
-                                        <li><a href="#"><img src="<%=cp%>/img/icon/compare.png" alt=""> <span>Compare</span></a>
-                                        </li>
-                                        <li><a href="#"><img src="<%=cp%>/img/icon/search.png" alt=""></a></li>
+                                        <%-- <li><a href="#"><img src="<%=cp%>/img/icon/compare.png" alt=""> <span>Compare</span></a>
+                                        </li> --%>
+                                       <%--  <li><a href="#"><img src="<%=cp%>/img/icon/search.png" alt=""></a></li> --%>
                                     </ul>
                                 </div>
+                                
                                 <div class="product__item__text">
                                     <h6>${dto.name }</h6>
                                     <a href="<%=cp %>/shopping/addCart.do?productNum=${dto.num}" class="add-cart">+ Add To Cart</a>

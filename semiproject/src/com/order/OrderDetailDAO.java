@@ -109,10 +109,9 @@ public class OrderDetailDAO {
 	public List<OrderDetailDTO> getOrderDetailList(int pMemberNum, int pOrderNum) {
 		lists = new ArrayList<OrderDetailDTO>();
 		try {
+			sql = "select membernum, ordernum, productnum, p.price, count, p.name, p.savefilename "
+			+ "from order_detail d, product p where membernum = ? and ordernum = ? and p.num = d.productnum";
 			
-			sql = "select memberNum, orderNum, productNum, count from order_detail "
-					+ "where membernum = ? and orderNum = ?";
-
 			pstmt = conn.prepareStatement(sql);
 			
 			pstmt.setInt(1, pMemberNum);
@@ -126,7 +125,10 @@ public class OrderDetailDAO {
 				dto.setMembernum(rs.getInt(1));
 				dto.setOrdernum(rs.getInt(2));
 				dto.setProductnum(rs.getInt(3));
-				dto.setCount(rs.getInt(4));
+				dto.setPrice(rs.getInt(4));
+				dto.setCount(rs.getInt(5));
+				dto.setName(rs.getString(6));
+				dto.setSaveFileName(rs.getString(7));
 				
 				lists.add(dto);
 			}

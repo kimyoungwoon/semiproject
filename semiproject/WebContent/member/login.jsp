@@ -14,7 +14,7 @@
 
 <%@include file = "../payment/footer.jsp"  %>
 <link rel="stylesheet" href="<%=cp %>/css/loginstyle.css">
-
+<script type="text/javascript" src="<%=cp %>/member/js/util.js"></script>
 
 <script type="text/javascript">
 $(document).ready(function() {
@@ -76,6 +76,7 @@ $(document).ready(function() {
 
 			<form id="id_register" name="regiForm" method="post" class="input-group">
 				<input type="text" class="input-field" placeholder="User Id" name="reg_id" value="${checkid }" required> 
+
 					<input type="password" class="input-field" placeholder="Enter Password" name="reg_pw" required> 
 					<input type="text" class="input-field" placeholder="Your Name" name="reg_name" required> 
 					<input type="date" class="input-field" placeholder="YYYY-MM-DD" name="reg_birth" required>

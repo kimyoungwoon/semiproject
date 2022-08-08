@@ -3,12 +3,21 @@ package com.pdetail;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
 
 import com.pdetail.PdetailDTO;
+import com.shop.ProductDTO;
 
 public class PdetailDAO {
 
 	private Connection conn;
+	
+	private PreparedStatement pstmt = null;
+	private ResultSet rs = null;
+	private String sql;
+	List<PdetailDTO> lists = null;
+	PdetailDTO dto = null;
 	
 	public PdetailDAO(Connection conn) {
 		this.conn = conn;
@@ -16,11 +25,7 @@ public class PdetailDAO {
 	
 	//입력
 	public int insertData(int mnum,int pnum,int count) {
-		
 		int result = 0;
-		PreparedStatement pstmt = null;
-		String sql;
-		
 		try {
 			
 			sql = "insert into cart_product (membernum,productnum,count) ";
@@ -47,15 +52,9 @@ public class PdetailDAO {
 	//num으로 한개의 데이터 가져오기
 	public PdetailDTO getReadData(int num) {
 
-		PdetailDTO dto = null;
-		
-		PreparedStatement pstmt = null;
-		ResultSet rs = null;
-		String sql;
-
 		try {
 			//num으로 select 해온다
-			sql = "select num,name,price,tag ";
+			sql = "select num,name,price,tag,brand ";
 			sql+= "from product where num=?";
 
 			pstmt = conn.prepareStatement(sql);
@@ -72,6 +71,7 @@ public class PdetailDAO {
 				dto.setName(rs.getString("name"));
 				dto.setPrice(rs.getInt("price"));
 				dto.setTag(rs.getInt("tag"));
+				dto.setBrand(rs.getInt("brand"));
 				
 			}
 			
@@ -85,4 +85,132 @@ public class PdetailDAO {
 		return dto;
 	
 	}
+
+
+	//사이즈
+	public int sizeCart(int num) {
+		
+		int result = 0;
+		
+		try {
+			
+			sql = "select name from psize where num = ?";
+			
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setInt(1, num);
+			
+			rs = pstmt.executeQuery();
+			
+			pstmt.close();
+			rs.close();
+			
+		} catch (Exception e) {
+			System.out.println(e.toString());
+		}
+		return result;
+		
+	}
+	
+	//컬러
+	public int colorCart(int num) {
+		
+		int result = 0;
+		
+		try {
+			
+			sql = "select name from color where num = ?";
+			
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setInt(1, num);
+			
+			rs = pstmt.executeQuery();
+			
+			pstmt.close();
+			rs.close();
+			
+		} catch (Exception e) {
+			System.out.println(e.toString());
+		}
+		return result;
+		
+	}
+
 }
+
+//	//사이즈 카트에 넘겨주기
+//	public List<PdetailDTO> sizeOption(int size,int startnum,int endnum) {
+//
+//		lists = new ArrayList<PdetailDTO>();
+//
+//		try {
+//			
+//			sql =  "select ? from psize where rnum>=? and rnum<=?";
+//
+//			pstmt = conn.prepareStatement(sql);
+//
+//			pstmt.setInt(1, size);
+//			pstmt.setInt(2, startnum);
+//			pstmt.setInt(3, endnum);
+//
+//			rs = pstmt.executeQuery();
+//
+//			while(rs.next()) {
+//
+//				dto = new PdetailDTO();
+//				dto.setSize(rs.getInt("sizenum"));
+//
+//				lists.add(dto);
+//
+//			}
+//
+//			rs.close();
+//			pstmt.close();
+//
+//
+//		} catch (Exception e) {
+//			System.out.println(e.toString());
+//		}
+//
+//		return lists;
+//	}
+//	
+//	//컬러 카트에 넘겨주기
+//	public List<PdetailDTO> colorOption(int color,int startnum,int endnum) {
+//
+//		lists = new ArrayList<PdetailDTO>();
+//
+//		try {
+//			
+//			sql =  "select ? from color where rnum>=? and rnum<=?";
+//
+//			pstmt = conn.prepareStatement(sql);
+//
+//			pstmt.setInt(1, color);
+//			pstmt.setInt(2, startnum);
+//			pstmt.setInt(3, endnum);
+//
+//			rs = pstmt.executeQuery();
+//
+//			while(rs.next()) {
+//
+//				dto = new PdetailDTO();
+//				dto.setColor(rs.getInt("colornum"));
+//
+//				lists.add(dto);
+//
+//			}
+//
+//			rs.close();
+//			pstmt.close();
+//
+//
+//		} catch (Exception e) {
+//			System.out.println(e.toString());
+//		}
+//		
+//		return lists;
+//		
+//	}	
+//}

@@ -85,7 +85,7 @@
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>PdetailServlet</servlet-name>
-		<url-pattern>/pDetail/*</url-pattern>
+		<url-pattern>/pdetail/*</url-pattern>
 	</servlet-mapping>
 	
  <servlet>

@@ -144,7 +144,7 @@ function deleteCartProduct(arg, productNum) {
 
 //nav 카트 갯수 처리
 function countCart() {
-	countCartRequest.open("Post", "http://192.168.16.6:8080/semiproject/cart/countCart.do", true);
+	countCartRequest.open("Post", "http://localhost:8080/semiproject/cart/countCart.do", true);
 	countCartRequest.onreadystatechange = function() {
 		if (countCartRequest.readyState == 4 && countCartRequest.status == 200) {
 			var object = eval("(" + countCartRequest.responseText + ")");

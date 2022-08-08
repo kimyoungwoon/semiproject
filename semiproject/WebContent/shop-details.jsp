@@ -1,47 +1,9 @@
-<%@include file="payment/header.jsp"%>
+
+
+
+<%@include file = "payment/header.jsp"  %>
+<script type="text/javascript" src="<%=cp %>/payment/shop-details.js"></script>
 <%@ page contentType="text/html; charset=UTF-8"%>
-
-<link rel="stylesheet" type="text/css"
-	href="<%=cp%>/css/detailspage.css" />
-
-<script type="text/javascript">
-
-	function sendIt() {
-		
-		var f = document.myForm;
-		
-		str= f.name.value;
-		str = str.trim();
-		if(!str) {
-			alert("\n이름을 입력하세요.")
-			f.name.focus();
-			return;
-		}		
-		f.name.value = str;
-		
-		str= f.subject.value;
-		str = str.trim();
-		if(!str) {
-			alert("\n제목을 입력하세요.")
-			f.subject.focus();
-			return;
-		}
-		f.subject.value = str;
-		
-		str= f.content.value;
-		str = str.trim();
-		if(!str) {
-			alert("\n내용을 입력하세요.")
-			f.content.focus();
-			return;
-		}		
-		f.content.value = str;
-		
-		f.action = "<%=cp%>
-	/review/write_ok.do";
-		f.submit();
-	}
-</script>
 
 <body>
 	<!-- Header Section End -->
@@ -409,7 +371,6 @@
 	<br />
 	<br />
 
-
 	<!-- Related Section Begin -->
 	<section class="related spad">
 		<div class="container">
@@ -642,7 +603,9 @@
 	</div>
 	<!-- Search End -->
 
+
 	<%@include file="payment/footer.jsp"%>
+
 </body>
 
 </html>

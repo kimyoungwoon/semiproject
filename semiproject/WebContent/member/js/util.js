@@ -37,3 +37,64 @@ function isValidDate(year, month, day) {
        return false;
      return true;
 }
+
+//isCapsLockOn(event) {
+//    var infoText = tAlertCPW;
+//    console.log(typeof event.key);
+//    //여기가 문자를 클릭했을 때만 cap록 눌렸따고 경고가 나와야함
+//    if (event.key == "CapsLock") {
+//        //네이버와 동일한 구현을 위한 코드
+//
+//        infoText.innerText = EMPTY_STRING;
+//        return;
+//    }
+//    infoText.style = "display: default; color: red";
+//
+//    if (event.getModifierState("CapsLock")) {
+//        infoText.innerText = "Caps Lock 이 켜져 있습니다.";
+//    } else {
+//        infoText.innerText = EMPTY_STRING;
+//    }
+//}
+
+
+
+function checkID(event) {
+	console.log("들어오나");
+    pInputID = tInputID;
+    infoText = tAlertID;
+    
+    let regID = $("#reg_id");
+
+    infoText.style = "display: default; color: red";
+    // var inputText = String(document.getElementById("inputbox_ID").value);
+    const regex = /^[0-9a-z]{1}[0-9a-z_-]{4,19}$/;
+
+    if (pInputID.value.length == eCheckResult.EMPTY) {
+        infoText.innerText = "필수 정보입니다.";
+    } else if (/*db적용시 중복값 체크*/ null) {
+        // "이미 사용중이거나 탈퇴한 아이디입니다."
+
+        //트리거 하나 만들어서 삭제되는 아이디를 다른 테이블에 저장해두자.
+        //그래서 그걸 가지고 탈퇴한 아이디도 체크해보자.
+
+        alert("중복값 체크");
+    } else if (!regex.test(pInputID.value)) {
+        infoText.innerText = "5~20자의 영문 소문자, 숫자와 특수기호(_),(-)만 사용 가능합니다.";
+    } else {
+        infoText.style = "display: default; color: green";
+        infoText.innerText = "멋진 아이디네요!";
+        return true;
+    }
+//
+//    return false;
+//    // 아이디의 입력 조건
+//    // 1. 형식이 맞지 않을 때
+//    //  -5~20자의 영문 소문자, 숫자와 특수기호(_),(-)만 사용 가능합니다.
+//    // 2. 중복이거나 탈퇴한 아이디일 때
+//    // 	-이미 사용중이거나 탈퇴한 아이디입니다.
+//    // 3. 사용 가능할 때
+//    // 	-멋진 아이디네요!
+//    // 4. 포커스가 왔다가 나갔는데 아무 값이 없을 때
+//    //  -필수 정보입니다.
+}
