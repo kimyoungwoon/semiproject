@@ -313,7 +313,7 @@ public class ProductDAO {
 	public int insertCart(int memberNum,int productNum) {
 		
 		int result = 0;
-
+		
 		try {
 			sql = "select count from cart_product where membernum = ? and productnum = ?";
 
