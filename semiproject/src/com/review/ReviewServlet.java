@@ -10,9 +10,11 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
+import com.util.CustomInfo;
 import com.util.DBConn;
 import com.util.FileManager;
 import com.util.MyPage;
@@ -64,27 +66,45 @@ public class ReviewServlet extends HttpServlet {
 		} else if (uri.indexOf("write_ok.do") != -1) {
 
 			// 파일업로드 페이지 호출(DAO실행)
-			String encType = "UTF-8";
-			int maxSize = 10 * 1024 * 1024;
+						String encType = "UTF-8";
+						int maxSize = 10 * 1024 * 1024;
 
-			// 물리적 파일 업로드
-			MultipartRequest mr = new MultipartRequest(req, path, maxSize, encType, new DefaultFileRenamePolicy());
-			
-				ReviewDTO dto = new ReviewDTO();
-				int maxNum = dao.getMaxNum();
+						// 물리적 파일 업로드
+						MultipartRequest mr = new MultipartRequest(req, path, maxSize, encType, new DefaultFileRenamePolicy());
+						
+							ReviewDTO dto = new ReviewDTO();
+							int maxNum = dao.getMaxNum();
+							
+							
+							String str = req.getParameter("detailNum");
+							
+							if(str==null || str.equals("")) {//Null 값이왔을때 처리
+								str = "0";
+							}
+							
+							int detailNum = Integer.parseInt(str);//해당상세페이지로 돌아갈수있게 넘값을받음
+							
+							HttpSession session = req.getSession();
+							CustomInfo info = (CustomInfo)session.getAttribute("customInfo");
+							
+							String subject = mr.getParameter("content");//제목값을 받기위한 스트링변수 
+							
+							if(subject==null || subject.equals("") || subject.length()<5) {
+								subject = "즐거운쇼핑";
+							}
+							
+							
+							dto.setNum(maxNum + 1);
+							dto.setName(info.getName());				
+							dto.setSubject(subject.substring(0, 5));
+							dto.setContent(mr.getParameter("content"));
+							dto.setSaveFileName(mr.getFilesystemName("imageFile"));
+							
+							dao.insertData(dto);
 
-				dto.setNum(maxNum + 1);
-				dto.setName(mr.getParameter("name"));				
-				dto.setSubject(mr.getParameter("subject"));
-				dto.setContent(mr.getParameter("content"));
-				dto.setSavepath(mr.getParameter("savepath"));
-				dto.setSaveFileName(mr.getFilesystemName("imagefile"));
-				
-				dao.insertData(dto);
-
-			
-			url = cp + "/review/list.do";
-			resp.sendRedirect(url);
+						
+						url = cp + "/detail/review.do";
+						resp.sendRedirect(url);
 
 		} else if (uri.indexOf("list.do") != -1) {
 
@@ -129,7 +149,7 @@ public class ReviewServlet extends HttpServlet {
 			req.setAttribute("dataCount", dataCount);	
 			
 			// list.jsp 페이지로 포워드
-			url = "/writing/reviewer/guest.jsp";
+			url = "/shop-details.jsp";
 			forward(req, resp, url);
 
 		} else if (uri.indexOf("delete.do") != -1) {
