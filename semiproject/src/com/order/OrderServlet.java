@@ -192,6 +192,38 @@ public class OrderServlet extends HttpServlet{
 			result.append("]}");
 			response.getWriter().write(result.toString());
 		}
+		else if(uri.indexOf("orderDetail.do") != -1){
+
+			String orderNum = request.getParameter("orderNum");
+			System.out.println(orderNum);
+			
+			url = "/orderDetail.jsp";
+			myForward(request, response, url);
+			
+//			url = cp + "/index.jsp";
+//			response.sendRedirect(url);
+			
+		}
+		else if(uri.indexOf("orderDetailList.do") != -1){
+			
+			int orderNum = Integer.parseInt(request.getParameter("orderNum"));
+			List<OrderDetailDTO> lists = orderDetailDAO.getOrderDetailList(memberNum, orderNum);
+			
+			
+			StringBuffer result = new StringBuffer("");
+			result.append("{\"result\":[");
+			for(int i = 0; i < lists.size(); i++) {
+				result.append("[{\"value\": \"" + lists.get(i).getMembernum() + "\"},");
+				result.append("{\"value\": \"" + lists.get(i).getOrdernum() + "\"},");
+				result.append("{\"value\": \"" + lists.get(i).getProductnum() + "\"},");
+				result.append("{\"value\": \"" + lists.get(i).getPrice() + "\"},");
+				result.append("{\"value\": \"" + lists.get(i).getCount() + "\"},");
+				result.append("{\"value\": \"" + lists.get(i).getName() + "\"},");
+				result.append("{\"value\": \"" + lists.get(i).getSaveFileName() + "\"}],");
+			}
+			result.append("]}");
+			response.getWriter().write(result.toString());
+		}
 		else if(uri.indexOf("deleteOrder.do") != -1){
 			//			로그인 구현 후 id를 세션에 담아서 사용.
 			//			HttpSession session = request.getSession();

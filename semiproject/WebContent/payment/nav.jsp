@@ -9,7 +9,7 @@
 	<div class="offcanvas-menu-wrapper">
 		<div class="offcanvas__option">
 			<div class="offcanvas__links">
-				<a href="#">Sign in</a> <a href="#">FAQs</a>
+				<a href="<%=cp %>/login/created.do">Sign in</a>
 			</div>
 			<div class="offcanvas__top__hover">
 				<span>Usd <i class="arrow_carrot-down"></i></span>
@@ -24,7 +24,7 @@
 			<a href="#" class="search-switch">
 			<img src="<%=cp%>/img/icon/search.png" alt=""></a> 
 			<a href="#"><img src="<%=cp%>/img/icon/heart.png" alt=""></a> 
-			<a href="#"><img src="<%=cp%>/img/icon/cart.png" alt=""> <span>5</span></a>
+			<a href="<%=cp %>/cart/cart.do" id = "o_menu_countCart"><img src="<%=cp%>/img/icon/cart.png" alt=""> <span>0</span></a>
 		</div>
 		<div id="mobile-menu-wrap"></div>
 		<div class="offcanvas__text">
@@ -75,14 +75,14 @@
 							<li ><a href="<%=cp %>/shopping/list.do">Shop</a></li>
 							<li><a href="#">Pages</a>
 								<ul class="dropdown">
-									<li><a href="./about.jsp">About Us</a></li>
-									<li><a href="./shop-details.jsp">Shop Details</a></li>
+									<li><a href="<%=cp %>/about.jsp">About Us</a></li>
+									<li><a href="<%=cp %>/shop-details.jsp">Shop Details</a></li>
 									<li><a href="<%=cp %>/cart/cart.do">Shopping Cart</a></li>
 									<li><a href="<%=cp %>/order/orderHistoryList.do">Order History</a></li>
-									<li><a href="./blog-details.jsp">Blog Details</a></li>
+									<li><a href="<%=cp %>/blog-details.jsp">Blog Details</a></li>
 								</ul></li>
-							<li><a href="./blog.jsp">Blog</a></li>
-							<li><a href="./contact.jsp">Contacts</a></li>
+							<li><a href="<%=cp %>/blog.jsp">Blog</a></li>
+							<li><a href="<%=cp %>/contact.jsp">Contacts</a></li>
 						</ul>
 					</nav>
 				</div>
@@ -91,7 +91,7 @@
 						<a href="#" class="search-switch">
 						<img src="<%=cp%>/img/icon/search.png" alt=""></a> 
 						<a href="<%=cp %>/nav/wishList.do"><img src="<%=cp%>/img/icon/heart.png" alt=""></a> 
-						<a href="<%=cp %>/cart/cart.do" id = "h_menu_countCart"><img src="<%=cp%>/img/icon/cart.png" alt=""><span>5</span></a>
+						<a href="<%=cp %>/cart/cart.do" id = "h_menu_countCart"><img src="<%=cp%>/img/icon/cart.png" alt=""><span>0</span></a>
 					</div>
 				</div>
 			</div>

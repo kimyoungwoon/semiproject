@@ -51,7 +51,8 @@ num number(20) PRIMARY key,
 name varchar2(20),
 subject varchar2(30),
 content varchar2(4000),
-savePath date 
+saveFileName varchar2(50),
+savePath date
 );
 
 
