@@ -23,21 +23,49 @@ public class ListReturnDAO {
 	
 	//출력
 	//페이징처리된 사용자용 전체리스트
-	public List<ProductDTO> product_getList(int start,int end){
+	public List<ProductDTO> product_getList(int start,int end,String searchValue){
 
 		lists = new ArrayList<ProductDTO>();
 
 		try {
-
-			sql = "select * from (select rownum rnum,data.* "; 
-			sql +="from (select num,name,price,category,brand,saveFileName ";
-			sql +="from product order by num desc) data) ";
-			sql +="where rnum >= ? and rnum <= ?";
-
+			
+			searchValue = "%" + searchValue + "%";
+			
+			sql = "SELECT * FROM (";
+			sql+= "SELECT ROWNUM RNUM, DATA.* FROM (";
+			sql+= "SELECT NUM,NAME,PRICE,CATEGORY,BRAND,SAVEFILENAME,SNAME,SNUM,CNAME,CNUM,TNAME,TNUM,CTNAME,CTNUM,BRNAME,BRNUM FROM (";
+			sql+= "SELECT A.NUM,A.NAME,A.PRICE,A.CATEGORY,A.BRAND,SAVEFILENAME,";
+			sql+= "B.NAME SNAME,B.NUM SNUM,C.NAME CNAME,B.NUM CNUM,D.NAME TNAME,D.NUM TNUM,";
+			sql+= "E.NAME CTNAME,E.NUM CTNUM,F.NAME BRNAME,F.NUM BRNUM ";
+			sql+= "FROM PRODUCT A, PSIZE B, COLOR C, TAG D, CATEGORY E, BRAND F ";
+			sql+= "WHERE A.NUM = B.NUM(+) ";
+			sql+= "AND A.NUM = C.NUM(+) ";
+			sql+= "AND A.NUM = D.NUM(+) ";
+			sql+= "AND A.CATEGORY = E.NUM(+) ";
+			sql+= "AND A.BRAND = F.NUM(+) ";
+			sql+= "ORDER BY A.NUM) ";
+			sql+= "WHERE NAME LIKE ?";
+			sql+= "OR SNAME LIKE ? ";
+			sql+= "OR PRICE LIKE ? ";
+			sql+= "OR CNAME LIKE ? ";
+			sql+= "OR TNAME LIKE ? ";
+			sql+= "OR CTNAME LIKE ? ";
+			sql+= "OR BRNAME LIKE ? ";
+			sql+= "ORDER BY NUM DESC)DATA) ";
+			sql+= "WHERE RNUM>=? AND RNUM<=?";
+			
+			
 			pstmt = conn.prepareStatement(sql);
-
-			pstmt.setInt(1, start);
-			pstmt.setInt(2, end);
+			
+			pstmt.setString(1, searchValue);
+			pstmt.setString(2, searchValue);
+			pstmt.setString(3, searchValue);
+			pstmt.setString(4, searchValue);
+			pstmt.setString(5, searchValue);
+			pstmt.setString(6, searchValue);
+			pstmt.setString(7, searchValue);
+			pstmt.setInt(8, start);
+			pstmt.setInt(9, end);
 
 			rs = pstmt.executeQuery();
 
@@ -51,7 +79,7 @@ public class ListReturnDAO {
 				dto.setCategory(rs.getInt("category"));
 				dto.setBrand(rs.getInt("brand"));
 				dto.setSaveFileName(rs.getString("saveFileName"));
-
+				
 				lists.add(dto);
 
 			}
@@ -113,8 +141,8 @@ public class ListReturnDAO {
 		try {
 			//select * from (select rownum rnum,data.* from (select num,name,price,category,brand,pro_size,color,tag,saveFileName from product where category = 2 order by num desc) data) where rnum >= 1 and rnum <=1;
 			sql =  "select * from (select rownum rnum,data.* ";
-			sql+= "from (select num,name,price,category,brand,pro_size,";
-			sql+= "color,tag,saveFileName from product where category = ? order by num desc) ";
+			sql+= "from (select num,name,price,category,brand,";
+			sql+= "saveFileName from product where category = ? order by num desc) ";
 			sql+= "data) where rnum >= ? and rnum <=?";
 
 			pstmt = conn.prepareStatement(sql);
@@ -134,9 +162,6 @@ public class ListReturnDAO {
 				dto.setPrice(rs.getInt("price"));
 				dto.setCategory(rs.getInt("category"));
 				dto.setBrand(rs.getInt("brand"));
-				dto.setPro_size(rs.getInt("pro_size"));
-				dto.setColor(rs.getInt("color"));
-				dto.setTag(rs.getInt("tag"));
 				dto.setSaveFileName(rs.getString("saveFileName"));
 
 				lists.add(dto);
@@ -162,8 +187,8 @@ public class ListReturnDAO {
 		try {
 			//select * from (select rownum rnum,data.* from (select num,name,price,category,brand,pro_size,color,tag,saveFileName from product where category = 2 order by num desc) data) where rnum >= 1 and rnum <=1;
 			sql =  "select * from (select rownum rnum,data.* ";
-			sql+= "from (select num,name,price,category,brand,pro_size,";
-			sql+= "color,tag,saveFileName from product where brand = ? order by num desc) ";
+			sql+= "from (select num,name,price,category,brand,";
+			sql+= "saveFileName from product where brand = ? order by num desc) ";
 			sql+= "data) where rnum >= ? and rnum <=?";
 
 			pstmt = conn.prepareStatement(sql);
@@ -183,9 +208,6 @@ public class ListReturnDAO {
 				dto.setPrice(rs.getInt("price"));
 				dto.setCategory(rs.getInt("category"));
 				dto.setBrand(rs.getInt("brand"));
-				dto.setPro_size(rs.getInt("pro_size"));
-				dto.setColor(rs.getInt("color"));
-				dto.setTag(rs.getInt("tag"));
 				dto.setSaveFileName(rs.getString("saveFileName"));
 
 				lists.add(dto);
@@ -211,8 +233,8 @@ public class ListReturnDAO {
 			try {
 				//select * from (select rownum rnum,data.* from (select num,name,price,category,brand,pro_size,color,tag,saveFileName from product where category = 2 order by num desc) data) where rnum >= 1 and rnum <=1;
 				sql =  "select * from (select rownum rnum,data.* ";
-				sql+= "from (select num,name,price,category,brand,pro_size,";
-				sql+= "color,tag,saveFileName from product where price >= ? and price <= ? order by num desc) ";
+				sql+= "from (select num,name,price,category,brand,";
+				sql+= "saveFileName from product where price >= ? and price <= ? order by num desc) ";
 				sql+= "data) where rnum >= ? and rnum <=?";
 
 				pstmt = conn.prepareStatement(sql);
@@ -233,9 +255,6 @@ public class ListReturnDAO {
 					dto.setPrice(rs.getInt("price"));
 					dto.setCategory(rs.getInt("category"));
 					dto.setBrand(rs.getInt("brand"));
-					dto.setPro_size(rs.getInt("pro_size"));
-					dto.setColor(rs.getInt("color"));
-					dto.setTag(rs.getInt("tag"));
 					dto.setSaveFileName(rs.getString("saveFileName"));
 
 					lists.add(dto);
@@ -260,8 +279,8 @@ public class ListReturnDAO {
 			try {
 				//select * from (select rownum rnum,data.* from (select num,name,price,category,brand,pro_size,color,tag,saveFileName from product where category = 2 order by num desc) data) where rnum >= 1 and rnum <=1;
 				sql =  "select * from (select rownum rnum,data.* ";
-				sql+= "from (select num,name,price,category,brand,pro_size,";
-				sql+= "color,tag,saveFileName from product where price >= ? order by num desc) ";
+				sql+= "from (select num,name,price,category,brand,";
+				sql+= "saveFileName from product where price >= ? order by num desc) ";
 				sql+= "data) where rnum >= ? and rnum <=?";
 
 				pstmt = conn.prepareStatement(sql);
@@ -281,9 +300,6 @@ public class ListReturnDAO {
 					dto.setPrice(rs.getInt("price"));
 					dto.setCategory(rs.getInt("category"));
 					dto.setBrand(rs.getInt("brand"));
-					dto.setPro_size(rs.getInt("pro_size"));
-					dto.setColor(rs.getInt("color"));
-					dto.setTag(rs.getInt("tag"));
 					dto.setSaveFileName(rs.getString("saveFileName"));
 
 					lists.add(dto);

@@ -42,24 +42,26 @@ public class ReviewDAO {
 
 		return maxNum;
 	}
-	//2.입력
+
+	// 2.입력
 	public int insertData(ReviewDTO dto) {
-		
+
 		int result = 0;
 		PreparedStatement pstmt = null;
 		String sql;
 
 		try {
 
-			sql = "insert into review (num,name,subject,content,savepath) ";
-			sql += "values (?,?,?,?,sysdate) ";
+			sql = "insert into review (num,name,subject,content,saveFileName,savepath) ";
+			sql += "values (?,?,?,?,?,sysdate) ";
 
 			pstmt = conn.prepareStatement(sql);
-
+			
 			pstmt.setInt(1, dto.getNum());
-			pstmt.setString(2, dto.getName());
+			pstmt.setString(2, dto.getName());		
 			pstmt.setString(3, dto.getSubject());
 			pstmt.setString(4, dto.getContent());
+			pstmt.setString(5, dto.getSaveFileName());			
 
 			result = pstmt.executeUpdate();
 			pstmt.close();
@@ -69,23 +71,23 @@ public class ReviewDAO {
 		}
 		return result;
 	}
-	
-	//전체 데이터 조회
+
+	// 전체 데이터 조회
 	public List<ReviewDTO> getListData(int start, int end) {
-		
-		List<ReviewDTO> lists= new ArrayList<ReviewDTO>();
-		
+
+		List<ReviewDTO> lists = new ArrayList<ReviewDTO>();
+
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		String sql;
-		
-		try {			
-			sql = "select * from (";
-			sql+= "select rownum rnum,data.* from (";
-			sql+= "select num,name,to_char(savepath,'YYYY-MM-DD') savepath,";
-			sql+= "subject,content from review order by num desc) data ) ";
-			sql+= "where rnum >= ? and rnum <=?";
 
+		try {
+			sql = "select * from (";
+			sql += "select rownum rnum,data.* from (";
+			sql += "select num,name,to_char(savepath,'YYYY-MM-DD') savepath,";
+			sql += "subject,content,saveFileName from review order by num desc) data ) ";
+			sql += "where rnum >= ? and rnum <=?";
+			
 			pstmt = conn.prepareStatement(sql);
 
 			pstmt.setInt(1, start);
@@ -101,6 +103,7 @@ public class ReviewDAO {
 				dto.setSavepath(rs.getString("savepath"));
 				dto.setSubject(rs.getString("subject"));
 				dto.setContent(rs.getString("content"));
+				dto.setSaveFileName(rs.getString("saveFileName"));
 
 				lists.add(dto);
 
@@ -113,10 +116,10 @@ public class ReviewDAO {
 			System.out.println(e.toString());
 		}
 		return lists;
-		
+
 	}
-	
-	//전체데이터 갯수
+
+	// 전체데이터 갯수
 
 	public int getDataCount() {
 
@@ -129,12 +132,11 @@ public class ReviewDAO {
 		String sql;
 
 		try {
-						
 
 			sql = "select nvl(count(*),0) from review ";
-			
+
 			pstmt = conn.prepareStatement(sql);
-			
+
 			rs = pstmt.executeQuery();
 
 			if (rs.next()) {
@@ -149,31 +151,66 @@ public class ReviewDAO {
 		}
 		return totalDataCount;
 	}
-	
-	// �Խ��� ����
 
-			public int deleteData(int num) {
+	// num으로 조회한 데이터
+	public ReviewDTO getReadData(int num) {
 
-				int result = 0;
-				PreparedStatement pstmt = null;
-				String sql;
+		ReviewDTO dto = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String sql;
 
-				try {
+		try {
 
-					sql = "delete review where num=?";
+			sql = "select num,name,savePath,subject,content,saveFileName from review where num = ?";
 
-					pstmt = conn.prepareStatement(sql);
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, num);
+			rs = pstmt.executeQuery();
 
-					pstmt.setInt(1, num);
+			if (rs.next()) {
 
-					result = pstmt.executeUpdate();
-
-					pstmt.close();
-
-				} catch (Exception e) {
-					System.out.println(e.toString());
-				}
-				return result;
+				dto = new ReviewDTO();
+				dto.setNum(rs.getInt("num"));
+				dto.setName(rs.getString("name"));
+				dto.setSubject(rs.getString("subject"));
+				dto.setContent(rs.getString("content"));
+				dto.setSaveFileName(rs.getString("saveFileName"));
 
 			}
+			rs.close();
+			pstmt.close();
+
+		} catch (Exception e) {
+			System.out.println(e.toString());
+		}
+		return dto;
+	}
+
+	// 삭제
+
+	public int deleteData(int num) {
+
+		int result = 0;
+		PreparedStatement pstmt = null;
+		String sql;
+
+		try {
+
+			sql = "delete review where num=?";
+
+			pstmt = conn.prepareStatement(sql);
+
+			pstmt.setInt(1, num);
+
+			result = pstmt.executeUpdate();
+
+			pstmt.close();
+
+		} catch (Exception e) {
+			System.out.println(e.toString());
+		}
+		return result;
+
+	}
 }

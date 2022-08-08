@@ -2,29 +2,35 @@ package com.order;
 
 public class OrderHistoryDTO {
 
-	private int membernum;
-	private int ordernum;
-	private String orderdate;
+	private int memberNum;
+	private int orderNum;
+	private int paymentCost;
+	private String orderDate;
 	
-	public int getMembernum() {
-		return membernum;
-	}
-	public void setMembernum(int membernum) {
-		this.membernum = membernum;
-	}
 	
-	public int getOrdernum() {
-		return ordernum;
+	public int getMemberNum() {
+		return memberNum;
 	}
-	public void setOrdernum(int ordernum) {
-		this.ordernum = ordernum;
+	public void setMemberNum(int memberNum) {
+		this.memberNum = memberNum;
 	}
-	public String getOrderdate() {
-		return orderdate;
+	public int getOrderNum() {
+		return orderNum;
 	}
-	public void setOrderdate(String orderdate) {
-		this.orderdate = orderdate;
+	public void setOrderNum(int orderNum) {
+		this.orderNum = orderNum;
 	}
-
+	public int getPaymentCost() {
+		return paymentCost;
+	}
+	public void setPaymentCost(int paymentCost) {
+		this.paymentCost = paymentCost;
+	}
+	public String getOrderDate() {
+		return orderDate;
+	}
+	public void setOrderDate(String orderDate) {
+		this.orderDate = orderDate;
+	}
 	
 }

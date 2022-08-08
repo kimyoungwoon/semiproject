@@ -6,7 +6,8 @@ public class ReviewDTO {
 	private String name;
 	private String subject;
 	private String content;
-	private String savepath;		
+	private String savepath;
+	private String saveFileName;
 	public int getNum() {
 		return num;
 	}
@@ -37,6 +38,12 @@ public class ReviewDTO {
 	public void setSavepath(String savepath) {
 		this.savepath = savepath;
 	}
-
+	public String getSaveFileName() {
+		return saveFileName;
+	}
+	public void setSaveFileName(String saveFileName) {
+		this.saveFileName = saveFileName;
+	}
+	
 	
 }

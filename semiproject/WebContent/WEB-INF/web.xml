@@ -10,6 +10,16 @@
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
 
+	<!-- NavigationServlet -->
+	<servlet>
+		<servlet-name>navServlet</servlet-name>
+		<servlet-class>com.nav.NavigationServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>navServlet</servlet-name>
+		<url-pattern>/nav/*</url-pattern>
+	</servlet-mapping>
+
 	<!-- CartServlet -->
 	<servlet>
 		<servlet-name>cartServlet</servlet-name>
@@ -77,5 +87,22 @@
 		<servlet-name>PdetailServlet</servlet-name>
 		<url-pattern>/pDetail/*</url-pattern>
 	</servlet-mapping>
-
+	
+ <servlet>
+		<servlet-name>wishlistServlet</servlet-name>
+		<servlet-class>com.wishlist.wishlistServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>wishlistServlet</servlet-name>
+		<url-pattern>/wishlist/*</url-pattern>
+	</servlet-mapping>
+	
+  <servlet>
+    <servlet-name>adminServlet</servlet-name>
+    <servlet-class>com.shop.AdminServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>adminServlet</servlet-name>
+    <url-pattern>/setting/*</url-pattern>
+  </servlet-mapping>	
 </web-app>

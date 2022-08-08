@@ -1,26 +1,5 @@
+<%@include file = "/payment/header.jsp"  %>
 <%@ page contentType="text/html; charset=UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%
-	request.setCharacterEncoding("UTF-8");
-	String cp= request.getContextPath();
-%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Male-Fashion | Template</title>
-
-    <!-- Css Styles -->
-    <link rel="stylesheet" type="text/css" href="<%=cp %>/writing/reviewer/data/style.css"/>
-	<link rel="stylesheet" type="text/css" href="<%=cp %>/writing/reviewer/data/newstyle.css"/>
-    <link rel="stylesheet" href="<%=cp%>/css/bootstrap.min.css" type="text/css">
-    <link rel="stylesheet" href="<%=cp%>/css/font-awesome.min.css" type="text/css">
-    <link rel="stylesheet" href="<%=cp%>/css/elegant-icons.css" type="text/css">
-    <link rel="stylesheet" href="<%=cp%>/css/magnific-popup.css" type="text/css">
-    <link rel="stylesheet" href="<%=cp%>/css/nice-select.css" type="text/css">
-    <link rel="stylesheet" href="<%=cp%>/css/owl.carousel.min.css" type="text/css">
-    <link rel="stylesheet" href="<%=cp%>/css/slicknav.min.css" type="text/css">
-    <link rel="stylesheet" href="<%=cp%>/css/style.css" type="text/css">
 <script type="text/javascript">
 
 	function sendIt() {
@@ -59,7 +38,7 @@
 	}
 
 </script>
-</head>
+
 <body>
 
 <section class="related spad">
@@ -75,7 +54,7 @@
 
 
 <div class="container">	
-		<form action="" method="post" name="myForm">					       
+		<form action="" method="post" name="myForm" enctype="multipart/form-data">					       
 		          <div class="col-lg-12">
 		               <h4 class="related-title">Please Write a Review</h4>
 		          </div>			       						
@@ -90,6 +69,12 @@
 						<td align="center" width="100" bgcolor="#FCF8E8">Title</td>
 						<td align="left" style="padding-left: 5px;" bgcolor="#FCF8E8">
 						<input type="text" name="subject" size="54" class="txtField"/>
+						</td>
+					</tr>
+					<tr height="60">
+						<td align="center" width="100" bgcolor="#FCF8E8">imageFile</td>
+						<td align="left" style="padding-left: 5px;" bgcolor="#FCF8E8">
+						<input type="file" name="imagefile" size="54" class="txtField"/>
 						</td>
 					</tr>						
 					<tr height="100">
@@ -121,15 +106,33 @@
 							<input type="button" class="btn2" value="Delete" 
 							onclick="javascript:location.href='<%=cp%>/review/delete.do?num=${dto.num }';"/></tr>
 							<%-- javascript:location.href='<%=cp%>/guest/delete.jsp?num=<%=dto2.getNum()%>'; --%>
-						<tr height="40"><td align="left" bgcolor="#ffffff">&nbsp;${dto.content }<br/></td>
+						<tr height="250">
+						<td align="center" width="190">
+						<input type="hidden" value="${dto.num }" name="num" />
+						<a href="${imagePath }/${dto.saveFileName }">
+						<img src="${imagePath }/${dto.saveFileName}" width="180" height="180"><br/></a>
+						<td align="right" bgcolor="#ffffff">&nbsp;${dto.content }</td>						
 						</tr>					
 					</c:forEach>
-					</table>			
+					
+					</table>
+					
 					<table style="margin: auto;">
+					<br/><br/>
 					<tr>
-						<td style="margin: auto;">${pageIndexList }</td>
+						<td style="margin: auto;">
+						<p>
+						<c:if test="${dataCount!=0 }">
+							${pageIndexList }
+						</c:if>
+						<c:if test="${dataCount==0 }">
+							There is no registered post.
+						</c:if>
+						</p>
+						</td>
 					</tr>
-			</table>				
+					</table>		
+									
 		</form>
 		
 </div>

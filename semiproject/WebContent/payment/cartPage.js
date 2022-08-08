@@ -1,12 +1,13 @@
 var connectRequest = new XMLHttpRequest();
 var updateRequest = new XMLHttpRequest();
 var deleteRequest = new XMLHttpRequest();
+var countCartRequest = new XMLHttpRequest();
 var arrProduct = [];
 
 function registerFunction() {
     //여기도 마찬가지로 요청할때는 session을 이용해서 하면 됨.
     //지금 당장은 테스트로 1
-    connectRequest.open("Post", "./cart/shopCart.do?memberNum=" + eURI("1"), true);
+    connectRequest.open("Post", "./cart/cartList.do?memberNum=" + eURI("1"), true);
     connectRequest.onreadystatechange = successConnect;
     connectRequest.send(null);
 }
@@ -26,13 +27,13 @@ function successConnect() {
                 "'/>" +
                 "<td class='product__cart__item'>" +
                 "<div class='product__cart__item__pic'>" +
-                "<img src='/semiproject/img/shopping-cart/cart-1.jpg'>" +
+                "<img src='" + result[i][5].value +"' style='width:90px; height:90px;'>" +
                 "</div>" +
                 "<div class='product__cart__item__text'>" +
                 "<h6>" +
                 result[i][3].value +
                 "</h6>" +
-                "<h5>₩ " +
+                "<h5>&#8361; " +
                 Number(result[i][4].value).toLocaleString("ko-KR") +
                 "</h5>" +
                 "</div>" +
@@ -56,7 +57,7 @@ function successConnect() {
                 "</div>" +
                 "</div>" +
                 "</td>" +
-                "<td class='cart__price'>₩ " +
+                "<td class='cart__price'>"+ "&#8361; " +
                 (Number(result[i][2].value) * Number(result[i][4].value)).toLocaleString("ko-KR") +
                 "</td>" +
                 "<td class='cart__close'>" +
@@ -101,7 +102,7 @@ function operationCount(thisNum, inc = null) {
 
 //각 상품별 소계
 function changeSubTotal(thisNum, price, count) {
-    thisNum.text("₩ " + (price * count).toLocaleString("ko-KR") );
+    thisNum.html("&#8361; " + (price * count).toLocaleString("ko-KR") );
 
     //여기도 마찬가지로 요청할때는 session을 이용해서 하면 됨.
     //지금 당장은 테스트로 1
@@ -120,8 +121,8 @@ function cartTotal(discount = 1) {
     
     totalPrice = totalPrice.toLocaleString("ko-KR");
     originTotal = originTotal.toLocaleString("ko-KR");
-    $("#beforeDiscount").text("₩ " + originTotal);
-    $("#actualPayment").text("₩ " + totalPrice);
+    $("#beforeDiscount").html("&#8361; " + originTotal);
+    $("#actualPayment").html("&#8361; " + totalPrice);
 }
 
 //상품 개수 정보 수정
@@ -138,6 +139,22 @@ function deleteCartProduct(arg, productNum) {
     deleteRequest.send(null);
     $(arg).closest("tr").remove();
     cartTotal();
+    countCart();
+}
+
+//nav 카트 갯수 처리
+function countCart() {
+	countCartRequest.open("Post", "http://localhost:8080/semiproject/cart/countCart.do", true);
+	countCartRequest.onreadystatechange = function() {
+		if (countCartRequest.readyState == 4 && countCartRequest.status == 200) {
+			var object = eval("(" + countCartRequest.responseText + ")");
+			var result = object.result;
+			
+			var signText = $('#h_menu_countCart').children('span');
+			signText.text(result);
+		}
+	};
+	countCartRequest.send(null);
 }
 
 //쿠폰 사용
@@ -154,22 +171,21 @@ function useCoupon(apply) {
 //폼 이동
 function sendIt(){
 	var f = document.cartForm;
-	var discountCost = $("#actualPayment").text().replaceAll(/\D/gm, "");
+	var actualPayment = $("#actualPayment").text().replaceAll(/\D/gm, "");
 	
-	f.discountCost.value = discountCost;
+	f.discountCost.value = actualPayment;
 	f.method = "post"
 	f.action = "/semiproject/order/payment.do";
 	f.submit();
 }
 
-
 function removeCandWon(str) {
     return str.slice(2).replaceAll(",", "");
 }
 
-window.onload = function () {
-    registerFunction();
-};
+window.addEventListener("load", function () {
+	registerFunction();
+});
 
 function eURI(component) {
     return encodeURIComponent(component);

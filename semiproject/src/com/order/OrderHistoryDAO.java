@@ -53,6 +53,39 @@ public class OrderHistoryDAO {
 
 		return maxNum;
 	}
+	
+	public int getMaxNum(int pMemberNum)
+	{
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String sql;
+		int maxNum = 0;
+
+		try {
+
+			sql = "select nvl(max(ordernum), 0) from order_history where membernum = ?";
+
+			pstmt = conn.prepareStatement(sql);
+
+			pstmt.setInt(1, pMemberNum);
+			
+			rs = pstmt.executeQuery();
+
+
+			if(rs.next()) {
+				maxNum = rs.getInt(1);
+			}
+
+			rs.close();
+			pstmt.close();
+
+
+		} catch (Exception e) {
+			System.out.println(e.toString());
+		}
+
+		return maxNum;
+	}
 
 	public int getDataCount() {
 		int dataCount = 0;
@@ -107,25 +140,25 @@ public class OrderHistoryDAO {
 	}
 
 	//장바구니로 들어갔을 때 해당 회원이 추가한 상품 목록을 보여주기 위함.
-	public List<OrderHistoryDTO> getCartList(int pMemberNum, int pOrderNum) {
+	public List<OrderHistoryDTO> getCartList(int pMemberNum) {
 		lists = new ArrayList<OrderHistoryDTO>();
 		try {
 
-			sql = "select memberNum, orderNum, orderDate from ";
-			sql+= "order_history where memberNum = ? and orderNum = ?";
+			sql = "select memberNum, orderNum, paymentCost, to_char(orderDate, 'YYYY-MM-DD') from ";
+			sql+= "order_history where memberNum = ? order by orderNum asc";
 
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, pMemberNum);
-			pstmt.setInt(2, pOrderNum);
 
 			rs = pstmt.executeQuery();
 			
 			while(rs.next()) {
 				dto = new OrderHistoryDTO();
 
-				dto.setMembernum(rs.getInt(1));
-				dto.setOrdernum(rs.getInt(2));
-				dto.setOrderdate(rs.getString(3));
+				dto.setMemberNum(rs.getInt(1));
+				dto.setOrderNum(rs.getInt(2));
+				dto.setPaymentCost(rs.getInt(3));
+				dto.setOrderDate(rs.getString(4));
 				
 				lists.add(dto);
 			}

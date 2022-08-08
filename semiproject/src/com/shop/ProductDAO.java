@@ -119,16 +119,43 @@ public class ProductDAO {
 	
 	
 	//페이징시 필요한 데이타카운트값 구하기
-	public int getDataCount() {
+	public int getDataCount(String searchValue) {
 		
 		int dataCount = 0;
 		
 		try {
 			
-			sql = "select nvl(count(*),0) from product";
+			searchValue = "%" + searchValue + "%";
+			
+			sql = "SELECT NVL(COUNT(*),0) FROM (";
+			sql+= "SELECT NUM,NAME,PRICE,CATEGORY,BRAND,SAVEFILENAME,SNAME,SNUM,CNAME,CNUM,TNAME,TNUM,CTNAME,CTNUM,BRNAME,BRNUM FROM (";
+			sql+= "SELECT A.NUM,A.NAME,A.PRICE,A.CATEGORY,A.BRAND,SAVEFILENAME,";
+			sql+= "B.NAME SNAME,B.NUM SNUM,C.NAME CNAME,B.NUM CNUM,D.NAME TNAME,D.NUM TNUM,";
+			sql+= "E.NAME CTNAME,E.NUM CTNUM,F.NAME BRNAME,F.NUM BRNUM ";
+			sql+= "FROM PRODUCT A, PSIZE B, COLOR C, TAG D, CATEGORY E, BRAND F ";
+			sql+= "WHERE A.NUM = B.NUM(+) ";
+			sql+= "AND A.NUM = C.NUM(+) ";
+			sql+= "AND A.NUM = D.NUM(+) ";
+			sql+= "AND A.CATEGORY = E.NUM(+) ";
+			sql+= "AND A.BRAND = F.NUM(+) ";
+			sql+= "ORDER BY A.NUM) ";
+			sql+= "WHERE NAME LIKE ? ";
+			sql+= "OR SNAME LIKE ? ";
+			sql+= "OR PRICE LIKE ? ";
+			sql+= "OR CNAME LIKE ? ";
+			sql+= "OR TNAME LIKE ? ";
+			sql+= "OR CTNAME LIKE ? ";
+			sql+= "OR BRNAME LIKE ?)";
 			
 			pstmt = conn.prepareStatement(sql);
 			
+			pstmt.setString(1, searchValue);
+			pstmt.setString(2, searchValue);
+			pstmt.setString(3, searchValue);
+			pstmt.setString(4, searchValue);
+			pstmt.setString(5, searchValue);
+			pstmt.setString(6, searchValue);
+			pstmt.setString(7, searchValue);
 			rs = pstmt.executeQuery();
 			if(rs.next()) {
 				dataCount = rs.getInt(1);
@@ -286,7 +313,7 @@ public class ProductDAO {
 	public int insertCart(int memberNum,int productNum) {
 		
 		int result = 0;
-
+		
 		try {
 			sql = "select count from cart_product where membernum = ? and productnum = ?";
 
