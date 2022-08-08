@@ -1,6 +1,5 @@
 package com.pdetail;
 
-import java.io.File;
 import java.io.IOException;
 import java.sql.Connection;
 import java.util.List;
@@ -42,32 +41,24 @@ public class PdetailServlet extends HttpServlet {
 		
 		String cp = req.getContextPath();
 		String uri = req.getRequestURI();
-		List<PdetailDTO> lists = null;
+		//List<PdetailDTO> lists = null;
 		
 		String url;
-		
-		String root = getServletContext().getRealPath("/");
-		String path = root + "img" + File.separator + "shop-details";
-		
-		File f = new File(path);
-		if(!f.exists()) {
-			f.mkdirs();
-		}
 		
 		PdetailDTO dto = new PdetailDTO();
 		//info.setNum(dto.getNum());
 		
 		//세션에 info 등록
-		HttpSession session = req.getSession();
+		//HttpSession session = req.getSession();
 		
 		//session.setAttribute("customInfo", info);
 		
 		url = cp + "/shop-details.jsp";
 		
 		//상세 페이지로 데이터 받아오기
-		int color;
-		int size;
-		int startnum, endnum;
+//		int color;
+//		int size;
+//		int startnum, endnum;
 		//lists = dao.sizeOption(size, startnum, endnum);
 		//lists = dao.colorOption(color, startnum, endnum);
 		
@@ -103,13 +94,21 @@ public class PdetailServlet extends HttpServlet {
 //			url = "/shop-details.jsp";
 			
 			
-		}else if(uri.indexOf("insertCart.do")!=-1) {
-
-			
-			
-		}
+//		}else if(uri.indexOf("insertCart.do")!=-1) {
+//
+//			session.getAttribute("num");
+//			
+//			int num = 1;
+//			String name = dao.sizeCart(num);
+//			
+//			url = cp + "";
+//			resp.sendRedirect(url);
+//			
+//		}
 
 		
 	}
 	
+	}
 }
+
