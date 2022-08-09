@@ -6,7 +6,7 @@ function navFunction() {
 	//sessionStorage.setItem("mine", "회원정보 1");
 	//여기도 마찬가지로 요청할때는 session을 이용해서 하면 됨.
 	//지금 당장은 테스트로 1
-	navRequest.open("Post", "http://localhost:8080/semiproject/nav/session.do", true);
+	navRequest.open("Post", "./nav/session.do", true);
 	navRequest.onreadystatechange = navSuccessConnect;
 	navRequest.send(null);
 	checkLogin();
@@ -24,7 +24,7 @@ function navSuccessConnect() {
 
 //nav 장바구니 갯수
 function countCart() {
-	countCartRequest.open("Post", "http://localhost:8080/semiproject/cart/countCart.do", true);
+	countCartRequest.open("Post", "../cart/countCart.do", true);
 	countCartRequest.onreadystatechange = function() {
 		if (countCartRequest.readyState == 4 && countCartRequest.status == 200) {
 			if(countCartRequest.responseText != null && countCartRequest.responseText != "" ){
@@ -32,7 +32,6 @@ function countCart() {
 				var result = object.result;
 				var hCartCountText = $('#h_menu_countCart').children('span');
 				var oCartCountText = $('#o_menu_countCart').children('span');
-				console.log(oCartCountText);
 				hCartCountText.text(result);
 				oCartCountText.text(result);
 			}
@@ -43,7 +42,7 @@ function countCart() {
 
 //로그인 확인
 function checkLogin() {
-	signInRequest.open("Post", "http://localhost:8080/semiproject/nav/checkLogin.do", true);
+	signInRequest.open("Post", "./nav/checkLogin.do", true);
 	signInRequest.onreadystatechange = function() {
 		if (signInRequest.readyState == 4 && signInRequest.status == 200) {
 			if(signInRequest.responseText != null && signInRequest.responseText != "" ){
@@ -54,13 +53,13 @@ function checkLogin() {
 					var hearderTop = $('.header__top__links');
 					var signText = hearderTop.children('.desk_sign');
 					signText.html("<a href='#' class='desk_sign'>My Page</a>");
-					hearderTop.append("<a href='http://localhost:8080/semiproject/login/logout_ok.do' id = 'logout_btn'>Log Out</a>");
+					hearderTop.append("<a href='../login/logout_ok.do' id = 'logout_btn'>Log Out</a>");
 					countCart();
 				}
 			}
 			//signText.text(result);
 		}
-	};
+	}
 	signInRequest.send(null);
 }
 

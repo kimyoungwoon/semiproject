@@ -68,8 +68,8 @@
 					<div class="cart__total">
 						<h6>Cart total</h6>
 						<ul>
-							<li>Before Discount <span id="beforeDiscount">₩ 0</span></li>
-							<li>Actual Payment <span id="actualPayment">₩ 0</span></li>
+							<li>Before Discount <span id="beforeDiscount">&#8361; 0</span></li>
+							<li>Actual Payment <span id="actualPayment">&#8361; 0</span></li>
 						</ul>
 						<%-- <a href="<%=cp%>/checkout.jsp" class="primary-btn">Proceed to
 							checkout</a> --%>

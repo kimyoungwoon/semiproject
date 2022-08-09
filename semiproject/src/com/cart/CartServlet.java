@@ -90,7 +90,6 @@ public class CartServlet extends HttpServlet{
 			
 			List<CartProductDTO> lists = dao.getCartList(memberNum);
 			String imagePath = cp + "/img/pds/";
-			System.out.println(lists.get(0).getMembernum());
 			StringBuffer result = new StringBuffer("");
 			result.append("{\"result\":[");
 			for(int i = 0; i < lists.size(); i++) {

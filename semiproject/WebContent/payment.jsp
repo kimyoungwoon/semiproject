@@ -131,8 +131,8 @@
                                     <li>04. Cluten free mini dozen <span class = "subTotal">$ 110.0</span></li> -->
                                 </ul>
                                 <ul class="checkout__total__all">
-                                    <li>Subtotal <span>$750.99</span></li>
-                                    <li>Total <span>$750.99</span></li>
+                                    <li>Subtotal <span>&#8361; 0</span></li>
+                                    <li>Total <span>>&#8361; 0</span></li>
                                 </ul>
                                 <!-- <div class="checkout__input__checkbox">
                                     <label for="acc-or">

@@ -4,7 +4,7 @@ public class OrderHistoryDTO {
 
 	private int memberNum;
 	private int orderNum;
-	private int paymentCost;
+	private long paymentCost;
 	private String orderDate;
 	
 	
@@ -20,10 +20,10 @@ public class OrderHistoryDTO {
 	public void setOrderNum(int orderNum) {
 		this.orderNum = orderNum;
 	}
-	public int getPaymentCost() {
+	public long getPaymentCost() {
 		return paymentCost;
 	}
-	public void setPaymentCost(int paymentCost) {
+	public void setPaymentCost(long paymentCost) {
 		this.paymentCost = paymentCost;
 	}
 	public String getOrderDate() {

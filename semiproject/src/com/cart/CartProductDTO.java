@@ -8,7 +8,7 @@ public class CartProductDTO {
 	
 	//아래 2개는 조인해서 가져오는 데이터
 	private String name;
-	private int price;
+	private long price;
 	private String saveFileName;
 	
 	public String getName() {
@@ -17,10 +17,10 @@ public class CartProductDTO {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public int getPrice() {
+	public long getPrice() {
 		return price;
 	}
-	public void setPrice(int price) {
+	public void setPrice(long price) {
 		this.price = price;
 	}
 	public int getMembernum() {
