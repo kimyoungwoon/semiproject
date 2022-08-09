@@ -172,6 +172,7 @@ public class MemberServlet extends HttpServlet {
 			CustomInfo info = (CustomInfo) session.getAttribute("customInfo");
 
 			MemberDTO dto = dao.getReadData(info.getId());
+			dto.setBirth(dto.getBirth().substring(0, 10));
 			req.setAttribute("dto", dto);
 
 			// 회원정보수정 포워드 페이지

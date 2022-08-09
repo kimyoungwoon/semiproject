@@ -68,10 +68,6 @@ public class PdetailServlet extends HttpServlet {
 		String path = root + "pds" + File.separator + "imageFile";
 		//
 		
-		
-		
-		
-		PdetailDTO dto = new PdetailDTO();
 
 		//info.setNum(dto.getNum());
 		

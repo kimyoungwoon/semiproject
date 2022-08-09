@@ -228,9 +228,9 @@ function goProductDetail(productNum) {
                                 <form action="document.sortForm" >
                                     <p>Sort by Price:</p>
                                     <select onchange="location.href=this.value">
-                                        <option value="http://localhost:8080<%=cp%>/shopping/list.do">New</option>
-                                        <option value="http://localhost:8080<%=cp%>/shopping/listsortlow.do?sort=1">Low To High</option>
-                                        <option value="http://localhost:8080<%=cp%>/shopping/listsorthigh.do?sort=2">High To Low</option>
+                                        <option value="<%=cp%>/shopping/list.do">New</option>
+                                        <option value="<%=cp%>/shopping/listsortlow.do?sort=1">Low To High</option>
+                                        <option value="<%=cp%>/shopping/listsorthigh.do?sort=2">High To Low</option>
                                     </select>
                                 </form>    
                                 </div>

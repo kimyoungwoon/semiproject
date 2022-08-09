@@ -2,6 +2,7 @@
 
 
 <%@include file = "payment/header.jsp"  %>
+ <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous"/>
 <script type="text/javascript" src="<%=cp %>/payment/shop-details.js"></script>
 <%@ page contentType="text/html; charset=UTF-8"%>
 
@@ -278,18 +279,19 @@
 			method="post" enctype="multipart/form-data" style="margin: auto">
 			<div class="product__details__content">
 				<div class="container">
-					<div class="col-lg-12">
+					<div class="col-lg-12" align="left">
 						<div class="row">
 							<h3 class="related-title" style="display: block;">Review ㅣ</h3>
 						</div>
 					</div>
-				</div>
+				
 				<c:choose>
 					<c:when test="${empty sessionScope.customInfo.id }">
-						<div class="container">
-							<div class="col-lg-12">
+						
+							
 								<div class="row">
-									<textarea rows="5" cols="100" disabled="disabled">로그인시 이용 가능합니다</textarea>
+								<div class="col-lg-12">
+									<textarea disabled="disabled">로그인시 이용 가능합니다</textarea>
 								</div>
 								<div class="row">
 									<input type="file" class="file-btn"><input
@@ -297,10 +299,10 @@
 										style="margin-left: 370px; color: #FFFFFF" class="site-btn">
 								</div>
 							</div>
-						</div>
+						
 					</c:when>
 					<c:otherwise>
-						<div class="container">
+						
 							<div class="col-lg-12">
 								<div class="row">
 									<textarea rows="5" cols="100" name="content"></textarea>
@@ -311,9 +313,10 @@
 										style="margin-left: 370px; color: #FFFFFF" class="site-btn">
 								</div>
 							</div>
-						</div>
+						
 					</c:otherwise>
 				</c:choose>
+				</div>
 			</div>
 		</form>
 	</section>
@@ -605,6 +608,10 @@
 
 
 	<%@include file="payment/footer.jsp"%>
+
+
+
+
 
 </body>
 
