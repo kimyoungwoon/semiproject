@@ -61,7 +61,7 @@ public class WritingServelt extends HttpServlet {
 			
 			if(info==null) {
 				
-				url="/writing/created.jsp";
+				url="/member/login.jsp";
 				forward(req, resp, url);
 				return;
 				
@@ -111,7 +111,7 @@ public class WritingServelt extends HttpServlet {
 			}
 			
 			int dataCount = dao.getDataCount(searchKey, searchValue);
-			int numPerPage = 7;
+			int numPerPage = 10;
 			int totalPage = myPage.getPagecount(numPerPage, dataCount);			
 			
 			if(currentPage>totalPage) {
