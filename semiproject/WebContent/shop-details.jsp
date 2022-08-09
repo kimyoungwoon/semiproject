@@ -4,354 +4,228 @@
 <script type="text/javascript" src="<%=cp %>/payment/shop-details.js"></script>
 
 <%@ page contentType="text/html; charset=UTF-8"%>
-<script type="text/javascript" src="<%=cp %>/payment/shop-details.js"></script>
+
+<link rel="stylesheet" type="text/css"
+	href="<%=cp%>/css/detailspage.css" />
+
+<script type="text/javascript">
+
+	function sendIt() {
+		
+		var f = document.myForm;
+		
+		str= f.name.value;
+		str = str.trim();
+		if(!str) {
+			alert("\n이름을 입력하세요.")
+			f.name.focus();
+			return;
+		}		
+		f.name.value = str;
+		
+		str= f.subject.value;
+		str = str.trim();
+		if(!str) {
+			alert("\n제목을 입력하세요.")
+			f.subject.focus();
+			return;
+		}
+		f.subject.value = str;
+		
+		str= f.content.value;
+		str = str.trim();
+		if(!str) {
+			alert("\n내용을 입력하세요.")
+			f.content.focus();
+			return;
+		}		
+		f.content.value = str;
+		
+		f.action = "<%=cp%>
+	/review/write_ok.do";
+		f.submit();
+	}
+</script>
+
 <body>
 
+	<!-- 클릭했을때 리뷰창 띄워주는 부트스트랩 링크창 -->
+	<script
+		src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
+		integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
+		crossorigin="anonymous">
+	</script>
 	<!-- Header Section End -->
 	<%@include file="payment/nav.jsp"%>
 
-	<!-- Shop Details Section Begin -->
-	<section class="shop-details">
-		<div class="product__details__pic">
-			<div class="container">
-				<div class="row">
-					<div class="col-lg-12">
-						<div class="product__details__breadcrumb">
-							<a href="./index.jsp">Home</a> <a href="./shop.jsp">Shop</a> <span>Product
-								Details</span>
-						</div>
-					</div>
-				</div>
-				<div class="row">
-					<div class="col-lg-3 col-md-3">
-						<ul class="nav nav-tabs" role="tablist">
-							<li class="nav-item"><a class="nav-link active"
-								data-toggle="tab" href="#tabs-1" role="tab">
-									<div class="product__thumb__pic set-bg"
-										data-setbg="${imagePath}/prada1.jpg"></div>
-							</a></li>
-							<li class="nav-item"><a class="nav-link" data-toggle="tab"
-								href="#tabs-2" role="tab">
-									<div class="product__thumb__pic set-bg"
-										data-setbg="${imagePath}/prada2.jpg"></div>
-							</a></li>
-							<li class="nav-item"><a class="nav-link" data-toggle="tab"
-								href="#tabs-3" role="tab">
-									<div class="product__thumb__pic set-bg"
-										data-setbg="${imagePath}/prada3.jpg"></div>
-							</a></li>
-							<li class="nav-item"><a class="nav-link" data-toggle="tab"
-								href="#tabs-4" role="tab">
-									<div class="product__thumb__pic set-bg"
-										data-setbg="${imagePath}/prada4.jpg"></div>
-							</a></li>
-						</ul>
-					</div>
-					<div class="col-lg-6 col-md-9">
-						<div class="tab-content">
-							<div class="tab-pane active" id="tabs-1" role="tabpanel">
-								<div class="product__details__pic__item">
-									<img src="${imagePath}/prada1.jpg" alt="">
-								</div>
-							</div>
-							<div class="tab-pane" id="tabs-2" role="tabpanel">
-								<div class="product__details__pic__item">
-									<img src="${imagePath}/prada2.jpg" alt="">
-								</div>
-							</div>
-							<div class="tab-pane" id="tabs-3" role="tabpanel">
-								<div class="product__details__pic__item">
-									<img src="${imagePath}/prada3.jpg" alt="">
-								</div>
-							</div>
-							<div class="tab-pane" id="tabs-4" role="tabpanel">
-								<div class="product__details__pic__item">
-									<img src="${imagePath}/prada4.jpg" alt="">
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-		<div class="product__details__content">
-			<div class="container">
-				<div class="row d-flex justify-content-center">
-					<div class="col-lg-8">
-						<div class="product__details__text">
-							<h4>${dto.name }</h4>
-							<div class="rating">
-								<i class="fa fa-star"></i> <i class="fa fa-star"></i> <i
-									class="fa fa-star"></i> <i class="fa fa-star"></i> <i
-									class="fa fa-star-o"></i> <span> - 5 Reviews</span>
-							</div>
-							<h3>${dto.price }</h3>
-							<p>Coat with quilted lining and an adjustable hood. Featuring
-								long sleeves with adjustable cuff tabs, adjustable asymmetric
-								hem with elastic side tabs and a front zip fastening with
-								placket.</p>
-							<div class="product__details__option">
-								<div class="product__details__option__size">
-									<span>Size:</span> <label for="xl">xl <input
-										type="radio" id="xl">
-									</label> <label class="active" for="l">l <input type="radio"
-										id="l">
-									</label> <label for="m">m <input type="radio" id="m">
-									</label> <label for="s">s <input type="radio" id="s">
-									</label>
-								</div>
-								<div class="product__details__option__color" id="pcolor">
-									<span>Color:</span> <label class="c-1" for="sp-1"> <input
-										type="radio" id="sp-1">
-									</label> <label class="c-2" for="sp-2"> <input type="radio"
-										id="sp-2">
-									</label> <label class="c-3" for="sp-3"> <input type="radio"
-										id="sp-3">
-									</label> <label class="c-4" for="sp-4"> <input type="radio"
-										id="sp-4">
-									</label> <label class="c-9" for="sp-9"> <input type="radio"
-										id="sp-9">
-									</label>
-								</div>
-							</div>
-							<div class="product__details__cart__option">
-								<div class="quantity">
-									<div class="pro-qty">
-										<input type="text" value="1">
-									</div>
-								</div>
-								<a href="#" class="primary-btn">add to cart</a>
-							</div>
-							<div class="product__details__btns__option">
-								<a href="#"><i class="fa fa-heart"></i> add to wishlist</a> <a
-									href="#"><i class="fa fa-exchange"></i> Add To Compare</a>
-							</div>
-							<div class="product__details__last__option">
-								<h5>
-									<span>Guaranteed Safe Checkout</span>
-								</h5>
-								<img src="<%=cp%>/img/shop-details/details-payment.png" alt="">
-								<ul>
-									<li><span>Brand:</span> ${dto.brand }</li>
-									<li><span>Categories:</span> ${dto.category }</li>
-									<li><span>Tag:</span> ${dto.tag }</li>
-								</ul>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="row">
-					<div class="col-lg-12">
-						<div class="product__details__tab">
-							<ul class="nav nav-tabs" role="tablist">
-								<li class="nav-item"><a class="nav-link active"
-									data-toggle="tab" href="#tabs-5" role="tab">Description</a></li>
-								<li class="nav-item"><a class="nav-link" data-toggle="tab"
-									href="#tabs-6" role="tab">Customer Previews(5)</a></li>
-								<li class="nav-item"><a class="nav-link" data-toggle="tab"
-									href="#tabs-7" role="tab">Additional information</a></li>
-							</ul>
-							<div class="tab-content">
-								<div class="tab-pane active" id="tabs-5" role="tabpanel">
-									<div class="product__details__tab__content">
-										<p class="note">Nam tempus turpis at metus scelerisque
-											placerat nulla deumantos solicitud felis. Pellentesque diam
-											dolor, elementum etos lobortis des mollis ut risus. Sedcus
-											faucibus an sullamcorper mattis drostique des commodo
-											pharetras loremos.</p>
-										<div class="product__details__tab__content__item">
-											<h5>Products Infomation</h5>
-											<p>A Pocket PC is a handheld computer, which features
-												many of the same capabilities as a modern PC. These handy
-												little devices allow individuals to retrieve and store
-												e-mail messages, create a contact file, coordinate
-												appointments, surf the internet, exchange text messages and
-												more. Every product that is labeled as a Pocket PC must be
-												accompanied with specific software to operate the unit and
-												must feature a touchscreen and touchpad.</p>
-											<p>As is the case with any new technology product, the
-												cost of a Pocket PC was substantial during it’s early
-												release. For approximately $700.00, consumers could purchase
-												one of top-of-the-line Pocket PCs in 2003. These days,
-												customers are finding that prices have become much more
-												reasonable now that the newness is wearing off. For
-												approximately $350.00, a new Pocket PC can now be purchased.</p>
-										</div>
-										<div class="product__details__tab__content__item">
-											<h5>Material used</h5>
-											<p>Polyester is deemed lower quality due to its none
-												natural quality’s. Made from synthetic materials, not
-												natural like wool. Polyester suits become creased easily and
-												are known for not being breathable. Polyester suits tend to
-												have a shine to them compared to wool and cotton suits, this
-												can make the suit look cheap. The texture of velvet is
-												luxurious and breathable. Velvet is a great choice for
-												dinner party jacket and can be worn all year round.</p>
-										</div>
-									</div>
-								</div>
-								<div class="tab-pane" id="tabs-6" role="tabpanel">
-									<div class="product__details__tab__content">
-										<div class="product__details__tab__content__item">
-											<h5>Products Infomation</h5>
-											<p>A Pocket PC is a handheld computer, which features
-												many of the same capabilities as a modern PC. These handy
-												little devices allow individuals to retrieve and store
-												e-mail messages, create a contact file, coordinate
-												appointments, surf the internet, exchange text messages and
-												more. Every product that is labeled as a Pocket PC must be
-												accompanied with specific software to operate the unit and
-												must feature a touchscreen and touchpad.</p>
-											<p>As is the case with any new technology product, the
-												cost of a Pocket PC was substantial during it’s early
-												release. For approximately $700.00, consumers could purchase
-												one of top-of-the-line Pocket PCs in 2003. These days,
-												customers are finding that prices have become much more
-												reasonable now that the newness is wearing off. For
-												approximately $350.00, a new Pocket PC can now be purchased.</p>
-										</div>
-										<div class="product__details__tab__content__item">
-											<h5>Material used</h5>
-											<p>Polyester is deemed lower quality due to its none
-												natural quality’s. Made from synthetic materials, not
-												natural like wool. Polyester suits become creased easily and
-												are known for not being breathable. Polyester suits tend to
-												have a shine to them compared to wool and cotton suits, this
-												can make the suit look cheap. The texture of velvet is
-												luxurious and breathable. Velvet is a great choice for
-												dinner party jacket and can be worn all year round.</p>
-										</div>
-									</div>
-								</div>
-								<div class="tab-pane" id="tabs-7" role="tabpanel">
-									<div class="product__details__tab__content">
-										<p class="note">Nam tempus turpis at metus scelerisque
-											placerat nulla deumantos solicitud felis. Pellentesque diam
-											dolor, elementum etos lobortis des mollis ut risus. Sedcus
-											faucibus an sullamcorper mattis drostique des commodo
-											pharetras loremos.</p>
-										<div class="product__details__tab__content__item">
-											<h5>Products Infomation</h5>
-											<p>A Pocket PC is a handheld computer, which features
-												many of the same capabilities as a modern PC. These handy
-												little devices allow individuals to retrieve and store
-												e-mail messages, create a contact file, coordinate
-												appointments, surf the internet, exchange text messages and
-												more. Every product that is labeled as a Pocket PC must be
-												accompanied with specific software to operate the unit and
-												must feature a touchscreen and touchpad.</p>
-											<p>As is the case with any new technology product, the
-												cost of a Pocket PC was substantial during it’s early
-												release. For approximately $700.00, consumers could purchase
-												one of top-of-the-line Pocket PCs in 2003. These days,
-												customers are finding that prices have become much more
-												reasonable now that the newness is wearing off. For
-												approximately $350.00, a new Pocket PC can now be purchased.</p>
-										</div>
-										<div class="product__details__tab__content__item">
-											<h5>Material used</h5>
-											<p>Polyester is deemed lower quality due to its none
-												natural quality’s. Made from synthetic materials, not
-												natural like wool. Polyester suits become creased easily and
-												are known for not being breathable. Polyester suits tend to
-												have a shine to them compared to wool and cotton suits, this
-												can make the suit look cheap. The texture of velvet is
-												luxurious and breathable. Velvet is a great choice for
-												dinner party jacket and can be worn all year round.</p>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
-	<!-- Shop Details Section End -->
 
 	<!-- 상세 페이지 리뷰 추가 영역 -->
 
 	<section>
-		<br />
-		<br />
-		<form action="<%=cp%>/review/write_ok.do?detailNum=${dto.num}"
+		<br /> <br />
+		<form action="<%=cp%>/review/write_ok.do?detailNum=${dto.num}&member=${sessionScope.customInfo.num}"
 			method="post" enctype="multipart/form-data" style="margin: auto">
 			<div class="product__details__content">
 				<div class="container">
-					<div class="col-lg-12" align="left">
+					<div class="col-lg-12">
 						<div class="row">
 							<h3 class="related-title" style="display: block;">Review ㅣ</h3>
 						</div>
 					</div>
-				
+				</div>
 				<c:choose>
 					<c:when test="${empty sessionScope.customInfo.id }">
-						
-							
-								<div class="row">
-								<div class="col-lg-12">
-									<textarea disabled="disabled">로그인시 이용 가능합니다</textarea>
-								</div>
-								<div class="row">
-									<input type="file" class="file-btn"><input
-										type="button" value="리뷰 등록하기"
-										style="margin-left: 370px; color: #FFFFFF" class="site-btn">
-								</div>
-							</div>
-						
-					</c:when>
-					<c:otherwise>
-						
+						<div class="container">
 							<div class="col-lg-12">
 								<div class="row">
-									<textarea rows="5" cols="100" name="content"></textarea>
+									<textarea style="margin: auto;" rows="8" cols="140" name="content" disabled="disabled">로그인시 이용 가능합니다</textarea>
 								</div>
-								<div class="row">
-									<input type="file" class="file-btn" name="imageFile"><input
-										type="submit" value="리뷰 등록하기"
-										style="margin-left: 370px; color: #FFFFFF" class="site-btn">
+								<div style="margin: auto;"class="row">
+								<button type="button" class="btn btn-outline-dark btn-lg">
+								<h6>
+								<label for="input-file">파일업로드</label>
+								<input type="file" id="input-file" style="display:none;" name="imageFile"/>
+								</h6>
+								</button>								
+								<button style="margin-left: 864px" type="button" class="btn btn-outline-dark btn-lg">	
+								<h6>																						
+								<label for="input-review">리뷰등록하기</label>																						
+								<input type="submit"id="input-review" style="display:none;"/>
+								</h6>
+								</button>
 								</div>
 							</div>
-						
+						</div>
+					</c:when>
+					<c:otherwise>
+						<div class="container">
+							<div class="col-lg-12">
+								<div class="row" >
+									<textarea style="margin: auto;" rows="8" cols="140" name="content"></textarea>
+								</div>
+								<div style="margin: auto;"class="row">
+								<button type="button" class="btn btn-outline-dark btn-lg">
+								<h6>
+								<label for="input-file">파일업로드</label>
+								<input type="file" id="input-file" style="display:none;" name="imageFile"/>
+								</h6>
+								</button>								
+								<button style="margin-left: 864px" type="button" class="btn btn-outline-dark btn-lg">	
+								<h6>
+								
+								<label for="input-review">리뷰등록하기</label>	
+																	
+								<input type="submit"id="input-review" style="display:none;"/>
+								</h6>
+								</button>
+								</div>																
+							</div>
+						</div>										
 					</c:otherwise>
 				</c:choose>
-				</div>
 			</div>
 		</form>
 	</section>
+	<br />
+	<br />
+	<br />
 	<section>
 		<div class="product__details__content">
-			<div class="container">
+			<div class="container">			
 				<c:forEach var="dto" items="${lists }">
-					<br />
-
-					<h6>
-						<input type="hidden" value="${dto.num }" name="num" />
-						이름:&nbsp;${dto.name } / 등록일 :&nbsp;${dto.savepath }
-					</h6>
-					<input type="hidden" value="${dto.num }" name="num" />
-					<a href="${imagePath }/${dto.saveFileName }"> <img
-						src="${imagePath }/${dto.saveFileName}" width="150" height="180"><br /></a>
-					<br />
-					<div>
-						<dl>
-							<dd>${dto.content }</dd>
-							<dd class="deletebutton">
-								<a href="<%=cp%>/review/delete.do?num=${dto.num }">delete</a>
-							</dd>
-						</dl>
+				<div>
+				
+				</div>
+				<c:choose>
+				<c:when test="${sessionScope.customInfo.num ne dto.member }">
+				<c:set var="number" value="${number +1  }" />
+					<div class="container text-center">
+						<div class="row">
+							<div class="col1">
+								<p>
+									<a class="btn btn-dark" data-bs-toggle="collapse"
+									href="#collapseExample${number }" role="button" aria-expanded="false"
+									aria-controls="collapseExample"> 리뷰 보기 </a>
+								</p>
+							</div>							
+						</div>
 					</div>
-					<div class="bbsArticle_bottomLine"></div>
+					<div class="row-lg-8">
+						<div class="collapse" id="collapseExample${number}">
+							<div class="card card-body">
+								<h6>
+									<input type="hidden" value="${dto.num }" name="num" />
+									이름:&nbsp;${dto.name } / 등록일 :&nbsp;${dto.savepath }
+								</h6>
+								<input type="hidden" value="${dto.num }" name="num" /> <a
+									href="${imagePath }/${dto.saveFileName }"> <img
+									src="${imagePath }/${dto.saveFileName}" width="150"
+									height="180"><br /></a> <br />
+								<div>
+									<dl>
+										<dd>${dto.content }</dd>
+									</dl>
+								</div>
+							</div>
+						</div>
+					</div>
+					</c:when>
+					<c:otherwise>
+					<c:set var="number" value="${number +1  }" />
+					<div class="container text-center">
+						<div class="row">
+							<div class="col1">
+								<p>
+									<a class="btn btn-dark" data-bs-toggle="collapse"
+									href="#collapseExample${number }" role="button" aria-expanded="false"
+									aria-controls="collapseExample"> 리뷰 보기 </a>
+								</p>
+							</div>
+							<div style="margin-left: 650px" class="col">
+								<dd class="deletebutton">
+									<a href="<%=cp%>/review/delete.do?num=${dto.num }">delete</a>
+								</dd>
+							</div>
+						</div>
+					</div>
+					<div class="row-lg-8">
+						<div class="collapse" id="collapseExample${number}">
+							<div class="card card-body">
+								<h6>
+									<input type="hidden" value="${dto.num }" name="num" />
+									이름:&nbsp;${dto.name } / 등록일 :&nbsp;${dto.savepath }
+								</h6>
+								<input type="hidden" value="${dto.num }" name="num" /> <a
+									href="${imagePath }/${dto.saveFileName }"> <img
+									src="${imagePath }/${dto.saveFileName}" width="150"
+									height="180"><br /></a> <br />
+								<div>
+									<dl>
+										<dd>${dto.content }</dd>
+									</dl>
+								</div>
+							</div>
+						</div>
+					</div>
+					</c:otherwise>
+					</c:choose>	
 				</c:forEach>
 			</div>
 		</div>
-
-
-	<input type="hidden" id="iProductNum" value="<%=request.getParameter("productNum")%>" />
-    <!-- Shop Details Section Begin -->
-
-<html lang="zxx">
+		<div class="row">
+			<div class="col-lg-12">
+				<div class="product__pagination">
+					<c:if test="${dataCount!=0 }">
+					${pageIndexList }
+					</c:if>
+					<c:if test="${dataCount==0 }">
+					There is no registered post.
+					</c:if>
+				</div>
+			</div>
+		</div>
+	</section>
+	
 
 
     <!-- Shop Details Section Begin -->
@@ -779,6 +653,7 @@
     </section>
     <!-- Related Section End -->
 
+
     <!-- Footer Section Begin -->
     <footer class="footer">
         <div class="container">
@@ -860,6 +735,7 @@
 
 </html>
     <%@include file = "payment/footer.jsp"  %>
+
 
 </body>
 

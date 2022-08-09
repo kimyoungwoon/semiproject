@@ -13,7 +13,7 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="breadcrumb__text">
-                        <h4>Order History</h4>
+                        <h2 cellpadding="90px" align="center" style="border:thick solid #5D5D5D; font-size:36px; font-weight: 800; color: #FFFFFF; background: #8C8C8C; height: 140px; "><br/>Order History</h2>
                         
                     </div>
                 </div>
@@ -26,7 +26,7 @@
     <section class="shopping-cart spad" >
         <div class="container"align = "center" >
             <div class="row"  >
-                <div class="col-lg-8" style = " margin: auto;" >
+                <div class="col-lg-8" style = " margin: auto;">
                     <div class="shopping__cart__table" >
                         <table>
                             <thead>
@@ -38,7 +38,6 @@
                                 </tr>
                             </thead>
                             <tbody id = "orderTable">
-                              
                             </tbody>
                         </table>
                     </div>

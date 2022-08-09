@@ -1,13 +1,9 @@
 <%@include file = "../payment/header.jsp"  %>
 <%@ page contentType="text/html; charset=UTF-8"%>
 
-<style>
-
-
-
-</style>
 
 <script type="text/javascript" src="<%=cp%>/member/js/util.js"></script>
+
 
 
 
@@ -28,6 +24,20 @@
 		f.submit();
 		
 	}
+	
+
+	function deletedIt(){
+	
+		var f = document.myForm;
+		
+		f.action = "<%=cp%>/login/delete_ok.do";
+		f.submit();
+		
+	}
+	
+
+	
+
 	
 </script>
 
@@ -57,10 +67,6 @@
 		
 		
 		<form action="" method="post" name="myForm">
-	
-		
-		
-			
 			 <div class="row" style="height: 50px; margin-top: 200px; font-weight: bold; font-size:15pt;" >
     			<div class="col-1"  >
 					아&nbsp;이&nbsp;디   	
@@ -100,6 +106,7 @@
 						value="${dto.address }" />
     			</div>	
  			</div>		
+
 				
 			<div class="row" style="height: 50px; margin-top: 50px; font-weight: bold; font-size:15pt;">
     			<div class="col-1" >
@@ -137,6 +144,7 @@
 				<input type="submit" value="수정취소" class="btn btn-secondary"
 					onclick="javascript:location.href='<%=cp %>';" />
 				
+
 			</div>	
 			</div>
 			<div class="col-6" >
@@ -145,6 +153,7 @@
 			
 			</div>	
 			</div>		
+
 
 	
 			
@@ -156,9 +165,6 @@
 			
 		
 
-			
-				
-				
 			
 			
 			

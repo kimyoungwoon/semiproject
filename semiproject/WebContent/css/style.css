@@ -38,7 +38,6 @@ body {
 }
 
 h1,
-h2,
 h3,
 h4,
 h5,
@@ -51,10 +50,6 @@ h6 {
 
 h1 {
 	font-size: 70px;
-}
-
-h2 {
-	font-size: 36px;
 }
 
 h3 {
@@ -143,7 +138,6 @@ ol {
 }
 
 .text-white h1,
-.text-white h2,
 .text-white h3,
 .text-white h4,
 .text-white h5,
@@ -2066,8 +2060,7 @@ ol {
 -----------------------*/
 
 .breadcrumb-option {
-	background: #f3f2ee;
-	padding: 40px 0;
+	padding: 40px;
 }
 
 .breadcrumb__text h4 {
@@ -2320,15 +2313,16 @@ ol {
 }
 
 .shopping__cart__table table thead {
-	border-bottom: 1px solid #f2f2f2;
+	border-top: 3px ridge #111111;
+	border-bottom: 3px ridge #111111;
 }
 
 .shopping__cart__table table thead tr th {
 	color: #111111;
-	font-size: 16px;
-	font-weight: 700;
+	font-size: 18px;
+	font-weight: 750;
 	text-transform: uppercase;
-	padding-bottom: 25px;
+
 }
 
 .shopping__cart__table table tbody tr {
@@ -2336,8 +2330,8 @@ ol {
 }
 
 .shopping__cart__table table tbody tr td {
-	padding-bottom: 30px;
-	padding-top: 30px;
+	padding-bottom: 15px;
+	padding-top: 15px;
 }
 
 .shopping__cart__table table tbody tr td.product__cart__item {

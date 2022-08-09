@@ -11,7 +11,12 @@
 <html>
 <head>
 <title>로그인 / 회원가입</title>
+
+<%@include file = "../payment/footer.jsp"  %>
 <link rel="stylesheet" href="<%=cp %>/css/loginstyle.css">
+<script type="text/javascript" src="<%=cp %>/member/js/util.js"></script>
+
+
 <script type="text/javascript">
 
 		function goToLogin(){

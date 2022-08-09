@@ -279,8 +279,7 @@ function goProductDetail(productNum) {
                             </div>
                         </div>
                         </c:forEach>
-					</div>
-                        
+					</div>                        
                       
 					<div class="row" ">
 						<div class="col-lg-12">

@@ -111,9 +111,10 @@
 					</tr>
 					<tr height="30">
 						<td align="left" bgcolor="#FCF8E8">&nbsp;${dto.savepath }</td>
-						<td align="right" bgcolor="#FCF8E8"><input type="button"
-							class="btn2" value="Delete"
+						<td align="right" bgcolor="#FCF8E8">
+						<input type="button" class="btn2" value="Delete"
 							onclick="javascript:location.href='<%=cp%>/review/delete.do?num=${dto.num }';" />
+							
 					</tr>
 					<%-- javascript:location.href='<%=cp%>/guest/delete.jsp?num=<%=dto2.getNum()%>'; --%>
 					<tr height="250">
