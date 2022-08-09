@@ -88,10 +88,9 @@ public class CartServlet extends HttpServlet{
 		else if(uri.indexOf("cartList.do") != -1){
 			//장바구니에 들어왔을 때 전달받는 회원번호
 			
-			
 			List<CartProductDTO> lists = dao.getCartList(memberNum);
 			String imagePath = cp + "/img/pds/";
-			
+			System.out.println(lists.get(0).getMembernum());
 			StringBuffer result = new StringBuffer("");
 			result.append("{\"result\":[");
 			for(int i = 0; i < lists.size(); i++) {
@@ -100,7 +99,7 @@ public class CartServlet extends HttpServlet{
 				result.append("{\"value\": \"" + lists.get(i).getCount() + "\"},");
 				result.append("{\"value\": \"" + lists.get(i).getName() + "\"},");
 				result.append("{\"value\": \"" + lists.get(i).getPrice() + "\"},");
-				result.append("{\"value\": \"" + cp + "/img/pds/" + lists.get(i).getSaveFileName() + "\"}]}");
+				result.append("{\"value\": \"" + cp + "/img/pds/" + lists.get(i).getSaveFileName() + "\"}],");
 				
 			}
 			result.append("]}");
@@ -111,10 +110,8 @@ public class CartServlet extends HttpServlet{
 			//			HttpSession session = request.getSession();
 			//			String memberNum = (String)session.getAttribute("id");
 
-			System.out.println("여기 아니냐??");
 			StringBuffer result = new StringBuffer("");
 			result.append("{\"result\":\"" + String.valueOf(dao.getDataCount(memberNum)) + "\"}");
-			System.out.println(result);
 			response.getWriter().write(result.toString());
 		}
 		else if(uri.indexOf("deleteCart.do") != -1){

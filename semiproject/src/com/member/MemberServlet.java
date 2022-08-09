@@ -206,7 +206,7 @@ public class MemberServlet extends HttpServlet {
 
 			dao.updateData(dto);
 
-			url = "/member/updated.jsp";
+			url = cp+ "/login/updated.do";
 			resp.sendRedirect(url);
 
 		}
