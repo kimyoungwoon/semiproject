@@ -26,8 +26,7 @@
 	function deletedIt(){
 	
 		var f = document.myForm;
-	
-	
+		
 		f.action = "<%=cp%>/login/delete_ok.do";
 		f.submit();
 		
@@ -133,8 +132,9 @@
 						성&nbsp;&nbsp;별&nbsp;
 						</dt>
 						<dd>
-							<input type="text" name="gender" size="35" maxlength="50" placeholder="gender"
-								value="${dto.gender }" class="boxTF" />
+							<label><input type="checkbox" name="gender" size="35" maxlength="50" placeholder="gender"
+								value="${dto.gender }" class="boxTF" />man</label>
+								<label><input type="checkbox" value="${dto.gender }" >female</label>	
 						</dd>
 					</dl>
 				</div>

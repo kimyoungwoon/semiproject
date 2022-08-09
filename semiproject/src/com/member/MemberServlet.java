@@ -222,6 +222,7 @@ public class MemberServlet extends HttpServlet {
 			
 			String id = req.getParameter("id");
 			MemberDTO dto = dao.getReadData(id);
+			
 			System.out.println("변수아이디" + id);
 			System.out.println("디티오아이디" +dto.getId());
 			
@@ -234,7 +235,43 @@ public class MemberServlet extends HttpServlet {
 
 			url = cp + "/index.jsp";
 			resp.sendRedirect(url);
+			
+			
+			
+		}else if(uri.indexOf("searchpwd.do")!=-1){
+			
+			//비밀번호 찾기
+			url = "/member/searchpwd.jsp";
+			forward(req, resp, url);
+			
+			
+		}else if(uri.indexOf("searchpwd_ok.do")!=-1) {
+			
+			//아이디랑 전화번호랑 같은지 비교
+			String Id = req.getParameter("Id");
+			String Tel = req.getParameter("Tel");
+			
+			MemberDTO dto = dao.getReadData(Id);//셀렉트로 받을준비하고 
 
+			if(dto==null || (!dto.getTel().equals(Tel))) {
+
+				req.setAttribute("message", "회원정보가 존재하지않습니다!");
+
+				url = "/member/login.jsp";
+				forward(req, resp, url);
+				return;				
+
+			}else {
+				
+				String Pw = dto.getPw();
+				
+				req.setAttribute("message", "비밀번호는 " + Pw + " 입니다");
+
+				url = "/member/login.jsp";
+				forward(req, resp, url);
+				return;				
+
+			}
 		}
 	}
 }
