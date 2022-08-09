@@ -27,7 +27,7 @@
                 <div class="row">
                     <div class="col-lg-3 col-md-3">
                         <ul class="nav nav-tabs" role="tablist" id = "detail_pic">
-                            <li class="nav-item">
+                            <!-- <li class="nav-item">
                                 <a class="nav-link active" data-toggle="tab" href="#tabs-1" role="tab">
                                     <div class="product__thumb__pic set-bg" data-setbg="../img/shop-details/thumb-1.png">
                                     </div>
@@ -51,12 +51,12 @@
                                         <i class="fa fa-play"></i>
                                     </div>
                                 </a>
-                            </li>
+                            </li> -->
                         </ul>
                     </div>
                     <div class="col-lg-6 col-md-9">
                         <div class="tab-content" id ="view_tab">
-                            <div class="tab-pane active" id="tabs-1" role="tabpanel">
+                            <!-- <div class="tab-pane active" id="tabs-1" role="tabpanel">
                                 <div class="product__details__pic__item">
                                     <img src="../img/shop-details/product-big-2.png" alt="">
                                 </div>
@@ -76,7 +76,7 @@
                                     <img src="../img/shop-details/product-big-4.png" alt="">
                                     <a href="https://www.youtube.com/watch?v=8PJ3_p7VqHw&list=RD8PJ3_p7VqHw&start_radio=1" class="video-popup"><i class="fa fa-play"></i></a>
                                 </div>
-                            </div>
+                            </div> -->
                         </div>
                     </div>
                 </div>
@@ -101,7 +101,7 @@
                                 cuff tabs, adjustable asymmetric hem with elastic side tabs and a front zip fastening
                             with placket.</p>
                             <div class="product__details__option">
-                                <div class="product__details__option__size">
+                                <!-- <div class="product__details__option__size">
                                     <span>Size:</span>
                                     <label for="xxl">xxl
                                         <input type="radio" id="xxl">
@@ -133,23 +133,23 @@
                                     <label class="c-9" for="sp-9">
                                         <input type="radio" id="sp-9">
                                     </label>
-                                </div>
+                                </div> -->
                             </div>
                             <div class="product__details__cart__option">
                                 <div class="quantity">
                                     <div class="pro-qty">
-                                        <input type="text" value="1">
+                                        <input type="text" value="1" id = "productCount">
                                     </div>
                                 </div>
-                                <a href="#" class="primary-btn">add to cart</a>
+                                <a href="javascript:insertCartFunction();" class="primary-btn">add to cart</a>
                             </div>
                             <div class="product__details__btns__option">
                                 <a href="#"><i class="fa fa-heart"></i> add to wishlist</a>
-                                <a href="#"><i class="fa fa-exchange"></i> Add To Compare</a>
+                                <!-- <a href="#"><i class="fa fa-exchange"></i> Add To Compare</a> -->
                             </div>
                             <div class="product__details__last__option">
                                 <h5><span>Guaranteed Safe Checkout</span></h5>
-                                <img src="img/shop-details/details-payment.png" alt="">
+                                <img src="../img/shop-details/details-payment.png" alt="">
                                 <ul>
                                     <li><span>SKU:</span> 3812912</li>
                                     <li><span>Categories:</span> Clothes</li>

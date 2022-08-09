@@ -5,7 +5,7 @@ public class OrderDetailDTO {
 	private int membernum;
 	private int ordernum;
 	private int productnum;
-	private int price;
+	private long price;
 	private int count;
 	private String name;
 	private String saveFileName;
@@ -30,10 +30,10 @@ public class OrderDetailDTO {
 		this.productnum = productnum;
 	}
 	
-	public int getPrice() {
+	public long getPrice() {
 		return price;
 	}
-	public void setPrice(int price) {
+	public void setPrice(long price) {
 		this.price = price;
 	}
 	

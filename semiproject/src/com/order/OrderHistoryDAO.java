@@ -116,7 +116,7 @@ public class OrderHistoryDAO {
 		return dataCount;
 	}
 
-	public void insertOrderHistory(int memberNum, int orderNum, int paymentCost) {
+	public void insertOrderHistory(long memberNum, long orderNum, long paymentCost) {
 		PreparedStatement pstmt = null;
 		String sql;
 
@@ -126,9 +126,9 @@ public class OrderHistoryDAO {
 				+ "values (?, ?, ?, sysdate)";
 
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setInt(1, memberNum);
-			pstmt.setInt(2, orderNum);
-			pstmt.setInt(3, paymentCost);
+			pstmt.setLong(1, memberNum);
+			pstmt.setLong(2, orderNum);
+			pstmt.setLong(3, paymentCost);
 			
 			pstmt.executeUpdate();
 			pstmt.close();

@@ -41,7 +41,7 @@ CREATE TABLE product (
   pro_size number(20),
   color number(20),
   tag number(20),
-  savefilename varchar2(50) not null
+  savefilename varchar2(50) not null,
   savefilename1 varchar2(50),
   savefilename2 varchar2(50),
   savefilename3 varchar2(50),
