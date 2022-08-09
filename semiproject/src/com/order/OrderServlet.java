@@ -89,7 +89,7 @@ public class OrderServlet extends HttpServlet{
 			int orderNum = orderDAO.getMaxNum(memberNum) + 1;
 
 			List<CartProductDTO> list = cartDAO.getCartList(memberNum);
-			int sumCost = 0;
+			long sumCost = 0;
 
 			//주문상세 테이블 입력
 			for (CartProductDTO cartProductDTO : list) {
@@ -99,7 +99,7 @@ public class OrderServlet extends HttpServlet{
 
 			String actualPayment = (String)session.getAttribute("actualPayment");
 			if (actualPayment != null) {
-				sumCost = Integer.parseInt(actualPayment);
+				sumCost = Long.parseLong(actualPayment);
 			}
 
 			//주문내역 테이블 입력
