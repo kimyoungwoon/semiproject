@@ -1,5 +1,8 @@
+<%@include file = "payment/header.jsp"  %>
 
-<%@include file="payment/header.jsp"%>
+ <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous"/>
+<script type="text/javascript" src="<%=cp %>/payment/shop-details.js"></script>
+
 <%@ page contentType="text/html; charset=UTF-8"%>
 
 <link rel="stylesheet" type="text/css"
@@ -45,6 +48,7 @@
 </script>
 
 <body>
+
 	<!-- 클릭했을때 리뷰창 띄워주는 부트스트랩 링크창 -->
 	<script
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
@@ -53,6 +57,7 @@
 	</script>
 	<!-- Header Section End -->
 	<%@include file="payment/nav.jsp"%>
+
 
 	<!-- 상세 페이지 리뷰 추가 영역 -->
 
@@ -715,6 +720,23 @@
         </div>
     </footer>
     <!-- Footer Section End -->
+
+    <!-- Search Begin -->
+    <div class="search-model">
+        <div class="h-100 d-flex align-items-center justify-content-center">
+            <div class="search-close-switch">+</div>
+            <form class="search-model-form">
+                <input type="text" id="search-input" placeholder="Search here.....">
+            </form>
+        </div>
+    </div>
+    <!-- Search End -->
+
+
+</html>
+    <%@include file = "payment/footer.jsp"  %>
+
+
 </body>
 
 </html>

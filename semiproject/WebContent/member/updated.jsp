@@ -2,6 +2,9 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
 
 
+<script type="text/javascript" src="<%=cp%>/member/js/util.js"></script>
+
+
 
 
 <script type="text/javascript">
@@ -45,137 +48,129 @@
 	<%@include file = "../payment/nav.jsp"  %>
 	
 	
-	<div id="bbs" margin="auto" align="center">
 	
-	<div class="container">
-			<div class="row">
-				<div class="col-lg-12"><br/><br/><br/>
-					<h1 class="related-title">modify</h1>
-				</div>
-			</div>
-		</div>
-	<div id ="bbsCreated">
-	
-
-		<div id="bbs_title">회&nbsp;원&nbsp;수&nbsp;정</div><br/>
+<div class="row">
+<div style="height: 0px; line-height: 35px; border-bottom: 1px solid #000000; clear: both; text-align: left">
+</div>	
+</div>	
+<section>
+<br/><br/><br/>
+	<div class="container">	
+		 <div class="row" style="height: 50px; margin-top: 50px;font-size:40pt margin-bottom: 50px;">
+    		<div class="col-lg-12" aria-label="Basic outlined example" >
+			<h1><b>Modify</b></h1>   
+			<div style="height: 0px; line-height: 35px; border-bottom: 1px solid #000000; clear: both; text-align: left;overflow: visible;border-top: 10px;"></div> 	
+    		<div style="height: 0px; line-height: 35px; border-bottom: 1px solid #000000; clear: both; text-align: left;overflow: visible;border-top: 10px;"></div> 
+    		</div>	
+ 		</div>
+ 		
+		
+		
 		<form action="" method="post" name="myForm">
-				<span>필수입력사항</span>
-			<div id="bbsCreated">
-				<div class="bbsCreated_bottomLine">
-					<dl>
-						<dt>아&nbsp;이&nbsp;디</dt>
-						<dd>
-						${dto.id }
-						</dd>
-					</dl>
-				</div>
+			 <div class="row" style="height: 50px; margin-top: 200px; font-weight: bold; font-size:15pt;" >
+    			<div class="col-1"  >
+					아&nbsp;이&nbsp;디   	
+    			</div>
+    			<div class="col-11" >
+    			<input type="text" class="btn-outline-secondary" disabled="disabled" name="id" value="${dto.id }">
+    		
+    			</div>	
+ 			</div>	
+ 		
+ 			<div class="row" style="height: 50px; margin-top: 50px; font-weight: bold; font-size:15pt;">
+    			<div class="col-1"  >
+				패&nbsp;스&nbsp;워&nbsp;드 	
+    			</div>
+    			<div class="col-11" >
+    				<input type="password" class="btn-outline-secondary"  name="pw"  placeholder="password"
+					value="${dto.pw }"  />
+    			</div>	
+ 			</div>	
+ 			
+ 			<div class="row" style="height: 50px; margin-top: 50px; font-weight: bold; font-size:15pt;">
+    			<div class="col-1" >
+				E-mail:	
+    			</div>
+    			<div class="col-11" >
+    				<input type="text" class="btn-outline-secondary" name="email" placeholder="E-Mail"
+							value="${dto.email }">
+    			</div>	
+ 			</div>	
+	
+			<div class="row" style="height: 50px; margin-top: 50px; font-weight: bold; font-size:15pt;">
+    			<div class="col-1" >
+				주&nbsp;&nbsp;소&nbsp;	
+    			</div>
+    			<div class="col-11" >
+    				<input type="text" name="address" class="btn-outline-secondary"  placeholder="address"
+						value="${dto.address }" />
+    			</div>	
+ 			</div>		
 
-				<div class="bbsCreated_bottomLine">
-					<dl>
-						<dt>패&nbsp;스&nbsp;워&nbsp;드</dt>
-						<dd>
-							<input type="password" name="pw" size="35" maxlength="20" placeholder="password"
-								value="" class="boxTF" />
-						</dd>
-					</dl>
-				</div>
 				
-				<div class="bbsCreated_bottomLine">
-					<dl>
-						<dt>이&nbsp;&nbsp;&nbsp;&nbsp;름</dt>
-						<dd>
-						${dto.name }
-						</dd>
-					</dl>
+			<div class="row" style="height: 50px; margin-top: 50px; font-weight: bold; font-size:15pt;">
+    			<div class="col-1" >
+				성&nbsp;&nbsp;별&nbsp;	
+    			</div>
+    			<div class="col-5" >
+    				<div class="form-check">	
+  						<input class="form-check-input" type="radio" name="birth" id="flexRadioDefault1" checked value="남자">
+  							<label class="form-check-label" for="birth">
+  							  남자
+  							</label>
+					</div>
+					<div class="form-check">
+ 						<input class="form-check-input" type="radio" name="birth" id="flexRadioDefault2"  value="여자">
+ 							 <label class="form-check-label" for="birth">
+  								여자
+							  </label>
+					</div>
 				</div>
+ 			</div>		
+
+			<div class="row" style="height: 50px; margin-top: 50px; font-weight: bold; font-size:15pt;">
+    			<div class="col-1" >
+				생&nbsp;년&nbsp;월&nbsp;일
+    			</div>
+    			<div class="col-11" >
+    				<input type="text" class="btn-outline-secondary" disabled="disabled"  name="birth" value="${dto.birth }" />
+    			</div>	
+ 			</div>	
+			
+			<div class="row" style="height: 50px; margin-top: 50px; font-weight: bold; font-size:15pt;">
+			<div class="col-6" >
+			<div>
+				<input type="submit" value="수정하기" class="btn btn-secondary" onclick="sendIt()" />
+				<input type="submit" value="수정취소" class="btn btn-secondary"
+					onclick="javascript:location.href='<%=cp %>';" />
+				
+
+			</div>	
+			</div>
+			<div class="col-6" >
+			<div>
+				<input type="button" style="text-align: right;" value="회원탈퇴" class="btn btn-danger" onclick= />
+			
+			</div>	
+			</div>		
 
 
-				<div class="bbsCreated_bottomLine">
-					<dl>
-						<dt>
-						E-mail&nbsp;
-						</dt>
-						<dd>
-							<input type="text" name="email" size="35" maxlength="50" placeholder="E-Mail"
-								value="${dto.email }" class="boxTF" />
-						</dd>
-					</dl>
-				</div>
-				
-				<div class="bbsCreated_bottomLine">
-					<dl>
-						<dt>
-						주&nbsp;&nbsp;소&nbsp;
-						</dt>
-						<dd>
-							<input type="text" name="address" size="35" maxlength="50" placeholder="address"
-								value="${dto.address }" class="boxTF" />						
-						</dd>
-					</dl>
-				</div>
-				
-					<div class="bbsCreated_bottomLine">
-					<dl>
-						<dt>
-						전&nbsp;화&nbsp;번&nbsp;호
-						</dt>
-						<dd>
-							<input type="text" name="tel" size="35" maxlength="50" placeholder="Tel"
-								value="${dto.tel }" class="boxTF" />
-						</dd>
-					</dl>
-				</div>
-				
-				<div class="bbsCreated_bottomLine">
-					<dl>
-						<dt>
-						성&nbsp;&nbsp;별&nbsp;
-						</dt>
-						<dd>
-							<label><input type="checkbox" name="gender" size="35" maxlength="50" placeholder="gender"
-								value="${dto.gender }" class="boxTF" />man</label>
-								<label><input type="checkbox" value="${dto.gender }" >female</label>	
-						</dd>
-					</dl>
-				</div>
-
-			<div class="bbsCreated_bottomLine">
-					<dl>
-						<dt>
-						생&nbsp;년&nbsp;월&nbsp;일
-						</dt>
-						<dd>
-	  					${dto.birth }
-						</dd>
-					</dl>
-				</div>
+	
 			
 			</div>
+			
 			<input type="hidden"  name="num" value="${dto.num }"/>
-			<input type="hidden" name="id" value="${dto.id }"/>
-			<input type="hidden" name="name" value="${dto.name }"/>
-			<input type="hidden" name="birth" value="${dto.birth }"/>
+			
+			
+			
 		
 
-			<div id="bbsCreated_footer">
-				<input type="submit" value="수정하기" class="btn2" onclick="sendIt()" />
-				<input type="submit" value="수정취소" class="btn2"
-					onclick="javascript:location.href='<%=cp %>';" />
-			</div>
-				
-				<br/>
-					<br/>
-				
-				<div id="bbsCreated_footer">
-				<input type="button" value="회원탈퇴" class="btn2" onclick="deletedIt()"/>
-			
-			</div>
 			
 			
 			
 		</form>
-
 	</div>
+</section>		
 	
 	<br/>
 		<br/>
