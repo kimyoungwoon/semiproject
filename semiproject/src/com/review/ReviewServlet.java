@@ -114,7 +114,7 @@ public class ReviewServlet extends HttpServlet {
 			url = cp + "/detail/review.do";
 			resp.sendRedirect(url);
 
-		} else if (uri.indexOf("list.do") != -1) {
+		} /*else if (uri.indexOf("list.do") != -1) {
 
 			String pageNum = req.getParameter("pageNum");
 			int currentPage = 1; // 처음 띄우는 리스트 페이지
@@ -159,7 +159,7 @@ public class ReviewServlet extends HttpServlet {
 			url = "/shop-details.jsp";
 			forward(req, resp, url);
 
-		} else if (uri.indexOf("delete.do") != -1) {
+		}*/ else if (uri.indexOf("delete.do") != -1) {
 
 			int num = Integer.parseInt(req.getParameter("num"));
 			String pageNum = req.getParameter("pageNum");
