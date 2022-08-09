@@ -37,7 +37,15 @@ $(document).ready(function() {
 	    	f.action="<%=cp %>/login/login_ok.do";
 	  	 	f.submit();
 		}
+				
+		function searchIt(){
+			f = document.loginForm;
 			
+	    	f.action="<%=cp %>/login/searchpwd.do";
+	  	 	f.submit();
+		}
+				
+		
 		</script>
 </head>
 
@@ -70,6 +78,9 @@ $(document).ready(function() {
 					Password</span>
 				<button class="submit" onclick="loginMember();">
 					<font size="4pt" color="white">Login</font>
+				</button><br/>
+				<button class="submit" onclick="searchIt();">
+				<font size="2pt" color="white">Search Pwd</font>
 				</button>
 			</form>
 
@@ -82,8 +93,9 @@ $(document).ready(function() {
 					<input type="date" class="input-field" placeholder="YYYY-MM-DD" name="reg_birth" required>
 					<input type="checkbox" class="checkbox"><span>Terms and conditions</span>
 				<button class="submit" onclick="registerMember();">
-					<font size="3pt" color="white">REGISTER</font>
+					<font size="3pt" color="white">REGISTER</font>					
 				</button>
+				
 			</form>
 		</div>
 	</div>

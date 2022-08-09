@@ -10,19 +10,20 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>비밀번호찾기</title>
 
-<link rel="stylesheet" type="text/css"href="<%=cp%>/member/css/style.css" />
-<link rel="stylesheet" type="text/css"href="<%=cp%>/member/css/created.css" />
+<%@include file = "../payment/footer.jsp"  %>
+<link rel="stylesheet" href="<%=cp %>/css/loginstyle.css">
+<script type="text/javascript" src="<%=cp %>/member/js/util.js"></script>
 
 <script type="text/javascript">
 	function sendIt(){
 		
 		var f = document.myForm;		
-		if(!f.userId.value){
+		if(!f.Id.value){
 			alert("아이디를 입력하세요!");
 			f.userId.focus();
 			return;
 		}
-		if(!f.userTel.value){
+		if(!f.Tel.value){
 			alert("패스워드를 입력하세요!");
 			f.userTel.focus();
 			return;
@@ -30,6 +31,12 @@
 		f.action = "<%=cp %>/login/searchpwd_ok.do";
 		f.submit();
 	}
+	
+
+
+
+	
+		
 </script>
 </head>
 <body>
@@ -52,7 +59,7 @@
 <tr height="25">
 	<td width="80" bgcolor="#e6e4e6" align="center">아이디</td>
 	<td width="120" style="padding-left: 5px;">
-	<input type="text" name="userId" maxlength="10" size="15"/>
+	<input type="text" name="Id" maxlength="10" size="15"/>
 	</td>
 </tr>
 
@@ -61,7 +68,7 @@
 <tr height="25">
 	<td width="80" bgcolor="#e6e4e6" align="center">전화번호</td>
 	<td width="120" style="padding-left: 5px;">
-		<input type="text" name="userTel" maxlength="13" size="15"/>
+		<input type="text" name="Tel" maxlength="13" size="15"/>
 	</td>
 </tr>
 
@@ -71,7 +78,7 @@
 	<td colspan="2" align="center">
 	<input type="button" value="확인" class="btn2" onclick="sendIt();">
 	<input type="button" value="취소" class="btn2" 
-	onclick="javascript:location.href='<%=cp %>/join/login.do';">
+	onclick="javascript:location.href='<%=cp %>/login/login.do';">
 	</td>
 </tr>
 
@@ -85,7 +92,7 @@
 	<c:when test="${!empty message}">
 	<tr height="1"><td colspan="2" bgcolor="#cccccc"></tr>
 	<tr><td align="center" colspan="2">
-	<a href="<%=cp %>/join/searchpwd.do;">비밀번호 찾기</a>
+	<a href="<%=cp %>/login/searchpwd.do;">비밀번호 찾기</a>
 	</td></tr>
 	<tr height="1"><td colspan="2" bgcolor="#cccccc"></tr>
 	</c:when>

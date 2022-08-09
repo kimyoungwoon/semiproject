@@ -61,14 +61,14 @@ public class MemberServlet extends HttpServlet {
 			MemberDTO dto = new MemberDTO();
 			int maxNum = dao.getMaxNum();
 			// form post방식으로 넘어오니까
-			
+
 			String id = req.getParameter("reg_id");
 			String pw  = req.getParameter("reg_pw");
 			String name  = req.getParameter("reg_name");
 			String birth  = req.getParameter("reg_birth");
-			
-			
-			
+
+
+
 			if(dao.registerCheck(id)) {
 				//true면 중복
 				url = cp + "/login/register_fail.do";
@@ -89,7 +89,7 @@ public class MemberServlet extends HttpServlet {
 			else {
 				url = cp + "/login/register_fail.do";
 			}
-			
+
 			resp.sendRedirect(url);
 
 		} else if (uri.indexOf("register_success.do") != -1) {
@@ -102,7 +102,7 @@ public class MemberServlet extends HttpServlet {
 			url = "/member/register_fail.jsp";
 			forward(req, resp, url);
 		}
-		
+
 		else if (uri.indexOf("login.do") != -1) {
 
 			url = "/member/login.jsp";
@@ -117,18 +117,18 @@ public class MemberServlet extends HttpServlet {
 			
 
 			MemberDTO dto = dao.getReadData(id);
-			
-//			// dto==null 일 경우 아이디가 없음
-//			// 세션에 있는 pwd가 DB의 pwd와 일치하지 않는 경우
+
+			//			// dto==null 일 경우 아이디가 없음
+			//			// 세션에 있는 pwd가 DB의 pwd와 일치하지 않는 경우
 			if (dto == null || (!dto.getPw().equals(pw))) {
 				req.setAttribute("message", "아이디 또는 패스워드를 정확히 입력하세요");
-				
+
 				url = "/member/login.jsp";
 				forward(req, resp, url);
-				
+
 				//로그인은 세션변경이지만 이건 로그인 실패니까 포워드로 해도 될듯?
-//				url = "/semiproject/member/login.jsp";
-//				resp.sendRedirect(url);
+				//				url = "/semiproject/member/login.jsp";
+				//				resp.sendRedirect(url);
 				return;
 			}
 
@@ -209,6 +209,68 @@ public class MemberServlet extends HttpServlet {
 			url = cp+ "/login/updated.do";
 			resp.sendRedirect(url);
 
+
+			//회원탈퇴
+
+		} else if (uri.indexOf("delete_ok.do") != -1) {
+			
+			
+			
+			
+			HttpSession session = req.getSession();
+			
+			String id = req.getParameter("id");
+			MemberDTO dto = dao.getReadData(id);
+			
+			System.out.println("변수아이디" + id);
+			System.out.println("디티오아이디" +dto.getId());
+			
+			dao.delete(dto);
+
+
+			session = req.getSession();
+			session.removeAttribute("customInfo");
+			session.invalidate();
+
+			url = cp + "/index.jsp";
+			resp.sendRedirect(url);
+			
+			
+			
+		}else if(uri.indexOf("searchpwd.do")!=-1){
+			
+			//비밀번호 찾기
+			url = "/member/searchpwd.jsp";
+			forward(req, resp, url);
+			
+			
+		}else if(uri.indexOf("searchpwd_ok.do")!=-1) {
+			
+			//아이디랑 전화번호랑 같은지 비교
+			String Id = req.getParameter("Id");
+			String Tel = req.getParameter("Tel");
+			
+			MemberDTO dto = dao.getReadData(Id);//셀렉트로 받을준비하고 
+
+			if(dto==null || (!dto.getTel().equals(Tel))) {
+
+				req.setAttribute("message", "회원정보가 존재하지않습니다!");
+
+				url = "/member/login.jsp";
+				forward(req, resp, url);
+				return;				
+
+			}else {
+				
+				String Pw = dto.getPw();
+				
+				req.setAttribute("message", "비밀번호는 " + Pw + " 입니다");
+
+				url = "/member/login.jsp";
+				forward(req, resp, url);
+				return;				
+
+			}
 		}
 	}
 }

@@ -1,8 +1,8 @@
 <%@include file = "../payment/header.jsp"  %>
 <%@ page contentType="text/html; charset=UTF-8"%>
-<link rel="stylesheet" type="text/css"href="<%=cp%>/member/css/style.css" />
-<link rel="stylesheet" type="text/css" href="<%=cp%>/member/css/list.css" />
-<script type="text/javascript" src="<%=cp%>/member/js/util.js"></script>
+
+
+
 
 <script type="text/javascript">
 
@@ -21,6 +21,20 @@
 		f.submit();
 		
 	}
+	
+
+	function deletedIt(){
+	
+		var f = document.myForm;
+		
+		f.action = "<%=cp%>/login/delete_ok.do";
+		f.submit();
+		
+	}
+	
+
+	
+
 	
 </script>
 
@@ -61,7 +75,7 @@
 						<dt>패&nbsp;스&nbsp;워&nbsp;드</dt>
 						<dd>
 							<input type="password" name="pw" size="35" maxlength="20" placeholder="password"
-								value="${dto.pw }" class="boxTF" />
+								value="" class="boxTF" />
 						</dd>
 					</dl>
 				</div>
@@ -118,8 +132,9 @@
 						성&nbsp;&nbsp;별&nbsp;
 						</dt>
 						<dd>
-							<input type="text" name="gender" size="35" maxlength="50" placeholder="gender"
-								value="${dto.gender }" class="boxTF" />
+							<label><input type="checkbox" name="gender" size="35" maxlength="50" placeholder="gender"
+								value="${dto.gender }" class="boxTF" />man</label>
+								<label><input type="checkbox" value="${dto.gender }" >female</label>	
 						</dd>
 					</dl>
 				</div>
@@ -150,8 +165,9 @@
 				
 				<br/>
 					<br/>
+				
 				<div id="bbsCreated_footer">
-				<input type="button" value="회원탈퇴" class="btn2" onclick= />
+				<input type="button" value="회원탈퇴" class="btn2" onclick="deletedIt()"/>
 			
 			</div>
 			
