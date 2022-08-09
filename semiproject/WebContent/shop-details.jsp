@@ -41,8 +41,7 @@
 		}		
 		f.content.value = str;
 		
-		f.action = "<%=cp%>
-	/review/write_ok.do";
+		f.action = "<%=cp%>/review/write_ok.do";
 		f.submit();
 	}
 </script>
