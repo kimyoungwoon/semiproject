@@ -162,9 +162,9 @@ public class OrderServlet extends HttpServlet{
 				result.append("{\"value\": \"" + orderHistoryDTO.getOrderDate() + "\"},");
 				
 				saveFileName = orderDetailDAO.getOrderOnce(memberNum, orderHistoryDTO.getOrderNum());
-				result.append("{\"value\": \"" + saveFileName[0] + "\"},");
-				result.append("{\"value\": \"" + cp + "/img/pds/" + saveFileName[1] + "\"},");
-				result.append("{\"value\": \"" + saveFileName[2] + "\"}],");
+				result.append("{\"value\": \"" + "" + "\"},");
+				result.append("{\"value\": \"" + cp + "/img/pds/" + "" + "\"},");
+				result.append("{\"value\": \"" + "" + "\"}],");
 			}
 			result.append("]}");
 			response.getWriter().write(result.toString());
