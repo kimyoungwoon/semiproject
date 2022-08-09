@@ -283,21 +283,24 @@ public class MemberDAO {
 	}
 
 	// 데이터 지우기
-	public int deleteData(int num) {
+	public  int delete(MemberDTO dto) {
+
 
 		int result = 0;
-		PreparedStatement pstmt = null;
+		PreparedStatement pstmt;
 		String sql;
 
 		try {
 
-			sql = "delete member where num=?";
+			sql = "delete from member where id=?";
+			
+			
+			pstmt=conn.prepareStatement(sql);
 
-			pstmt = conn.prepareStatement(sql);
 
-			pstmt.setInt(1, num);
+			pstmt.setString(1, dto.getId());
 
-			result = pstmt.executeUpdate();
+			result=pstmt.executeUpdate();
 
 			pstmt.close();
 
@@ -306,6 +309,7 @@ public class MemberDAO {
 		}
 
 		return result;
+
 
 	}
 }
