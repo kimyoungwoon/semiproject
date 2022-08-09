@@ -19,7 +19,7 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="breadcrumb__text">
-                        <h4>Order Detail</h4>
+                        <h2 align="center" style="border:thick solid black; font-size:36px; font-weight: 800; color: #111111; background: #f3f2ee; height: 140px; border: 2; "><br/>Order Detail</h2>
                         
                     </div>
                 </div>
@@ -37,7 +37,7 @@
                         <table>
                             <thead>
                                 <tr>
-                                    <th>Product</th>
+                                    <th>&nbsp;&nbsp;Product</th>
                                     <th>QUANTITY</th>
                                     <th>Total</th>
                                     <th></th>
@@ -94,7 +94,7 @@
                     <div class="footer__widget">
                         <h6>NewLetter</h6>
                         <div class="footer__newslatter">
-                            <p>Be the first to know about new arrivals, look books, sales & promos!</p>
+                            <p>Be the first to know about new arrivals, look books, sales & promos!</p>s
                             <form action="#">
                                 <input type="text" placeholder="Your email">
                                 <button type="submit"><span class="icon_mail_alt"></span></button>
