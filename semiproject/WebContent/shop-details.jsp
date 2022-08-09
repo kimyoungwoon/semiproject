@@ -225,7 +225,7 @@
 		</div>
 	</section>
 	
-
+<input type="hidden" id="iProductNum" value="<%=request.getParameter("productNum")%>" />
 
     <!-- Shop Details Section Begin -->
    <section class="shop-details">
