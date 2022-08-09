@@ -114,8 +114,7 @@ public class MemberServlet extends HttpServlet {
 			String id = req.getParameter("login_id");
 			String pw = req.getParameter("login_pw");
 
-			System.out.println(id);
-			System.out.println(pw);
+			
 
 			MemberDTO dto = dao.getReadData(id);
 			

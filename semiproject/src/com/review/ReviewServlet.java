@@ -64,47 +64,55 @@ public class ReviewServlet extends HttpServlet {
 			forward(req, resp, url);
 
 		} else if (uri.indexOf("write_ok.do") != -1) {
-
+			
+			
+			String memberstr = req.getParameter("member");
+			if(memberstr==null || memberstr.equals("")) {
+				memberstr = "0";
+			}
+			int member = Integer.parseInt(memberstr);
+			
+			
+			
+			
+			
 			// 파일업로드 페이지 호출(DAO실행)
-						String encType = "UTF-8";
-						int maxSize = 10 * 1024 * 1024;
+			String encType = "UTF-8";
+			int maxSize = 10 * 1024 * 1024;
 
-						// 물리적 파일 업로드
-						MultipartRequest mr = new MultipartRequest(req, path, maxSize, encType, new DefaultFileRenamePolicy());
-						
-							ReviewDTO dto = new ReviewDTO();
-							int maxNum = dao.getMaxNum();
-							
-							
-							String str = req.getParameter("detailNum");
-							
-							if(str==null || str.equals("")) {//Null 값이왔을때 처리
-								str = "0";
-							}
-							
-							int detailNum = Integer.parseInt(str);//해당상세페이지로 돌아갈수있게 넘값을받음
-							
-							HttpSession session = req.getSession();
-							CustomInfo info = (CustomInfo)session.getAttribute("customInfo");
-							
-							String subject = mr.getParameter("content");//제목값을 받기위한 스트링변수 
-							
-							if(subject==null || subject.equals("") || subject.length()<5) {
-								subject = "즐거운쇼핑";
-							}
-							
-							
-							dto.setNum(maxNum + 1);
-							dto.setName(info.getName());				
-							dto.setSubject(subject.substring(0, 5));
-							dto.setContent(mr.getParameter("content"));
-							dto.setSaveFileName(mr.getFilesystemName("imageFile"));
-							
-							dao.insertData(dto);
+			// 물리적 파일 업로드
+			MultipartRequest mr = new MultipartRequest(req, path, maxSize, encType, new DefaultFileRenamePolicy());
 
-						
-						url = cp + "/detail/review.do";
-						resp.sendRedirect(url);
+			ReviewDTO dto = new ReviewDTO();
+			int maxNum = dao.getMaxNum();
+
+			String str = req.getParameter("detailNum");
+
+			if (str == null || str.equals("")) {// Null 값이왔을때 처리
+				str = "0";
+			}
+
+			int detailNum = Integer.parseInt(str);// 해당상세페이지로 돌아갈수있게 넘값을받음
+
+			HttpSession session = req.getSession();
+			CustomInfo info = (CustomInfo) session.getAttribute("customInfo");
+
+			String subject = mr.getParameter("content");// 제목값을 받기위한 스트링변수
+
+			if (subject == null || subject.equals("") || subject.length() < 5) {
+				subject = "즐거운쇼핑";
+			}
+
+			dto.setNum(maxNum + 1);
+			dto.setName(info.getName());
+			dto.setSubject(subject.substring(0, 5));
+			dto.setContent(mr.getParameter("content"));
+			dto.setSaveFileName(mr.getFilesystemName("imageFile"));
+			dto.setMember(member);	
+			dao.insertData(dto);
+
+			url = cp + "/detail/review.do";
+			resp.sendRedirect(url);
 
 		} else if (uri.indexOf("list.do") != -1) {
 
@@ -127,18 +135,17 @@ public class ReviewServlet extends HttpServlet {
 			String listUrl = cp + "/review/list.do";
 
 			List<ReviewDTO> lists = dao.getListData(start, end);
-			String pageIndexList = myPage.pageIndexList(currentPage, totalPage,
-					listUrl);
+			String pageIndexList = myPage.pageIndexList(currentPage, totalPage, listUrl);
 			// 삭제경로
 			String deletePath = cp + "/review/delete.do";
 			// 이미지파일경로
 			String imagePath = cp + "/pds/imageFile";
 			req.setAttribute("imagePath", imagePath);
-			
+
 			int totalArticle = dao.getDataCount();
 
 			// 파일정보 테이블을 리스트로 전달
-			
+
 			req.setAttribute("lists", lists);
 			req.setAttribute("pageNum", pageNum);
 			req.setAttribute("currentPage", currentPage);
@@ -146,8 +153,8 @@ public class ReviewServlet extends HttpServlet {
 			req.setAttribute("pageIndexList", pageIndexList);
 			req.setAttribute("totalArticle", totalArticle);
 			req.setAttribute("totalPage", totalPage);
-			req.setAttribute("dataCount", dataCount);	
-			
+			req.setAttribute("dataCount", dataCount);
+
 			// list.jsp 페이지로 포워드
 			url = "/shop-details.jsp";
 			forward(req, resp, url);

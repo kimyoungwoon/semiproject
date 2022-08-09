@@ -1,11 +1,55 @@
-
-
-
-<%@include file = "payment/header.jsp"  %>
-<script type="text/javascript" src="<%=cp %>/payment/shop-details.js"></script>
+<%@include file="payment/header.jsp"%>
 <%@ page contentType="text/html; charset=UTF-8"%>
 
+<link rel="stylesheet" type="text/css"
+	href="<%=cp%>/css/detailspage.css" />
+
+<script type="text/javascript">
+
+	function sendIt() {
+		
+		var f = document.myForm;
+		
+		str= f.name.value;
+		str = str.trim();
+		if(!str) {
+			alert("\n이름을 입력하세요.")
+			f.name.focus();
+			return;
+		}		
+		f.name.value = str;
+		
+		str= f.subject.value;
+		str = str.trim();
+		if(!str) {
+			alert("\n제목을 입력하세요.")
+			f.subject.focus();
+			return;
+		}
+		f.subject.value = str;
+		
+		str= f.content.value;
+		str = str.trim();
+		if(!str) {
+			alert("\n내용을 입력하세요.")
+			f.content.focus();
+			return;
+		}		
+		f.content.value = str;
+		
+		f.action = "<%=cp%>
+	/review/write_ok.do";
+		f.submit();
+	}
+</script>
+
 <body>
+	<!-- 클릭했을때 리뷰창 띄워주는 부트스트랩 링크창 -->
+	<script
+		src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
+		integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
+		crossorigin="anonymous">
+	</script>
 	<!-- Header Section End -->
 	<%@include file="payment/nav.jsp"%>
 
@@ -272,9 +316,8 @@
 	<!-- 상세 페이지 리뷰 추가 영역 -->
 
 	<section>
-		<br />
-		<br />
-		<form action="<%=cp%>/review/write_ok.do?detailNum=${dto.num}"
+		<br /> <br />
+		<form action="<%=cp%>/review/write_ok.do?detailNum=${dto.num}&member=${sessionScope.customInfo.num}"
 			method="post" enctype="multipart/form-data" style="margin: auto">
 			<div class="product__details__content">
 				<div class="container">
@@ -289,12 +332,21 @@
 						<div class="container">
 							<div class="col-lg-12">
 								<div class="row">
-									<textarea rows="5" cols="100" disabled="disabled">로그인시 이용 가능합니다</textarea>
+									<textarea style="margin: auto;" rows="8" cols="140" name="content" disabled="disabled">로그인시 이용 가능합니다</textarea>
 								</div>
-								<div class="row">
-									<input type="file" class="file-btn"><input
-										type="button" value="리뷰 등록하기"
-										style="margin-left: 370px; color: #FFFFFF" class="site-btn">
+								<div style="margin: auto;"class="row">
+								<button type="button" class="btn btn-outline-dark btn-lg">
+								<h6>
+								<label for="input-file">파일업로드</label>
+								<input type="file" id="input-file" style="display:none;" name="imageFile"/>
+								</h6>
+								</button>								
+								<button style="margin-left: 864px" type="button" class="btn btn-outline-dark btn-lg">	
+								<h6>																						
+								<label for="input-review">리뷰등록하기</label>																						
+								<input type="submit"id="input-review" style="display:none;"/>
+								</h6>
+								</button>
 								</div>
 							</div>
 						</div>
@@ -302,75 +354,132 @@
 					<c:otherwise>
 						<div class="container">
 							<div class="col-lg-12">
-								<div class="row">
-									<textarea rows="5" cols="100" name="content"></textarea>
+								<div class="row" >
+									<textarea style="margin: auto;" rows="8" cols="140" name="content"></textarea>
 								</div>
-								<div class="row">
-									<input type="file" class="file-btn" name="imageFile"><input
-										type="submit" value="리뷰 등록하기"
-										style="margin-left: 370px; color: #FFFFFF" class="site-btn">
-								</div>
+								<div style="margin: auto;"class="row">
+								<button type="button" class="btn btn-outline-dark btn-lg">
+								<h6>
+								<label for="input-file">파일업로드</label>
+								<input type="file" id="input-file" style="display:none;" name="imageFile"/>
+								</h6>
+								</button>								
+								<button style="margin-left: 864px" type="button" class="btn btn-outline-dark btn-lg">	
+								<h6>
+								
+								<label for="input-review">리뷰등록하기</label>	
+																	
+								<input type="submit"id="input-review" style="display:none;"/>
+								</h6>
+								</button>
+								</div>																
 							</div>
-						</div>
+						</div>										
 					</c:otherwise>
 				</c:choose>
 			</div>
 		</form>
 	</section>
+	<br />
+	<br />
+	<br />
 	<section>
 		<div class="product__details__content">
-			<div class="container">
+			<div class="container">			
 				<c:forEach var="dto" items="${lists }">
-					<br />
-
-					<h6>
-						<input type="hidden" value="${dto.num }" name="num" />
-						이름:&nbsp;${dto.name } / 등록일 :&nbsp;${dto.savepath }
-					</h6>
-					<input type="hidden" value="${dto.num }" name="num" />
-					<a href="${imagePath }/${dto.saveFileName }"> <img
-						src="${imagePath }/${dto.saveFileName}" width="150" height="180"><br /></a>
-					<br />
-					<div>
-						<dl>
-							<dd>${dto.content }</dd>
-							<dd class="deletebutton">
-								<a href="<%=cp%>/review/delete.do?num=${dto.num }">delete</a>
-							</dd>
-						</dl>
+				<div>
+				
+				</div>
+				<c:choose>
+				<c:when test="${sessionScope.customInfo.num ne dto.member }">
+				<c:set var="number" value="${number +1  }" />
+					<div class="container text-center">
+						<div class="row">
+							<div class="col1">
+								<p>
+									<a class="btn btn-dark" data-bs-toggle="collapse"
+									href="#collapseExample${number }" role="button" aria-expanded="false"
+									aria-controls="collapseExample"> 리뷰 보기 </a>
+								</p>
+							</div>							
+						</div>
 					</div>
-					<div class="bbsArticle_bottomLine"></div>
+					<div class="row-lg-8">
+						<div class="collapse" id="collapseExample${number}">
+							<div class="card card-body">
+								<h6>
+									<input type="hidden" value="${dto.num }" name="num" />
+									이름:&nbsp;${dto.name } / 등록일 :&nbsp;${dto.savepath }
+								</h6>
+								<input type="hidden" value="${dto.num }" name="num" /> <a
+									href="${imagePath }/${dto.saveFileName }"> <img
+									src="${imagePath }/${dto.saveFileName}" width="150"
+									height="180"><br /></a> <br />
+								<div>
+									<dl>
+										<dd>${dto.content }</dd>
+									</dl>
+								</div>
+							</div>
+						</div>
+					</div>
+					</c:when>
+					<c:otherwise>
+					<c:set var="number" value="${number +1  }" />
+					<div class="container text-center">
+						<div class="row">
+							<div class="col1">
+								<p>
+									<a class="btn btn-dark" data-bs-toggle="collapse"
+									href="#collapseExample${number }" role="button" aria-expanded="false"
+									aria-controls="collapseExample"> 리뷰 보기 </a>
+								</p>
+							</div>
+							<div style="margin-left: 650px" class="col">
+								<dd class="deletebutton">
+									<a href="<%=cp%>/review/delete.do?num=${dto.num }">delete</a>
+								</dd>
+							</div>
+						</div>
+					</div>
+					<div class="row-lg-8">
+						<div class="collapse" id="collapseExample${number}">
+							<div class="card card-body">
+								<h6>
+									<input type="hidden" value="${dto.num }" name="num" />
+									이름:&nbsp;${dto.name } / 등록일 :&nbsp;${dto.savepath }
+								</h6>
+								<input type="hidden" value="${dto.num }" name="num" /> <a
+									href="${imagePath }/${dto.saveFileName }"> <img
+									src="${imagePath }/${dto.saveFileName}" width="150"
+									height="180"><br /></a> <br />
+								<div>
+									<dl>
+										<dd>${dto.content }</dd>
+									</dl>
+								</div>
+							</div>
+						</div>
+					</div>
+					</c:otherwise>
+					</c:choose>	
 				</c:forEach>
 			</div>
 		</div>
-
 		<div class="row">
 			<div class="col-lg-12">
 				<div class="product__pagination">
-					<a>${pageIndexList }</a>
+					<c:if test="${dataCount!=0 }">
+					${pageIndexList }
+					</c:if>
+					<c:if test="${dataCount==0 }">
+					There is no registered post.
+					</c:if>
 				</div>
 			</div>
-
-		</div>
-		</div>
 		</div>
 	</section>
-	<br />
-	<br />
-	<br />
-	<br />
-	<br />
-	<br />
-	<br />
-	<br />
-	<br />
-	<br />
-	<br />
-	<br />
-	<br />
-	<br />
-	<br />
-
+	
 	<!-- Related Section Begin -->
 	<section class="related spad">
 		<div class="container">
@@ -603,9 +712,7 @@
 	</div>
 	<!-- Search End -->
 
-
 	<%@include file="payment/footer.jsp"%>
-
 </body>
 
 </html>

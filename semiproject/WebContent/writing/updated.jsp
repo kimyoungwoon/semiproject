@@ -63,15 +63,6 @@
 		}
 		f.pwd.value = str;
 		
-		if(str!= "${dto.getPw() }"){
-			
-			alert("\n패스워드가 일치하지 않습니다.");
-
-			f.pwd.focus();
-
-			return;
-
-		}
 		
 		f.action = "<%=cp%>/bbs/updated_ok.do";
 		f.submit();		

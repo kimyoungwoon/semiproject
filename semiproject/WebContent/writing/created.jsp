@@ -106,7 +106,7 @@
 						<dt>작&nbsp;성&nbsp;자</dt>
 						<dd>
 							<input type="text" name="name" size="35" maxlength="20"
-								class="boxTF" value="${sessionScope.customInfo.userName }" />
+								class="boxTF" value="${sessionScope.customInfo.name }" />
 						</dd>
 					</dl>
 				</div>

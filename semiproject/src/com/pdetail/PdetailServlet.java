@@ -69,9 +69,6 @@ public class PdetailServlet extends HttpServlet {
 		//
 		
 		
-		
-		
-		PdetailDTO dto = new PdetailDTO();
 
 		//info.setNum(dto.getNum());
 		

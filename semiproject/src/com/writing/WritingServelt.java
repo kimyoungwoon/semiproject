@@ -256,6 +256,9 @@ public class WritingServelt extends HttpServlet {
 			dto.setPw(req.getParameter("pw"));
 			dto.setContent(req.getParameter("content"));			
 			
+			
+			
+			
 			//�Խñ� ����
 			dao.updateData(dto);
 			
