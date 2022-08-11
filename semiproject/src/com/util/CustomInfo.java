@@ -7,7 +7,6 @@ public class CustomInfo {
 	private String name;
 	
 	
-	
 	public int getNum() {
 		return num;
 	}

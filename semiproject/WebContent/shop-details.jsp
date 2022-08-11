@@ -1,3 +1,4 @@
+
 <%@include file="payment/header.jsp"%>
 <%@ page contentType="text/html; charset=UTF-8"%>
 <script type="text/javascript" src="<%=cp%>/payment/shop-details.js"></script>
@@ -57,6 +58,7 @@
 
 	<!-- Header Section End -->
 	<%@include file="payment/nav.jsp"%>
+
 
 	<!-- Shop Details Section Begin -->
 	<section class="shop-details">
@@ -723,6 +725,7 @@
 	</footer>
 	<!-- Footer Section End -->
 
+
 	<!-- Search Begin -->
 	<div class="search-model">
 		<div class="h-100 d-flex align-items-center justify-content-center">
@@ -735,6 +738,7 @@
 	<!-- Search End -->
 </html>
 <%@include file="payment/footer.jsp"%>
+
 </body>
 
 </html>

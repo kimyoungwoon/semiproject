@@ -54,6 +54,7 @@ function checkLogin() {
 					var signText = hearderTop.children('.desk_sign');
 					signText.html("<a href='http://localhost:8080/semiproject/login/updated.do' class='desk_sign'>"+ result + " 님" + "</a>");
 					hearderTop.append("<a href='http://localhost:8080/semiproject/login/logout_ok.do' id = 'logout_btn'>Log Out</a>");
+
 					countCart();
 				}
 			}

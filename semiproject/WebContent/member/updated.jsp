@@ -34,7 +34,6 @@
 		f.submit();
 		
 	}
-
 </script>
 
 
@@ -42,8 +41,7 @@
 	
     <!-- Header Section End -->
 	<%@include file = "../payment/nav.jsp"  %>
-	
-	
+
 	
 <div class="row">
 <div style="height: 0px; line-height: 35px; border-bottom: 1px solid #000000; clear: both; text-align: left">
@@ -156,7 +154,7 @@
 			<input type="hidden" name="num" value="${dto.num }">
 			<input type="hidden" name="mname" value="${dto.id }">
 			</div>
-			
+
 			
 			
 		</form>

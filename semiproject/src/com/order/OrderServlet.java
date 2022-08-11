@@ -170,9 +170,11 @@ public class OrderServlet extends HttpServlet{
 				result.append("{\"value\": \"" + orderHistoryDTO.getOrderDate() + "\"},");
 				
 				saveFileName = orderDetailDAO.getOrderOnce(memberNum, orderHistoryDTO.getOrderNum());
+
 				result.append("{\"value\": \"" + saveFileName[0] + "\"},");		//이름
 				result.append("{\"value\": \"" + cp + "/pds/productFile/" + saveFileName[1] + "\"},");	//파일 이름
 				result.append("{\"value\": \"" + saveFileName[2] + "\"}],");	//갯수
+
 			}
 			result.append("]}");
 			response.getWriter().write(result.toString());

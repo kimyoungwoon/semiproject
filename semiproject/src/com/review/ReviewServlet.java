@@ -64,18 +64,11 @@ public class ReviewServlet extends HttpServlet {
 			forward(req, resp, url);
 
 		} else if (uri.indexOf("write_ok.do") != -1) {
-			//System.out.println("리뷰" + req.getParameter("productNum"));
-
 			String memberstr = req.getParameter("member");
 			if(memberstr==null || memberstr.equals("")) {
 				memberstr = "0";
 			}
 			int member = Integer.parseInt(memberstr);
-
-
-
-
-
 			// 파일업로드 페이지 호출(DAO실행)
 			String encType = "UTF-8";
 			int maxSize = 10 * 1024 * 1024;
@@ -105,6 +98,7 @@ public class ReviewServlet extends HttpServlet {
 
 			dto.setNum(maxNum + 1);
 			dto.setName(info.getName());				
+
 			dto.setSubject(subject.substring(0, 5));
 			dto.setContent(mr.getParameter("content"));
 			dto.setSaveFileName(mr.getFilesystemName("imageFile"));
@@ -112,6 +106,7 @@ public class ReviewServlet extends HttpServlet {
 			dao.insertData(dto);
 
 			url = cp + "/detail/makerv.do?productNum=" + req.getParameter("productNum");
+
 			resp.sendRedirect(url);
 
 		} /*else if (uri.indexOf("list.do") != -1) {
@@ -153,6 +148,7 @@ public class ReviewServlet extends HttpServlet {
 			req.setAttribute("pageIndexList", pageIndexList);
 			req.setAttribute("totalArticle", totalArticle);
 			req.setAttribute("totalPage", totalPage);
+
 			req.setAttribute("dataCount", dataCount);	
 
 			// list.jsp 페이지로 포워드
@@ -160,7 +156,7 @@ public class ReviewServlet extends HttpServlet {
 			forward(req, resp, url);
 
 		}*/ else if (uri.indexOf("delete.do") != -1) {
-			System.out.println("삭제넘" + req.getParameter("num"));
+
 			int num = Integer.parseInt(req.getParameter("num"));
 			String pageNum = req.getParameter("pageNum");
 

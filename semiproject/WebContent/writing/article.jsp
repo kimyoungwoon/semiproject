@@ -1,12 +1,13 @@
-<%@include file = "../payment/header.jsp"  %>
+<%@include file="../payment/header.jsp"%>
 <%@ page contentType="text/html; charset=UTF-8"%>
 <%
 	request.setCharacterEncoding("UTF-8");
-	
 %>
-    
-    <link rel="stylesheet" type="text/css" href="<%=cp %>/writing/css/style.css"/>
-	<link rel="stylesheet" type="text/css" href="<%=cp %>/writing/css/article.css"/>
+
+<link rel="stylesheet" type="text/css"
+	href="<%=cp%>/writing/css/style.css" />
+<link rel="stylesheet" type="text/css"
+	href="<%=cp%>/writing/css/article.css" />
 
 <body>
 
@@ -111,6 +112,7 @@
 						<div class="footer__logo">
 							<a href="#"><img src="<%=cp%>/img/footer-logo.png" alt=""></a>
 						</div>
+
                         <p>The customer is at the heart of our unique business model, which includes design.</p>
                         <a href="#"><img src="<%=cp%>/img/payment.png" alt=""></a>
                     </div>
@@ -169,17 +171,17 @@
     </footer>
     <!-- Footer Section End -->
 
-    <!-- Search Begin -->
-    <div class="search-model">
-        <div class="h-100 d-flex align-items-center justify-content-center">
-            <div class="search-close-switch">+</div>
-            <form class="search-model-form">
-                <input type="text" id="search-input" placeholder="Search here.....">
-            </form>
-        </div>
-    </div>
-    <!-- Search End -->
+	<!-- Search Begin -->
+	<div class="search-model">
+		<div class="h-100 d-flex align-items-center justify-content-center">
+			<div class="search-close-switch">+</div>
+			<form class="search-model-form">
+				<input type="text" id="search-input" placeholder="Search here.....">
+			</form>
+		</div>
+	</div>
+	<!-- Search End -->
 	<!-- Js Plugins -->
-   <%@include file = "../payment/footer.jsp"  %>
+	<%@include file="../payment/footer.jsp"%>
 </body>
 </html>

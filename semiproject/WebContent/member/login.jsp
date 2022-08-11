@@ -37,7 +37,7 @@ $(document).ready(function() {
 	    	f.action="<%=cp %>/login/login_ok.do";
 	  	 	f.submit();
 		}
-			
+				
 		function searchIt(){
 			f = document.loginForm;
 			
@@ -81,9 +81,10 @@ $(document).ready(function() {
 				<button class="submit" onclick="loginMember();">
 					<font size="4pt" color="white">Login</font>
 				</button><br/>
-				<!-- <button class="submit" onclick="searchIt();">
+
+				<button class="submit" onclick="searchIt();">
 				<font size="2pt" color="white">Search Pwd</font>
-				</button> -->
+				</button>
 			</form>
 
 
@@ -99,7 +100,7 @@ $(document).ready(function() {
 					<br/>
 					<br/>
 				<button class="submit" onclick="registerMember();">
-					<font size="3pt" color="white">REGISTER</font>
+					<font size="3pt" color="white">REGISTER</font>					
 				</button>
 				
 			</form>
