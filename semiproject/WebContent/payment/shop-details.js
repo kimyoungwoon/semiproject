@@ -7,7 +7,7 @@ function registerFunction() {
 	//지금 당장은 테스트로 1
 	var productNum = $("#iProductNum").val();
 	console.log(productNum);
-	detailRequest.open("Post", "../pdetail/pdetailList.do?productNum=" + eURI(productNum), true);
+	detailRequest.open("Post", "http://localhost:8080/semiproject/pdetail/pdetailList.do?productNum=" + eURI(productNum), true);
 	detailRequest.onreadystatechange = successConnect;
 	detailRequest.send(null);
 }
@@ -32,7 +32,7 @@ function successConnect() {
 
 //nav 카트 갯수 처리
 function countCart() {
-	countCartRequest.open("Post", "../cart/countCart.do", true);
+	countCartRequest.open("Post", "http://localhost:8080/semiproject/cart/countCart.do", true);
 	countCartRequest.onreadystatechange = function() {
 		if (countCartRequest.readyState == 4 && countCartRequest.status == 200) {
 			var object = eval("(" + countCartRequest.responseText + ")");
@@ -52,7 +52,7 @@ function insertCartFunction() {
 	
 	var productCount = $("#productCount").val();
 	console.log(productCount);
-	insertCartRequest.open("Post", "../shopping/addCartCount.do?productNum=" + eURI(curProductNum) + "&count=" + eURI(productCount), true);
+	insertCartRequest.open("Post", "http://localhost:8080/semiproject/shopping/addCartCount.do?productNum=" + eURI(curProductNum) + "&count=" + eURI(productCount), true);
 	insertCartRequest.onreadystatechange = insertCartComplete;
 	insertCartRequest.send(null);
 	countCart();
@@ -69,8 +69,8 @@ function productOtherInfo(result){
 	
 	let OtherInfo = $('.product__details__last__option').children('ul');
 	OtherInfo.children('li:eq(0)').html("<span>SKU:</span> " +  result[0].value);
-	OtherInfo.children('li:eq(1)').html("<span>Categories:</span> " +  result[3].value);
-	OtherInfo.children('li:eq(2)').html("<span>Brand:</span> " +  result[4].value);
+	/*OtherInfo.children('li:eq(1)').html("<span>Categories:</span> " +  result[3].value);
+	OtherInfo.children('li:eq(2)').html("<span>Brand:</span> " +  result[4].value);*/
 	
 }
 
@@ -112,8 +112,6 @@ function productView(result){
 	setPic("3", "../pds/productFile/"+ result[7].value);
 	setPic("4", "../pds/productFile/"+ result[8].value);
 }
-
-
 
 window.addEventListener("load", function () {
 	registerFunction();

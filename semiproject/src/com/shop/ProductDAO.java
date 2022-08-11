@@ -360,8 +360,7 @@ public class ProductDAO {
 			if(rs.next()) {
 				result = rs.getInt(1);
 			}
-			System.out.println(memberNum);
-			System.out.println(productNum);
+		
 			if(result == 0) {
 				sql = "insert into cart_product (membernum, productnum, count) ";
 				sql+= "values (?,?,1)";

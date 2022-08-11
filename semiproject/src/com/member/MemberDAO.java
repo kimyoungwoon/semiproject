@@ -253,22 +253,22 @@ public class MemberDAO {
 
 		try {
 
-			sql = "update member set num=?,id=?,pw=?,name=?,email=?,address=?,tel=?,gender=?,birth=? ";
+			sql = "update member set pw=?, email=?,address=?,tel=?,gender=? ";
 			sql += "where id=?";
 
 			pstmt = conn.prepareStatement(sql);
 			System.out.println(dto.getBirth());
 			// pstmt.setString(1, dto.getName());
-			pstmt.setInt(1, dto.getNum());
-			pstmt.setString(2, dto.getId());
-			pstmt.setString(3, dto.getPw());
-			pstmt.setString(4, dto.getName());
-			pstmt.setString(5, dto.getEmail());
-			pstmt.setString(6, dto.getAddress());
-			pstmt.setString(7, dto.getTel());
-			pstmt.setString(8, dto.getGender());
-			pstmt.setString(9, dto.getBirth());
-			pstmt.setString(10, dto.getId());
+//			pstmt.setInt(1, dto.getNum());
+//			pstmt.setString(2, dto.getId());
+			pstmt.setString(1, dto.getPw());
+//			pstmt.setString(4, dto.getName());
+			pstmt.setString(2, dto.getEmail());
+			pstmt.setString(3, dto.getAddress());
+			pstmt.setString(4, dto.getTel());
+			pstmt.setString(5, dto.getGender());
+//			pstmt.setString(9, dto.getBirth());
+			pstmt.setString(6, dto.getId());
 
 			result = pstmt.executeUpdate();
 
@@ -283,7 +283,8 @@ public class MemberDAO {
 	}
 
 	// 데이터 지우기
-	public int deleteData(int num) {
+	public  int delete(MemberDTO dto) {
+
 
 		int result = 0;
 		PreparedStatement pstmt = null;
@@ -291,13 +292,15 @@ public class MemberDAO {
 
 		try {
 
-			sql = "delete member where num=?";
+			sql = "delete from member where id=?";
 
-			pstmt = conn.prepareStatement(sql);
+			
+			pstmt=conn.prepareStatement(sql);
 
-			pstmt.setInt(1, num);
 
-			result = pstmt.executeUpdate();
+			pstmt.setString(1, dto.getId());
+
+			result=pstmt.executeUpdate();
 
 			pstmt.close();
 

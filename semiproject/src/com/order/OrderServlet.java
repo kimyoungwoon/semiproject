@@ -3,6 +3,7 @@ package com.order;
 import java.io.File;
 import java.io.IOException;
 import java.sql.Connection;
+import java.util.Iterator;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -129,6 +130,12 @@ public class OrderServlet extends HttpServlet{
 			
 			MemberDTO memberInfo = memberDAO.getReadDataNum(memberNum);
 
+			memberInfo.setName(memberInfo.getName() == null ? "" : memberInfo.getName());
+			memberInfo.setTel(memberInfo.getTel() == null ? "" : memberInfo.getTel());
+			memberInfo.setEmail(memberInfo.getEmail() == null ? "" : memberInfo.getEmail());
+			memberInfo.setAddress(memberInfo.getAddress() == null ? "" : memberInfo.getAddress());
+			
+			
 			StringBuffer result = new StringBuffer("");
 			result.append("{\"result\":[");
 			result.append("{\"value\": \"" + memberInfo.getName() + "\"},");
@@ -152,6 +159,7 @@ public class OrderServlet extends HttpServlet{
 			List<OrderHistoryDTO> order = orderDAO.getCartList(memberNum);
 			String[] saveFileName = null;
 			
+			
 			StringBuffer result = new StringBuffer("");
 			result.append("{\"result\":[");
 			for (OrderHistoryDTO orderHistoryDTO : order) {
@@ -162,9 +170,9 @@ public class OrderServlet extends HttpServlet{
 				result.append("{\"value\": \"" + orderHistoryDTO.getOrderDate() + "\"},");
 				
 				saveFileName = orderDetailDAO.getOrderOnce(memberNum, orderHistoryDTO.getOrderNum());
-				result.append("{\"value\": \"" + saveFileName[0] + "\"},");
-				result.append("{\"value\": \"" + cp + "/img/pds/" + saveFileName[1] + "\"},");
-				result.append("{\"value\": \"" + saveFileName[2] + "\"}],");
+				result.append("{\"value\": \"" + saveFileName[0] + "\"},");		//이름
+				result.append("{\"value\": \"" + cp + "/pds/productFile/" + saveFileName[1] + "\"},");	//파일 이름
+				result.append("{\"value\": \"" + saveFileName[2] + "\"}],");	//갯수
 			}
 			result.append("]}");
 			response.getWriter().write(result.toString());
@@ -214,7 +222,7 @@ public class OrderServlet extends HttpServlet{
 				result.append("{\"value\": \"" + lists.get(i).getPrice() + "\"},");
 				result.append("{\"value\": \"" + lists.get(i).getCount() + "\"},");
 				result.append("{\"value\": \"" + lists.get(i).getName() + "\"},");
-				result.append("{\"value\": \"" + lists.get(i).getSaveFileName() + "\"}],");
+				result.append("{\"value\": \"" + cp + "/pds/productFile/" + lists.get(i).getSaveFileName() + "\"}],");
 			}
 			result.append("]}");
 			response.getWriter().write(result.toString());

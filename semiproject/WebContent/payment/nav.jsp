@@ -48,7 +48,7 @@
 							<div class="header__top__links">
 								<a href="<%=cp %>/login/created.do" class = "desk_sign">Sign in</a> 
 							</div>
-							<div class="header__top__hover">
+							<%-- <div class="header__top__hover">
 								<span>List <i class="arrow_carrot-down"></i></span>
 								<ul>
 								<c:choose>  
@@ -57,12 +57,12 @@
                            		<c:otherwise>
                            		 	<a href="<%=cp %>/login/updated.do"><li>MyPage</li></a>
                                     <li>Cart</li>                               
-                           			</c:otherwise>
+                          			</c:otherwise>
                            		
                                 </c:choose>   
                                     
 								</ul>
-							</div>
+							</div> --%>
 						</div>
 					</div>
 				</div>
@@ -80,25 +80,25 @@
 						<ul>
 							<li><a href="<%=cp %>/index.jsp">Home</a></li>
 							<li ><a href="<%=cp %>/shopping/list.do">Shop</a></li>
-							<li><a href="#">Pages</a>
+							<%-- <li><a href="#">Pages</a>
 								<ul class="dropdown">
 									<li><a href="<%=cp %>/about.jsp">About Us</a></li>
 									<li><a href="<%=cp %>/shop-details.jsp">Shop Details</a></li>
 									<li><a href="<%=cp %>/cart/cart.do">Shopping Cart</a></li>
 									<li><a href="<%=cp %>/order/orderHistoryList.do">Order History</a></li>
 									<li><a href="<%=cp %>/blog-details.jsp">Blog Details</a></li>
-								</ul></li>
-							<li><a href="<%=cp %>/blog.jsp">Blog</a></li>
-							<li><a href="<%=cp %>/contact.jsp">Contacts</a></li>
+								</ul></li> --%>
+							<li><a href="<%=cp %>/cart/cart.do">Shopping Cart</a></li>
+							<li><a href="<%=cp %>/order/orderHistoryList.do">Order History</a></li>
 						</ul>
 					</nav>
 				</div>
 				<div class="col-lg-3 col-md-3">
 					<div class="header__nav__option">
-						<a href="#" class="search-switch">
-						<img src="<%=cp%>/img/icon/search.png" alt=""></a> 
-						<a href="<%=cp %>/nav/wishList.do"><img src="<%=cp%>/img/icon/heart.png" alt=""></a> 
-						<a href="<%=cp %>/cart/cart.do" id = "h_menu_countCart"><img src="<%=cp%>/img/icon/cart.png" alt=""><span>0</span></a>
+						<!-- <a href="#" class="search-switch"> -->
+						<%-- <img src="<%=cp%>/img/icon/search.png" alt=""></a>  --%>
+						<%-- <a href="<%=cp %>/nav/wishList.do"><img src="<%=cp%>/img/icon/heart.png" alt=""></a>  --%>
+						<a href="<%=cp %>/cart/cart.do" id = "h_menu_countCart"><img src="<%=cp%>/img/icon/cart.png" width = "20px"alt=""><span><strong>&nbsp;0</strong></span></a>
 					</div>
 				</div>
 			</div>

@@ -159,9 +159,9 @@ public class OrderDetailDAO {
 				
 				if(rs.next()) {
 					saveFileName = new String[3];
-					saveFileName[0] = rs.getString(1);
-					saveFileName[1] = rs.getString(2);
-					saveFileName[2] = rs.getString(3);
+					saveFileName[0] = rs.getString(1);	//이름
+					saveFileName[1] = rs.getString(2);	//파일이름
+					saveFileName[2] = rs.getString(3);	//갯수
 				}
 				rs.close();
 				pstmt.close();

@@ -57,7 +57,7 @@ public class MyPage {
 		if(totalPage>numPerBlock && currentPageSetup>0) {
 			
 			sb.append("<a href=\"" + listUrl + "pageNum="
-					+ currentPageSetup + "\">◀이전</a>&nbsp;");
+					+ currentPageSetup + "\">◀</a>&nbsp;");
 			// <a href="list.jsp?pageNum=5">◀이전<a>&nbsp;
 		}
 		
@@ -87,7 +87,7 @@ public class MyPage {
 		if(totalPage-currentPageSetup>numPerBlock) {
 			
 			sb.append("<a href=\"" + listUrl + "pageNum=" + page +
-					"\">다음▶</a>&nbsp;");
+					"\">▶</a>&nbsp;");
 			// <a href="list.jsp?pageNum=11">다음▶</a>&nbsp;
 			
 		}

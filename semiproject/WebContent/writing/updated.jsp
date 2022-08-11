@@ -53,25 +53,7 @@
 			return;
 		}
 		f.content.value = str;
-		
-		str= f.pwd.value;
-		str = str.trim();
-		if(!str) {
-			alert("\n패스워드를 입력하세요.")
-			f.pwd.focus();
-			return;
-		}
-		f.pwd.value = str;
-		
-		if(str!= "${dto.getPw() }"){
-			
-			alert("\n패스워드가 일치하지 않습니다.");
-
-			f.pwd.focus();
-
-			return;
-
-		}
+				
 		
 		f.action = "<%=cp%>/bbs/updated_ok.do";
 		f.submit();		
@@ -90,7 +72,7 @@
 	<div class="container">
 			<div class="row">
 				<div class="col-lg-12">
-					<h1 class="related-title">QuestioN</h1>
+					<h1 class="related-title">Notice Board</h1>
 				</div>
 			</div>
 		</div>
@@ -111,10 +93,10 @@
 		
 		<div class="bbsCreated_bottomLine">
 			<dl>
-				<dt>작&nbsp;성&nbsp;자</dt>
+				<dt>이&nbsp;&nbsp;&nbsp;&nbsp;름</dt>
 				<dd>
 					<input type="text" name="name" size="35"
-					maxlength="20" class="boxTF" value="${dto.name }"/>
+					maxlength="20" class="boxTF" value="${dto.name }" readonly="readonly"/>
 				</dd>	
 			</dl>
 		</div>
@@ -135,16 +117,6 @@
 				<dd>
 					<textarea rows="12" cols="63" name="content" 
 					class="boxTA" >${dto.content }</textarea>
-				</dd>	
-			</dl>
-		</div>
-		
-		<div class="bbsCreated_noLine">
-			<dl>
-				<dt>비밀번호</dt>
-				<dd>
-					<input type="password" name="pwd" size="35" value="${dto.pw }"
-					maxlength="7" class="boxTF"/>
 				</dd>	
 			</dl>
 		</div>

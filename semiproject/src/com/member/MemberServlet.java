@@ -114,8 +114,6 @@ public class MemberServlet extends HttpServlet {
 			String id = req.getParameter("login_id");
 			String pw = req.getParameter("login_pw");
 
-			System.out.println(id);
-			System.out.println(pw);
 
 			MemberDTO dto = dao.getReadData(id);
 			
@@ -172,6 +170,7 @@ public class MemberServlet extends HttpServlet {
 			CustomInfo info = (CustomInfo) session.getAttribute("customInfo");
 
 			MemberDTO dto = dao.getReadData(info.getId());
+			dto.setBirth(dto.getBirth().substring(0, 10));
 			req.setAttribute("dto", dto);
 
 			// 회원정보수정 포워드 페이지
@@ -196,20 +195,66 @@ public class MemberServlet extends HttpServlet {
 			dto.setGender(req.getParameter("gender"));
 			dto.setBirth(req.getParameter("birth"));
 
-			System.out.println(dto.getId());
-			System.out.println(dto.getPw());
-			System.out.println(dto.getName());
-			System.out.println(dto.getEmail());
-			System.out.println(dto.getAddress());
-			System.out.println(dto.getTel());
-			System.out.println(dto.getGender());
-			System.out.println(dto.getBirth());
+		
 
 			dao.updateData(dto);
 
 			url = cp+ "/login/updated.do";
 			resp.sendRedirect(url);
 
+
+			//회원탈퇴
+
+		} else if (uri.indexOf("delete_ok.do") != -1) {
+			
+			HttpSession session = req.getSession();
+			
+			//System.out.println(req.getParameter("num"));
+			
+			String id = req.getParameter("mname");
+			MemberDTO dto = dao.getReadData(id);
+
+			dao.delete(dto);
+			
+			session.removeAttribute("customInfo");
+			session.invalidate();
+
+			url = cp + "/index.jsp";
+			resp.sendRedirect(url);
+		}else if(uri.indexOf("searchpwd.do")!=-1){
+			
+			//비밀번호 찾기
+			url = "/member/searchpwd.jsp";
+			forward(req, resp, url);
+			
+			
+		}else if(uri.indexOf("searchpwd_ok.do")!=-1) {
+			
+			//아이디랑 전화번호랑 같은지 비교
+			String Id = req.getParameter("Id");
+			String Tel = req.getParameter("Tel");
+			
+			MemberDTO dto = dao.getReadData(Id);//셀렉트로 받을준비하고 
+
+			if(dto==null || (!dto.getTel().equals(Tel))) {
+
+				req.setAttribute("message", "회원정보가 존재하지않습니다!");
+
+				url = "/member/login.jsp";
+				forward(req, resp, url);
+				return;				
+
+			}else {
+				
+				String Pw = dto.getPw();
+				
+				req.setAttribute("message", "비밀번호는 " + Pw + " 입니다");
+
+				url = "/member/login.jsp";
+				forward(req, resp, url);
+				return;				
+
+			}
 		}
 	}
 }

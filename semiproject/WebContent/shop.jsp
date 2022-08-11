@@ -12,6 +12,7 @@ function goProductDetail(productNum) {
 
 </script>
 
+
 <body>  
     <!-- Header Section End -->
     <%@include file = "payment/nav.jsp"  %>
@@ -57,13 +58,13 @@ function goProductDetail(productNum) {
                                         <div class="card-body">
                                             <div class="shop__sidebar__categories">
                                                 <ul class="nice-scroll">
-                                                    <li><a href="${sortPath }category=1">Men (20)</a></li>
-                                                    <li><a href="${sortPath }category=2">Women (20)</a></li>
-                                                    <li><a href="${sortPath }category=3">Bags (20)</a></li>
-                                                    <li><a href="${sortPath }category=4">Clothing (20)</a></li>
-                                                    <li><a href="${sortPath }category=5">Shoes (20)</a></li>
-                                                    <li><a href="${sortPath }category=6">Accessories (20)</a></li>
-                                                    <li><a href="${sortPath }category=7">Kids (20)</a></li>
+                                                    <li><a href="${sortPath }category=1">Men</a></li>
+                                                    <li><a href="${sortPath }category=2">Women</a></li>
+                                                    <li><a href="${sortPath }category=3">Bags</a></li>
+                                                    <li><a href="${sortPath }category=4">Clothing</a></li>
+                                                    <li><a href="${sortPath }category=5">Shoes</a></li>
+                                                    <li><a href="${sortPath }category=6">Accessories</a></li>
+                                                    <li><a href="${sortPath }category=7"></a></li>
                                                 </ul>
                                             </div>
                                         </div>
@@ -94,12 +95,12 @@ function goProductDetail(productNum) {
                                         <div class="card-body">
                                             <div class="shop__sidebar__price">
                                                 <ul>
-                                                    <li><a href="${sortPath }priceMin=0&priceMax=50">$0.00 - $50.00</a></li>
-                                                    <li><a href="${sortPath }priceMin=50&priceMax=100">$50.00 - $100.00</a></li>
-                                                    <li><a href="${sortPath }priceMin=100&priceMax=150">$100.00 - $150.00</a></li>
-                                                    <li><a href="${sortPath }priceMin=150&priceMax=200">$150.00 - $200.00</a></li>
-                                                    <li><a href="${sortPath }priceMin=200&priceMax=250">$200.00 - $250.00</a></li>
-                                                    <li><a href="${sortPath }priceMin=250">250.00+</a></li>
+                                                    <li><a href="${sortPath }priceMin=0&priceMax=1000000">&#8361; 0 - &#8361; 1,000,000</a></li>
+                                                    <li><a href="${sortPath }priceMin=1000000&priceMax=2000000">&#8361; 1,000,000 - &#8361; 2,000,000</a></li>
+                                                    <li><a href="${sortPath }priceMin=2000000&priceMax=3000000">&#8361; 2,000,000 - &#8361; 3,000,000</a></li>
+                                                    <li><a href="${sortPath }priceMin=3000000&priceMax=4000000">&#8361; 3,000,000 - &#8361; 4,000,000</a></li>
+                                                    <li><a href="${sortPath }priceMin=4000000&priceMax=5000000">&#8361; 4,000,000 - &#8361; 5,000,000</a></li>
+                                                    <li><a href="${sortPath }priceMin=500">&#8361; 5,000,000+</a></li>
                                                 </ul>
                                             </div>
                                         </div>
@@ -228,9 +229,9 @@ function goProductDetail(productNum) {
                                 <form action="document.sortForm" >
                                     <p>Sort by Price:</p>
                                     <select onchange="location.href=this.value">
-                                        <option value="http://localhost:8080<%=cp%>/shopping/list.do">New</option>
-                                        <option value="http://localhost:8080<%=cp%>/shopping/listsortlow.do?sort=1">Low To High</option>
-                                        <option value="http://localhost:8080<%=cp%>/shopping/listsorthigh.do?sort=2">High To Low</option>
+                                        <option value="<%=cp%>/shopping/list.do">New</option>
+                                        <option value="<%=cp%>/shopping/listsortlow.do?sort=1">Low To High</option>
+                                        <option value="<%=cp%>/shopping/listsorthigh.do?sort=2">High To Low</option>
                                     </select>
                                 </form>    
                                 </div>
@@ -263,7 +264,7 @@ function goProductDetail(productNum) {
                                         <i class="fa fa-star-o"></i>
                                         <i class="fa fa-star-o"></i>
                                     </div>
-                                    <h5>&#8361; ${dto.price }</h5>
+                                    <h5 class = "productPriceList">&#8361; ${dto.price }</h5>
                                     <div class="product__color__select">
                                         <label for="pc-4">
                                             <input type="radio" id="pc-4">
@@ -282,9 +283,9 @@ function goProductDetail(productNum) {
 					</div>
                         
                       
-					<div class="row" ">
+					<div class="row" >
 						<div class="col-lg-12">
-							<div class="product__pagination">
+							<div class="product__pagination" >
 
 								<a >${pageIndexList }</a>
 								<!-- 
@@ -385,6 +386,18 @@ function goProductDetail(productNum) {
 	
 	
     <%@include file = "payment/footer.jsp"  %>
+<script>
+    var ppl = $(".productPriceList");
+ 
+    //var actualPayment = $("#actualPayment").text().replaceAll(/\D/gm, "");
+	
+    for (var i = 0; i < ppl.length; i++) {
+    	ppl[i].innerText = "₩ " + (Number(ppl[i].innerText.replaceAll(/\D/gm, "")).toLocaleString("ko-KR"));
+	}
+	
+</script>
+    
+    
 </body>
 
 </html>

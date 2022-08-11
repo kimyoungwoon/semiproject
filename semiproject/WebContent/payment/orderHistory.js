@@ -6,7 +6,7 @@ var orderNumber = 0;
 function registerFunction() {
 	//여기도 마찬가지로 요청할때는 session을 이용해서 하면 됨.
 	//지금 당장은 테스트로 1
-	orderHistoryRequest.open("Post", "./order/orderHistory.do", true);
+	orderHistoryRequest.open("Post", "http://localhost:8080/semiproject/order/orderHistory.do", true);
 	orderHistoryRequest.onreadystatechange = readConnect;
 	orderHistoryRequest.send(null);
 }
@@ -49,7 +49,7 @@ function readConnect() {
 //해당 주문 클릭스 주문 상세로 가도록 구현할 메서드
 function orderDetailView(orderNum) {
 	
-	location.href = "./orderDetail.do?orderNum=" + orderNum;
+	location.href = "http://localhost:8080/semiproject/order/orderDetail.do?orderNum=" + orderNum;
 	
 }
 
@@ -71,7 +71,7 @@ function deleteCartProduct(arg, orderNum) {
 	if(!result){
 	    return;
 	}
-	deleteRequest.open("Post", "./order/deleteOrder.do?orderNum=" + eURI(orderNum), true);
+	deleteRequest.open("Post", "http://localhost:8080/semiproject/order/deleteOrder.do?orderNum=" + eURI(orderNum), true);
 	//	deleteRequest.onreadystatechange = successConnect;
 	deleteRequest.send(null);	//주석 처리 해제 시 제대로 삭제 됨.
 	$(arg).closest("tr").remove();

@@ -35,12 +35,11 @@
                             <!-- <h6 class="coupon__code"><span class="icon_tag_alt"></span> Have a coupon? <a href="#">Click
                             here</a> to enter your code</h6> -->
                             <h6 class="checkout__title">Billing Details   
-                                <label for="acc col-lg-6" style = "position:absolute;right:20px;">
+                               <!--  <label for="acc col-lg-6" style = "position:absolute;right:20px;">
                                     default delivery?
                                     <input type="checkbox" id="acc" checked = "checked">
                                     <span class="checkmark"></span>
-                                </label></h6>
-
+                                </label> --></h6>
                             <div class="row">
                                 <div class="col-lg-6">
                                     <div class="checkout__input">
@@ -79,7 +78,6 @@
                             <div class="checkout__input">
                                 <p>Address<span>*</span></p>
                                 <input type="text" placeholder="Street Address" class="checkout__input__add" name = "addr1">
-                                <input type="text" placeholder="Apartment, suite, unite ect (optinal)" name = "addr2">
                             </div>
                           <!--   <div class="checkout__input">
                                 <p>Town/City<span>*</span></p>

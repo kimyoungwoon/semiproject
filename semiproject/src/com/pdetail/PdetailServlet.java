@@ -1,7 +1,6 @@
 package com.pdetail;
 
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+
 import java.io.File;
 import java.io.IOException;
 import java.sql.Connection;
@@ -116,8 +115,8 @@ public class PdetailServlet extends HttpServlet {
 
 
 			
-		}else if(uri.indexOf("review.do")!=-1) {
-			
+		}else if(uri.indexOf("makerv.do")!=-1) {
+			//System.out.println("마커" + req.getParameter("productNum"));
 				String pageNum = req.getParameter("pageNum");
 				int currentPage = 1; // 처음 띄우는 리스트 페이지
 				if (pageNum != null) {
@@ -161,7 +160,6 @@ public class PdetailServlet extends HttpServlet {
 				// list.jsp 페이지로 포워드
 				url = "/shop-details.jsp";
 				forward(req, resp, url);
-			
 		}
 		else if(uri.indexOf("pdetailList.do")!=-1) {
 			int productNum = Integer.parseInt(req.getParameter("productNum"));

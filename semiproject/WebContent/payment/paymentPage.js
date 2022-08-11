@@ -6,15 +6,15 @@ function registerFunction() {
 //	여기도 마찬가지로 요청할때는 session을 이용해서 하면 됨.
 //	지금 당장은 테스트로 1
 	//console.log("결제페이지 요청")
-	paymentRequest.open("Post", "./order/paymentList.do?memberNum=" + eURI("1"), true);
+	paymentRequest.open("Post", "http://localhost:8080/semiproject/order/paymentList.do?memberNum=" + eURI("1"), true);
 	paymentRequest.onreadystatechange = successConnect;
 	paymentRequest.send(null);
 
-	actualRequest.open("Post", "./order/actualPayment.do", true);
+	actualRequest.open("Post", "http://localhost:8080/semiproject/order/actualPayment.do", true);
 	actualRequest.onreadystatechange = actualPayment;
 	actualRequest.send(null);
 	
-	billingDetailRequest.open("Post", "./order/billingDetail.do", true);
+	billingDetailRequest.open("Post", "http://localhost:8080/semiproject/order/billingDetail.do", true);
 	billingDetailRequest.onreadystatechange = setbillingDetail;
 	billingDetailRequest.send(null);
 	
@@ -67,7 +67,6 @@ function setbillingDetail() {
 		 $("input[name=tel]").val(barTel(result[1].value));
 		 $("input[name=email]").val(result[2].value);
 		 $("input[name=addr1]").val(result[3].value);
-		 $("input[name=addr2]").val(result[3].value);
 		
 //		checkout__input
 		//($(document.getElementsByClassName("checkout__total__all")).children()[1]).innerHTML = "<li>Actual Payment<span class = 'subTotal'>"+ "&#8361;" + result + "</span> </li>";

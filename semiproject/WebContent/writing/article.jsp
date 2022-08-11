@@ -9,23 +9,39 @@
 	<link rel="stylesheet" type="text/css" href="<%=cp %>/writing/css/article.css"/>
 
 <body>
-    
-    <!-- Header Section End -->
-    <%@include file = "../payment/nav.jsp"  %>
-    
-    <!-- article Section begin -->
+
+	<script type="text/javascript">
+		function deleteIt() {
+
+			if (confirm("정말 삭제하시겠습니까??") == true) { //확인
+
+				document.deleted.action="<%=cp %>/bbs/deleted_ok.do?num=${dto.num }&${params }";
+				document.deleted.submit();
+
+			} else { //취소
+
+				return false;
+
+			}
+
+		}
+	</script>
+
+	<!-- Header Section End -->
+	<%@include file="../payment/nav.jsp"%>
+
+	<!-- article Section begin -->
 	<div id="bbs">
-	<div class="container">
+		<div class="container">
 			<div class="row">
 				<div class="col-lg-12">
-					<h1 class="related-title">QuestioN</h1>
+					<h1 class="related-title">Notice Board</h1>
 				</div>
 			</div>
 		</div>
-		<div id ="bbsArticle">
-			<div id ="bbsArticle_header">
-				${dto.subject }
-			</div>
+		<div id="bbsArticle">
+			<form action="" method="post" name="deleted">
+			<div id="bbsArticle_header">${dto.subject }</div>
 			<div class="bbsArticle_bottomLine">
 				<dl>
 					<dt>작성자</dt>
@@ -34,7 +50,7 @@
 					<dd>${lineSu }</dd>
 				</dl>
 			</div>
-			
+
 			<div class="bbsArticle_bottomLine">
 				<dl>
 					<dt>등록일</dt>
@@ -43,44 +59,58 @@
 					<dd>${dto.hitcount }</dd>
 				</dl>
 			</div>
-			
+
 			<div id="bbsArticle_content">
 				<table width="600" border="0">
-				<tr>
-					<td style="padding: 20px 80px 20px 62px;" valign="top" height="200">
-					${dto.content }
-					</td>
-				</tr>	
-				</table>	
+					<tr>
+						<td style="padding: 20px 80px 20px 62px;" valign="top"
+							height="200">${dto.content }</td>
+					</tr>
+				</table>
 			</div>
-		
-		<div id="bbsArticle_footer">
-			<div id="leftFooter">
-				<input type="button" value="수정" class="btn2" 
-				onclick="javascript:location.href='<%=cp %>/bbs/updated.do?num=${dto.num }&${params }';"/> 
-				<input type="button" value="삭제" class="btn2" 
-				onclick="javascript:location.href='<%=cp %>/bbs/deleted_ok.do?num=${dto.num }&${params }';"/> 
+			
+			<div id="bbsArticle_footer">
+				<div id="leftFooter">
+					<input type="button" value="수정" class="btn2"
+						onclick="javascript:location.href='<%=cp %>/bbs/updated.do?num=${dto.num }&${params }';" />
+					<input type="button" value="삭제" class="btn2"
+						onclick="deleteIt()" />
+				</div>
+				<div id="rightFooter">
+					<input type="button" value="리스트" class="btn2"
+						onclick="location='<%=cp %>/bbs/list.do?${params }';" />
+				</div>
 			</div>
-			<div id="rightFooter">
-				<input type="button" value="리스트" class="btn2" 
-				onclick="location='<%=cp %>/bbs/list.do?${params }';"/> 
-			</div>
+			</form>
 		</div>
 	</div>
-	</div>
-    <!-- article Section end -->
-         
-    <!-- Footer Section Begin -->
-	<br/><br/><br/><br/><br/><br/><br/><br/>
-	<br/><br/><br/><br/><br/><br/><br/><br/>
-    <footer class="footer">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-3 col-md-6 col-sm-6">
-                    <div class="footer__about">
-                        <div class="footer__logo">
-                            <a href="#"><img src="<%=cp%>/img/footer-logo.png" alt=""></a>
-                        </div>
+	<!-- article Section end -->
+
+	<!-- Footer Section Begin -->
+	<br />
+	<br />
+	<br />
+	<br />
+	<br />
+	<br />
+	<br />
+	<br />
+	<br />
+	<br />
+	<br />
+	<br />
+	<br />
+	<br />
+	<br />
+	<br />
+	<footer class="footer">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-3 col-md-6 col-sm-6">
+					<div class="footer__about">
+						<div class="footer__logo">
+							<a href="#"><img src="<%=cp%>/img/footer-logo.png" alt=""></a>
+						</div>
                         <p>The customer is at the heart of our unique business model, which includes design.</p>
                         <a href="#"><img src="<%=cp%>/img/payment.png" alt=""></a>
                     </div>

@@ -4,7 +4,6 @@ TEMPORARY TABLESPACE TEMP;
 
 GRANT CONNECT,RESOURCE,UNLIMITED TABLESPACE TO team;
 
-
 CREATE TABLE member (
   num number PRIMARY KEY,
   id varchar2(20) unique,
@@ -38,9 +37,6 @@ CREATE TABLE product (
   price number(20),
   category number(20),
   brand number(20),
-  pro_size number(20),
-  color number(20),
-  tag number(20),
   savefilename varchar2(50) not null,
   savefilename1 varchar2(50),
   savefilename2 varchar2(50),

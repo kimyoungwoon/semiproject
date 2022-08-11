@@ -7,7 +7,7 @@ var arrProduct = [];
 function registerFunction() {
     //여기도 마찬가지로 요청할때는 session을 이용해서 하면 됨.
     //지금 당장은 테스트로 1
-    connectRequest.open("Post", "./cart/cartList.do?memberNum=" + eURI("1"), true);
+    connectRequest.open("Post", "http://localhost:8080/semiproject/cart/cartList.do?memberNum=" + eURI("1"), true);
     connectRequest.onreadystatechange = successConnect;
     connectRequest.send(null);
 }
@@ -127,14 +127,14 @@ function cartTotal(discount = 1) {
 
 //상품 개수 정보 수정
 function updateCartProductCount(productNum, count) {
-    updateRequest.open("get", "./cart/updatePC.do?productNum=" + eURI(productNum) + "&count=" + eURI(count), true);
+    updateRequest.open("get", "http://localhost:8080/semiproject/cart/updatePC.do?productNum=" + eURI(productNum) + "&count=" + eURI(count), true);
     ////	updateRequest.onreadystatechange = successConnect;
     updateRequest.send(null);
 }
 
 //상품 삭제
 function deleteCartProduct(arg, productNum) {
-    deleteRequest.open("Post", "./cart/deleteCart.do?productNum=" + eURI(productNum), true);
+    deleteRequest.open("Post", "http://localhost:8080/semiproject/cart/deleteCart.do?productNum=" + eURI(productNum), true);
     //	deleteRequest.onreadystatechange = successConnect;
     deleteRequest.send(null);
     $(arg).closest("tr").remove();
@@ -144,7 +144,7 @@ function deleteCartProduct(arg, productNum) {
 
 //nav 카트 갯수 처리
 function countCart() {
-	countCartRequest.open("Post", "./cart/countCart.do", true);
+	countCartRequest.open("Post", "http://localhost:8080/semiproject/cart/countCart.do", true);
 	countCartRequest.onreadystatechange = function() {
 		if (countCartRequest.readyState == 4 && countCartRequest.status == 200) {
 			var object = eval("(" + countCartRequest.responseText + ")");

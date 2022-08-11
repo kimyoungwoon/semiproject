@@ -57,15 +57,6 @@
 		}
 		f.content.value = str;
 		
-		str= f.pwd.value;
-		str = str.trim();
-		if(!str) {
-			alert("\n패스워드를 입력하세요.")
-			f.pwd.focus();
-			return;
-		}
-		f.pwd.value = str;
-		
 		f.action = "<%=cp%>/bbs/created_ok.do";
 		f.submit();		
 		
@@ -82,7 +73,7 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-lg-12">
-					<h1 class="related-title">QuestioN</h1>
+					<h1 class="related-title">Notice Board</h1>
 				</div>
 			</div>
 		</div>
@@ -103,10 +94,10 @@
 
 				<div class="bbsCreated_bottomLine">
 					<dl>
-						<dt>작&nbsp;성&nbsp;자</dt>
+						<dt>이&nbsp;&nbsp;&nbsp;&nbsp;름</dt>
 						<dd>
 							<input type="text" name="name" size="35" maxlength="20"
-								class="boxTF" value="${sessionScope.customInfo.userName }" />
+								class="boxTF" value="${sessionScope.customInfo.name }" readonly="readonly"/>
 						</dd>
 					</dl>
 				</div>
@@ -126,16 +117,6 @@
 						<dt>내&nbsp;&nbsp;&nbsp;&nbsp;용</dt>
 						<dd>
 							<textarea rows="12" cols="63" name="content" class="boxTA"></textarea>
-						</dd>
-					</dl>
-				</div>
-
-				<div class="bbsCreated_noLine">
-					<dl>
-						<dt>비밀번호</dt>
-						<dd>
-							<input type="password" name="pwd" size="35" maxlength="7"
-								class="boxTF" />
 						</dd>
 					</dl>
 				</div>

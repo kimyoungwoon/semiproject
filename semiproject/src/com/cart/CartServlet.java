@@ -89,7 +89,6 @@ public class CartServlet extends HttpServlet{
 			//장바구니에 들어왔을 때 전달받는 회원번호
 			
 			List<CartProductDTO> lists = dao.getCartList(memberNum);
-			String imagePath = cp + "/img/pds/";
 			StringBuffer result = new StringBuffer("");
 			result.append("{\"result\":[");
 			for(int i = 0; i < lists.size(); i++) {
@@ -98,7 +97,7 @@ public class CartServlet extends HttpServlet{
 				result.append("{\"value\": \"" + lists.get(i).getCount() + "\"},");
 				result.append("{\"value\": \"" + lists.get(i).getName() + "\"},");
 				result.append("{\"value\": \"" + lists.get(i).getPrice() + "\"},");
-				result.append("{\"value\": \"" + cp + "/img/pds/" + lists.get(i).getSaveFileName() + "\"}],");
+				result.append("{\"value\": \"" + cp + "/pds/productFile/" + lists.get(i).getSaveFileName() + "\"}],");
 				
 			}
 			result.append("]}");

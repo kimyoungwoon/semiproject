@@ -6,7 +6,7 @@ function registerFunction() {
 	//지금 당장은 테스트로 1
 	var orderNum = $("#iOrderNum").val();
 
-	orderDetailList.open("Post", "./order/orderDetailList.do?orderNum=" + orderNum, true);
+	orderDetailList.open("Post", "http://localhost:8080/semiproject/order/orderDetailList.do?orderNum=" + orderNum, true);
 	orderDetailList.onreadystatechange = readConnect;
 	orderDetailList.send(null);
 }

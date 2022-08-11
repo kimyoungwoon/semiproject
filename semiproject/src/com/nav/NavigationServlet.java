@@ -63,12 +63,14 @@ public class NavigationServlet extends HttpServlet{
 		else if(uri.indexOf("checkLogin.do") != -1){
 			
 			CustomInfo info =  (CustomInfo)session.getAttribute("customInfo");
+			String name = "not";
+			
 			
 			if(info != null) {
 				//접속자 저장하는 db도 만드는 게 좋을 듯
-				
+				name = info.getName();
 				StringBuffer result = new StringBuffer("");
-				result.append("{\"result\":\"" + "Logging" + "\"}");
+				result.append("{\"result\":\"" + name + "\"}");
 				response.getWriter().write(result.toString());
 			}
 		}
